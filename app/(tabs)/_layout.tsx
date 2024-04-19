@@ -1,4 +1,4 @@
-import Colors from "@/constants/Colors";
+import Colors from "@/constants/colors";
 import { Tabs } from "expo-router";
 
 
@@ -9,7 +9,7 @@ const Layout = () => {
                 tabBarActiveTintColor: Colors.primary,
             }}
         >
-            <Tabs.Screen name="Index" options={{ tabBarLabel: "Explore" }} />
+            <Tabs.Screen name="index" options={{ tabBarLabel: "Explore" }} />
         </Tabs>
     );
 };
