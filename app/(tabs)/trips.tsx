@@ -1,9 +1,9 @@
 import { View, Text } from 'react-native'
-const Explore = () => {
+const Trips = () => {
   return (
     <View>
-      <Text>Explore</Text>
+      <Text>Trips</Text>
     </View>
   )
 }
-export default Explore
+export default Trips
