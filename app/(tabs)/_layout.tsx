@@ -1,6 +1,6 @@
 import Colors from "@/constants/colors";
+import { FontAwesome5, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
-
 
 const Layout = () => {
     return (
@@ -9,7 +9,15 @@ const Layout = () => {
                 tabBarActiveTintColor: Colors.primary,
             }}
         >
-            <Tabs.Screen name="index" options={{ tabBarLabel: "Explore" }} />
+            <Tabs.Screen
+                name="index"
+                options={{
+                    tabBarLabel: "Explore",
+                    tabBarIcon: ({ color, size }) => (
+                        <Ionicons name="search" color={color} size={size}/>
+                    ),
+                }}
+            />
         </Tabs>
     );
 };
