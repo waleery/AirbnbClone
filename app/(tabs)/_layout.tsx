@@ -27,6 +27,15 @@ const Layout = () => {
                     ),
                 }}
             />
+            <Tabs.Screen
+                name="trips"
+                options={{
+                    tabBarLabel: "Trips",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="airbnb" color={color} size={size}/>
+                    ),
+                }}
+            />
         </Tabs>
     );
 };
