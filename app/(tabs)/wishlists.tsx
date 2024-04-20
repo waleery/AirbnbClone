@@ -1,9 +1,9 @@
 import { View, Text } from 'react-native'
-const Wishlist = () => {
+const Wishlists = () => {
   return (
     <View>
-      <Text>Wishlist</Text>
+      <Text>Wishlists</Text>
     </View>
   )
 }
-export default Wishlist
+export default Wishlists
