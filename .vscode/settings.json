@@ -2,6 +2,7 @@
     "conventionalCommits.scopes": [
         "Tabs",
         "Constants",
-        "App"
+        "App",
+        "Modals"
     ]
 }
