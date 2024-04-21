@@ -1,9 +1,9 @@
 import { View, Text } from 'react-native'
-const Trips = () => {
+const Page = () => {
   return (
     <View>
       <Text>Trips</Text>
     </View>
   )
 }
-export default Trips
+export default Page

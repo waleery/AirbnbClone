@@ -1,9 +1,9 @@
 import { View, Text } from 'react-native'
-const Inbox = () => {
+const Page = () => {
   return (
     <View>
       <Text>Inbox</Text>
     </View>
   )
 }
-export default Inbox
+export default Page

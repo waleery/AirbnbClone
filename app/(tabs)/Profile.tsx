@@ -1,9 +1,9 @@
 import { View, Text } from 'react-native'
-const Profile = () => {
+const Page = () => {
   return (
     <View>
       <Text>Profile</Text>
     </View>
   )
 }
-export default Profile
+export default Page
