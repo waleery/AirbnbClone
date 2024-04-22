@@ -52,6 +52,11 @@ function RootLayoutNav() {
                 options={{
                     presentation: "modal",
                     title: "Log in or sign up",
+                    headerLeft: () => (
+                        <TouchableOpacity>
+                            <Ionicons name="close-outline" size={28} />
+                        </TouchableOpacity>
+                    ),
                 }}
             />
         </Stack>
