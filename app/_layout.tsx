@@ -44,7 +44,7 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
-  const router = useRouter()
+    const router = useRouter();
     return (
         <Stack>
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
@@ -60,6 +60,7 @@ function RootLayoutNav() {
                     ),
                 }}
             />
+            <Stack.Screen name="listing/[id]" options={{ headerTitle: "" }} />
         </Stack>
     );
 }
