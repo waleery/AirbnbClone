@@ -5,6 +5,25 @@ import { Stack, useRouter } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { TouchableOpacity } from "react-native";
+import * as SecureStore from "expo-secure-store";
+const CLERK_PUBLISAHBLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY
+
+const tokenCache = {
+    async getToken(key: string){
+        try {
+            return SecureStore.getItemAsync(key)
+        } catch (error) {
+            return null
+        }
+    },
+    async saveToken(key: string, value: string){
+        try {
+            return SecureStore.setItemAsync(key, value)
+        } catch (error) {
+            return null
+        }
+    }
+}
 
 export {
     // Catch any errors thrown by the Layout component.
