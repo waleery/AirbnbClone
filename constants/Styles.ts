@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import colors from "./colors";
 
 export const defaultStyles = StyleSheet.create({
     container: {
@@ -12,5 +13,12 @@ export const defaultStyles = StyleSheet.create({
         borderRadius: 8,
         padding: 10,
         backgroundColor: "#fff",
+    },
+    btn: {
+        backgroundColor: colors.primary,
+        height: 50,
+        borderRadius: 8,
+        justifyContent: "center",
+        alignItems: "center",
     },
 });
