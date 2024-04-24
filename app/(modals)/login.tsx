@@ -1,4 +1,5 @@
 import { defaultStyles } from "@/constants/Styles";
+import colors from "@/constants/colors";
 import { useWarmUpBrowser } from "@/hooks/useWarmUpBrowser";
 import {
     View,
@@ -20,6 +21,11 @@ const Page = () => {
             <TouchableOpacity style={defaultStyles.btn}>
                 <Text style={defaultStyles.btnText}>Continue</Text>
             </TouchableOpacity>
+            <View style={styles.separatorView}>
+                <View style={styles.separatorLine} />
+                <Text style={styles.separatorText}>or</Text>
+                <View style={styles.separatorLine} />
+            </View>
         </View>
     );
 };
@@ -29,6 +35,20 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#fff",
         padding: 26,
+    },
+    separatorView: {
+        flexDirection: "row",
+        gap: 10,
+        alignItems: "center",
+        marginVertical: 30,
+    },
+    separatorLine: {
+        flex: 1,
+        borderBottomColor: "black",
+        borderBottomWidth: StyleSheet.hairlineWidth,
+    },
+    separatorText: {
+        color: colors.grey,
     },
 });
 export default Page;
