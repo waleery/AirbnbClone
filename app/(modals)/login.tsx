@@ -1,6 +1,7 @@
 import { defaultStyles } from "@/constants/Styles";
 import colors from "@/constants/colors";
 import { useWarmUpBrowser } from "@/hooks/useWarmUpBrowser";
+import { useOAuth } from "@clerk/clerk-expo";
 import { Ionicons } from "@expo/vector-icons";
 import {
     View,
@@ -12,6 +13,10 @@ import {
 const Page = () => {
     useWarmUpBrowser();
 
+    const {startOAuthFlow: gooleAuth}= useOAuth({strategy:'oauth_google'})
+    const {startOAuthFlow: appleAuth}= useOAuth({strategy:'oauth_apple'})
+    const {startOAuthFlow: facebookAuth}= useOAuth({strategy:'oauth_facebook'})
+    
     return (
         <View style={styles.container}>
             <TextInput
