@@ -24,5 +24,24 @@ export const defaultStyles = StyleSheet.create({
     btnText: {
         color:'#fff',
         fontSize:16,
+    },
+    btnOutline:{
+        backgroundColor:'#fff',
+        borderWidth:1,
+        borderColor: colors.grey,
+        height:50,
+        borderRadius:8,
+        alignItems:'center',
+        justifyContent:'center',
+        flexDirection:'row',
+        paddingHorizontal:10
+    },
+    btnOutlineText:{
+        color:'#000',
+        fontSize:16,
+    },
+    btnIcon:{
+        position:'absolute',
+        left:16
     }
 });
