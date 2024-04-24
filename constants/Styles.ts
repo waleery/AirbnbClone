@@ -21,4 +21,8 @@ export const defaultStyles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
+    btnText: {
+        color:'#fff',
+        fontSize:16,
+    }
 });
