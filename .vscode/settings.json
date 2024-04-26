@@ -4,6 +4,7 @@
         "Constants",
         "App",
         "Modals",
-        "Listing"
+        "Listing",
+        "Components"
     ]
 }
