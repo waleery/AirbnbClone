@@ -5,7 +5,7 @@ const Page = () => {
     const { signOut, isSignedIn } = useAuth();
     return (
         <View>
-            <Button title="Sign out" onPress={() => signOut()} />
+            <Button title="Log out" onPress={() => signOut()} />
             {!isSignedIn ? (
                 <Link href="/(modals)/login">
                     <Text>Log in</Text>
