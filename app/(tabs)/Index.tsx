@@ -1,13 +1,14 @@
-import { Link } from 'expo-router'
-import { View, Text } from 'react-native'
+import ExploreHeader from "@/components/ExploreHeader";
+import Listings from "@/components/Listings";
+import { Stack } from "expo-router";
+import { View } from "react-native";
 
 const Page = () => {
-  return (
-    <View>
-      <Link href={'/(modals)/booking'}>Booking</Link>
-      <Link href={'/(modals)/login'}>Login</Link>
-      <Link href={'/listing/123'}>Listing details</Link>
-    </View>
-  )
-}
-export default Page
+    return (
+        <View style={{ flex: 1 }}>
+            <Stack.Screen options={{ header: () => <ExploreHeader /> }} />
+            <Listings />
+        </View>
+    );
+};
+export default Page;
