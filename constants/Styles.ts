@@ -43,5 +43,11 @@ export const defaultStyles = StyleSheet.create({
     btnIcon:{
         position:'absolute',
         left:16
+    },
+    boldText:{
+        fontWeight:'600',
+    },
+    thinText:{
+        fontWeight:"300"
     }
 });
