@@ -12,8 +12,10 @@ const ExploreHeader = () => {
                         <TouchableOpacity style={styles.searchBtn}>
                             <Ionicons name="search" size={24} />
                             <View>
-                              <Text style={{fontWeight:'600'}}>Where to?</Text>
-                              <Text>Anywhere · Any week</Text>
+                                <Text style={{ fontWeight: "600" }}>
+                                    Where to?
+                                </Text>
+                                <Text>Anywhere · Any week</Text>
                             </View>
                         </TouchableOpacity>
                     </Link>
@@ -43,6 +45,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         paddingHorizontal: 24,
         paddingBottom: 16,
+        gap:10
     },
     filterBtn: {
         padding: 10,
@@ -51,10 +54,18 @@ const styles = StyleSheet.create({
         borderRadius: 24,
     },
     searchBtn: {
+        flex: 1,
         flexDirection: "row",
-        alignItems:'center',
-        gap:10,
-        borderColor:'#c2c2c2',
-        borderWidth:StyleSheet.hairlineWidth
+        alignItems: "center",
+        gap: 10,
+        borderColor: "#c2c2c2",
+        borderWidth: StyleSheet.hairlineWidth,
+        padding:12,
+        borderRadius:30,
+        backgroundColor:'#fff',
+        elevation:2,
+        shadowColor:"#000",
+        shadowOpacity:0.07,
+        shadowRadius:8
     },
 });
