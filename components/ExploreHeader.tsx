@@ -1,7 +1,7 @@
 import { defaultStyles } from "@/constants/Styles";
 import { accomodation_categories } from "@/constants/categories";
 import colors from "@/constants/colors";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { Link } from "expo-router";
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -31,6 +31,7 @@ const ExploreHeader = () => {
                 <ScrollView horizontal>
                     {accomodation_categories.map((category, index) => (
                         <TouchableOpacity key={index}>
+                            <MaterialIcons name={category.icon as any} />
                             <Text>{category.name}</Text>
                         </TouchableOpacity>
                     ))}
