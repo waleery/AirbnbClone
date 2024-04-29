@@ -3,7 +3,13 @@ import { accomodation_categories } from "@/constants/categories";
 import colors from "@/constants/colors";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { Link } from "expo-router";
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
+import {
+    View,
+    Text,
+    StyleSheet,
+    TouchableOpacity,
+    ScrollView,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 const ExploreHeader = () => {
     return (
@@ -28,10 +34,17 @@ const ExploreHeader = () => {
                         <Ionicons name="options-outline" size={24} />
                     </TouchableOpacity>
                 </View>
-                <ScrollView horizontal>
+                <ScrollView
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    contentContainerStyle={{ alignItems: "center", gap:20, paddingHorizontal:16}}
+                >
                     {accomodation_categories.map((category, index) => (
                         <TouchableOpacity key={index}>
-                            <MaterialIcons size={24} name={category.icon as any} />
+                            <MaterialIcons
+                                size={24}
+                                name={category.icon as any}
+                            />
                             <Text>{category.name}</Text>
                         </TouchableOpacity>
                     ))}
