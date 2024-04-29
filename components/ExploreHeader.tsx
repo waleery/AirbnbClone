@@ -31,7 +31,7 @@ const ExploreHeader = () => {
                 <ScrollView horizontal>
                     {accomodation_categories.map((category, index) => (
                         <TouchableOpacity key={index}>
-                            <MaterialIcons name={category.icon as any} />
+                            <MaterialIcons size={24} name={category.icon as any} />
                             <Text>{category.name}</Text>
                         </TouchableOpacity>
                     ))}
