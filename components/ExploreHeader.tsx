@@ -12,12 +12,16 @@ import {
     ScrollView,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import * as Haptics from 'expo-haptics';
+
+
 const ExploreHeader = () => {
     const itemsRef = useRef<Array<TouchableOpacity>>([]);
     const [activeIndex, setActiveIndex] = useState(0);
 
     const selectCategory = (index: number) => {
         setActiveIndex(index);
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
     };
     return (
         <SafeAreaView style={styles.safeArea}>
