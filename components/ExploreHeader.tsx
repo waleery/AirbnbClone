@@ -12,16 +12,22 @@ import {
     ScrollView,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import * as Haptics from 'expo-haptics';
-
+import * as Haptics from "expo-haptics";
 
 const ExploreHeader = () => {
+    const scrollRef = useRef<ScrollView>(null);
     const itemsRef = useRef<Array<TouchableOpacity>>([]);
     const [activeIndex, setActiveIndex] = useState(0);
 
     const selectCategory = (index: number) => {
+        const selectedItem = itemsRef.current[index];
+
+        selectedItem.measure((x) => {
+            scrollRef.current?.scrollTo({ x: x - 16, y: 0, animated: true });
+        });
+
         setActiveIndex(index);
-        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     };
     return (
         <SafeAreaView style={styles.safeArea}>
@@ -46,11 +52,12 @@ const ExploreHeader = () => {
                     </TouchableOpacity>
                 </View>
                 <ScrollView
+                    ref={scrollRef}
                     horizontal
                     showsHorizontalScrollIndicator={false}
                     contentContainerStyle={{
                         alignItems: "center",
-                        gap: 16,
+                        gap: 30,
                         paddingHorizontal: 16,
                     }}
                 >
