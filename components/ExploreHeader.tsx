@@ -14,7 +14,11 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
 
-const ExploreHeader = () => {
+interface Props {
+    onCategoryChanged: (category: string) => void;
+}
+const ExploreHeader = ({ onCategoryChanged }: Props) => {
+    
     const scrollRef = useRef<ScrollView>(null);
     const itemsRef = useRef<Array<TouchableOpacity>>([]);
     const [activeIndex, setActiveIndex] = useState(0);
@@ -28,7 +32,10 @@ const ExploreHeader = () => {
 
         setActiveIndex(index);
         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+
+        onCategoryChanged(accomodation_categories[index].name);
     };
+
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.container}>
