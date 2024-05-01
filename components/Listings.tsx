@@ -1,9 +1,19 @@
-import { View, Text } from 'react-native'
-const Listings = () => {
-  return (
-    <View>
-      <Text>Listings</Text>
-    </View>
-  )
+import { useEffect } from "react";
+import { View, Text } from "react-native";
+
+interface Props {
+    listings: any[];
+    category: string;
 }
-export default Listings
+const Listings = ({ category, listings }: Props) => {
+    useEffect(() => {
+      console.log("RELOAD LISTINGS")
+    }, [category])
+
+    return (
+        <View>
+            <Text>Listings</Text>
+        </View>
+    );
+};
+export default Listings;
