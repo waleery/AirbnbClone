@@ -37,7 +37,7 @@ const ExploreHeader = ({ onCategoryChanged }: Props) => {
     };
 
     return (
-        <SafeAreaView style={styles.safeArea}>
+        <SafeAreaView style={styles.safeArea} edges={["top"]}>
             <View style={styles.container}>
                 <View style={styles.rowAction}>
                     <Link href={"/(modals)/booking"} asChild>
@@ -108,11 +108,9 @@ export default ExploreHeader;
 
 const styles = StyleSheet.create({
     safeArea: {
-        flex: 1,
         backgroundColor: "#fff",
     },
     container: {
-        height: 130,
         backgroundColor: "#fff",
     },
     rowAction: {
