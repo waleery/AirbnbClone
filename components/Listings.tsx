@@ -1,18 +1,25 @@
-import { useEffect } from "react";
-import { View, Text } from "react-native";
+import { useEffect, useRef, useState } from "react";
+import { View, Text, FlatList } from "react-native";
 
 interface Props {
     listings: any[];
     category: string;
 }
-const Listings = ({ category, listings }: Props) => {
+const Listings = ({ category, listings: items }: Props) => {
+    const [loading, setLoading] = useState(false);
+    const listRef = useRef<FlatList>(null);
     useEffect(() => {
-      console.log("RELOAD LISTINGS")
-    }, [category])
+        setLoading(true);
+
+        setTimeout(() => {
+            setLoading(false);
+        }, 200);
+        console.log("RELOAD LISTINGS");
+    }, [category]);
 
     return (
         <View>
-            <Text>Listings</Text>
+            <FlatList data={loading ? [] : items} ref={listRef}  renderItem={()=>()}/>
         </View>
     );
 };
