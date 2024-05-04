@@ -1,8 +1,9 @@
+import { Listing } from "@/types/listing";
 import { Link } from "expo-router";
 import { useEffect, useRef, useState } from "react";
 import { View, Text, FlatList, ListRenderItem } from "react-native";
 interface Props {
-    listings: any[];
+    listings: Listing[];
     category: string;
 }
 const Listings = ({ category, listings: items }: Props) => {
@@ -20,7 +21,7 @@ const Listings = ({ category, listings: items }: Props) => {
         console.log("RELOAD LISTINGS, listings length:", items.length);
     }, [category]);
 
-    const renderRow: ListRenderItem<any> = ({ item }) => {
+    const renderRow: ListRenderItem<Listing> = ({ item }) => {
         return <Link href={`/listing/${item.id}`}>Go there</Link>;
     };
     return (
