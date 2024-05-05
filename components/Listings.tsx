@@ -29,23 +29,26 @@ const Listings = ({ category, listings: items }: Props) => {
         console.log("RELOAD LISTINGS, listings length:", items.length);
     }, [category]);
 
-    const renderRow: ListRenderItem<Listing> = ({ item }) => {
-        return (
+    const renderRow: ListRenderItem<Listing> = ({ item }) =>
+        item.medium_url ? (
             <Link href={`/listing/${item.id}`} asChild>
                 <TouchableOpacity>
                     <View style={styles.listing}>
                         <Image
-                            source={{ uri: item.medium_url! }}
+                            source={{ uri: item.medium_url }}
                             style={styles.image}
+                            onError={() => {
+                                console.log("Problem with loading medium_url from item: ", item.id);                                // Tutaj możesz wyświetlić domyślny obrazek zastępczy lub inny komunikat
+                            }}
                         />
                     </View>
                     <TouchableOpacity style={styles.favouriteBtn}>
-                        <Ionicons name="heart-outline" size={24}/>
+                        <Ionicons name="heart-outline" size={24} />
                     </TouchableOpacity>
                 </TouchableOpacity>
             </Link>
-        );
-    };
+        ) : null;
+
     return (
         <View>
             <FlatList
@@ -66,10 +69,10 @@ const styles = StyleSheet.create({
         height: 300,
         borderRadius: 10,
     },
-    favouriteBtn:{
-        position:'absolute',
-        top:30,
-        right:30
-    }
+    favouriteBtn: {
+        position: "absolute",
+        top: 30,
+        right: 30,
+    },
 });
 export default Listings;
