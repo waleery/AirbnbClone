@@ -1,4 +1,5 @@
 import { Listing } from "@/types/listing";
+import { Ionicons } from "@expo/vector-icons";
 import { Link } from "expo-router";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -33,8 +34,14 @@ const Listings = ({ category, listings: items }: Props) => {
             <Link href={`/listing/${item.id}`} asChild>
                 <TouchableOpacity>
                     <View style={styles.listing}>
-                        <Image source={{uri: item.medium_url!}} style={styles.image} />
+                        <Image
+                            source={{ uri: item.medium_url! }}
+                            style={styles.image}
+                        />
                     </View>
+                    <TouchableOpacity style={styles.favouriteBtn}>
+                        <Ionicons name="heart-outline" size={24}/>
+                    </TouchableOpacity>
                 </TouchableOpacity>
             </Link>
         );
@@ -51,13 +58,18 @@ const Listings = ({ category, listings: items }: Props) => {
 };
 
 const styles = StyleSheet.create({
-    listing:{
-        padding:16
+    listing: {
+        padding: 16,
     },
-    image:{
-        width:'100%',
-        height:300,
-        borderRadius:10
+    image: {
+        width: "100%",
+        height: 300,
+        borderRadius: 10,
+    },
+    favouriteBtn:{
+        position:'absolute',
+        top:30,
+        right:30
     }
-})
+});
 export default Listings;
