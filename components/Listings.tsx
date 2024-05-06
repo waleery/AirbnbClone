@@ -1,3 +1,4 @@
+import { defaultStyles } from "@/constants/Styles";
 import { Listing } from "@/types/listing";
 import { Ionicons } from "@expo/vector-icons";
 import { Link } from "expo-router";
@@ -48,16 +49,14 @@ const Listings = ({ category, listings: items }: Props) => {
                             <Ionicons name="heart-outline" size={24} />
                         </TouchableOpacity>
                         <View
-                            style={[
-                                styles.rowDirection,
-                                { justifyContent: "space-between" },
-                            ]}
+                            style={styles.shortInfo}
+                            
                         >
-                            <Text>{item.name}</Text>
+                            <Text style={defaultStyles.biggerText}>{item.name}</Text>
                             {item.review_scores_rating ? (
-                                <View style={styles.rowDirection}>
+                                <View style={{flexDirection:'row'}}>
                                     <Ionicons name="star" size={16} />
-                                    <Text style={{fontWeight:'600'}}>
+                                    <Text style={[defaultStyles.boldText, defaultStyles.biggerText]}>
                                         {item.review_scores_rating / 20}
                                     </Text>
                                 </View>
@@ -93,8 +92,9 @@ const styles = StyleSheet.create({
         top: 30,
         right: 30,
     },
-    rowDirection: {
+    shortInfo: {
         flexDirection: "row",
+        justifyContent:'space-between',
     },
 });
 export default Listings;

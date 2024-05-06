@@ -49,5 +49,8 @@ export const defaultStyles = StyleSheet.create({
     },
     thinText:{
         fontWeight:"300"
+    },
+    biggerText:{
+        fontSize:16
     }
 });
