@@ -47,12 +47,21 @@ const Listings = ({ category, listings: items }: Props) => {
                         <TouchableOpacity style={styles.favouriteBtn}>
                             <Ionicons name="heart-outline" size={24} />
                         </TouchableOpacity>
-                        <View style={[styles.rowDirection, {justifyContent:'space-between'}]}>
+                        <View
+                            style={[
+                                styles.rowDirection,
+                                { justifyContent: "space-between" },
+                            ]}
+                        >
                             <Text>{item.name}</Text>
-                            <View style={styles.rowDirection}>
-                                <Ionicons name="star" size={16}/>
-                                <Text>{item.review_scores_rating / 20}</Text>
-                            </View>
+                            {item.review_scores_rating ? (
+                                <View style={styles.rowDirection}>
+                                    <Ionicons name="star" size={16} />
+                                    <Text>
+                                        {item.review_scores_rating / 20}
+                                    </Text>
+                                </View>
+                            ) : null}
                         </View>
                     </View>
                 </TouchableOpacity>
