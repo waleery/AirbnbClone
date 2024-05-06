@@ -54,7 +54,7 @@ const Listings = ({ category, listings: items }: Props) => {
                         >
                             <Text style={defaultStyles.biggerText}>{item.name}</Text>
                             {item.review_scores_rating ? (
-                                <View style={{flexDirection:'row'}}>
+                                <View style={styles.ratingInfo}>
                                     <Ionicons name="star" size={16} />
                                     <Text style={[defaultStyles.boldText, defaultStyles.biggerText]}>
                                         {item.review_scores_rating / 20}
@@ -97,6 +97,12 @@ const styles = StyleSheet.create({
     shortInfo: {
         flexDirection: "row",
         justifyContent:'space-between',
+        alignItems:'center'
     },
+    ratingInfo:{
+        flexDirection:'row',
+        gap:4,
+        alignItems:'center'
+    }
 });
 export default Listings;
