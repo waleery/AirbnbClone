@@ -57,7 +57,7 @@ const Listings = ({ category, listings: items }: Props) => {
                             {item.review_scores_rating ? (
                                 <View style={styles.rowDirection}>
                                     <Ionicons name="star" size={16} />
-                                    <Text>
+                                    <Text style={{fontWeight:'600'}}>
                                         {item.review_scores_rating / 20}
                                     </Text>
                                 </View>
