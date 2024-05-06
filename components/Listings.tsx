@@ -38,13 +38,23 @@ const Listings = ({ category, listings: items }: Props) => {
                             source={{ uri: item.medium_url }}
                             style={styles.image}
                             onError={() => {
-                                console.log("Problem with loading medium_url from item: ", item.id);                                // Tutaj możesz wyświetlić domyślny obrazek zastępczy lub inny komunikat
+                                console.log(
+                                    "Problem with loading medium_url from item: ",
+                                    item.id
+                                ); // Tutaj możesz wyświetlić domyślny obrazek zastępczy lub inny komunikat
                             }}
                         />
+                        <TouchableOpacity style={styles.favouriteBtn}>
+                            <Ionicons name="heart-outline" size={24} />
+                        </TouchableOpacity>
+                        <View style={[styles.rowDirection, {justifyContent:'space-between'}]}>
+                            <Text>{item.name}</Text>
+                            <View style={styles.rowDirection}>
+                                <Ionicons name="star" size={16}/>
+                                <Text>{item.review_scores_rating / 20}</Text>
+                            </View>
+                        </View>
                     </View>
-                    <TouchableOpacity style={styles.favouriteBtn}>
-                        <Ionicons name="heart-outline" size={24} />
-                    </TouchableOpacity>
                 </TouchableOpacity>
             </Link>
         ) : null;
@@ -73,6 +83,9 @@ const styles = StyleSheet.create({
         position: "absolute",
         top: 30,
         right: 30,
+    },
+    rowDirection: {
+        flexDirection: "row",
     },
 });
 export default Listings;
