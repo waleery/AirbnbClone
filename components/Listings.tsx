@@ -66,7 +66,23 @@ const Listings = ({ category, listings: items }: Props) => {
                                 </View>
                             ) : null}
                         </View>
-                        <Text>{item.room_type}</Text>
+                        <View style={defaultStyles.mediumGap}>
+                            <Text>{item.room_type}</Text>
+
+                            <View style={styles.priceInfo}>
+                                <Text
+                                    style={[
+                                        defaultStyles.boldText,
+                                        defaultStyles.biggerText,
+                                    ]}
+                                >
+                                    € {item.price}
+                                </Text>
+                                <Text style={defaultStyles.biggerText}>
+                                    night
+                                </Text>
+                            </View>
+                        </View>
                     </View>
                 </TouchableOpacity>
             </Link>
@@ -108,6 +124,10 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         gap: 4,
         alignItems: "center",
+    },
+    priceInfo: {
+        flexDirection: "row",
+        gap: 4,
     },
 });
 export default Listings;
