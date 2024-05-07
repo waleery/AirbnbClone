@@ -48,20 +48,25 @@ const Listings = ({ category, listings: items }: Props) => {
                         <TouchableOpacity style={styles.favouriteBtn}>
                             <Ionicons name="heart-outline" size={24} />
                         </TouchableOpacity>
-                        <View
-                            style={styles.shortInfo}
-                            
-                        >
-                            <Text style={defaultStyles.biggerText}>{item.name}</Text>
+                        <View style={styles.shortInfo}>
+                            <Text style={defaultStyles.biggerText}>
+                                {item.name}
+                            </Text>
                             {item.review_scores_rating ? (
                                 <View style={styles.ratingInfo}>
                                     <Ionicons name="star" size={16} />
-                                    <Text style={[defaultStyles.boldText, defaultStyles.biggerText]}>
+                                    <Text
+                                        style={[
+                                            defaultStyles.boldText,
+                                            defaultStyles.biggerText,
+                                        ]}
+                                    >
                                         {item.review_scores_rating / 20}
                                     </Text>
                                 </View>
                             ) : null}
                         </View>
+                        <Text>{item.room_type}</Text>
                     </View>
                 </TouchableOpacity>
             </Link>
@@ -81,8 +86,8 @@ const Listings = ({ category, listings: items }: Props) => {
 const styles = StyleSheet.create({
     listing: {
         padding: 16,
-        gap:10,
-        marginVertical:16
+        gap: 10,
+        marginVertical: 16,
     },
     image: {
         width: "100%",
@@ -96,13 +101,13 @@ const styles = StyleSheet.create({
     },
     shortInfo: {
         flexDirection: "row",
-        justifyContent:'space-between',
-        alignItems:'center'
+        justifyContent: "space-between",
+        alignItems: "center",
     },
-    ratingInfo:{
-        flexDirection:'row',
-        gap:4,
-        alignItems:'center'
-    }
+    ratingInfo: {
+        flexDirection: "row",
+        gap: 4,
+        alignItems: "center",
+    },
 });
 export default Listings;
