@@ -12,6 +12,8 @@ import {
     StyleSheet,
     Image,
 } from "react-native";
+import Animated, { FadeIn, FadeOutLeft } from 'react-native-reanimated'
+
 interface Props {
     listings: Listing[];
     category: string;
@@ -34,7 +36,7 @@ const Listings = ({ category, listings: items }: Props) => {
         item.medium_url ? (
             <Link href={`/listing/${item.id}`} asChild>
                 <TouchableOpacity>
-                    <View style={styles.listing}>
+                <Animated.View style={styles.listing} entering={FadeIn.duration(200)} exiting={FadeOutLeft}>
                         <Image
                             source={{ uri: item.medium_url }}
                             style={styles.image}
@@ -83,7 +85,7 @@ const Listings = ({ category, listings: items }: Props) => {
                                 </Text>
                             </View>
                         </View>
-                    </View>
+                    </Animated.View>
                 </TouchableOpacity>
             </Link>
         ) : null;
@@ -104,6 +106,7 @@ const styles = StyleSheet.create({
         padding: 16,
         gap: 10,
         marginVertical: 16,
+        zIndex:1
     },
     image: {
         width: "100%",
