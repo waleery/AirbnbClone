@@ -1,15 +1,17 @@
 import { useLocalSearchParams } from "expo-router";
-import { View, Text, StyleSheet, Dimensions } from "react-native";
+import { View, Text, StyleSheet, Dimensions, Image } from "react-native";
 import listingsData from "@/assets/data/airbnb-listings.json";
 import { Listing } from "@/types/listing";
 import Animated from "react-native-reanimated";
+import { Ionicons } from "@expo/vector-icons";
+import colors from "@/constants/colors";
 
 const IMG_HEIGHT = 300;
 const { width } = Dimensions.get("window");
 
 const Page = () => {
     const { id } = useLocalSearchParams<{ id: string }>();
-    const listing = (listingsData as Listing[]).find((item) => item.id == id);
+    const listing = (listingsData as Listing[]).find((item) => item.id === id);
 
     return (
         <View style={styles.container}>
@@ -18,6 +20,43 @@ const Page = () => {
                     source={{ uri: listing?.xl_picture_url! }}
                     style={styles.image}
                 />
+                <View style={styles.infoContainer}>
+                    <Text style={styles.name}>{listing?.name}</Text>
+                    <Text style={styles.location}>
+                        {listing?.room_type} in {listing?.smart_location}
+                    </Text>
+                    <Text style={styles.rooms}>
+                        {listing?.guests_included} guests · {listing?.bedrooms}
+                        {" "} bedrooms · {listing?.bathrooms} bathrooms
+                    </Text>
+                    {listing?.review_scores_rating ? (
+                        <Text style={{ flexDirection: "row", gap: 4, alignItems:"flex-start" }}>
+                            <Ionicons name="star" size={16} />
+                            <Text style={styles.ratings}>
+                                {listing?.review_scores_rating / 20} ·{" "}
+                                {listing?.number_of_reviews} reviews
+                            </Text>
+                        </Text>
+                    ) : null}
+                    <View style={styles.divider} />
+                    <View style={styles.hostView}>
+                        <Image
+                            source={{ uri: listing?.host_picture_url }}
+                            style={styles.host}
+                        />
+
+                        <View>
+                            <Text style={{ fontWeight: "500", fontSize: 16 }}>
+                                Hosted by {listing?.host_name}
+                            </Text>
+                            <Text>Host since: {listing?.host_since}</Text>
+                        </View>
+                    </View>
+                    <View style={styles.divider} />
+                    <Text style={styles.description}>
+                        {listing?.description}
+                    </Text>
+                </View>
             </Animated.ScrollView>
         </View>
     );
@@ -33,4 +72,22 @@ const styles = StyleSheet.create({
         height: IMG_HEIGHT,
         width: width,
     },
+    infoContainer: { padding: 24, backgroundColor: "#fff" },
+    name: { fontSize: 26, fontWeight: "bold" },
+    location: { fontSize: 18, marginTop: 10 },
+    rooms: { fontSize: 16, color: colors.grey, marginVertical: 4 },
+    ratings: { fontSize: 16 },
+    divider: {
+        height: StyleSheet.hairlineWidth,
+        backgroundColor: colors.grey,
+        marginVertical: 16,
+    },
+    hostView: { flexDirection: "row", alignItems: "center", gap: 12 },
+    host: {
+        width: 50,
+        height: 50,
+        borderRadius: 50,
+        backgroundColor: colors.grey,
+    },
+    description: { fontSize: 16, marginTop: 10 },
 });
