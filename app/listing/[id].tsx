@@ -2,9 +2,10 @@ import { useLocalSearchParams } from "expo-router";
 import { View, Text, StyleSheet, Dimensions, Image } from "react-native";
 import listingsData from "@/assets/data/airbnb-listings.json";
 import { Listing } from "@/types/listing";
-import Animated from "react-native-reanimated";
+import Animated, { SlideInDown } from "react-native-reanimated";
 import { Ionicons } from "@expo/vector-icons";
 import colors from "@/constants/colors";
+import { defaultStyles } from "@/constants/Styles";
 
 const IMG_HEIGHT = 300;
 const { width } = Dimensions.get("window");
@@ -72,6 +73,9 @@ const Page = () => {
                         </Text>
                     </View>
                 </Animated.ScrollView>
+                <Animated.View entering={SlideInDown.delay(200)}>
+
+                </Animated.View>
             </View>
         )
     );
