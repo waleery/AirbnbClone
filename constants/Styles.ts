@@ -56,4 +56,16 @@ export const defaultStyles = StyleSheet.create({
     biggerText: {
         fontSize: 16,
     },
+    footer: {
+        position: 'absolute',
+        height: 100,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        backgroundColor: '#fff',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderTopColor: colors.grey,
+        borderTopWidth: StyleSheet.hairlineWidth,
+      },
 });

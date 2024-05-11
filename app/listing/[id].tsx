@@ -73,7 +73,7 @@ const Page = () => {
                         </Text>
                     </View>
                 </Animated.ScrollView>
-                <Animated.View entering={SlideInDown.delay(200)}>
+                <Animated.View style={defaultStyles.footer} entering={SlideInDown.delay(200)}>
 
                 </Animated.View>
             </View>
