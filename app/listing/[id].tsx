@@ -1,5 +1,12 @@
 import { useLocalSearchParams } from "expo-router";
-import { View, Text, StyleSheet, Dimensions, Image } from "react-native";
+import {
+    View,
+    Text,
+    StyleSheet,
+    Dimensions,
+    Image,
+    TouchableOpacity,
+} from "react-native";
 import listingsData from "@/assets/data/airbnb-listings.json";
 import { Listing } from "@/types/listing";
 import Animated, { SlideInDown } from "react-native-reanimated";
@@ -33,8 +40,8 @@ const Page = () => {
                             listing.guests_included > 1
                                 ? "guests"
                                 : "guest"}{" "}
-                            · {listing.bedrooms} bedrooms ·{" "}
-                            {listing.bathrooms} bathrooms
+                            · {listing.bedrooms} bedrooms · {listing.bathrooms}{" "}
+                            bathrooms
                         </Text>
                         {listing.review_scores_rating ? (
                             <Text
@@ -73,8 +80,27 @@ const Page = () => {
                         </Text>
                     </View>
                 </Animated.ScrollView>
-                <Animated.View style={defaultStyles.footer} entering={SlideInDown.delay(200)}>
-
+                <Animated.View
+                    style={defaultStyles.footer}
+                    entering={SlideInDown.delay(200)}
+                >
+                    <View
+                        style={{
+                            flexDirection: "row",
+                            justifyContent: "space-between",
+                            alignItems: "center",
+                        }}
+                    >
+                        <TouchableOpacity style={styles.footerText}>
+                            <Text style={styles.footerPrice}>
+                                € {listing.price}
+                            </Text>
+                            <Text style={{marginTop:2}}>night</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={[defaultStyles.btn, {paddingHorizontal:20}]}>
+                             <Text style={defaultStyles.btnText}>Reserve</Text>
+                        </TouchableOpacity>
+                    </View>
                 </Animated.View>
             </View>
         )
@@ -109,4 +135,12 @@ const styles = StyleSheet.create({
         backgroundColor: colors.grey,
     },
     description: { fontSize: 16, marginTop: 10 },
+    footerText: {
+        height: "100%",
+        justifyContent: "center",
+        alignItems:"center",
+        flexDirection: "row",
+        gap: 4,
+    },
+    footerPrice: { fontSize: 18, fontWeight: "bold" },
 });
