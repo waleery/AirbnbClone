@@ -82,7 +82,7 @@ const Page = () => {
                 </Animated.ScrollView>
                 <Animated.View
                     style={defaultStyles.footer}
-                    entering={SlideInDown.delay(200)}
+                    entering={SlideInDown.delay(200).duration(900)}
                 >
                     <View
                         style={{
