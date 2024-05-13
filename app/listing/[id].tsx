@@ -9,10 +9,17 @@ import {
 } from "react-native";
 import listingsData from "@/assets/data/airbnb-listings.json";
 import { Listing } from "@/types/listing";
-import Animated, { SlideInDown } from "react-native-reanimated";
+import Animated, {
+    SlideInDown,
+    interpolate,
+    useAnimatedRef,
+    useAnimatedStyle,
+    useScrollViewOffset,
+} from "react-native-reanimated";
 import { Ionicons } from "@expo/vector-icons";
 import colors from "@/constants/colors";
 import { defaultStyles } from "@/constants/Styles";
+import { AnimatedScrollView } from "react-native-reanimated/lib/typescript/reanimated2/component/ScrollView";
 
 const IMG_HEIGHT = 300;
 const { width } = Dimensions.get("window");
@@ -21,13 +28,40 @@ const Page = () => {
     const { id } = useLocalSearchParams<{ id: string }>();
     const listing = (listingsData as Listing[]).find((item) => item.id === id);
 
+    const scrollRef = useAnimatedRef<AnimatedScrollView>();
+    const scrollOffset = useScrollViewOffset(scrollRef);
+
+    const imageAnimatedStyle = useAnimatedStyle(() => {
+        return {
+            transform: [
+                {
+                    translateY: interpolate(
+                        scrollOffset.value,
+                        [-IMG_HEIGHT, 0, IMG_HEIGHT],
+                        [-IMG_HEIGHT / 2, 0, IMG_HEIGHT * 0.75]
+                    ),
+                },
+                {
+                    scale: interpolate(
+                        scrollOffset.value,
+                        [-IMG_HEIGHT, 0, IMG_HEIGHT],
+                        [2, 1, 1]
+                    ),
+                },
+            ],
+        };
+    });
     return (
         listing && (
             <View style={styles.container}>
-                <Animated.ScrollView contentContainerStyle={{paddingBottom:100}}>
+                <Animated.ScrollView
+                    contentContainerStyle={{ paddingBottom: 100 }}
+                    ref={scrollRef}
+                    scrollEventThrottle={0.2}
+                >
                     <Animated.Image
                         source={{ uri: listing.xl_picture_url! }}
-                        style={styles.image}
+                        style={[styles.image, imageAnimatedStyle]}
                     />
                     <View style={styles.infoContainer}>
                         <Text style={styles.name}>{listing.name}</Text>
@@ -95,10 +129,15 @@ const Page = () => {
                             <Text style={styles.footerPrice}>
                                 € {listing.price}
                             </Text>
-                            <Text style={{marginTop:2}}>night</Text>
+                            <Text style={{ marginTop: 2 }}>night</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={[defaultStyles.btn, {paddingHorizontal:20}]}>
-                             <Text style={defaultStyles.btnText}>Reserve</Text>
+                        <TouchableOpacity
+                            style={[
+                                defaultStyles.btn,
+                                { paddingHorizontal: 20 },
+                            ]}
+                        >
+                            <Text style={defaultStyles.btnText}>Reserve</Text>
                         </TouchableOpacity>
                     </View>
                 </Animated.View>
@@ -138,7 +177,7 @@ const styles = StyleSheet.create({
     footerText: {
         height: "100%",
         justifyContent: "center",
-        alignItems:"center",
+        alignItems: "center",
         flexDirection: "row",
         gap: 4,
     },
