@@ -24,7 +24,7 @@ const Page = () => {
     return (
         listing && (
             <View style={styles.container}>
-                <Animated.ScrollView>
+                <Animated.ScrollView contentContainerStyle={{paddingBottom:100}}>
                     <Animated.Image
                         source={{ uri: listing.xl_picture_url! }}
                         style={styles.image}
