@@ -60,6 +60,16 @@ const Page = () => {
                             color={"#000"}
                         />
                     </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.roundBtn}
+                        onPress={shareListing}
+                    >
+                        <Ionicons
+                            name="heart-outline"
+                            size={22}
+                            color={"#000"}
+                        />
+                    </TouchableOpacity>
                 </View>
             ),
         });
