@@ -1,4 +1,4 @@
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useNavigation } from "expo-router";
 import {
     View,
     Text,
@@ -20,6 +20,7 @@ import { Ionicons } from "@expo/vector-icons";
 import colors from "@/constants/colors";
 import { defaultStyles } from "@/constants/Styles";
 import { AnimatedScrollView } from "react-native-reanimated/lib/typescript/reanimated2/component/ScrollView";
+import { useLayoutEffect } from "react";
 
 const IMG_HEIGHT = 300;
 const { width } = Dimensions.get("window");
@@ -30,6 +31,24 @@ const Page = () => {
 
     const scrollRef = useAnimatedRef<AnimatedScrollView>();
     const scrollOffset = useScrollViewOffset(scrollRef);
+
+    const navigation = useNavigation()
+
+    const shareListing = async () => {
+
+    }
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerRight: () => (
+                <View style={styles.bar}>
+                    <TouchableOpacity style={styles.roundBtn} onPress={shareListing}>
+                        <Ionicons name="share-outline" size={22} color={"#000"}/>
+                    </TouchableOpacity>
+                </View>
+            )
+        })
+    },[])
 
     const imageAnimatedStyle = useAnimatedStyle(() => {
         return {
@@ -182,4 +201,19 @@ const styles = StyleSheet.create({
         gap: 4,
     },
     footerPrice: { fontSize: 18, fontWeight: "bold" },
+    bar:{
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'center',
+        gap:10
+    },
+    roundBtn:{
+        width:40,
+        height:40,
+        borderRadius:50,
+        backgroundColor:'white',
+        alignItems:'center',
+        justifyContent:'center',
+        color: colors.primary
+    }
 });
