@@ -240,5 +240,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         color: colors.primary,
+        borderWidth: StyleSheet.hairlineWidth,
+        borderColor: colors.grey
     },
 });
