@@ -33,16 +33,16 @@ const Page = () => {
     const scrollRef = useAnimatedRef<AnimatedScrollView>();
     const scrollOffset = useScrollViewOffset(scrollRef);
 
-    const navigation = useNavigation()
+    const navigation = useNavigation();
 
     const shareListing = async () => {
         try {
             await Share.share({
-                title:listing?.name,
-                url: listing?.listing_url!
-            })
+                title: listing?.name,
+                url: listing?.listing_url!,
+            });
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     };
 
@@ -60,10 +60,7 @@ const Page = () => {
                             color={"#000"}
                         />
                     </TouchableOpacity>
-                    <TouchableOpacity
-                        style={styles.roundBtn}
-                        onPress={shareListing}
-                    >
+                    <TouchableOpacity style={styles.roundBtn}>
                         <Ionicons
                             name="heart-outline"
                             size={22}
@@ -71,6 +68,14 @@ const Page = () => {
                         />
                     </TouchableOpacity>
                 </View>
+            ),
+            headerLeft: () => (
+                <TouchableOpacity
+                    style={styles.roundBtn}
+                    onPress={() => navigation.goBack()}
+                >
+                    <Ionicons name="chevron-back" size={22} color={"#000"} />
+                </TouchableOpacity>
             ),
         });
     }, []);
@@ -241,6 +246,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         color: colors.primary,
         borderWidth: StyleSheet.hairlineWidth,
-        borderColor: colors.grey
+        borderColor: colors.grey,
     },
 });
