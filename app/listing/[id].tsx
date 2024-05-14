@@ -6,6 +6,7 @@ import {
     Dimensions,
     Image,
     TouchableOpacity,
+    Share,
 } from "react-native";
 import listingsData from "@/assets/data/airbnb-listings.json";
 import { Listing } from "@/types/listing";
@@ -35,20 +36,34 @@ const Page = () => {
     const navigation = useNavigation()
 
     const shareListing = async () => {
-
-    }
+        try {
+            await Share.share({
+                title:listing?.name,
+                url: listing?.listing_url!
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    };
 
     useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => (
                 <View style={styles.bar}>
-                    <TouchableOpacity style={styles.roundBtn} onPress={shareListing}>
-                        <Ionicons name="share-outline" size={22} color={"#000"}/>
+                    <TouchableOpacity
+                        style={styles.roundBtn}
+                        onPress={shareListing}
+                    >
+                        <Ionicons
+                            name="share-outline"
+                            size={22}
+                            color={"#000"}
+                        />
                     </TouchableOpacity>
                 </View>
-            )
-        })
-    },[])
+            ),
+        });
+    }, []);
 
     const imageAnimatedStyle = useAnimatedStyle(() => {
         return {
@@ -201,19 +216,19 @@ const styles = StyleSheet.create({
         gap: 4,
     },
     footerPrice: { fontSize: 18, fontWeight: "bold" },
-    bar:{
-        flexDirection:'row',
-        alignItems:'center',
-        justifyContent:'center',
-        gap:10
+    bar: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 10,
     },
-    roundBtn:{
-        width:40,
-        height:40,
-        borderRadius:50,
-        backgroundColor:'white',
-        alignItems:'center',
-        justifyContent:'center',
-        color: colors.primary
-    }
+    roundBtn: {
+        width: 40,
+        height: 40,
+        borderRadius: 50,
+        backgroundColor: "white",
+        alignItems: "center",
+        justifyContent: "center",
+        color: colors.primary,
+    },
 });
