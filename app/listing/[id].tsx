@@ -48,6 +48,9 @@ const Page = () => {
 
     useLayoutEffect(() => {
         navigation.setOptions({
+            headerBackground:() => (
+                <Animated.View style={[styles.header]}></Animated.View>
+            ),
             headerRight: () => (
                 <View style={styles.bar}>
                     <TouchableOpacity
@@ -248,4 +251,10 @@ const styles = StyleSheet.create({
         borderWidth: StyleSheet.hairlineWidth,
         borderColor: colors.grey,
     },
+    header:{
+        backgroundColor:"white",
+        height:100,
+        borderBottomColor:colors.grey,
+        borderWidth: StyleSheet.hairlineWidth,
+    }
 });
