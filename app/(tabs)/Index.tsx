@@ -5,11 +5,16 @@ import { Stack } from "expo-router";
 import { useMemo, useState } from "react";
 import { View } from "react-native";
 import listingsData from "@/assets/data/airbnb-listings.json";
+import listingsDataGeo from "@/assets/data/airbnb-listings.geo.json";
 import { Listing } from "@/types/listing";
+import { ListingGeo } from "@/types/listingGeo";
+
+import ListingsMap from "@/components/ListingsMap";
 
 const Page = () => {
     const [category, setCategory] = useState(accomodation_categories[0].name);
     const listings = useMemo(() => listingsData as Listing[], []);
+    const listingsGeo = useMemo(() => listingsDataGeo as ListingGeo[], []);
 
     const onDataChanged = (category: string) => {
         setCategory(category);
@@ -24,7 +29,8 @@ const Page = () => {
                     ),
                 }}
             />
-            <Listings category={category} listings={listings} />
+            {/* <Listings category={category} listings={listings} /> */}
+            <ListingsMap listings={listingsGeo}/>
         </View>
     );
 };
