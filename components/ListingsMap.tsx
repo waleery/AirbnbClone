@@ -1,6 +1,6 @@
 import { ListingGeo } from "@/types/listingGeo";
 import { View, Text, StyleSheet } from "react-native";
-import MapView from "react-native-maps";
+import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 
 interface Props {
     listings: ListingGeo[];
@@ -9,7 +9,7 @@ interface Props {
 const ListingsMap = ({ listings }: Props) => {
     return (
         <View style={styles.container}>
-            <MapView style={styles.map}/>
+            <MapView style={styles.map}  provider={PROVIDER_GOOGLE} />
         </View>
     );
 };

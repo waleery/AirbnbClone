@@ -5,6 +5,7 @@
         "App",
         "Modals",
         "Listing",
-        "Components"
+        "Components",
+        "Map"
     ]
 }
