@@ -1,4 +1,5 @@
-import { Feature } from "@/types/listingGeo";
+import { Feature, ListingGeo } from "@/types/listingGeo";
+import { useRouter } from "expo-router";
 import { View, Text, StyleSheet } from "react-native";
 import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 
@@ -14,6 +15,11 @@ const INITIAL_REGION = {
 };
 
 const ListingsMap = ({ listings }: Props) => {
+    const router = useRouter()
+
+    const onMarkerSeleted = (item: Feature) => {
+        router.push(`/listing/${item.properties.id}`)
+    }
     return (
         <View style={styles.container}>
             <MapView
@@ -30,6 +36,7 @@ const ListingsMap = ({ listings }: Props) => {
                             latitude: +item.properties.latitude,
                             longitude: +item.properties.longitude,
                         }}
+                        onPress={() => onMarkerSeleted(item)}
                     />
                 ))}
             </MapView>
