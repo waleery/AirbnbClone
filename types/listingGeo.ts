@@ -2,7 +2,7 @@ export interface ListingGeo {
   type: string;
   features: Feature[];
 }
-interface Feature {
+export interface Feature {
   type: string;
   geometry: Geometry;
   properties: Properties;

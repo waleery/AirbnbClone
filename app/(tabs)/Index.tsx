@@ -14,7 +14,7 @@ import ListingsMap from "@/components/ListingsMap";
 const Page = () => {
     const [category, setCategory] = useState(accomodation_categories[0].name);
     const listings = useMemo(() => listingsData as Listing[], []);
-    const listingsGeo = useMemo(() => listingsDataGeo as ListingGeo[], []);
+    const listingsGeo = useMemo(() => listingsDataGeo as ListingGeo, []);
 
     const onDataChanged = (category: string) => {
         setCategory(category);
