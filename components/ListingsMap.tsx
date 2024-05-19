@@ -9,7 +9,7 @@ interface Props {
 const ListingsMap = ({ listings }: Props) => {
     return (
         <View style={styles.container}>
-            <MapView style={styles.map}  provider={PROVIDER_GOOGLE} />
+            <MapView style={styles.map}  provider={PROVIDER_GOOGLE} showsUserLocation={true} showsMyLocationButton/>
         </View>
     );
 };
