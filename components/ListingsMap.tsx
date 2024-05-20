@@ -16,11 +16,14 @@ const INITIAL_REGION = {
 };
 
 const ListingsMap = ({ listings }: Props) => {
-    const router = useRouter()
+    const router = useRouter();
 
-    const onMarkerSeleted = useCallback((item: Feature) => () =>{
-        router.push(`/listing/${item.properties.id}`)
-    },[])
+    const onMarkerSeleted = useCallback(
+        (item: Feature) => () => {
+            router.push(`/listing/${item.properties.id}`);
+        },
+        []
+    );
 
     return (
         <View style={styles.container}>
@@ -39,7 +42,13 @@ const ListingsMap = ({ listings }: Props) => {
                             longitude: +item.properties.longitude,
                         }}
                         onPress={onMarkerSeleted(item)}
-                    />
+                    >
+                        <View style={styles.marker}>
+                            <Text style={styles.markerPrice}>
+                                € {item.properties.price}
+                            </Text>
+                        </View>
+                    </Marker>
                 ))}
             </MapView>
         </View>
@@ -54,4 +63,22 @@ const styles = StyleSheet.create({
         width: "100%",
         height: "100%",
     },
+    marker: {
+        backgroundColor: "#fff",
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: 12,
+        padding: 6,
+        elevation: 5,
+        shadowColor: "#000",
+        shadowOpacity: 0.1,
+        shadowRadius:6,
+        shadowOffset:{
+            width:1,
+            height:10
+        }
+    },
+    markerText:{
+        fontSize:14
+    }
 });
