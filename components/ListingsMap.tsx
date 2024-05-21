@@ -34,6 +34,8 @@ const ListingsMap = ({ listings }: Props) => {
                 showsUserLocation={true}
                 showsMyLocationButton
                 initialRegion={INITIAL_REGION}
+                clusterColor="#fff"
+                clusterTextColor="#000"
             >
                 {listings.features.map((item: Feature) => (
                     <Marker
