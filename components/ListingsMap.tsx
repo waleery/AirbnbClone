@@ -44,7 +44,7 @@ const ListingsMap = ({ listings }: Props) => {
                         onPress={onMarkerSeleted(item)}
                     >
                         <View style={styles.marker}>
-                            <Text style={styles.markerPrice}>
+                            <Text style={styles.markerText}>
                                 € {item.properties.price}
                             </Text>
                         </View>
@@ -79,6 +79,7 @@ const styles = StyleSheet.create({
         }
     },
     markerText:{
-        fontSize:14
+        fontSize:14,
+        fontWeight:'bold'
     }
 });
