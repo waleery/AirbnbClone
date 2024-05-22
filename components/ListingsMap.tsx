@@ -26,6 +26,28 @@ const ListingsMap = ({ listings }: Props) => {
         []
     );
 
+    const renderCluster = (cluster: any) => {
+        const { id, geometry, onPress, properties } = cluster;
+        const points = properties.point_count;
+
+        return (
+            <Marker
+                key={`cluster-${id}`}
+                coordinate={{
+                    longitude: geometry.coordinates[0],
+                    latitude: geometry.coordinates[1],
+                }}
+                onPress={onPress}
+            >
+                <View style={styles.marker}>
+                    <Text style={{ ...styles.markerText, textAlign: "center" }}>
+                        {points}
+                    </Text>
+                </View>
+            </Marker>
+        );
+    };
+
     return (
         <View style={styles.container}>
             <MapView
@@ -36,6 +58,7 @@ const ListingsMap = ({ listings }: Props) => {
                 initialRegion={INITIAL_REGION}
                 clusterColor="#fff"
                 clusterTextColor="#000"
+                renderCluster={renderCluster}
             >
                 {listings.features.map((item: Feature) => (
                     <Marker
@@ -75,14 +98,14 @@ const styles = StyleSheet.create({
         elevation: 5,
         shadowColor: "#000",
         shadowOpacity: 0.1,
-        shadowRadius:6,
-        shadowOffset:{
-            width:1,
-            height:10
-        }
+        shadowRadius: 6,
+        shadowOffset: {
+            width: 1,
+            height: 10,
+        },
     },
-    markerText:{
-        fontSize:14,
-        fontWeight:'bold'
-    }
+    markerText: {
+        fontSize: 14,
+        fontWeight: "bold",
+    },
 });
