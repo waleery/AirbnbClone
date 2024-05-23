@@ -10,6 +10,7 @@ import { Listing } from "@/types/listing";
 import { ListingGeo } from "@/types/listingGeo";
 
 import ListingsMap from "@/components/ListingsMap";
+import ListingsBottomSheet from "@/components/ListingsBottomSheet";
 
 const Page = () => {
     const [category, setCategory] = useState(accomodation_categories[0].name);
@@ -30,7 +31,8 @@ const Page = () => {
                 }}
             />
             {/* <Listings category={category} listings={listings} /> */}
-            <ListingsMap listings={listingsGeo}/>
+            <ListingsMap listings={listingsGeo} />
+            <ListingsBottomSheet listings={listings} category={category} />
         </View>
     );
 };
