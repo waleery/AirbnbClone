@@ -3,6 +3,7 @@ import BottomSheet from "@gorhom/bottom-sheet";
 import { useMemo, useRef } from "react";
 import { View, Text } from "react-native";
 import Listings from "./Listings";
+import colors from "@/constants/colors";
 
 interface Props {
     listings: Listing[];
@@ -14,7 +15,7 @@ const ListingsBottomSheet = ({ listings, category }: Props) => {
     const snapPoitns = useMemo(() => ["10%", "100%"], []);
 
     return (
-        <BottomSheet ref={bottomSheetRef} snapPoints={snapPoitns}>
+        <BottomSheet ref={bottomSheetRef} snapPoints={snapPoitns} handleIndicatorStyle={{backgroundColor:colors.grey}}>
             <View style={{ flex: 1 }}>
                 <Listings listings={listings} category={category} />
             </View>
