@@ -27,6 +27,7 @@ const ListingsBottomSheet = ({ listings, category }: Props) => {
             ref={bottomSheetRef}
             snapPoints={snapPoitns}
             handleIndicatorStyle={{ backgroundColor: colors.grey }}
+            style={styles.sheetContainer}
 
         >
             <View style={{ flex: 1 }}>
@@ -58,4 +59,16 @@ const styles = StyleSheet.create({
         borderRadius:30,
         gap: 8 
     },
+    sheetContainer:{
+        backgroundColor:"#fff",
+        borderRadius:10,
+        elevation:4,
+        shadowColor:"#000",
+        shadowOpacity:0.3,
+        shadowRadius:4,
+        shadowOffset:{
+            width:1,
+            height:1
+        }
+    }
 });
