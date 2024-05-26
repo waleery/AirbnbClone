@@ -17,10 +17,17 @@ import Animated, { FadeIn, FadeOutLeft } from 'react-native-reanimated'
 interface Props {
     listings: Listing[];
     category: string;
+    refresh: number
 }
-const Listings = ({ category, listings: items }: Props) => {
+const Listings = ({ category, listings: items, refresh }: Props) => {
     const [loading, setLoading] = useState(false);
     const listRef = useRef<FlatList>(null);
+
+    useEffect(() => {
+        if(refresh){
+            listRef.current?.scrollToOffset({offset:0, animated:true})
+        }
+    }, []);
 
     useEffect(() => {
         setLoading(true);
