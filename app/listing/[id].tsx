@@ -48,8 +48,10 @@ const Page = () => {
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            headerBackground:() => (
-                <Animated.View style={[styles.header, headerAnimatedStyle]}></Animated.View>
+            headerBackground: () => (
+                <Animated.View
+                    style={[styles.header, headerAnimatedStyle]}
+                ></Animated.View>
             ),
             headerRight: () => (
                 <View style={styles.bar}>
@@ -106,7 +108,11 @@ const Page = () => {
 
     const headerAnimatedStyle = useAnimatedStyle(() => {
         return {
-            opacity: interpolate(scrollOffset.value, [0, IMG_HEIGHT/2], [0,1])
+            opacity: interpolate(
+                scrollOffset.value,
+                [0, IMG_HEIGHT / 2],
+                [0, 1]
+            ),
         };
     });
     return (
@@ -176,13 +182,7 @@ const Page = () => {
                     style={defaultStyles.footer}
                     entering={SlideInDown.delay(200).duration(900)}
                 >
-                    <View
-                        style={{
-                            flexDirection: "row",
-                            justifyContent: "space-between",
-                            alignItems: "center",
-                        }}
-                    >
+                    <View style={styles.score}>
                         <TouchableOpacity style={styles.footerText}>
                             <Text style={styles.footerPrice}>
                                 € {listing.price}
@@ -218,6 +218,11 @@ const styles = StyleSheet.create({
     name: { fontSize: 26, fontWeight: "bold" },
     location: { fontSize: 18, marginTop: 10 },
     rooms: { fontSize: 16, color: colors.grey, marginVertical: 4 },
+    score: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+    },
     ratings: { fontSize: 16 },
     divider: {
         height: StyleSheet.hairlineWidth,
@@ -257,10 +262,10 @@ const styles = StyleSheet.create({
         borderWidth: StyleSheet.hairlineWidth,
         borderColor: colors.grey,
     },
-    header:{
-        backgroundColor:"white",
-        height:100,
-        borderBottomColor:colors.grey,
+    header: {
+        backgroundColor: "white",
+        height: 100,
+        borderBottomColor: colors.grey,
         borderWidth: StyleSheet.hairlineWidth,
-    }
+    },
 });
