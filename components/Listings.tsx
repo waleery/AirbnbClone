@@ -103,6 +103,7 @@ const Listings = ({ category, listings: items, refresh }: Props) => {
                 data={loading ? [] : items}
                 ref={listRef}
                 renderItem={renderRow}
+                ListHeaderComponent={<Text style={styles.info}>{items.length} homes</Text>}
             />
         </View>
     );
@@ -139,5 +140,10 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         gap: 4,
     },
+    info:{
+        textAlign:'center',
+        fontSize:16,
+        marginTop:4
+    }
 });
 export default Listings;
