@@ -11,6 +11,7 @@ import { ListingGeo } from "@/types/listingGeo";
 
 import ListingsMap from "@/components/ListingsMap";
 import ListingsBottomSheet from "@/components/ListingsBottomSheet";
+import { defaultStyles } from "@/constants/Styles";
 
 const Page = () => {
     const [category, setCategory] = useState(accomodation_categories[0].name);
@@ -22,7 +23,7 @@ const Page = () => {
     };
 
     return (
-        <View style={{ flex: 1 }}>
+        <View style={defaultStyles.flex}>
             <Stack.Screen
                 options={{
                     header: () => (

@@ -32,7 +32,7 @@ const ListingsBottomSheet = ({ listings, category }: Props) => {
             style={styles.sheetContainer}
 
         >
-            <View style={{ flex: 1 }}>
+            <View style={defaultStyles.flex}>
                 <Listings listings={listings} category={category}  refresh={refresh}/>
                 <View style={styles.absoluteBtn}>
                     <TouchableOpacity onPress={showMap} style={styles.btn}>
