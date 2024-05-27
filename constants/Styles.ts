@@ -6,6 +6,9 @@ export const defaultStyles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#FDFFFF",
     },
+    flex:{
+        flex:1
+    },
     mediumGap: {
         gap: 5,
     },
