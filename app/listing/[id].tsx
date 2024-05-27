@@ -119,7 +119,7 @@ const Page = () => {
         listing && (
             <View style={styles.container}>
                 <Animated.ScrollView
-                    contentContainerStyle={{ paddingBottom: 100 }}
+                    contentContainerStyle={styles.paddingBottom100}
                     ref={scrollRef}
                     scrollEventThrottle={0.2}
                 >
@@ -164,9 +164,7 @@ const Page = () => {
                             />
 
                             <View>
-                                <Text
-                                    style={{ fontWeight: "500", fontSize: 16 }}
-                                >
+                                <Text style={styles.hostText}>
                                     Hosted by {listing.host_name}
                                 </Text>
                                 <Text>Host since: {listing.host_since}</Text>
@@ -187,7 +185,7 @@ const Page = () => {
                             <Text style={styles.footerPrice}>
                                 € {listing.price}
                             </Text>
-                            <Text style={{ marginTop: 2 }}>night</Text>
+                            <Text style={styles.nightText}>night</Text>
                         </TouchableOpacity>
                         <TouchableOpacity
                             style={[
@@ -236,6 +234,13 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         backgroundColor: colors.grey,
     },
+    hostText: {
+        fontWeight: "500",
+        fontSize: 16,
+    },
+    nightText: {
+        marginTop: 2,
+    },
     description: { fontSize: 16, marginTop: 10 },
     footerText: {
         height: "100%",
@@ -267,5 +272,8 @@ const styles = StyleSheet.create({
         height: 100,
         borderBottomColor: colors.grey,
         borderWidth: StyleSheet.hairlineWidth,
+    },
+    paddingBottom100: {
+        paddingBottom: 100,
     },
 });
