@@ -36,7 +36,7 @@ const ListingsBottomSheet = ({ listings, category }: Props) => {
                 <Listings listings={listings} category={category}  refresh={refresh}/>
                 <View style={styles.absoluteBtn}>
                     <TouchableOpacity onPress={showMap} style={styles.btn}>
-                        <Text style={{color:'#fff'}}>Map</Text>
+                        <Text style={{color:colors.white}}>Map</Text>
                         <Ionicons name="map" size={20} color={"#fff"} />
                     </TouchableOpacity>
                 </View>
