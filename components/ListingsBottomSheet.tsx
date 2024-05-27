@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     },
     sheetContainer:{
         backgroundColor:"#fff",
-        borderRadius:10,
+        borderRadius:0,
         elevation:4,
         shadowColor:"#000",
         shadowOpacity:0.3,
