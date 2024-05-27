@@ -1,6 +1,6 @@
 import { Feature, ListingGeo } from "@/types/listingGeo";
 import { useRouter } from "expo-router";
-import { useCallback } from "react";
+import { memo, useCallback } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import MapView from "react-native-map-clustering";
 import { Marker, PROVIDER_GOOGLE } from "react-native-maps";
@@ -16,7 +16,7 @@ const INITIAL_REGION = {
     longitudeDelta: 9,
 };
 
-const ListingsMap = ({ listings }: Props) => {
+const ListingsMap = memo(({ listings }: Props) => {
     const router = useRouter();
 
     const onMarkerSeleted = useCallback(
@@ -79,7 +79,7 @@ const ListingsMap = ({ listings }: Props) => {
             </MapView>
         </View>
     );
-};
+});
 export default ListingsMap;
 const styles = StyleSheet.create({
     container: {
