@@ -142,13 +142,7 @@ const Page = () => {
                             bathrooms
                         </Text>
                         {listing.review_scores_rating ? (
-                            <Text
-                                style={{
-                                    flexDirection: "row",
-                                    gap: 4,
-                                    alignItems: "flex-start",
-                                }}
-                            >
+                            <Text style={styles.textRating}>
                                 <Ionicons name="star" size={16} />
                                 <Text style={styles.ratings}>
                                     {listing.review_scores_rating / 20} ·{" "}
@@ -255,6 +249,11 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         gap: 10,
+    },
+    textRating: {
+        flexDirection: "row",
+        gap: 4,
+        alignItems: "flex-start",
     },
     roundBtn: {
         width: 40,
