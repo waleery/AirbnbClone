@@ -31,6 +31,15 @@ const Page = () => {
 
     const onSaveUser = async () => {
         setEdit(false);
+        try {
+            if (!firstName || !lastName) return;
+            await user?.update({
+                firstName,
+                lastName,
+            });
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const onCaptureImage = async () => {};
@@ -70,15 +79,20 @@ const Page = () => {
                                         { width: 100 },
                                     ]}
                                 />
-                               
+                                <TouchableOpacity onPress={onSaveUser}>
+                                    <Ionicons
+                                        name="checkmark-outline"
+                                        size={24}
+                                        color={colors.dark}
+                                    />
+                                </TouchableOpacity>
                             </View>
                         ) : (
                             <View style={styles.editRow}>
                                 <Text
                                     style={{ fontSize: 22, fontWeight: "bold" }}
                                 >
-                                    {firstName}
-                                    {lastName}
+                                    {firstName} {lastName}
                                 </Text>
                                 <TouchableOpacity onPress={() => setEdit(true)}>
                                     <Ionicons
@@ -149,10 +163,10 @@ const styles = StyleSheet.create({
     },
     editRow: {
         flex: 1,
-        height:50,
-        flexDirection:'row',
-        justifyContent:'center',
+        height: 60,
+        flexDirection: "row",
+        justifyContent: "center",
         alignItems: "center",
-        gap:8
+        gap: 8,
     },
 });
