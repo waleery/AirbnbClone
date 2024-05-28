@@ -31,6 +31,11 @@ const Page = () => {
                 <Text style={styles.header}>Profile</Text>
                 <Ionicons name="notifications-outline" size={26} />
             </View>
+            {user && (
+                <View style={styles.card}>
+
+                </View>
+            )}
             {isSignedIn && (
                 <Button
                     title="Log out"
@@ -59,4 +64,22 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: "500",
     },
+    card:{
+        backgroundColor:'#fff',
+        padding:24,
+        borderRadius:16,
+        marginHorizontal:24,
+        marginTop:24,
+        elevation:2,
+        shadowColor:'#000',
+        shadowOpacity:0.2,
+        shadowRadius:6,
+        shadowOffset:{
+            width:1,
+            height:2,
+        },
+        alignItems:'center',
+        gap:14,
+        marginBottom:24
+    }
 });
