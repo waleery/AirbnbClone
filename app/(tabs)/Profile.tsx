@@ -4,7 +4,8 @@ import { useAuth, useUser } from "@clerk/clerk-expo";
 import { Ionicons } from "@expo/vector-icons";
 import { Link } from "expo-router";
 import { useEffect, useState } from "react";
-import { View, Text, Button, StyleSheet, SafeAreaView } from "react-native";
+import { View, Text, Button, StyleSheet, SafeAreaView, Image } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 const Page = () => {
     const { signOut, isSignedIn } = useAuth();
 
@@ -33,7 +34,9 @@ const Page = () => {
             </View>
             {user && (
                 <View style={styles.card}>
-
+                    <TouchableOpacity onPress={onCaptureImage}>
+                     <Image source={{uri:user?.imageUrl}} style={styles.avatar} />   
+                    </TouchableOpacity>
                 </View>
             )}
             {isSignedIn && (
@@ -45,7 +48,7 @@ const Page = () => {
             )}
             {!isSignedIn ? (
                 <Link href="/(modals)/login" asChild>
-                    <Button title="Log In" color={colors.dark}/>{" "}
+                    <Button title="Log In" color={colors.dark}/>
                 </Link>
             ) : null}
         </SafeAreaView>
@@ -81,5 +84,10 @@ const styles = StyleSheet.create({
         alignItems:'center',
         gap:14,
         marginBottom:24
+    },avatar:{
+        width:100,
+        height:100,
+        borderRadius:50,
+        backgroundColor: colors.grey
     }
 });
