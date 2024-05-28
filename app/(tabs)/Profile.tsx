@@ -31,7 +31,6 @@ const Page = () => {
 
     const onSaveUser = async () => {};
 
-
     const onCaptureImage = async () => {};
 
     return (
@@ -50,16 +49,30 @@ const Page = () => {
                     </TouchableOpacity>
                     <View style={{ flexDirection: "row", gap: 6 }}>
                         {edit ? (
-                            <View><Text>EDIT</Text></View>
+                            <View>
+                                <Text>EDIT</Text>
+                            </View>
                         ) : (
                             <View style={styles.editRow}>
-                                <Text style={{fontSize:22, fontWeight:'bold'}}>{firstName}{lastName}</Text>
+                                <Text
+                                    style={{ fontSize: 22, fontWeight: "bold" }}
+                                >
+                                    {firstName}
+                                    {lastName}
+                                </Text>
                                 <TouchableOpacity onPress={() => setEdit(true)}>
-                                    <Ionicons name="create-outline" size={24} color={colors.dark}/>
+                                    <Ionicons
+                                        name="create-outline"
+                                        size={24}
+                                        color={colors.dark}
+                                    />
                                 </TouchableOpacity>
                             </View>
                         )}
                     </View>
+
+                    <Text>{email}</Text>
+                    <Text>Since {user?.createdAt?.toLocaleDateString()}</Text>
                 </View>
             )}
             {isSignedIn && (
@@ -114,8 +127,8 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         backgroundColor: colors.grey,
     },
-    editRow:{
-        flex:1,
-        alignItems:'center'
-    }
+    editRow: {
+        flex: 1,
+        alignItems: "center",
+    },
 });
