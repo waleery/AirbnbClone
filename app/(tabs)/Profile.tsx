@@ -2,7 +2,7 @@ import { useAuth, useUser } from "@clerk/clerk-expo";
 import { Ionicons } from "@expo/vector-icons";
 import { Link } from "expo-router";
 import { useEffect, useState } from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, Button, StyleSheet, SafeAreaView } from "react-native";
 const Page = () => {
     const { signOut, isSignedIn } = useAuth();
 
@@ -24,7 +24,7 @@ const Page = () => {
     const onCaptureImage = async () => {};
 
     return (
-        <View>
+        <SafeAreaView>
             <View style={styles.headerContainer}>
                 <Text style={styles.header}>Profile</Text>
                 <Ionicons name="notifications-outline" size={26} />
@@ -35,7 +35,7 @@ const Page = () => {
                     <Text>Login</Text>
                 </Link>
             ) : null}
-        </View>
+        </SafeAreaView>
     );
 };
 export default Page;
