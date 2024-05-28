@@ -50,10 +50,13 @@ const Page = () => {
                     </TouchableOpacity>
                     <View style={{ flexDirection: "row", gap: 6 }}>
                         {edit ? (
-                            <View>Edit</View>
+                            <View><Text>EDIT</Text></View>
                         ) : (
                             <View style={styles.editRow}>
                                 <Text style={{fontSize:22, fontWeight:'bold'}}>{firstName}{lastName}</Text>
+                                <TouchableOpacity onPress={() => setEdit(true)}>
+                                    <Ionicons name="create-outline" size={24} color={colors.dark}/>
+                                </TouchableOpacity>
                             </View>
                         )}
                     </View>
