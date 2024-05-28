@@ -1,3 +1,5 @@
+import { defaultStyles } from "@/constants/Styles";
+import colors from "@/constants/colors";
 import { useAuth, useUser } from "@clerk/clerk-expo";
 import { Ionicons } from "@expo/vector-icons";
 import { Link } from "expo-router";
@@ -24,12 +26,12 @@ const Page = () => {
     const onCaptureImage = async () => {};
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={defaultStyles.container}>
             <View style={styles.headerContainer}>
                 <Text style={styles.header}>Profile</Text>
                 <Ionicons name="notifications-outline" size={26} />
             </View>
-            <Button title="Log out" onPress={() => signOut()} />
+            {isSignedIn && <Button title="Log out" onPress={() => signOut()} color={colors.dark} />}
             {!isSignedIn ? (
                 <Link href="/(modals)/login">
                     <Text>Login</Text>
@@ -45,10 +47,10 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         padding: 24,
-        alignItems:"center"
+        alignItems: "center",
     },
-    header:{
-        fontSize:24,
-        fontWeight:'500'
-    }
+    header: {
+        fontSize: 24,
+        fontWeight: "500",
+    },
 });
