@@ -31,10 +31,16 @@ const Page = () => {
                 <Text style={styles.header}>Profile</Text>
                 <Ionicons name="notifications-outline" size={26} />
             </View>
-            {isSignedIn && <Button title="Log out" onPress={() => signOut()} color={colors.dark} />}
+            {isSignedIn && (
+                <Button
+                    title="Log out"
+                    onPress={() => signOut()}
+                    color={colors.dark}
+                />
+            )}
             {!isSignedIn ? (
-                <Link href="/(modals)/login">
-                    <Text>Login</Text>
+                <Link href="/(modals)/login" asChild>
+                    <Button title="Log In" color={colors.dark}/>{" "}
                 </Link>
             ) : null}
         </SafeAreaView>
