@@ -12,7 +12,7 @@ import {
     SafeAreaView,
     Image,
 } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 const Page = () => {
     const { signOut, isSignedIn } = useAuth();
 
@@ -29,7 +29,9 @@ const Page = () => {
         setEmail(user.emailAddresses[0].emailAddress);
     }, [user]);
 
-    const onSaveUser = async () => {};
+    const onSaveUser = async () => {
+        setEdit(false);
+    };
 
     const onCaptureImage = async () => {};
 
@@ -49,8 +51,26 @@ const Page = () => {
                     </TouchableOpacity>
                     <View style={{ flexDirection: "row", gap: 6 }}>
                         {edit ? (
-                            <View>
-                                <Text>EDIT</Text>
+                            <View style={styles.editRow}>
+                                <TextInput
+                                    placeholder="First name"
+                                    value={firstName || ""}
+                                    onChangeText={setFirstName}
+                                    style={[
+                                        defaultStyles.inputField,
+                                        { width: 100 },
+                                    ]}
+                                />
+                                <TextInput
+                                    placeholder="Last name"
+                                    value={lastName || ""}
+                                    onChangeText={setLastName}
+                                    style={[
+                                        defaultStyles.inputField,
+                                        { width: 100 },
+                                    ]}
+                                />
+                               
                             </View>
                         ) : (
                             <View style={styles.editRow}>
@@ -129,6 +149,10 @@ const styles = StyleSheet.create({
     },
     editRow: {
         flex: 1,
+        height:50,
+        flexDirection:'row',
+        justifyContent:'center',
         alignItems: "center",
+        gap:8
     },
 });
