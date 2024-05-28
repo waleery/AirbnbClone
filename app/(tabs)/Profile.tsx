@@ -26,7 +26,7 @@ const Page = () => {
     return (
         <View>
             <View style={styles.headerContainer}>
-                <Text>Profile</Text>
+                <Text style={styles.header}>Profile</Text>
                 <Ionicons name="notifications-outline" size={26} />
             </View>
             <Button title="Log out" onPress={() => signOut()} />
@@ -47,4 +47,8 @@ const styles = StyleSheet.create({
         padding: 24,
         alignItems:"center"
     },
+    header:{
+        fontSize:24,
+        fontWeight:'500'
+    }
 });
