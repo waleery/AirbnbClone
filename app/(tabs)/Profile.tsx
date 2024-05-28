@@ -52,8 +52,8 @@ const Page = () => {
                         {edit ? (
                             <View>Edit</View>
                         ) : (
-                            <View style={{}}>
-                                <Text>{firstName}{lastName}</Text>
+                            <View style={styles.editRow}>
+                                <Text style={{fontSize:22, fontWeight:'bold'}}>{firstName}{lastName}</Text>
                             </View>
                         )}
                     </View>
@@ -111,4 +111,8 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         backgroundColor: colors.grey,
     },
+    editRow:{
+        flex:1,
+        alignItems:'center'
+    }
 });
