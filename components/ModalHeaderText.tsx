@@ -1,8 +1,8 @@
 import { View, Text } from 'react-native'
 const ModalHeaderText = () => {
   return (
-    <View>
-      <Text>ModalHeaderText</Text>
+    <View style={{flexDirection:'row', justifyContent:'center'}}>
+      <Text>Page</Text>
     </View>
   )
 }
