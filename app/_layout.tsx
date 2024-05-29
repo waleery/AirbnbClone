@@ -9,6 +9,7 @@ import * as SecureStore from "expo-secure-store";
 import { ClerkProvider, useAuth } from "@clerk/clerk-expo";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { defaultStyles } from "@/constants/Styles";
+import ModalHeaderText from "@/components/ModalHeaderText";
 const CLERK_PUBLISAHBLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
 const tokenCache = {
@@ -109,6 +110,7 @@ function RootLayoutNav() {
                     presentation: "transparentModal",
                     headerTransparent:true,
                     animation: "fade",
+                    headerTitle: () => <ModalHeaderText/>,
                     headerLeft: () => (
                         <TouchableOpacity onPress={() => router.back()}>
                             <Ionicons name="close-outline" size={28} />
