@@ -107,6 +107,7 @@ function RootLayoutNav() {
                 name="(modals)/booking"
                 options={{
                     presentation: "transparentModal",
+                    headerTransparent:true,
                     animation: "fade",
                     headerLeft: () => (
                         <TouchableOpacity onPress={() => router.back()}>
