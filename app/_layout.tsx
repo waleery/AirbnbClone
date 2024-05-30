@@ -10,6 +10,7 @@ import { ClerkProvider, useAuth } from "@clerk/clerk-expo";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { defaultStyles } from "@/constants/Styles";
 import ModalHeaderText from "@/components/ModalHeaderText";
+import colors from "@/constants/colors";
 const CLERK_PUBLISAHBLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
 const tokenCache = {
@@ -108,11 +109,20 @@ function RootLayoutNav() {
                 name="(modals)/booking"
                 options={{
                     presentation: "transparentModal",
-                    headerTransparent:true,
+                    headerTransparent: true,
                     animation: "fade",
-                    headerTitle: () => <ModalHeaderText/>,
+                    headerTitle: () => <ModalHeaderText />,
                     headerLeft: () => (
-                        <TouchableOpacity onPress={() => router.back()}>
+                        <TouchableOpacity
+                            onPress={() => router.back()}
+                            style={{
+                                backgroundColor: "white",
+                                borderColor: colors.grey,
+                                borderRadius: 20,
+                                borderWidth: 1,
+                                padding:4
+                            }}
+                        >
                             <Ionicons name="close-outline" size={28} />
                         </TouchableOpacity>
                     ),
