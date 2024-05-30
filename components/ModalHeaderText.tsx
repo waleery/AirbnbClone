@@ -1,9 +1,41 @@
-import { View, Text } from 'react-native'
+import colors from "@/constants/colors";
+import { useState } from "react";
+import { View, Text, StyleSheet } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 const ModalHeaderText = () => {
-  return (
-    <View style={{flexDirection:'row', justifyContent:'center'}}>
-      <Text>Page</Text>
-    </View>
-  )
-}
-export default ModalHeaderText
+    const [active, setActive] = useState(0);
+    return (
+        <View
+            style={{ flexDirection: "row", justifyContent: "center", gap: 10 }}
+        >
+            <TouchableOpacity onPress={() => setActive(0)}>
+                <Text
+                    style={[
+                        styles.headerText,
+                        { color: active === 0 ? "#000" : colors.grey },
+                    ]}
+                >
+                    Stays
+                </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setActive(1)}>
+                <Text
+                    style={[
+                        styles.headerText,
+                        { color: active === 1 ? "#000" : colors.grey },
+                    ]}
+                >
+                    Experiences
+                </Text>
+            </TouchableOpacity>
+        </View>
+    );
+};
+export default ModalHeaderText;
+
+const styles = StyleSheet.create({
+    headerText: {
+        fontWeight: "500",
+        fontSize: 18,
+    },
+});
