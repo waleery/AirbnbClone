@@ -10,7 +10,7 @@ const Layout = () => {
             }}
         >
             <Tabs.Screen
-                name="Index"
+                name="index"
                 options={{
                     tabBarLabel: "Explore",
                     tabBarIcon: ({ color, size }) => (
