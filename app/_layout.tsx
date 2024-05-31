@@ -10,7 +10,7 @@ import { ClerkProvider, useAuth } from "@clerk/clerk-expo";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { defaultStyles } from "@/constants/Styles";
 import ModalHeaderText from "@/components/ModalHeaderText";
-import colors from "@/constants/colors";
+import colors from "@/constants/Colors";
 const CLERK_PUBLISAHBLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
 const tokenCache = {

@@ -18,7 +18,7 @@ import Animated, {
     useScrollViewOffset,
 } from "react-native-reanimated";
 import { Ionicons } from "@expo/vector-icons";
-import colors from "@/constants/colors";
+import colors from "@/constants/Colors";
 import { defaultStyles } from "@/constants/Styles";
 import { AnimatedScrollView } from "react-native-reanimated/lib/typescript/reanimated2/component/ScrollView";
 import { useLayoutEffect } from "react";

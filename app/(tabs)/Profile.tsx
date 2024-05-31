@@ -1,5 +1,5 @@
 import { defaultStyles } from "@/constants/Styles";
-import colors from "@/constants/colors";
+import colors from "@/constants/Colors";
 import { useAuth, useUser } from "@clerk/clerk-expo";
 import { Ionicons } from "@expo/vector-icons";
 import { Link } from "expo-router";

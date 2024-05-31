@@ -1,5 +1,5 @@
 import { defaultStyles } from "@/constants/Styles";
-import colors from "@/constants/colors";
+import colors from "@/constants/Colors";
 import { useWarmUpBrowser } from "@/hooks/useWarmUpBrowser";
 import { useOAuth } from "@clerk/clerk-expo";
 import { Ionicons } from "@expo/vector-icons";

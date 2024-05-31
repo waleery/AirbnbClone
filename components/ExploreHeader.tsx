@@ -1,6 +1,6 @@
 import { defaultStyles } from "@/constants/Styles";
 import { accomodation_categories } from "@/constants/categories";
-import colors from "@/constants/colors";
+import colors from "@/constants/Colors";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { Link } from "expo-router";
 import { useRef, useState } from "react";

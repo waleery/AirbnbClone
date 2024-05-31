@@ -3,7 +3,7 @@ import BottomSheet from "@gorhom/bottom-sheet";
 import { useMemo, useRef, useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Listings from "./Listings";
-import colors from "@/constants/colors";
+import colors from "@/constants/Colors";
 import { defaultStyles } from "@/constants/Styles";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Ionicons } from "@expo/vector-icons";

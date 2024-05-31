@@ -1,4 +1,4 @@
-import Colors from "@/constants/colors";
+import Colors from "@/constants/Colors";
 import { FontAwesome5, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 
@@ -10,7 +10,7 @@ const Layout = () => {
             }}
         >
             <Tabs.Screen
-                name="index"
+                name="Index"
                 options={{
                     tabBarLabel: "Explore",
                     tabBarIcon: ({ color, size }) => (
@@ -37,7 +37,7 @@ const Layout = () => {
                 }}
             />
             <Tabs.Screen
-                name="inbox"
+                name="Inbox"
                 options={{
                     tabBarLabel: "Inbox",
                     tabBarIcon: ({ color, size }) => (
@@ -46,7 +46,7 @@ const Layout = () => {
                 }}
             />
             <Tabs.Screen
-                name="profile"
+                name="Profile"
                 options={{
                     tabBarLabel: "Profile",
                     headerShown: false,
