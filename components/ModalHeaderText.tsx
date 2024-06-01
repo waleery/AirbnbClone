@@ -12,7 +12,7 @@ const ModalHeaderText = () => {
                 <Text
                     style={[
                         styles.headerText,
-                        { color: active === 0 ? "#000" : colors.grey },
+                        { color: active === 0 ? "#000" : colors.grey, textDecorationLine: active === 0 ? 'underline' : 'none' },
                     ]}
                 >
                     Stays
@@ -22,7 +22,7 @@ const ModalHeaderText = () => {
                 <Text
                     style={[
                         styles.headerText,
-                        { color: active === 1 ? "#000" : colors.grey },
+                        { color: active === 1 ? "#000" : colors.grey, textDecorationLine: active === 1 ? 'underline' : 'none' },
                     ]}
                 >
                     Experiences
