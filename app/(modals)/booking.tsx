@@ -37,7 +37,7 @@ const Page = () => {
         )}
         {openCard === 0 && (
           <>
-            <Text>Where to</Text>
+            <Text style={styles.cardHeader}>Where to</Text>
           </>
         )}
       </View>
@@ -142,5 +142,10 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 14,
     color: Colors.dark,
+  },
+  cardHeader:{
+    fontSize:24,
+    padding:20,
+    fontWeight:'500'
   }
 })
