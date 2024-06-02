@@ -37,7 +37,7 @@ const Page = () => {
         )}
         {openCard === 0 && (
           <>
-            <Text style={styles.cardHeader}>Where to</Text>
+            <Text style={styles.cardHeader}>Where to?</Text>
           </>
         )}
       </View>
@@ -55,6 +55,11 @@ const Page = () => {
             <Text style={styles.previewDate}>Any week</Text>
           </AnimatedTouchableOpacity>
         )}
+        {openCard === 1 && (
+          <>
+            <Text style={styles.cardHeader}>When your's trip?</Text>
+          </>
+        )}
       </View>
 
       {/* Who */}
@@ -70,7 +75,13 @@ const Page = () => {
             <Text style={styles.previewDate}>Add guests</Text>
           </AnimatedTouchableOpacity>
         )}
+        {openCard === 2 && (
+          <>
+            <Text style={styles.cardHeader}>Who's comming?</Text>
+          </>
+        )}
       </View>
+
       <Animated.View style={defaultStyles.footer} entering={SlideInDown.delay(200)}>
         <View
           style={{
@@ -143,9 +154,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: Colors.dark,
   },
-  cardHeader:{
-    fontSize:24,
-    padding:20,
-    fontWeight:'500'
-  }
+  cardHeader: {
+    fontSize: 24,
+    padding: 20,
+    fontWeight: '500',
+  },
 })
