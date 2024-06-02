@@ -35,6 +35,11 @@ const Page = () => {
             <Text style={styles.previewDate}>I'm flexible</Text>
           </AnimatedTouchableOpacity>
         )}
+        {openCard === 0 && (
+          <>
+            <Text>Where to</Text>
+          </>
+        )}
       </View>
 
       {/* When */}
@@ -137,5 +142,5 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 14,
     color: Colors.dark,
-  },
+  }
 })
