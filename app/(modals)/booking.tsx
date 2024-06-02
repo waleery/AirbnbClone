@@ -22,11 +22,23 @@ const Page = () => {
   }
   return (
     <BlurView intensity={70} style={styles.container} tint="light">
+
+      {/* Where */}
       <View style={styles.card}>
         {openCard != 0 && (
           <AnimatedTouchableOpacity onPress={() => setOpenCard(0)}>
             <Text style={styles.previewText}>Where</Text>
             <Text style={styles.previewDate}>I'm flexible</Text>
+          </AnimatedTouchableOpacity>
+        )}
+      </View>
+
+      {/* When */}
+      <View style={styles.card}>
+        {openCard != 0 && (
+          <AnimatedTouchableOpacity onPress={() => setOpenCard(1)}>
+            <Text style={styles.previewText}>When</Text>
+            <Text style={styles.previewDate}>Any week</Text>
           </AnimatedTouchableOpacity>
         )}
       </View>
