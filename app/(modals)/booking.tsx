@@ -82,6 +82,7 @@ const Page = () => {
         )}
       </View>
 
+      {/* Footer */}
       <Animated.View style={defaultStyles.footer} entering={SlideInDown.delay(200)}>
         <View
           style={{
