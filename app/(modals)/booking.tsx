@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Touchable } from 'react-native'
 import { BlurView } from 'expo-blur'
-import Animated, { SlideInDown } from 'react-native-reanimated'
+import Animated, { FadeIn, FadeOut, SlideInDown } from 'react-native-reanimated'
 import { defaultStyles } from '@/constants/Styles'
 import { useRouter } from 'expo-router'
 import { TouchableOpacity } from 'react-native-gesture-handler'
@@ -25,7 +25,12 @@ const Page = () => {
       {/* Where */}
       <View style={styles.card}>
         {openCard != 0 && (
-          <AnimatedTouchableOpacity onPress={() => setOpenCard(0)} style={styles.cardPreview}>
+          <AnimatedTouchableOpacity
+            onPress={() => setOpenCard(0)}
+            style={styles.cardPreview}
+            entering={FadeIn.duration(200)}
+            exiting={FadeOut.duration(200)}
+          >
             <Text style={styles.previewText}>Where</Text>
             <Text style={styles.previewDate}>I'm flexible</Text>
           </AnimatedTouchableOpacity>
@@ -35,7 +40,12 @@ const Page = () => {
       {/* When */}
       <View style={styles.card}>
         {openCard != 1 && (
-          <AnimatedTouchableOpacity onPress={() => setOpenCard(1)} style={styles.cardPreview}>
+          <AnimatedTouchableOpacity
+            onPress={() => setOpenCard(1)}
+            style={styles.cardPreview}
+            entering={FadeIn.duration(200)}
+            exiting={FadeOut.duration(200)}
+          >
             <Text style={styles.previewText}>When</Text>
             <Text style={styles.previewDate}>Any week</Text>
           </AnimatedTouchableOpacity>
@@ -45,7 +55,12 @@ const Page = () => {
       {/* Who */}
       <View style={styles.card}>
         {openCard != 2 && (
-          <AnimatedTouchableOpacity onPress={() => setOpenCard(2)} style={styles.cardPreview}>
+          <AnimatedTouchableOpacity
+            onPress={() => setOpenCard(2)}
+            style={styles.cardPreview}
+            entering={FadeIn.duration(200)}
+            exiting={FadeOut.duration(200)}
+          >
             <Text style={styles.previewText}>Who</Text>
             <Text style={styles.previewDate}>Add guests</Text>
           </AnimatedTouchableOpacity>
