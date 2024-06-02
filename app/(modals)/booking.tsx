@@ -35,10 +35,20 @@ const Page = () => {
 
       {/* When */}
       <View style={styles.card}>
-        {openCard != 0 && (
+        {openCard != 1 && (
           <AnimatedTouchableOpacity onPress={() => setOpenCard(1)}>
             <Text style={styles.previewText}>When</Text>
             <Text style={styles.previewDate}>Any week</Text>
+          </AnimatedTouchableOpacity>
+        )}
+      </View>
+
+      {/* Who */}
+      <View style={styles.card}>
+        {openCard != 2 && (
+          <AnimatedTouchableOpacity onPress={() => setOpenCard(2)}>
+            <Text style={styles.previewText}>Who</Text>
+            <Text style={styles.previewDate}>Add guests</Text>
           </AnimatedTouchableOpacity>
         )}
       </View>
