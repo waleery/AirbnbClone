@@ -5,8 +5,12 @@ import { defaultStyles } from "@/constants/Styles";
 import { useRouter } from "expo-router";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Ionicons } from "@expo/vector-icons";
+import { useState } from "react";
 const Page = () => {
   const router = useRouter();
+
+  const [openCard, setOpenCard] = useState(0)
+  const [selectedPlaces, setSelectedPalces] = useState()
 
   const onClearAll = () => {};
   return (
