@@ -71,4 +71,18 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 100,
   },
+  card: {
+    backgroundColor: "#fff",
+    borderRadius: 14,
+    margin:10,
+    elevation: 4,
+    shadowColor: "#000",
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    shadowOffset: {
+        width: 2,
+        height: 2,
+    },
+    gap: 14,
+},
 });
