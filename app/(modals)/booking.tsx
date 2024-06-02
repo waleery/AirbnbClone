@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Touchable } from "react-native";
 import { BlurView } from "expo-blur";
 import Animated, { SlideInDown } from "react-native-reanimated";
 import { defaultStyles } from "@/constants/Styles";
@@ -6,6 +6,9 @@ import { useRouter } from "expo-router";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
+
+const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
+
 const Page = () => {
   const router = useRouter();
 
@@ -18,7 +21,6 @@ const Page = () => {
   };
   return (
     <BlurView intensity={70} style={styles.container} tint="light">
-      <Text>Booking</Text>
 
       <Animated.View
         style={defaultStyles.footer}
