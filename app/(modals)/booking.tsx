@@ -1,16 +1,17 @@
-import { View, Text, StyleSheet, Touchable } from "react-native";
-import { BlurView } from "expo-blur";
-import Animated, { SlideInDown } from "react-native-reanimated";
-import { defaultStyles } from "@/constants/Styles";
-import { useRouter } from "expo-router";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { Ionicons } from "@expo/vector-icons";
-import { useState } from "react";
+import { View, Text, StyleSheet, Touchable } from "react-native"
+import { BlurView } from "expo-blur"
+import Animated, { SlideInDown } from "react-native-reanimated"
+import { defaultStyles } from "@/constants/Styles"
+import { useRouter } from "expo-router"
+import { TouchableOpacity } from "react-native-gesture-handler"
+import { Ionicons } from "@expo/vector-icons"
+import { useState } from "react"
+import Colors from "@/constants/Colors"
 
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
 
 const Page = () => {
-  const router = useRouter();
+  const router = useRouter()
 
   const [openCard, setOpenCard] = useState(0)
   const [selectedPlace, setSelectedPalce] = useState(0)
@@ -18,14 +19,18 @@ const Page = () => {
   const onClearAll = () => {
     setSelectedPalce(0)
     setOpenCard(0)
-  };
+  }
   return (
     <BlurView intensity={70} style={styles.container} tint="light">
-
-      <Animated.View
-        style={defaultStyles.footer}
-        entering={SlideInDown.delay(200)}
-      >
+      <View style={styles.card}>
+        {openCard != 0 && (
+          <AnimatedTouchableOpacity onPress={() => setOpenCard(0)}>
+            <Text>Where</Text>
+            <Text>I'm flexible</Text>
+          </AnimatedTouchableOpacity>
+        )}
+      </View>
+      <Animated.View style={defaultStyles.footer} entering={SlideInDown.delay(200)}>
         <View
           style={{
             flexDirection: "row",
@@ -33,10 +38,7 @@ const Page = () => {
             alignItems: "center",
           }}
         >
-          <TouchableOpacity
-            onPress={onClearAll}
-            style={{ justifyContent: "center" }}
-          >
+          <TouchableOpacity onPress={onClearAll} style={{ justifyContent: "center" }}>
             <Text
               style={{
                 fontSize: 18,
@@ -58,16 +60,14 @@ const Page = () => {
               color={"#fff"}
               style={defaultStyles.btnIcon}
             />
-            <Text style={[defaultStyles.btnText, { fontWeight: "500" }]}>
-              Search
-            </Text>
+            <Text style={[defaultStyles.btnText, { fontWeight: "500" }]}>Search</Text>
           </TouchableOpacity>
         </View>
       </Animated.View>
     </BlurView>
-  );
-};
-export default Page;
+  )
+}
+export default Page
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -76,15 +76,15 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: "#fff",
     borderRadius: 14,
-    margin:10,
+    margin: 10,
     elevation: 4,
     shadowColor: "#000",
     shadowOpacity: 0.3,
     shadowRadius: 4,
     shadowOffset: {
-        width: 2,
-        height: 2,
+      width: 2,
+      height: 2,
     },
     gap: 14,
-},
-});
+  },
+})
