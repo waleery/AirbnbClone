@@ -8,9 +8,7 @@ import { Ionicons } from "@expo/vector-icons";
 const Page = () => {
   const router = useRouter();
 
-  const onClearAll = () => {
-
-  }
+  const onClearAll = () => {};
   return (
     <BlurView intensity={70} style={styles.container} tint="light">
       <Text>Booking</Text>
@@ -26,13 +24,34 @@ const Page = () => {
             alignItems: "center",
           }}
         >
-          <TouchableOpacity onPress={onClearAll} style={{justifyContent:'center'}}>
-            <Text style={{fontSize:18, fontWeight:'500', textDecorationLine:'underline'}}>Clear all</Text>
+          <TouchableOpacity
+            onPress={onClearAll}
+            style={{ justifyContent: "center" }}
+          >
+            <Text
+              style={{
+                fontSize: 18,
+                fontWeight: "500",
+                textDecorationLine: "underline",
+              }}
+            >
+              Clear all
+            </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={router.back} style={[defaultStyles.btn, {paddingRight:20, paddingLeft:50}]}>
-         <Ionicons name="search-outline" size={24} color={"#fff"}  style={defaultStyles.btnIcon}/>
-            <Text style={defaultStyles.btnText}>Clear all</Text>
+          <TouchableOpacity
+            onPress={router.back}
+            style={[defaultStyles.btn, { paddingRight: 20, paddingLeft: 50 }]}
+          >
+            <Ionicons
+              name="search-outline"
+              size={24}
+              color={"#fff"}
+              style={defaultStyles.btnIcon}
+            />
+            <Text style={[defaultStyles.btnText, { fontWeight: "500" }]}>
+              Search
+            </Text>
           </TouchableOpacity>
         </View>
       </Animated.View>
