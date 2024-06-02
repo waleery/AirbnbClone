@@ -10,9 +10,12 @@ const Page = () => {
   const router = useRouter();
 
   const [openCard, setOpenCard] = useState(0)
-  const [selectedPlaces, setSelectedPalces] = useState()
+  const [selectedPlace, setSelectedPalce] = useState(0)
 
-  const onClearAll = () => {};
+  const onClearAll = () => {
+    setSelectedPalce(0)
+    setOpenCard(0)
+  };
   return (
     <BlurView intensity={70} style={styles.container} tint="light">
       <Text>Booking</Text>
