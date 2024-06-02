@@ -36,9 +36,9 @@ const Page = () => {
           </AnimatedTouchableOpacity>
         )}
         {openCard === 0 && (
-          <>
+          <Animated.View>
             <Text style={styles.cardHeader}>Where to?</Text>
-          </>
+          </Animated.View>
         )}
       </View>
 
@@ -56,9 +56,9 @@ const Page = () => {
           </AnimatedTouchableOpacity>
         )}
         {openCard === 1 && (
-          <>
+          <Animated.View>
             <Text style={styles.cardHeader}>When your's trip?</Text>
-          </>
+          </Animated.View>
         )}
       </View>
 
@@ -76,9 +76,9 @@ const Page = () => {
           </AnimatedTouchableOpacity>
         )}
         {openCard === 2 && (
-          <>
+          <Animated.View>
             <Text style={styles.cardHeader}>Who's comming?</Text>
-          </>
+          </Animated.View>
         )}
       </View>
 
