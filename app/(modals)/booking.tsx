@@ -25,8 +25,8 @@ const Page = () => {
       <View style={styles.card}>
         {openCard != 0 && (
           <AnimatedTouchableOpacity onPress={() => setOpenCard(0)}>
-            <Text>Where</Text>
-            <Text>I'm flexible</Text>
+            <Text style={styles.previewText}>Where</Text>
+            <Text style={styles.previewDate}>I'm flexible</Text>
           </AnimatedTouchableOpacity>
         )}
       </View>
@@ -86,5 +86,15 @@ const styles = StyleSheet.create({
       height: 2,
     },
     gap: 14,
+  },
+  previewText: {
+    fontWeight: "500",
+    fontSize: 14,
+    color: Colors.grey,
+  },
+  previewDate: {
+    fontWeight: "500",
+    fontSize: 14,
+    color: Colors.dark,
   },
 })
