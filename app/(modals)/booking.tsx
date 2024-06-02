@@ -1,12 +1,12 @@
-import { View, Text, StyleSheet, Touchable } from "react-native"
-import { BlurView } from "expo-blur"
-import Animated, { SlideInDown } from "react-native-reanimated"
-import { defaultStyles } from "@/constants/Styles"
-import { useRouter } from "expo-router"
-import { TouchableOpacity } from "react-native-gesture-handler"
-import { Ionicons } from "@expo/vector-icons"
-import { useState } from "react"
-import Colors from "@/constants/Colors"
+import { View, Text, StyleSheet, Touchable } from 'react-native'
+import { BlurView } from 'expo-blur'
+import Animated, { SlideInDown } from 'react-native-reanimated'
+import { defaultStyles } from '@/constants/Styles'
+import { useRouter } from 'expo-router'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+import { Ionicons } from '@expo/vector-icons'
+import { useState } from 'react'
+import Colors from '@/constants/Colors'
 
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
 
@@ -22,11 +22,10 @@ const Page = () => {
   }
   return (
     <BlurView intensity={70} style={styles.container} tint="light">
-
       {/* Where */}
       <View style={styles.card}>
         {openCard != 0 && (
-          <AnimatedTouchableOpacity onPress={() => setOpenCard(0)}>
+          <AnimatedTouchableOpacity onPress={() => setOpenCard(0)} style={styles.cardPreview}>
             <Text style={styles.previewText}>Where</Text>
             <Text style={styles.previewDate}>I'm flexible</Text>
           </AnimatedTouchableOpacity>
@@ -36,7 +35,7 @@ const Page = () => {
       {/* When */}
       <View style={styles.card}>
         {openCard != 1 && (
-          <AnimatedTouchableOpacity onPress={() => setOpenCard(1)}>
+          <AnimatedTouchableOpacity onPress={() => setOpenCard(1)} style={styles.cardPreview}>
             <Text style={styles.previewText}>When</Text>
             <Text style={styles.previewDate}>Any week</Text>
           </AnimatedTouchableOpacity>
@@ -46,7 +45,7 @@ const Page = () => {
       {/* Who */}
       <View style={styles.card}>
         {openCard != 2 && (
-          <AnimatedTouchableOpacity onPress={() => setOpenCard(2)}>
+          <AnimatedTouchableOpacity onPress={() => setOpenCard(2)} style={styles.cardPreview}>
             <Text style={styles.previewText}>Who</Text>
             <Text style={styles.previewDate}>Add guests</Text>
           </AnimatedTouchableOpacity>
@@ -55,17 +54,17 @@ const Page = () => {
       <Animated.View style={defaultStyles.footer} entering={SlideInDown.delay(200)}>
         <View
           style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
           }}
         >
-          <TouchableOpacity onPress={onClearAll} style={{ justifyContent: "center" }}>
+          <TouchableOpacity onPress={onClearAll} style={{ justifyContent: 'center' }}>
             <Text
               style={{
                 fontSize: 18,
-                fontWeight: "500",
-                textDecorationLine: "underline",
+                fontWeight: '500',
+                textDecorationLine: 'underline',
               }}
             >
               Clear all
@@ -79,10 +78,10 @@ const Page = () => {
             <Ionicons
               name="search-outline"
               size={24}
-              color={"#fff"}
+              color={'#fff'}
               style={defaultStyles.btnIcon}
             />
-            <Text style={[defaultStyles.btnText, { fontWeight: "500" }]}>Search</Text>
+            <Text style={[defaultStyles.btnText, { fontWeight: '500' }]}>Search</Text>
           </TouchableOpacity>
         </View>
       </Animated.View>
@@ -96,11 +95,11 @@ const styles = StyleSheet.create({
     paddingTop: 100,
   },
   card: {
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     borderRadius: 14,
     margin: 10,
     elevation: 4,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOpacity: 0.3,
     shadowRadius: 4,
     shadowOffset: {
@@ -109,13 +108,18 @@ const styles = StyleSheet.create({
     },
     gap: 14,
   },
+  cardPreview: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 20,
+  },
   previewText: {
-    fontWeight: "500",
+    fontWeight: '500',
     fontSize: 14,
     color: Colors.grey,
   },
   previewDate: {
-    fontWeight: "500",
+    fontWeight: '500',
     fontSize: 14,
     color: Colors.dark,
   },
