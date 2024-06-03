@@ -3,7 +3,7 @@ import { BlurView } from 'expo-blur'
 import Animated, { FadeIn, FadeOut, SlideInDown } from 'react-native-reanimated'
 import { defaultStyles } from '@/constants/Styles'
 import { useRouter } from 'expo-router'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 import { Ionicons } from '@expo/vector-icons'
 import { useState } from 'react'
 import Colors from '@/constants/Colors'
@@ -36,9 +36,19 @@ const Page = () => {
           </AnimatedTouchableOpacity>
         )}
         {openCard === 0 && (
-          <Animated.View style={styles.cardBody}>
+          <>
             <Text style={styles.cardHeader}>Where to?</Text>
-          </Animated.View>
+            <Animated.View style={styles.cardBody}>
+              <View style={styles.searchSection}>
+                <Ionicons name="search" size={20} color={'black'} style={styles.searchIcon} />
+                <TextInput
+                  style={styles.inputField}
+                  placeholder="Search destination"
+                  placeholderTextColor={Colors.grey}
+                />
+              </View>
+            </Animated.View>
+          </>
         )}
       </View>
 
@@ -163,5 +173,23 @@ const styles = StyleSheet.create({
   cardBody: {
     paddingHorizontal: 20,
     paddingBottom: 20,
+  },
+  searchSection: {
+    height: 50,
+    flexDirection: 'row',
+    borderWidth: 1,
+    borderColor: '#ABABAB',
+    borderRadius: 8,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 10,
+  },
+  inputField: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+  searchIcon: {
+    padding: 10,
   },
 })
