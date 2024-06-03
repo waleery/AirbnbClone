@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Touchable } from 'react-native'
+import { View, Text, StyleSheet, Touchable, ScrollView, Image } from 'react-native'
 import { BlurView } from 'expo-blur'
 import Animated, { FadeIn, FadeOut, SlideInDown } from 'react-native-reanimated'
 import { defaultStyles } from '@/constants/Styles'
@@ -7,6 +7,7 @@ import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 import { Ionicons } from '@expo/vector-icons'
 import { useState } from 'react'
 import Colors from '@/constants/Colors'
+import { places } from '@/assets/data/places'
 
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
 
@@ -47,6 +48,18 @@ const Page = () => {
                   placeholderTextColor={Colors.grey}
                 />
               </View>
+              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{gap:25}}>
+                {places.map((item, i) => (
+                  <TouchableOpacity onPress={() => setSelectedPalce(i)}>
+                    <Image
+                      key={i}
+                      source={item.img}
+                      style={selectedPlace === i ? styles.placeSelected : styles.place}
+                    />
+                    <Text style={{ paddingTop: 6 }}>{item.title}</Text>
+                  </TouchableOpacity>
+                ))}
+              </ScrollView>
             </Animated.View>
           </>
         )}
@@ -191,5 +204,17 @@ const styles = StyleSheet.create({
   },
   searchIcon: {
     padding: 10,
+  },
+  place: {
+    width: 100,
+    height: 100,
+    borderRadius: 10,
+  },
+  placeSelected: {
+    width: 100,
+    height: 100,
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: Colors.grey,
   },
 })
