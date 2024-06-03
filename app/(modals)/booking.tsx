@@ -36,7 +36,7 @@ const Page = () => {
           </AnimatedTouchableOpacity>
         )}
         {openCard === 0 && (
-          <Animated.View>
+          <Animated.View style={styles.cardBody}>
             <Text style={styles.cardHeader}>Where to?</Text>
           </Animated.View>
         )}
@@ -159,5 +159,9 @@ const styles = StyleSheet.create({
     fontSize: 24,
     padding: 20,
     fontWeight: '500',
+  },
+  cardBody: {
+    paddingHorizontal: 20,
+    paddingBottom: 20,
   },
 })
