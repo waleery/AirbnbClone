@@ -61,7 +61,11 @@ const Page = () => {
                     source={item.img}
                     style={selectedPlace === i ? styles.placeSelected : styles.place}
                   />
-                  <Text style={{ paddingTop: 6 }}>{item.title}</Text>
+                  <Text
+                    style={[{ paddingTop: 6 }, selectedPlace === i ? { fontWeight: 'bold' } : null]}
+                  >
+                    {item.title}
+                  </Text>
                 </TouchableOpacity>
               ))}
             </ScrollView>
