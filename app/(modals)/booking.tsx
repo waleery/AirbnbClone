@@ -209,13 +209,13 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   place: {
-    width: 100,
-    height: 100,
+    width: 110,
+    height: 110,
     borderRadius: 10,
   },
   placeSelected: {
-    width: 100,
-    height: 100,
+    width: 110,
+    height: 110,
     borderRadius: 10,
     borderWidth: 2,
     borderColor: Colors.grey,
