@@ -48,19 +48,23 @@ const Page = () => {
                   placeholderTextColor={Colors.grey}
                 />
               </View>
-              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{gap:25}}>
-                {places.map((item, i) => (
-                  <TouchableOpacity onPress={() => setSelectedPalce(i)}>
-                    <Image
-                      key={i}
-                      source={item.img}
-                      style={selectedPlace === i ? styles.placeSelected : styles.place}
-                    />
-                    <Text style={{ paddingTop: 6 }}>{item.title}</Text>
-                  </TouchableOpacity>
-                ))}
-              </ScrollView>
             </Animated.View>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{ gap: 25, paddingLeft: 20, paddingBottom: 20 }}
+            >
+              {places.map((item, i) => (
+                <TouchableOpacity onPress={() => setSelectedPalce(i)}>
+                  <Image
+                    key={i}
+                    source={item.img}
+                    style={selectedPlace === i ? styles.placeSelected : styles.place}
+                  />
+                  <Text style={{ paddingTop: 6 }}>{item.title}</Text>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
           </>
         )}
       </View>
