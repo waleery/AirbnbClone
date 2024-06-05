@@ -9,12 +9,10 @@ import { useState } from 'react'
 import Colors from '@/constants/Colors'
 import { places } from '@/assets/data/places'
 
-
-
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
 
 //@ts-ignore
-import {DatePicker} from 'react-native-modern-datepicker'
+import { DatePicker } from 'react-native-modern-datepicker'
 
 const Page = () => {
   const router = useRouter()
@@ -57,7 +55,7 @@ const Page = () => {
             <ScrollView
               horizontal
               showsHorizontalScrollIndicator={false}
-              contentContainerStyle={{ gap: 25, paddingLeft: 20, paddingBottom: 20 }}
+              contentContainerStyle={styles.scroolViewStyle}
             >
               {places.map((item, i) => (
                 <TouchableOpacity onPress={() => setSelectedPalce(i)}>
@@ -232,5 +230,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 2,
     borderColor: Colors.grey,
+  },
+  scroolViewStyle: {
+    gap: 25,
+    paddingLeft: 20,
+    paddingBottom: 20,
   },
 })
