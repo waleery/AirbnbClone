@@ -9,12 +9,17 @@ import { useState } from 'react'
 import Colors from '@/constants/Colors'
 import { places } from '@/assets/data/places'
 
+
+
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
+
+//@ts-ignore
+import {DatePicker} from 'react-native-modern-datepicker'
 
 const Page = () => {
   const router = useRouter()
 
-  const [openCard, setOpenCard] = useState(0)
+  const [openCard, setOpenCard] = useState(1)
   const [selectedPlace, setSelectedPalce] = useState(0)
 
   const onClearAll = () => {
@@ -87,9 +92,13 @@ const Page = () => {
           </AnimatedTouchableOpacity>
         )}
         {openCard === 1 && (
-          <Animated.View>
+          <>
             <Text style={styles.cardHeader}>When your's trip?</Text>
-          </Animated.View>
+
+            <Animated.View style={styles.cardBody}>
+              <DatePicker />
+            </Animated.View>
+          </>
         )}
       </View>
 
