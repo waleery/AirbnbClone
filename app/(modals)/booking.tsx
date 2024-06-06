@@ -123,11 +123,7 @@ const Page = () => {
       {/* Footer */}
       <Animated.View style={defaultStyles.footer} entering={SlideInDown.delay(200)}>
         <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
+          style={styles.footer}
         >
           <TouchableOpacity onPress={onClearAll} style={{ justifyContent: 'center' }}>
             <Text
@@ -236,4 +232,9 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingBottom: 20,
   },
+  footer:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  }
 })
