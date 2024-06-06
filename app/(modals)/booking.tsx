@@ -12,7 +12,7 @@ import { places } from '@/assets/data/places'
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
 
 //@ts-ignore
-import { DatePicker } from 'react-native-modern-datepicker'
+import DatePicker from 'react-native-modern-datepicker';
 
 const Page = () => {
   const router = useRouter()
