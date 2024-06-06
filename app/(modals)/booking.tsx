@@ -125,7 +125,7 @@ const Page = () => {
         <View
           style={styles.footer}
         >
-          <TouchableOpacity onPress={onClearAll} style={{ justifyContent: 'center' }}>
+          <TouchableOpacity onPress={onClearAll} style={defaultStyles.center}>
             <Text
               style={{
                 fontSize: 18,

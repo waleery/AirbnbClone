@@ -71,4 +71,7 @@ export const defaultStyles = StyleSheet.create({
         borderTopColor: colors.grey,
         borderTopWidth: StyleSheet.hairlineWidth,
       },
+      center:{
+        justifyContent:"center"
+      }
 });
