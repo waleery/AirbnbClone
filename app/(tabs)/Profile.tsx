@@ -84,7 +84,7 @@ const Page = () => {
               </View>
             ) : (
               <View style={styles.editRow}>
-                <Text style={{ fontSize: 22, fontWeight: 'bold' }}>
+                <Text style={styles.name}>
                   {firstName} {lastName}
                 </Text>
                 <TouchableOpacity onPress={() => setEdit(true)}>
@@ -155,5 +155,9 @@ const styles = StyleSheet.create({
   inputView: {
     flexDirection: 'row',
     gap: 6,
+  },
+  name: {
+    fontSize: 22,
+    fontWeight: 'bold',
   },
 })
