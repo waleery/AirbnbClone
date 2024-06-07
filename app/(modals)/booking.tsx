@@ -127,11 +127,7 @@ const Page = () => {
         >
           <TouchableOpacity onPress={onClearAll} style={defaultStyles.center}>
             <Text
-              style={{
-                fontSize: 18,
-                fontWeight: '500',
-                textDecorationLine: 'underline',
-              }}
+              style={styles.clearText}
             >
               Clear all
             </Text>
@@ -236,5 +232,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  }
+  clearText:{
+    fontSize: 18,
+    fontWeight: '500',
+    textDecorationLine: 'underline',
   }
 })
