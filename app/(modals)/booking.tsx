@@ -20,6 +20,8 @@ const Page = () => {
   const [openCard, setOpenCard] = useState(1)
   const [selectedPlace, setSelectedPalce] = useState(0)
 
+  const today = new Date().toISOString().substring(0,10)
+  console.log(today)
   const onClearAll = () => {
     setSelectedPalce(0)
     setOpenCard(0)
@@ -94,7 +96,7 @@ const Page = () => {
             <Text style={styles.cardHeader}>When your's trip?</Text>
 
             <Animated.View style={styles.cardBody}>
-              <DatePicker />
+              <DatePicker current={today} selected={today}/>
             </Animated.View>
           </>
         )}
