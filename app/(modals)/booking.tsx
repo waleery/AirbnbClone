@@ -12,7 +12,7 @@ import { places } from '@/assets/data/places'
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
 
 //@ts-ignore
-import DatePicker from 'react-native-modern-datepicker';
+import DatePicker from 'react-native-modern-datepicker'
 
 const Page = () => {
   const router = useRouter()
@@ -20,7 +20,7 @@ const Page = () => {
   const [openCard, setOpenCard] = useState(1)
   const [selectedPlace, setSelectedPalce] = useState(0)
 
-  const today = new Date().toISOString().substring(0,10)
+  const today = new Date().toISOString().substring(0, 10)
   console.log(today)
   const onClearAll = () => {
     setSelectedPalce(0)
@@ -96,7 +96,12 @@ const Page = () => {
             <Text style={styles.cardHeader}>When your's trip?</Text>
 
             <Animated.View style={styles.cardBody}>
-              <DatePicker current={today} selected={today} mode={'Calendar'}/>
+              <DatePicker
+                current={today}
+                selected={today}
+                mode={'Calendar'}
+                options={{ borderColor: 'transparent' }}
+              />
             </Animated.View>
           </>
         )}
@@ -124,15 +129,9 @@ const Page = () => {
 
       {/* Footer */}
       <Animated.View style={defaultStyles.footer} entering={SlideInDown.delay(200)}>
-        <View
-          style={styles.footer}
-        >
+        <View style={styles.footer}>
           <TouchableOpacity onPress={onClearAll} style={defaultStyles.center}>
-            <Text
-              style={styles.clearText}
-            >
-              Clear all
-            </Text>
+            <Text style={styles.clearText}>Clear all</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -230,14 +229,14 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingBottom: 20,
   },
-  footer:{
+  footer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  clearText:{
+  clearText: {
     fontSize: 18,
     fontWeight: '500',
     textDecorationLine: 'underline',
-  }
+  },
 })
