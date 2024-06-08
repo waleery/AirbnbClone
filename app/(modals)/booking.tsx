@@ -100,7 +100,7 @@ const Page = () => {
                 current={today}
                 selected={today}
                 mode={'Calendar'}
-                options={{ borderColor: 'transparent' }}
+                options={{ borderColor: 'transparent', mainColor: Colors.primary }}
               />
             </Animated.View>
           </>
