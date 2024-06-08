@@ -96,7 +96,7 @@ const Page = () => {
             <Text style={styles.cardHeader}>When your's trip?</Text>
 
             <Animated.View style={styles.cardBody}>
-              <DatePicker current={today} selected={today}/>
+              <DatePicker current={today} selected={today} mode={'Calendar'}/>
             </Animated.View>
           </>
         )}
