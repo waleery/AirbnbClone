@@ -165,11 +165,11 @@ const Page = () => {
                     }}
                   >
                     <TouchableOpacity>
-                      <Ionicons name="remove-circle-outline" size={26} />
+                      <Ionicons name="remove-circle-outline" size={26} color={groups[index].count > 0 ? Colors.grey : "#cdcdcd"}/>
                     </TouchableOpacity>
                     <Text>{item.count}</Text>
                     <TouchableOpacity>
-                      <Ionicons name="add-circle-outline" size={26} />
+                      <Ionicons name="add-circle-outline" size={26} color={Colors.grey}/>
                     </TouchableOpacity>
                   </View>
                 </View>
