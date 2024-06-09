@@ -50,6 +50,20 @@ const Page = () => {
     setSelectedPalce(0)
     setOpenCard(0)
   }
+
+  const addPerson = (index: number) => {
+    const newGroups = [...groups]
+    newGroups[index].count++
+    setGroups(newGroups)
+  }
+
+  const removePerson = (index: number) => {
+    const newGroups = [...groups]
+    if (newGroups[index].count > 0) {
+      newGroups[index].count--
+      setGroups(newGroups)
+    }
+  }
   return (
     <BlurView intensity={70} style={styles.container} tint="light">
       {/* Where */}
@@ -164,14 +178,9 @@ const Page = () => {
                       justifyContent: 'center',
                     }}
                   >
-                    <TouchableOpacity disabled = {!(groups[index].count > 0) }
-                      onPress={() => {
-                        const newGroups = [...groups]
-                        if (newGroups[index].count > 0) {
-                          newGroups[index].count--
-                          setGroups(newGroups)
-                        }
-                      }}
+                    <TouchableOpacity
+                      disabled={!(groups[index].count > 0)}
+                      onPress={() => removePerson(index)}
                     >
                       <Ionicons
                         name="remove-circle-outline"
@@ -182,13 +191,7 @@ const Page = () => {
                     <Text style={{ fontSize: 16, textAlign: 'center', minWidth: 20 }}>
                       {item.count}
                     </Text>
-                    <TouchableOpacity
-                      onPress={() => {
-                        const newGroups = [...groups]
-                        newGroups[index].count++
-                        setGroups(newGroups)
-                      }}
-                    >
+                    <TouchableOpacity onPress={() => addPerson(index)}>
                       <Ionicons name="add-circle-outline" size={26} color={Colors.grey} />
                     </TouchableOpacity>
                   </View>
