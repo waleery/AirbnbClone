@@ -31,7 +31,7 @@ const guestsGroups = [
     name: 'Pest',
     text: 'Pets allowed',
     count: 0,
-  }
+  },
 ]
 
 //@ts-ignore
@@ -42,6 +42,7 @@ const Page = () => {
 
   const [openCard, setOpenCard] = useState(1)
   const [selectedPlace, setSelectedPalce] = useState(0)
+  const [groups, setGroups] = useState(guestsGroups)
 
   const today = new Date().toISOString().substring(0, 10)
   console.log(today)
@@ -144,9 +145,37 @@ const Page = () => {
           </AnimatedTouchableOpacity>
         )}
         {openCard === 2 && (
-          <Animated.View>
+          <>
             <Text style={styles.cardHeader}>Who's comming?</Text>
-          </Animated.View>
+
+            <Animated.View style={styles.cardBody}>
+              {groups.map((item, index) => (
+                <View key={index} style={styles.guestItem}>
+                  <View>
+                    <Text>{item.name}</Text>
+                    <Text>{item.text}</Text>
+                  </View>
+
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      gap: 10,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <TouchableOpacity>
+                      <Ionicons name="remove-circle-outline" size={26} />
+                    </TouchableOpacity>
+                    <Text>{item.count}</Text>
+                    <TouchableOpacity>
+                      <Ionicons name="add-circle-outline" size={26} />
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              ))}
+            </Animated.View>
+          </>
         )}
       </View>
 
@@ -261,5 +290,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '500',
     textDecorationLine: 'underline',
+  },
+  guestItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 16,
   },
 })
