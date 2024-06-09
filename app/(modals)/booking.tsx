@@ -164,7 +164,7 @@ const Page = () => {
                       justifyContent: 'center',
                     }}
                   >
-                    <TouchableOpacity
+                    <TouchableOpacity disabled = {!(groups[index].count > 0) }
                       onPress={() => {
                         const newGroups = [...groups]
                         if (newGroups[index].count > 0) {
