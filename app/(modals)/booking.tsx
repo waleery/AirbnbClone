@@ -164,17 +164,32 @@ const Page = () => {
                       justifyContent: 'center',
                     }}
                   >
-                    <TouchableOpacity>
-                      <Ionicons name="remove-circle-outline" size={26} color={groups[index].count > 0 ? Colors.grey : "#cdcdcd"}/>
+                    <TouchableOpacity
+                      onPress={() => {
+                        const newGroups = [...groups]
+                        if (newGroups[index].count > 0) {
+                          newGroups[index].count--
+                          setGroups(newGroups)
+                        }
+                      }}
+                    >
+                      <Ionicons
+                        name="remove-circle-outline"
+                        size={26}
+                        color={groups[index].count > 0 ? Colors.grey : '#cdcdcd'}
+                      />
                     </TouchableOpacity>
-                    <Text style={{fontSize:16, textAlign:'center', minWidth:20}}>{item.count}</Text>
-                    <TouchableOpacity onPress={() => {
-                      const newGroups = [...groups]
-                      newGroups[index].count++ 
-                      setGroups(newGroups)
-
-                    }}>
-                      <Ionicons name="add-circle-outline" size={26} color={Colors.grey}/>
+                    <Text style={{ fontSize: 16, textAlign: 'center', minWidth: 20 }}>
+                      {item.count}
+                    </Text>
+                    <TouchableOpacity
+                      onPress={() => {
+                        const newGroups = [...groups]
+                        newGroups[index].count++
+                        setGroups(newGroups)
+                      }}
+                    >
+                      <Ionicons name="add-circle-outline" size={26} color={Colors.grey} />
                     </TouchableOpacity>
                   </View>
                 </View>
