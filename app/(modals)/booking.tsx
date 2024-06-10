@@ -166,8 +166,8 @@ const Page = () => {
               {groups.map((item, index) => (
                 <View key={index} style={styles.guestItem}>
                   <View>
-                    <Text>{item.name}</Text>
-                    <Text>{item.text}</Text>
+                    <Text style={{fontWeight:'700', fontSize:14}}>{item.name}</Text>
+                    <Text style={{fontSize:14, color:Colors.grey}}>{item.text}</Text>
                   </View>
 
                   <View
