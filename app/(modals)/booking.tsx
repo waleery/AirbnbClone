@@ -133,7 +133,7 @@ const Page = () => {
           <>
             <Text style={styles.cardHeader}>When your's trip?</Text>
 
-            <Animated.View style={styles.cardBody}>
+            <Animated.View style={[styles.cardBody, { paddingBottom: 20 }]}>
               <DatePicker
                 current={today}
                 selected={today}
@@ -164,10 +164,13 @@ const Page = () => {
 
             <Animated.View style={styles.cardBody}>
               {groups.map((item, index) => (
-                <View key={index} style={[styles.guestItem, index + 1 < guestsGroups.length && styles.itemBorder]}>
+                <View
+                  key={index}
+                  style={[styles.guestItem, index + 1 < guestsGroups.length && styles.itemBorder]}
+                >
                   <View>
-                    <Text style={{fontWeight:'700', fontSize:14}}>{item.name}</Text>
-                    <Text style={{fontSize:14, color:Colors.grey}}>{item.text}</Text>
+                    <Text style={{ fontWeight: '700', fontSize: 14 }}>{item.name}</Text>
+                    <Text style={{ fontSize: 14, color: Colors.grey }}>{item.text}</Text>
                   </View>
 
                   <View
@@ -320,9 +323,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 16,
   },
-  itemBorder:{
+  itemBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: Colors.grey
-    
-  }
+    borderColor: Colors.grey,
+  },
 })
