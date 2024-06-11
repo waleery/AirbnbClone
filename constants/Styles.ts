@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import colors from "./Colors";
+import Colors from "./Colors";
 
 export const defaultStyles = StyleSheet.create({
     container: {
@@ -73,5 +74,8 @@ export const defaultStyles = StyleSheet.create({
       },
       center:{
         justifyContent:"center"
+      },
+      white:{
+        color:Colors.white
       }
 });

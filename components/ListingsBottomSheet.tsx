@@ -7,6 +7,7 @@ import colors from "@/constants/Colors";
 import { defaultStyles } from "@/constants/Styles";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Ionicons } from "@expo/vector-icons";
+import Colors from "@/constants/Colors";
 
 interface Props {
     listings: Listing[];
@@ -36,7 +37,7 @@ const ListingsBottomSheet = ({ listings, category }: Props) => {
                 <Listings listings={listings} category={category}  refresh={refresh}/>
                 <View style={styles.absoluteBtn}>
                     <TouchableOpacity onPress={showMap} style={styles.btn}>
-                        <Text style={{color:colors.white}}>Map</Text>
+                        <Text style={defaultStyles.white}>Map</Text>
                         <Ionicons name="map" size={20} color={"#fff"} />
                     </TouchableOpacity>
                 </View>
