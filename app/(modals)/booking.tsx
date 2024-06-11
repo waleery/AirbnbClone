@@ -40,7 +40,7 @@ import DatePicker from 'react-native-modern-datepicker'
 const Page = () => {
   const router = useRouter()
 
-  const [openCard, setOpenCard] = useState(1)
+  const [openCard, setOpenCard] = useState(0)
   const [selectedPlace, setSelectedPalce] = useState(0)
   const [groups, setGroups] = useState(guestsGroups)
 
