@@ -3,11 +3,10 @@ import { BlurView } from 'expo-blur'
 import Animated, { FadeIn, FadeOut, SlideInDown } from 'react-native-reanimated'
 import { defaultStyles } from '@/constants/Styles'
 import { useRouter } from 'expo-router'
-import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 import { Ionicons } from '@expo/vector-icons'
 import { useState } from 'react'
 import Colors from '@/constants/Colors'
-import { places } from '@/assets/data/places'
 
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
 
@@ -36,6 +35,7 @@ const guestsGroups = [
 
 //@ts-ignore
 import DatePicker from 'react-native-modern-datepicker'
+import WhereCard from '@/components/WhereCard'
 
 const Page = () => {
   const router = useRouter()
@@ -67,55 +67,8 @@ const Page = () => {
   return (
     <BlurView intensity={70} style={styles.container} tint="light">
       {/* Where */}
-      <View style={styles.card}>
-        {openCard != 0 && (
-          <AnimatedTouchableOpacity
-            onPress={() => setOpenCard(0)}
-            style={styles.cardPreview}
-            entering={FadeIn.duration(200)}
-            exiting={FadeOut.duration(200)}
-          >
-            <Text style={styles.previewText}>Where</Text>
-            <Text style={styles.previewDate}>I'm flexible</Text>
-          </AnimatedTouchableOpacity>
-        )}
-        {openCard === 0 && (
-          <>
-            <Text style={styles.cardHeader}>Where to?</Text>
-            <Animated.View style={styles.cardBody}>
-              <View style={styles.searchSection}>
-                <Ionicons name="search" size={20} color={'black'} style={styles.searchIcon} />
-                <TextInput
-                  style={styles.inputField}
-                  placeholder="Search destination"
-                  placeholderTextColor={Colors.grey}
-                />
-              </View>
-            </Animated.View>
-            <ScrollView
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              contentContainerStyle={styles.scroolViewStyle}
-            >
-              {places.map((item, i) => (
-                <TouchableOpacity onPress={() => setSelectedPalce(i)}>
-                  <Image
-                    key={i}
-                    source={item.img}
-                    style={selectedPlace === i ? styles.placeSelected : styles.place}
-                  />
-                  <Text
-                    style={[{ paddingTop: 6 }, selectedPlace === i ? { fontWeight: 'bold' } : null]}
-                  >
-                    {item.title}
-                  </Text>
-                </TouchableOpacity>
-              ))}
-            </ScrollView>
-          </>
-        )}
-      </View>
-
+      
+      <WhereCard selectedPlace={selectedPlace} setSelectedPlace={setSelectedPalce} openCard={openCard} setOpenCard={setOpenCard} />
       {/* When */}
       <View style={styles.card}>
         {openCard != 1 && (
