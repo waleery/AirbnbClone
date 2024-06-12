@@ -43,7 +43,6 @@ const Page = () => {
   const [selectedPlace, setSelectedPalce] = useState(0)
   const [groups, setGroups] = useState(guestsGroups)
 
-  const today = new Date().toISOString().substring(0, 10)
   const onClearAll = () => {
     setSelectedPalce(0)
     setOpenCard(0)
