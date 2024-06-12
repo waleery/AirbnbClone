@@ -33,9 +33,8 @@ const guestsGroups = [
   },
 ]
 
-//@ts-ignore
-import DatePicker from 'react-native-modern-datepicker'
 import WhereCard from '@/components/WhereCard'
+import WhenCard from '@/components/WhenCard'
 
 const Page = () => {
   const router = useRouter()
@@ -70,34 +69,8 @@ const Page = () => {
       
       <WhereCard selectedPlace={selectedPlace} setSelectedPlace={setSelectedPalce} openCard={openCard} setOpenCard={setOpenCard} />
       {/* When */}
-      <View style={styles.card}>
-        {openCard != 1 && (
-          <AnimatedTouchableOpacity
-            onPress={() => setOpenCard(1)}
-            style={styles.cardPreview}
-            entering={FadeIn.duration(200)}
-            exiting={FadeOut.duration(200)}
-          >
-            <Text style={styles.previewText}>When</Text>
-            <Text style={styles.previewDate}>Any week</Text>
-          </AnimatedTouchableOpacity>
-        )}
-        {openCard === 1 && (
-          <>
-            <Text style={styles.cardHeader}>When your's trip?</Text>
-
-            <Animated.View style={[styles.cardBody, { paddingBottom: 20 }]}>
-              <DatePicker
-                current={today}
-                selected={today}
-                mode={'Calendar'}
-                options={{ borderColor: 'transparent', mainColor: Colors.primary }}
-              />
-            </Animated.View>
-          </>
-        )}
-      </View>
-
+      
+      <WhenCard openCard={openCard} setOpenCard={setOpenCard} />
       {/* Who */}
       <View style={styles.card}>
         {openCard != 2 && (
