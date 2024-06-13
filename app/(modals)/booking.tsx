@@ -8,11 +8,12 @@ import WhenCard from '@/components/WhenCard'
 import WhoCard from '@/components/WhoCard'
 import BookingFilter from '@/components/BookingFilter'
 import { guestsGroups } from '@/constants/guestsGroups'
+import { GuestsGroup } from '@/types/guestsGroups'
 
 const Page = () => {
   const [openCard, setOpenCard] = useState(0)
   const [selectedPlace, setSelectedPalce] = useState(0)
-  const [groups, setGroups] = useState(guestsGroups)
+  const [groups, setGroups] = useState<GuestsGroup[]>(guestsGroups)
 
   const onClearAll = () => {
     setSelectedPalce(0)

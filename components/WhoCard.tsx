@@ -4,16 +4,13 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 import { Ionicons } from '@expo/vector-icons'
 import Colors from '@/constants/Colors'
+import { GuestsGroup } from '@/types/guestsGroups'
 
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
 interface Props {
   setOpenCard: (i: number) => void
   openCard: number
-  groups: {
-    name: string
-    text: string
-    count: number
-  }[]
+  groups: GuestsGroup[]
   addPerson: (index: number) => void
   removePerson: (index: number) => void
 }
