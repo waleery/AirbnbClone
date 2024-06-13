@@ -1,14 +1,7 @@
-import { View, Text, StyleSheet, Touchable, ScrollView, Image } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { BlurView } from 'expo-blur'
-import Animated, { FadeIn, FadeOut, SlideInDown } from 'react-native-reanimated'
-import { defaultStyles } from '@/constants/Styles'
-import { useRouter } from 'expo-router'
-import { TouchableOpacity } from 'react-native-gesture-handler'
-import { Ionicons } from '@expo/vector-icons'
-import { useState } from 'react'
-import Colors from '@/constants/Colors'
 
-const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
+import { useState } from 'react'
 
 const guestsGroups = [
   {
@@ -39,7 +32,6 @@ import WhoCard from '@/components/WhoCard'
 import BookingFilter from '@/components/BookingFilter'
 
 const Page = () => {
-
   const [openCard, setOpenCard] = useState(0)
   const [selectedPlace, setSelectedPalce] = useState(0)
   const [groups, setGroups] = useState(guestsGroups)
@@ -66,14 +58,25 @@ const Page = () => {
   return (
     <BlurView intensity={70} style={styles.container} tint="light">
       {/* Where */}
-      
-      <WhereCard selectedPlace={selectedPlace} setSelectedPlace={setSelectedPalce} openCard={openCard} setOpenCard={setOpenCard} />
+
+      <WhereCard
+        selectedPlace={selectedPlace}
+        setSelectedPlace={setSelectedPalce}
+        openCard={openCard}
+        setOpenCard={setOpenCard}
+      />
       {/* When */}
-      
+
       <WhenCard openCard={openCard} setOpenCard={setOpenCard} />
       {/* Who */}
-      
-      <WhoCard openCard={openCard} setOpenCard={setOpenCard} groups={guestsGroups} addPerson={addPerson} removePerson={removePerson} />
+
+      <WhoCard
+        openCard={openCard}
+        setOpenCard={setOpenCard}
+        groups={guestsGroups}
+        addPerson={addPerson}
+        removePerson={removePerson}
+      />
 
       {/* Footer */}
       <BookingFilter onClearAll={onClearAll} />
