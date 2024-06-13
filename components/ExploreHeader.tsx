@@ -94,9 +94,12 @@ const styles = StyleSheet.create({
   },
   filterBtn: {
     padding: 10,
-    borderWidth: 1,
+    borderWidth: StyleSheet.hairlineWidth,
     borderColor: colors.grey,
-    borderRadius: 24,
+    borderRadius: 24,elevation: 2,
+    shadowColor: '#000',
+    shadowOpacity: 0.07,
+    shadowRadius: 8,
   },
   searchBtn: {
     flex: 1,
