@@ -3,33 +3,11 @@ import { BlurView } from 'expo-blur'
 
 import { useState } from 'react'
 
-const guestsGroups = [
-  {
-    name: 'Adults',
-    text: 'Ages 13 or above',
-    count: 0,
-  },
-  {
-    name: 'Children',
-    text: 'Ages 2-12',
-    count: 0,
-  },
-  {
-    name: 'Infants',
-    text: 'Under 2',
-    count: 0,
-  },
-  {
-    name: 'Pest',
-    text: 'Pets allowed',
-    count: 0,
-  },
-]
-
 import WhereCard from '@/components/WhereCard'
 import WhenCard from '@/components/WhenCard'
 import WhoCard from '@/components/WhoCard'
 import BookingFilter from '@/components/BookingFilter'
+import { guestsGroups } from '@/constants/guestsGroups'
 
 const Page = () => {
   const [openCard, setOpenCard] = useState(0)
