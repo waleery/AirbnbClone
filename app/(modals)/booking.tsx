@@ -36,9 +36,9 @@ const guestsGroups = [
 import WhereCard from '@/components/WhereCard'
 import WhenCard from '@/components/WhenCard'
 import WhoCard from '@/components/WhoCard'
+import BookingFilter from '@/components/BookingFilter'
 
 const Page = () => {
-  const router = useRouter()
 
   const [openCard, setOpenCard] = useState(0)
   const [selectedPlace, setSelectedPalce] = useState(0)
@@ -76,26 +76,7 @@ const Page = () => {
       <WhoCard openCard={openCard} setOpenCard={setOpenCard} groups={guestsGroups} addPerson={addPerson} removePerson={removePerson} />
 
       {/* Footer */}
-      <Animated.View style={defaultStyles.footer} entering={SlideInDown.delay(200)}>
-        <View style={styles.footer}>
-          <TouchableOpacity onPress={onClearAll} style={defaultStyles.center}>
-            <Text style={styles.clearText}>Clear all</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={router.back}
-            style={[defaultStyles.btn, { paddingRight: 20, paddingLeft: 50 }]}
-          >
-            <Ionicons
-              name="search-outline"
-              size={24}
-              color={'#fff'}
-              style={defaultStyles.btnIcon}
-            />
-            <Text style={[defaultStyles.btnText, { fontWeight: '500' }]}>Search</Text>
-          </TouchableOpacity>
-        </View>
-      </Animated.View>
+      <BookingFilter onClearAll={onClearAll} />
     </BlurView>
   )
 }
