@@ -6,7 +6,7 @@ import { useState } from 'react'
 import WhereCard from '@/components/WhereCard'
 import WhenCard from '@/components/WhenCard'
 import WhoCard from '@/components/WhoCard'
-import BookingFilter from '@/components/BookingFilter'
+import BookingFooter from '@/components/BookingFooter'
 import { guestsGroups } from '@/constants/guestsGroups'
 import { GuestsGroup } from '@/types/guestsGroups'
 
@@ -58,7 +58,7 @@ const Page = () => {
       />
 
       {/* Footer */}
-      <BookingFilter onClearAll={onClearAll} />
+      <BookingFooter onClearAll={onClearAll} />
     </BlurView>
   )
 }

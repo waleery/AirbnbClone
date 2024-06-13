@@ -9,7 +9,7 @@ interface Props {
   onClearAll: () => void
 }
 
-const BookingFilter = ({ onClearAll }: Props) => {
+const BookingFooter = ({ onClearAll }: Props) => {
   const router = useRouter()
 
   return (
@@ -44,4 +44,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default BookingFilter
+export default BookingFooter
