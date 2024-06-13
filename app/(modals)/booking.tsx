@@ -46,6 +46,7 @@ const Page = () => {
   const onClearAll = () => {
     setSelectedPalce(0)
     setOpenCard(0)
+    setGroups(guestsGroups)
   }
 
   const addPerson = (index: number) => {
