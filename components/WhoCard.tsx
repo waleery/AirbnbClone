@@ -5,6 +5,7 @@ import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 import { Ionicons } from '@expo/vector-icons'
 import Colors from '@/constants/Colors'
 import { GuestsGroup } from '@/types/guestsGroups'
+import { defaultStyles } from '@/constants/Styles'
 
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
 interface Props {
@@ -17,23 +18,23 @@ interface Props {
 
 const WhoCard = ({ setOpenCard, openCard, groups, addPerson, removePerson }: Props) => {
   return (
-    <View style={styles.card}>
+    <View style={defaultStyles.card}>
       {openCard != 2 && (
         <AnimatedTouchableOpacity
           onPress={() => setOpenCard(2)}
-          style={styles.cardPreview}
+          style={defaultStyles.cardPreview}
           entering={FadeIn.duration(200)}
           exiting={FadeOut.duration(200)}
         >
-          <Text style={styles.previewText}>Who</Text>
-          <Text style={styles.previewDate}>Add guests</Text>
+          <Text style={defaultStyles.previewText}>Who</Text>
+          <Text style={defaultStyles.previewDate}>Add guests</Text>
         </AnimatedTouchableOpacity>
       )}
       {openCard === 2 && (
         <>
-          <Text style={styles.cardHeader}>Who's comming?</Text>
+          <Text style={defaultStyles.cardHeader}>Who's comming?</Text>
 
-          <Animated.View style={styles.cardBody}>
+          <Animated.View style={defaultStyles.cardBody}>
             {groups.map((item, index) => (
               <View key={index} style={[styles.guestItem, index + 1 < 4 && styles.itemBorder]}>
                 <View>
@@ -76,43 +77,6 @@ const WhoCard = ({ setOpenCard, openCard, groups, addPerson, removePerson }: Pro
 }
 
 const styles = StyleSheet.create({
-  card: {
-    backgroundColor: '#fff',
-    borderRadius: 14,
-    margin: 10,
-    elevation: 4,
-    shadowColor: '#000',
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
-    shadowOffset: {
-      width: 2,
-      height: 2,
-    },
-    gap: 14,
-  },
-  cardPreview: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 20,
-  },
-  previewText: {
-    fontWeight: '500',
-    fontSize: 14,
-    color: Colors.grey,
-  },
-  previewDate: {
-    fontWeight: '500',
-    fontSize: 14,
-    color: Colors.dark,
-  },
-  cardHeader: {
-    fontSize: 24,
-    padding: 20,
-    fontWeight: '500',
-  },
-  cardBody: {
-    paddingHorizontal: 20,
-  },
   guestItem: {
     flexDirection: 'row',
     justifyContent: 'space-between',

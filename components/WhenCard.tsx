@@ -5,6 +5,7 @@ import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 //@ts-ignore
 import DatePicker from 'react-native-modern-datepicker'
+import { defaultStyles } from '@/constants/Styles'
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
 
 interface Props {
@@ -20,23 +21,23 @@ export default function WhenCard({
 
   return (
     <View>
-      <View style={styles.card}>
+      <View style={defaultStyles.card}>
         {openCard != 1 && (
           <AnimatedTouchableOpacity
             onPress={() => setOpenCard(1)}
-            style={styles.cardPreview}
+            style={defaultStyles.cardPreview}
             entering={FadeIn.duration(200)}
             exiting={FadeOut.duration(200)}
           >
-            <Text style={styles.previewText}>When</Text>
-            <Text style={styles.previewDate}>Any week</Text>
+            <Text style={defaultStyles.previewText}>When</Text>
+            <Text style={defaultStyles.previewDate}>Any week</Text>
           </AnimatedTouchableOpacity>
         )}
         {openCard === 1 && (
           <>
-            <Text style={styles.cardHeader}>When your's trip?</Text>
+            <Text style={defaultStyles.cardHeader}>When your's trip?</Text>
 
-            <Animated.View style={[styles.cardBody, { paddingBottom: 20 }]}>
+            <Animated.View style={[defaultStyles.cardBody, { paddingBottom: 20 }]}>
               <DatePicker
                 current={today}
                 selected={today}
@@ -50,43 +51,3 @@ export default function WhenCard({
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: '#fff',
-    borderRadius: 14,
-    margin: 10,
-    elevation: 4,
-    shadowColor: '#000',
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
-    shadowOffset: {
-      width: 2,
-      height: 2,
-    },
-    gap: 14,
-  },
-  cardPreview: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 20,
-  },
-  previewText: {
-    fontWeight: '500',
-    fontSize: 14,
-    color: Colors.grey,
-  },
-  previewDate: {
-    fontWeight: '500',
-    fontSize: 14,
-    color: Colors.dark,
-  },
-  cardHeader: {
-    fontSize: 24,
-    padding: 20,
-    fontWeight: '500',
-  },
-  cardBody: {
-    paddingHorizontal: 20,
-  },
-})
