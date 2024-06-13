@@ -38,7 +38,6 @@ const ListingsMap = memo(({ listings }: Props) => {
                     latitude: geometry.coordinates[1],
                 }}
                 onPress={onPress}
-                rad
             >
                 <View style={styles.marker}>
                     <Text style={{ ...styles.markerText, textAlign: "center" }}>
@@ -96,7 +95,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         borderRadius: 12,
-        padding: 6,
+        padding: 7,
         elevation: 5,
         shadowColor: "#000",
         shadowOpacity: 0.5,
