@@ -103,8 +103,7 @@ export const defaultStyles = StyleSheet.create({
     color: Colors.grey,
   },
   previewDate: {
-    fontSize: 24,
-    padding: 20,
+    fontSize: 14,
     fontWeight: '500',
   },
   cardHeader:{
