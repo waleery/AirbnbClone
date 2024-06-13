@@ -27,7 +27,7 @@ const ListingsMap = memo(({ listings }: Props) => {
     );
 
     const renderCluster = (cluster: any) => {
-        const { id, geometry, onPress, properties } = cluster;
+        const { id, geometry, onPress, properties, } = cluster;
         const points = properties.point_count;
 
         return (
@@ -38,6 +38,7 @@ const ListingsMap = memo(({ listings }: Props) => {
                     latitude: geometry.coordinates[1],
                 }}
                 onPress={onPress}
+                rad
             >
                 <View style={styles.marker}>
                     <Text style={{ ...styles.markerText, textAlign: "center" }}>
@@ -59,6 +60,7 @@ const ListingsMap = memo(({ listings }: Props) => {
                 clusterColor="#fff"
                 clusterTextColor="#000"
                 renderCluster={renderCluster}
+                radius={45}
             >
                 {listings.features.map((item: Feature) => (
                     <Marker
@@ -97,7 +99,7 @@ const styles = StyleSheet.create({
         padding: 6,
         elevation: 5,
         shadowColor: "#000",
-        shadowOpacity: 0.1,
+        shadowOpacity: 0.5,
         shadowRadius: 6,
         shadowOffset: {
             width: 1,
@@ -106,6 +108,6 @@ const styles = StyleSheet.create({
     },
     markerText: {
         fontSize: 14,
-        fontWeight: "bold",
+        fontWeight: "700",
     },
 });
