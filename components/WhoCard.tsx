@@ -38,7 +38,7 @@ const WhoCard = ({ setOpenCard, openCard, groups, addPerson, removePerson }: Pro
             {groups.map((item, index) => (
               <View key={index} style={[styles.guestItem, index + 1 < 4 && styles.itemBorder]}>
                 <View>
-                  <Text style={{ fontWeight: '700', fontSize: 14 }}>{item.name}</Text>
+                  <Text style={styles.groupName}>{item.name}</Text>
                   <Text style={{ fontSize: 14, color: Colors.grey }}>{item.text}</Text>
                 </View>
 
@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: Colors.grey,
   },
+  groupName:{ fontWeight: '700', fontSize: 14 }
 })
 
 export default WhoCard
