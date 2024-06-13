@@ -53,9 +53,7 @@ const WhoCard = ({ setOpenCard, openCard, groups, addPerson, removePerson }: Pro
                       color={groups[index].count > 0 ? Colors.grey : '#cdcdcd'}
                     />
                   </TouchableOpacity>
-                  <Text style={{ fontSize: 16, textAlign: 'center', minWidth: 20 }}>
-                    {item.count}
-                  </Text>
+                  <Text style={styles.personCount}>{item.count}</Text>
                   <TouchableOpacity onPress={() => addPerson(index)}>
                     <Ionicons name="add-circle-outline" size={26} color={Colors.grey} />
                   </TouchableOpacity>
@@ -88,6 +86,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  personCount: { fontSize: 16, textAlign: 'center', minWidth: 20 },
 })
 
 export default WhoCard
