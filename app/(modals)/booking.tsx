@@ -35,6 +35,7 @@ const guestsGroups = [
 
 import WhereCard from '@/components/WhereCard'
 import WhenCard from '@/components/WhenCard'
+import WhoCard from '@/components/WhoCard'
 
 const Page = () => {
   const router = useRouter()
@@ -71,64 +72,8 @@ const Page = () => {
       
       <WhenCard openCard={openCard} setOpenCard={setOpenCard} />
       {/* Who */}
-      <View style={styles.card}>
-        {openCard != 2 && (
-          <AnimatedTouchableOpacity
-            onPress={() => setOpenCard(2)}
-            style={styles.cardPreview}
-            entering={FadeIn.duration(200)}
-            exiting={FadeOut.duration(200)}
-          >
-            <Text style={styles.previewText}>Who</Text>
-            <Text style={styles.previewDate}>Add guests</Text>
-          </AnimatedTouchableOpacity>
-        )}
-        {openCard === 2 && (
-          <>
-            <Text style={styles.cardHeader}>Who's comming?</Text>
-
-            <Animated.View style={styles.cardBody}>
-              {groups.map((item, index) => (
-                <View
-                  key={index}
-                  style={[styles.guestItem, index + 1 < guestsGroups.length && styles.itemBorder]}
-                >
-                  <View>
-                    <Text style={{ fontWeight: '700', fontSize: 14 }}>{item.name}</Text>
-                    <Text style={{ fontSize: 14, color: Colors.grey }}>{item.text}</Text>
-                  </View>
-
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      gap: 10,
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <TouchableOpacity
-                      disabled={!(groups[index].count > 0)}
-                      onPress={() => removePerson(index)}
-                    >
-                      <Ionicons
-                        name="remove-circle-outline"
-                        size={26}
-                        color={groups[index].count > 0 ? Colors.grey : '#cdcdcd'}
-                      />
-                    </TouchableOpacity>
-                    <Text style={{ fontSize: 16, textAlign: 'center', minWidth: 20 }}>
-                      {item.count}
-                    </Text>
-                    <TouchableOpacity onPress={() => addPerson(index)}>
-                      <Ionicons name="add-circle-outline" size={26} color={Colors.grey} />
-                    </TouchableOpacity>
-                  </View>
-                </View>
-              ))}
-            </Animated.View>
-          </>
-        )}
-      </View>
+      
+      <WhoCard openCard={openCard} setOpenCard={setOpenCard} groups={guestsGroups} addPerson={addPerson} removePerson={removePerson} />
 
       {/* Footer */}
       <Animated.View style={defaultStyles.footer} entering={SlideInDown.delay(200)}>
