@@ -42,14 +42,7 @@ const WhoCard = ({ setOpenCard, openCard, groups, addPerson, removePerson }: Pro
                   <Text style={styles.groupText}>{item.text}</Text>
                 </View>
 
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    gap: 10,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
+                <View style={styles.managePersonCount}>
                   <TouchableOpacity
                     disabled={!(groups[index].count > 0)}
                     onPress={() => removePerson(index)}
@@ -89,6 +82,12 @@ const styles = StyleSheet.create({
   },
   groupName: { fontWeight: '700', fontSize: 14 },
   groupText: { fontSize: 14, color: Colors.grey },
+  managePersonCount: {
+    flexDirection: 'row',
+    gap: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 })
 
 export default WhoCard
