@@ -9,11 +9,11 @@ import WhoCard from '@/components/WhoCard'
 import BookingFooter from '@/components/BookingFooter'
 import { guestsGroups } from '@/constants/guestsGroups'
 import { GuestsGroup } from '@/types/guestsGroups'
-import { useAtom } from 'jotai'
+import { useSetAtom } from 'jotai'
 import { guestsIncludedFilterAtom } from '@/store/listingsStore'
 
 const Page = () => {
-  const [guestsIncluded, setGuestsIncluded] = useAtom(guestsIncludedFilterAtom);
+  const setGuestsIncluded = useSetAtom(guestsIncludedFilterAtom);
 
   const [openCard, setOpenCard] = useState(0)
   const [selectedPlace, setSelectedPalce] = useState(0)
