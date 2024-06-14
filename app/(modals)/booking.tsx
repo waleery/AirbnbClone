@@ -13,7 +13,7 @@ import { useSetAtom } from 'jotai'
 import { guestsIncludedFilterAtom } from '@/store/listingsStore'
 
 const Page = () => {
-  const setGuestsIncluded = useSetAtom(guestsIncludedFilterAtom);
+  const setGuestsIncluded = useSetAtom(guestsIncludedFilterAtom)
 
   const [openCard, setOpenCard] = useState(0)
   const [selectedPlace, setSelectedPalce] = useState(0)
@@ -22,7 +22,7 @@ const Page = () => {
   const onClearAll = () => {
     setSelectedPalce(0)
     setOpenCard(0)
-    setGroups(guestsGroups)
+    setGroups((prev) => prev.map((item) => ({...item, count:0})))
     setGuestsIncluded(0)
   }
 
@@ -62,13 +62,13 @@ const Page = () => {
       <WhoCard
         openCard={openCard}
         setOpenCard={setOpenCard}
-        groups={guestsGroups}
+        groups={groups}
         addPerson={addPerson}
         removePerson={removePerson}
       />
 
       {/* Footer */}
-      <BookingFooter onClearAll={onClearAll} filter={filter}/>
+      <BookingFooter onClearAll={onClearAll} filter={filter} />
     </BlurView>
   )
 }
