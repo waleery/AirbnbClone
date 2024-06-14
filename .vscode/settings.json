@@ -9,6 +9,7 @@
         "Map",
         "BottomSheet",
         "Profile",
-        "Filter"
+        "Filter",
+        "Store"
     ]
 }
