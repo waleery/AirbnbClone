@@ -11,11 +11,11 @@ import ListingsMap from "@/components/ListingsMap";
 import ListingsBottomSheet from "@/components/ListingsBottomSheet";
 import { defaultStyles } from "@/constants/Styles";
 import { useAtom } from "jotai";
-import { listingsAtom } from "@/store/listingsStore";
+import { filteredListingsAtom } from "@/store/listingsStore";
 
 const Page = () => {
     const [category, setCategory] = useState(accomodation_categories[0].name);
-    const [listings] = useAtom(listingsAtom);
+    const [listings] = useAtom(filteredListingsAtom);
     const listingsGeo = useMemo(() => listingsDataGeo as ListingGeo, []);
 
     const onDataChanged = (category: string) => {
