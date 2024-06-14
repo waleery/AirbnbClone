@@ -23,6 +23,7 @@ const Page = () => {
     setSelectedPalce(0)
     setOpenCard(0)
     setGroups(guestsGroups)
+    setGuestsIncluded(0)
   }
 
   const addPerson = (index: number) => {
