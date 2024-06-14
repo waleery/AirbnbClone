@@ -7,9 +7,10 @@ import { Ionicons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
 interface Props {
   onClearAll: () => void
+  filter: () => void
 }
 
-const BookingFooter = ({ onClearAll }: Props) => {
+const BookingFooter = ({ onClearAll,filter }: Props) => {
   const router = useRouter()
 
   return (
@@ -20,7 +21,10 @@ const BookingFooter = ({ onClearAll }: Props) => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={router.back}
+          onPress={() => {
+            filter()
+            router.back()
+          }}
           style={[defaultStyles.btn, { paddingRight: 20, paddingLeft: 50 }]}
         >
           <Ionicons name="search-outline" size={24} color={'#fff'} style={defaultStyles.btnIcon} />

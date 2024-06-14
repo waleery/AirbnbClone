@@ -9,8 +9,12 @@ import WhoCard from '@/components/WhoCard'
 import BookingFooter from '@/components/BookingFooter'
 import { guestsGroups } from '@/constants/guestsGroups'
 import { GuestsGroup } from '@/types/guestsGroups'
+import { useAtom } from 'jotai'
+import { guestsIncludedFilterAtom } from '@/store/listingsStore'
 
 const Page = () => {
+  const [guestsIncluded, setGuestsIncluded] = useAtom(guestsIncludedFilterAtom);
+
   const [openCard, setOpenCard] = useState(0)
   const [selectedPlace, setSelectedPalce] = useState(0)
   const [groups, setGroups] = useState<GuestsGroup[]>(guestsGroups)
@@ -33,6 +37,11 @@ const Page = () => {
       newGroups[index].count--
       setGroups(newGroups)
     }
+  }
+
+  const filter = () => {
+    const totalPersonCount = groups.reduce((prev, current) => prev + current.count, 0)
+    setGuestsIncluded(totalPersonCount)
   }
   return (
     <BlurView intensity={70} style={styles.container} tint="light">
@@ -58,7 +67,7 @@ const Page = () => {
       />
 
       {/* Footer */}
-      <BookingFooter onClearAll={onClearAll} />
+      <BookingFooter onClearAll={onClearAll} filter={filter}/>
     </BlurView>
   )
 }
