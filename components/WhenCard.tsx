@@ -41,6 +41,7 @@ export default function WhenCard({
               <DatePicker
                 current={today}
                 selected={today}
+                minimumDate={today}
                 mode={'Calendar'}
                 options={{ borderColor: 'transparent', mainColor: Colors.primary }}
               />
