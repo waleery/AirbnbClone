@@ -1,11 +1,11 @@
 import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import Colors from '@/constants/Colors'
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
 import { defaultStyles } from '@/constants/Styles'
-import DateTimePicker from 'react-native-ui-datepicker'
+import DateTimePicker, { DateType } from 'react-native-ui-datepicker'
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
 
 interface Props {
@@ -14,7 +14,17 @@ interface Props {
 }
 
 export default function WhenCard({ setOpenCard, openCard }: Props) {
+  const [startDate, setStartDate] = useState<DateType>(null)
+  const [endDate, setEndDate] = useState<DateType>(null)
   const today = new Date().toISOString().substring(0, 10)
+
+  const handleDateChange = (dates: {
+    startDate?: DateType
+    endDate?: DateType
+  }) => {
+    setStartDate(dates.startDate)
+    setEndDate(dates.endDate)
+  }
 
   return (
     <View>
@@ -35,10 +45,7 @@ export default function WhenCard({ setOpenCard, openCard }: Props) {
             <Text style={defaultStyles.cardHeader}>When your's trip?</Text>
 
             <Animated.View style={[defaultStyles.cardBody, { paddingBottom: 20 }]}>
-              <DateTimePicker
-                mode="single"
-                minDate={today}
-              />
+              <DateTimePicker mode="range" minDate={today} onChange={handleDateChange} startDate={startDate} endDate={endDate}/>
             </Animated.View>
           </>
         )}
