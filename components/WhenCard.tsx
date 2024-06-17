@@ -3,9 +3,9 @@ import React from 'react'
 import Colors from '@/constants/Colors'
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-//@ts-ignore
-import DatePicker from 'react-native-modern-datepicker'
+
 import { defaultStyles } from '@/constants/Styles'
+import DateTimePicker from 'react-native-ui-datepicker'
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
 
 interface Props {
@@ -13,10 +13,7 @@ interface Props {
   openCard: number
 }
 
-export default function WhenCard({
-  setOpenCard,
-  openCard,
-}: Props) {
+export default function WhenCard({ setOpenCard, openCard }: Props) {
   const today = new Date().toISOString().substring(0, 10)
 
   return (
@@ -38,12 +35,9 @@ export default function WhenCard({
             <Text style={defaultStyles.cardHeader}>When your's trip?</Text>
 
             <Animated.View style={[defaultStyles.cardBody, { paddingBottom: 20 }]}>
-              <DatePicker
-                current={today}
-                selected={today}
-                minimumDate={today}
-                mode={'Calendar'}
-                options={{ borderColor: 'transparent', mainColor: Colors.primary }}
+              <DateTimePicker
+                mode="single"
+                minDate={today}
               />
             </Animated.View>
           </>
