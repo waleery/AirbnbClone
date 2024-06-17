@@ -6,6 +6,9 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 
 import { defaultStyles } from '@/constants/Styles'
 import DateTimePicker, { DateType } from 'react-native-ui-datepicker'
+import { differenceInDays, parseISO } from 'date-fns'
+import dayjs from 'dayjs'
+
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
 
 interface Props {
@@ -16,16 +19,25 @@ interface Props {
 export default function WhenCard({ setOpenCard, openCard }: Props) {
   const [startDate, setStartDate] = useState<DateType>(null)
   const [endDate, setEndDate] = useState<DateType>(null)
+  const [daysCount, setDaysCount] = useState<number>(1)
   const today = new Date().toISOString().substring(0, 10)
 
-  const handleDateChange = (dates: {
-    startDate?: DateType
-    endDate?: DateType
-  }) => {
-    setStartDate(dates.startDate)
-    setEndDate(dates.endDate)
-  }
+  const handleDateChange = (dates: { startDate?: DateType; endDate?: DateType }) => {
+    const start = dates.startDate ? dayjs(dates.startDate).toDate() : null
+    const end = dates.endDate ? dayjs(dates.endDate).toDate() : null
 
+    setStartDate(start)
+    setEndDate(end)
+
+    if (start && end) {
+      const difference = differenceInDays(end, start)
+      setDaysCount(difference)
+      console.log(difference)
+    } else {
+      setDaysCount(1)
+      console.log(1)
+    }
+  }
   return (
     <View>
       <View style={defaultStyles.card}>
@@ -45,7 +57,13 @@ export default function WhenCard({ setOpenCard, openCard }: Props) {
             <Text style={defaultStyles.cardHeader}>When your's trip?</Text>
 
             <Animated.View style={[defaultStyles.cardBody, { paddingBottom: 20 }]}>
-              <DateTimePicker mode="range" minDate={today} onChange={handleDateChange} startDate={startDate} endDate={endDate}/>
+              <DateTimePicker
+                mode="range"
+                minDate={today}
+                onChange={handleDateChange}
+                startDate={startDate}
+                endDate={endDate}
+              />
             </Animated.View>
           </>
         )}
