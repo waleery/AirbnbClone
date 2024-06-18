@@ -13,13 +13,13 @@ const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpaci
 
 interface Props {
   setOpenCard: (i: number) => void
+  setDaysCount: (i: number) => void
   openCard: number
 }
 
-export default function WhenCard({ setOpenCard, openCard }: Props) {
+export default function WhenCard({ setOpenCard, openCard, setDaysCount }: Props) {
   const [startDate, setStartDate] = useState<DateType>(null)
   const [endDate, setEndDate] = useState<DateType>(null)
-  const [daysCount, setDaysCount] = useState<number>(1)
   const today = new Date().toISOString().substring(0, 10)
 
   const handleDateChange = (dates: { startDate?: DateType; endDate?: DateType }) => {

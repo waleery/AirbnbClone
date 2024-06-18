@@ -10,12 +10,14 @@ import BookingFooter from '@/components/BookingFooter'
 import { guestsGroups } from '@/constants/guestsGroups'
 import { GuestsGroup } from '@/types/guestsGroups'
 import { useSetAtom } from 'jotai'
-import { guestsIncludedFilterAtom } from '@/store/listingsStore'
+import { daysStayFilterAtom, guestsIncludedFilterAtom } from '@/store/listingsStore'
 
 const Page = () => {
   const setGuestsIncluded = useSetAtom(guestsIncludedFilterAtom)
+  const setDaysStayFilterAtom = useSetAtom(daysStayFilterAtom)
 
   const [openCard, setOpenCard] = useState(0)
+  const [daysCount, setDaysCount] = useState<number>(1)
   const [selectedPlace, setSelectedPalce] = useState(0)
   const [groups, setGroups] = useState<GuestsGroup[]>(guestsGroups)
 
@@ -43,6 +45,7 @@ const Page = () => {
   const filter = () => {
     const totalPersonCount = groups.reduce((prev, current) => prev + current.count, 0)
     setGuestsIncluded(totalPersonCount)
+    setDaysStayFilterAtom(daysCount)
   }
   return (
     <BlurView intensity={70} style={styles.container} tint="light">
@@ -56,7 +59,7 @@ const Page = () => {
       />
       {/* When */}
 
-      <WhenCard openCard={openCard} setOpenCard={setOpenCard} />
+      <WhenCard openCard={openCard} setOpenCard={setOpenCard} setDaysCount={setDaysCount}/>
       {/* Who */}
 
       <WhoCard
