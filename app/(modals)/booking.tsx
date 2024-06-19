@@ -26,6 +26,7 @@ const Page = () => {
     setOpenCard(0)
     setGroups((prev) => prev.map((item) => ({...item, count:0})))
     setGuestsIncluded(0)
+    setDaysStayFilterAtom(null)
   }
 
   const addPerson = (index: number) => {
