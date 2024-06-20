@@ -17,7 +17,7 @@ const Page = () => {
   const setDaysStayFilterAtom = useSetAtom(daysStayFilterAtom)
 
   const [openCard, setOpenCard] = useState(0)
-  const [daysCount, setDaysCount] = useState<number>(1)
+  const [daysCount, setDaysCount] = useState<number>(0)
   const [selectedPlace, setSelectedPalce] = useState(0)
   const [groups, setGroups] = useState<GuestsGroup[]>(guestsGroups)
 

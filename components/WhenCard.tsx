@@ -31,11 +31,11 @@ export default function WhenCard({ setOpenCard, openCard, setDaysCount }: Props)
 
     if (start && end) {
       const difference = differenceInDays(end, start)
-      setDaysCount(difference)
-      console.log(difference)
-    } else {
+      setDaysCount(difference > 0 ? difference : 1)
+    } else if (start) {
       setDaysCount(1)
-      console.log(1)
+    } else {
+      setDaysCount(0)
     }
   }
   return (
