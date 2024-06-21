@@ -19,7 +19,7 @@ const Layout = () => {
                 }}
             />
             <Tabs.Screen
-                name="wishlists"
+                name="Wishlists"
                 options={{
                     tabBarLabel: "Wishlists",
                     tabBarIcon: ({ color, size }) => (
@@ -28,7 +28,7 @@ const Layout = () => {
                 }}
             />
             <Tabs.Screen
-                name="trips"
+                name="Trips"
                 options={{
                     tabBarLabel: "Trips",
                     tabBarIcon: ({ color, size }) => (
