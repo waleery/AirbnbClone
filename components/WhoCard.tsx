@@ -30,6 +30,16 @@ const WhoCard = ({ setOpenCard, openCard }: Props) => {
       setGroups(newGroups)
     }
   }
+
+  const displayPersonCount = () => {
+    const personCount = groups.reduce((prev, current) => prev + current.count, 0)
+    if(personCount == 1){
+      return `${personCount} person`
+    } else if( personCount >1){
+      return `${personCount} persons`
+    }
+    return "Add person"
+  }
   return (
     <View style={defaultStyles.card}>
       {openCard != 2 && (
@@ -40,7 +50,7 @@ const WhoCard = ({ setOpenCard, openCard }: Props) => {
           exiting={FadeOut.duration(200)}
         >
           <Text style={defaultStyles.previewText}>Who</Text>
-          <Text style={defaultStyles.previewDate}>Add guests</Text>
+          <Text style={defaultStyles.previewDate}>{displayPersonCount()}</Text>
         </AnimatedTouchableOpacity>
       )}
       {openCard === 2 && (
