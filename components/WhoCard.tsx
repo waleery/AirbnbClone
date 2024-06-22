@@ -5,20 +5,31 @@ import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 import { Ionicons } from '@expo/vector-icons'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
-import { useAtomValue } from 'jotai'
+import { useAtom, useAtomValue } from 'jotai'
 import { groupsAtom } from '@/store/listingsStore'
 
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
 interface Props {
   setOpenCard: (i: number) => void
   openCard: number
-  addPerson: (index: number) => void
-  removePerson: (index: number) => void
 }
 
-const WhoCard = ({ setOpenCard, openCard, addPerson, removePerson }: Props) => {
-  const groups = useAtomValue(groupsAtom)
+const WhoCard = ({ setOpenCard, openCard }: Props) => {
+  const [groups, setGroups] = useAtom(groupsAtom)
 
+  const addPerson = (index: number) => {
+    const newGroups = [...groups]
+    newGroups[index].count++
+    setGroups(newGroups)
+  }
+
+  const removePerson = (index: number) => {
+    const newGroups = [...groups]
+    if (newGroups[index].count > 0) {
+      newGroups[index].count--
+      setGroups(newGroups)
+    }
+  }
   return (
     <View style={defaultStyles.card}>
       {openCard != 2 && (

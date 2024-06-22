@@ -27,20 +27,6 @@ const Page = () => {
     setDaysStayFilterAtom(null)
   }
 
-  const addPerson = (index: number) => {
-    const newGroups = [...groups]
-    newGroups[index].count++
-    setGroups(newGroups)
-  }
-
-  const removePerson = (index: number) => {
-    const newGroups = [...groups]
-    if (newGroups[index].count > 0) {
-      newGroups[index].count--
-      setGroups(newGroups)
-    }
-  }
-
   const filter = () => {
     const totalPersonCount = groups.reduce((prev, current) => prev + current.count, 0)
     setGuestsIncluded(totalPersonCount)
@@ -64,8 +50,6 @@ const Page = () => {
       <WhoCard
         openCard={openCard}
         setOpenCard={setOpenCard}
-        addPerson={addPerson}
-        removePerson={removePerson}
       />
 
       {/* Footer */}
