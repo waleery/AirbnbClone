@@ -41,6 +41,16 @@ export default function WhenCard({ setOpenCard, openCard }: Props) {
       setDaysCount(0)
     }
   }
+
+  const displayPersonCount = () => {
+    console.log('😀daysCount', daysCount)
+    if (daysCount == 1) {
+      return `${daysCount} day`
+    } else if (daysCount && daysCount > 1) {
+      return `${daysCount} days`
+    }
+    return 'Any week'
+  }
   return (
     <View>
       <View style={defaultStyles.card}>
@@ -52,7 +62,7 @@ export default function WhenCard({ setOpenCard, openCard }: Props) {
             exiting={FadeOut.duration(200)}
           >
             <Text style={defaultStyles.previewText}>When</Text>
-            <Text style={defaultStyles.previewDate}>Any week</Text>
+            <Text style={defaultStyles.previewDate}>{displayPersonCount()}</Text>
           </AnimatedTouchableOpacity>
         )}
         {openCard === 1 && (
