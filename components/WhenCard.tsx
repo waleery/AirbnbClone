@@ -8,16 +8,19 @@ import { defaultStyles } from '@/constants/Styles'
 import DateTimePicker, { DateType } from 'react-native-ui-datepicker'
 import { differenceInDays, parseISO } from 'date-fns'
 import dayjs from 'dayjs'
+import { useAtom } from 'jotai'
+import { daysStayFilterAtom } from '@/store/listingsStore'
 
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
 
 interface Props {
   setOpenCard: (i: number) => void
-  setDaysCount: (i: number) => void
   openCard: number
 }
 
-export default function WhenCard({ setOpenCard, openCard, setDaysCount }: Props) {
+export default function WhenCard({ setOpenCard, openCard }: Props) {
+  const [daysCount, setDaysCount] = useAtom(daysStayFilterAtom)
+
   const [startDate, setStartDate] = useState<DateType>(null)
   const [endDate, setEndDate] = useState<DateType>(null)
   const today = new Date().toISOString().substring(0, 10)

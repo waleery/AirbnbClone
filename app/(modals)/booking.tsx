@@ -1,28 +1,38 @@
 import { StyleSheet } from 'react-native'
 import { BlurView } from 'expo-blur'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import WhereCard from '@/components/WhereCard'
 import WhenCard from '@/components/WhenCard'
 import WhoCard from '@/components/WhoCard'
 import BookingFooter from '@/components/BookingFooter'
 import { useAtom, useSetAtom } from 'jotai'
-import { daysStayFilterAtom, groupsAtom, guestsIncludedFilterAtom } from '@/store/listingsStore'
+import {
+  daysStayFilterAtom,
+  filterAtom,
+  groupsAtom,
+  guestsIncludedFilterAtom,
+} from '@/store/listingsStore'
 
 const Page = () => {
   const setGuestsIncluded = useSetAtom(guestsIncludedFilterAtom)
   const setDaysStayFilterAtom = useSetAtom(daysStayFilterAtom)
+  const [filterFlag,setFilterFlag] = useAtom(filterAtom)
   const [groups, setGroups] = useAtom(groupsAtom)
-
   const [openCard, setOpenCard] = useState(0)
-  const [daysCount, setDaysCount] = useState<number>(0)
   const [selectedPlace, setSelectedPalce] = useState(0)
+
+  useEffect(() => {
+    if(filterFlag){
+      setFilterFlag(false)
+    }
+  }, [filterFlag])
 
   const onClearAll = () => {
     setSelectedPalce(0)
     setOpenCard(0)
-    setGroups((prev) => prev.map((item) => ({...item, count:0})))
+    setGroups((prev) => prev.map((item) => ({ ...item, count: 0 })))
     setGuestsIncluded(0)
     setDaysStayFilterAtom(null)
   }
@@ -30,7 +40,7 @@ const Page = () => {
   const filter = () => {
     const totalPersonCount = groups.reduce((prev, current) => prev + current.count, 0)
     setGuestsIncluded(totalPersonCount)
-    setDaysStayFilterAtom(daysCount)
+    setFilterFlag(true)
   }
   return (
     <BlurView intensity={70} style={styles.container} tint="light">
@@ -44,13 +54,13 @@ const Page = () => {
       />
       {/* When */}
 
-      <WhenCard openCard={openCard} setOpenCard={setOpenCard} setDaysCount={setDaysCount}/>
-      {/* Who */}
-
-      <WhoCard
+      <WhenCard
         openCard={openCard}
         setOpenCard={setOpenCard}
       />
+      {/* Who */}
+
+      <WhoCard openCard={openCard} setOpenCard={setOpenCard} />
 
       {/* Footer */}
       <BookingFooter onClearAll={onClearAll} filter={filter} />
@@ -64,3 +74,4 @@ const styles = StyleSheet.create({
     paddingTop: 100,
   },
 })
+
