@@ -7,19 +7,17 @@ import WhereCard from '@/components/WhereCard'
 import WhenCard from '@/components/WhenCard'
 import WhoCard from '@/components/WhoCard'
 import BookingFooter from '@/components/BookingFooter'
-import { guestsGroups } from '@/constants/guestsGroups'
-import { GuestsGroup } from '@/types/guestsGroups'
-import { useSetAtom } from 'jotai'
-import { daysStayFilterAtom, guestsIncludedFilterAtom } from '@/store/listingsStore'
+import { useAtom, useSetAtom } from 'jotai'
+import { daysStayFilterAtom, groupsAtom, guestsIncludedFilterAtom } from '@/store/listingsStore'
 
 const Page = () => {
   const setGuestsIncluded = useSetAtom(guestsIncludedFilterAtom)
   const setDaysStayFilterAtom = useSetAtom(daysStayFilterAtom)
+  const [groups, setGroups] = useAtom(groupsAtom)
 
   const [openCard, setOpenCard] = useState(0)
   const [daysCount, setDaysCount] = useState<number>(0)
   const [selectedPlace, setSelectedPalce] = useState(0)
-  const [groups, setGroups] = useState<GuestsGroup[]>(guestsGroups)
 
   const onClearAll = () => {
     setSelectedPalce(0)
@@ -66,7 +64,6 @@ const Page = () => {
       <WhoCard
         openCard={openCard}
         setOpenCard={setOpenCard}
-        groups={groups}
         addPerson={addPerson}
         removePerson={removePerson}
       />

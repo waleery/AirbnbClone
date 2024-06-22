@@ -4,19 +4,21 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 import { Ionicons } from '@expo/vector-icons'
 import Colors from '@/constants/Colors'
-import { GuestsGroup } from '@/types/guestsGroups'
 import { defaultStyles } from '@/constants/Styles'
+import { useAtomValue } from 'jotai'
+import { groupsAtom } from '@/store/listingsStore'
 
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
 interface Props {
   setOpenCard: (i: number) => void
   openCard: number
-  groups: GuestsGroup[]
   addPerson: (index: number) => void
   removePerson: (index: number) => void
 }
 
-const WhoCard = ({ setOpenCard, openCard, groups, addPerson, removePerson }: Props) => {
+const WhoCard = ({ setOpenCard, openCard, addPerson, removePerson }: Props) => {
+  const groups = useAtomValue(groupsAtom)
+
   return (
     <View style={defaultStyles.card}>
       {openCard != 2 && (
