@@ -3,8 +3,9 @@ import Animated, { FadeIn, FadeOutLeft } from 'react-native-reanimated'
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import { useState } from 'react'
 import { Listing } from '@/types/listing'
-import { Ionicons } from '@expo/vector-icons'
+import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons'
 import { defaultStyles } from '@/constants/Styles'
+import Colors from '@/constants/Colors'
 
 interface Props {
   item: Listing
@@ -18,7 +19,7 @@ const ListingItem = ({ item }: Props) => {
         <Animated.View style={styles.listing} entering={FadeIn.duration(200)} exiting={FadeOutLeft}>
           {imageError ? (
             <View style={styles.imagePlaceholder}>
-              <Ionicons name="alert-circle-outline" size={50} color="red" />
+              <MaterialCommunityIcons name="image-off-outline" size={50} color={Colors.primary} />
               <Text>Image failed to load</Text>
             </View>
           ) : (
