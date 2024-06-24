@@ -24,14 +24,7 @@ const ListingItem = ({ item }: { item: Listing }) => {
         <Animated.View style={styles.listing} entering={FadeIn.duration(200)} exiting={FadeOutLeft}>
           {imageError ? (
             <View
-              style={{
-                width: '100%',
-                height: 300,
-                borderRadius: 10,
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: '#f0f0f0',
-              }}
+              style={styles.imagePlaceholder}
             >
               <Ionicons name="alert-circle-outline" size={50} color="red" />
               <Text>Image failed to load</Text>
@@ -147,5 +140,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: 4,
   },
+  imagePlaceholder: {
+    width: "100%",
+    height: 300,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f0f0f0',
+},
 })
 export default Listings
