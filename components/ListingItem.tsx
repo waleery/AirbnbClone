@@ -1,17 +1,15 @@
-import { Link } from "expo-router"
-import Animated, { FadeIn, FadeOutLeft } from "react-native-reanimated"
-import {
-    View,
-    Text,
-    TouchableOpacity,
-    StyleSheet,
-    Image,
-  } from 'react-native'
-import { useState } from "react"
-import { Listing } from "@/types/listing"
-import { Ionicons } from "@expo/vector-icons"
-import { defaultStyles } from "@/constants/Styles"
-const ListingItem = ({ item }: { item: Listing }) => {
+import { Link } from 'expo-router'
+import Animated, { FadeIn, FadeOutLeft } from 'react-native-reanimated'
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
+import { useState } from 'react'
+import { Listing } from '@/types/listing'
+import { Ionicons } from '@expo/vector-icons'
+import { defaultStyles } from '@/constants/Styles'
+
+interface Props {
+  item: Listing
+}
+const ListingItem = ({ item }: Props) => {
   const [imageError, setImageError] = useState(false)
 
   return (
