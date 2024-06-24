@@ -1,19 +1,13 @@
 import { defaultStyles } from '@/constants/Styles'
 import { Listing } from '@/types/listing'
-import { Ionicons } from '@expo/vector-icons'
 import { BottomSheetFlatList, BottomSheetFlatListMethods } from '@gorhom/bottom-sheet'
-import { Link } from 'expo-router'
 import { useEffect, useRef, useState } from 'react'
 import {
   View,
   Text,
-  FlatList,
   ListRenderItem,
-  TouchableOpacity,
   StyleSheet,
-  Image,
 } from 'react-native'
-import Animated, { FadeIn, FadeOutLeft } from 'react-native-reanimated'
 import ListingItem from './ListingItem'
 
 
