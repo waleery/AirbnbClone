@@ -14,55 +14,8 @@ import {
   Image,
 } from 'react-native'
 import Animated, { FadeIn, FadeOutLeft } from 'react-native-reanimated'
+import ListingItem from './ListingItem'
 
-const ListingItem = ({ item }: { item: Listing }) => {
-  const [imageError, setImageError] = useState(false)
-
-  return (
-    <Link href={`/listing/${item.id}`} asChild>
-      <TouchableOpacity>
-        <Animated.View style={styles.listing} entering={FadeIn.duration(200)} exiting={FadeOutLeft}>
-          {imageError ? (
-            <View
-              style={styles.imagePlaceholder}
-            >
-              <Ionicons name="alert-circle-outline" size={50} color="red" />
-              <Text>Image failed to load</Text>
-            </View>
-          ) : (
-            <Image
-              source={{ uri: item.medium_url! }}
-              style={styles.image}
-              onError={() => setImageError(true)}
-            />
-          )}
-          <TouchableOpacity style={styles.favouriteBtn}>
-            <Ionicons name="heart-outline" size={24} />
-          </TouchableOpacity>
-          <View style={styles.shortInfo}>
-            <Text style={defaultStyles.biggerText}>{item.name}</Text>
-            {item.review_scores_rating ? (
-              <View style={styles.ratingInfo}>
-                <Ionicons name="star" size={16} />
-                <Text style={[defaultStyles.boldText, defaultStyles.biggerText]}>
-                  {item.review_scores_rating / 20}
-                </Text>
-              </View>
-            ) : null}
-          </View>
-          <View style={defaultStyles.mediumGap}>
-            <Text>{item.room_type}</Text>
-
-            <View style={styles.priceInfo}>
-              <Text style={[defaultStyles.boldText, defaultStyles.biggerText]}>€ {item.price}</Text>
-              <Text style={defaultStyles.biggerText}>night</Text>
-            </View>
-          </View>
-        </Animated.View>
-      </TouchableOpacity>
-    </Link>
-  )
-}
 
 interface Props {
   listings: Listing[]
@@ -140,13 +93,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: 4,
   },
-  imagePlaceholder: {
-    width: "100%",
-    height: 300,
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f0f0f0',
-},
 })
 export default Listings
