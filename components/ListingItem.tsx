@@ -33,7 +33,7 @@ const ListingItem = ({ item }: Props) => {
             <Ionicons name="heart-outline" size={24} />
           </TouchableOpacity>
           <View style={styles.shortInfo}>
-            <Text style={defaultStyles.biggerText}>{item.name}</Text>
+            <Text style={[defaultStyles.biggerText, styles.infoText]}>{item.name}</Text>
             {item.review_scores_rating ? (
               <View style={styles.ratingInfo}>
                 <Ionicons name="star" size={16} />
@@ -78,7 +78,8 @@ const styles = StyleSheet.create({
   shortInfo: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems:'flex-start',
+    gap:20
   },
   ratingInfo: {
     flexDirection: 'row',
@@ -93,6 +94,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 16,
     marginTop: 4,
+  },
+  infoText:{
+    flex:1,
+    alignItems:'flex-start'
   },
   imagePlaceholder: {
     width: '100%',
