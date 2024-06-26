@@ -7,7 +7,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 const InboxHeader = () => {
   return (
     <SafeAreaView edges={['top']} style={{ paddingHorizontal: 20 }}>
-      <View style={{ display: 'flex', flexDirection: 'row-reverse', gap: 10 }}>
+      <View style={styles.btnBox}>
         <TouchableOpacity style={styles.topBtn}>
           <Ionicons name="options-outline" size={24} />
         </TouchableOpacity>
@@ -22,6 +22,11 @@ const InboxHeader = () => {
 export default InboxHeader
 
 const styles = StyleSheet.create({
+  btnBox: {
+    display: 'flex',
+    flexDirection: 'row-reverse',
+    gap: 10,
+  },
   topBtn: {
     padding: 10,
     backgroundColor: '#e0e0e0',
