@@ -17,7 +17,7 @@ interface Props {
 const ListingsBottomSheet = ({ listings, category }: Props) => {
     const bottomSheetRef = useRef<BottomSheet>(null);
     const snapPoitns = useMemo(() => ["10%", "100%"], []);
-    const [refresh, setRefresh] = useState(-0)
+    const [refresh, setRefresh] = useState(0)
 
     const showMap = () => {
         bottomSheetRef.current?.collapse()
