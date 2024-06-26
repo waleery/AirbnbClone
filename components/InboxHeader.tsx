@@ -3,7 +3,6 @@ import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Ionicons } from '@expo/vector-icons'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import Colors from '@/constants/Colors'
 
 const InboxHeader = () => {
   return (
@@ -26,8 +25,7 @@ export default InboxHeader
 const styles = StyleSheet.create({
   topBtn: {
     padding: 10,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: Colors.grey,
+    backgroundColor: '#e0e0e0',
     borderRadius: 24,
     elevation: 2,
     shadowColor: '#000',
