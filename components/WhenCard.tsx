@@ -69,7 +69,7 @@ export default function WhenCard({ setOpenCard, openCard }: Props) {
           <>
             <Text style={defaultStyles.cardHeader}>When your's trip?</Text>
 
-            <Animated.View style={[defaultStyles.cardBody, { paddingBottom: 20 }]}>
+            <Animated.View style={[defaultStyles.pX2, { paddingBottom: 20 }]}>
               <DateTimePicker
                 mode="range"
                 minDate={today}

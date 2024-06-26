@@ -57,7 +57,7 @@ const WhoCard = ({ setOpenCard, openCard }: Props) => {
         <>
           <Text style={defaultStyles.cardHeader}>Who's comming?</Text>
 
-          <Animated.View style={defaultStyles.cardBody}>
+          <Animated.View style={defaultStyles.pX2}>
             {groups.map((item, index) => (
               <View key={index} style={[styles.guestItem, index + 1 < 4 && styles.itemBorder]}>
                 <View>

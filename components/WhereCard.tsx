@@ -43,7 +43,7 @@ export default function WhereCard({
       {openCard === 0 && (
         <>
           <Text style={defaultStyles.cardHeader}>Where to?</Text>
-          <Animated.View style={defaultStyles.cardBody}>
+          <Animated.View style={defaultStyles.pX2}>
             <View style={styles.searchSection}>
               <Ionicons name="search" size={20} color={'black'} style={styles.searchIcon} />
               <TextInput

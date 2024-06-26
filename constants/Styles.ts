@@ -111,7 +111,7 @@ export const defaultStyles = StyleSheet.create({
     padding: 20,
     fontWeight: '500',
   },  
-  cardBody: {
-    paddingHorizontal: 20,
-  },
+  pX2:{
+    paddingHorizontal:20
+  }
 })

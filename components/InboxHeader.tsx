@@ -3,10 +3,11 @@ import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Ionicons } from '@expo/vector-icons'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import { defaultStyles } from '@/constants/Styles'
 
 const InboxHeader = () => {
   return (
-    <SafeAreaView edges={['top']} style={{ paddingHorizontal: 20 }}>
+    <SafeAreaView edges={['top']} style={defaultStyles.pX2}>
       <View style={styles.btnBox}>
         <TouchableOpacity style={styles.topBtn}>
           <Ionicons name="options-outline" size={24} />
