@@ -1,8 +1,15 @@
+import InboxHeader from '@/components/InboxHeader'
+import { defaultStyles } from '@/constants/Styles'
+import { Stack } from 'expo-router'
 import { View, Text } from 'react-native'
 const Page = () => {
   return (
-    <View>
-      <Text>Inbox</Text>
+    <View style={defaultStyles.flex}>
+      <Stack.Screen
+        options={{
+          header: () => <InboxHeader />,
+        }}
+      />
     </View>
   )
 }

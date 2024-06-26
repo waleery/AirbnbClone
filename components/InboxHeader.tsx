@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const InboxHeader = () => {
   return (
-    <View>
-      <Text>InboxHeader</Text>
-    </View>
+    <SafeAreaView edges={['top']}>
+        <Text>Header</Text>
+    </SafeAreaView>
   )
 }
 

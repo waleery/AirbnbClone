@@ -10,6 +10,7 @@
         "BottomSheet",
         "Profile",
         "Filter",
-        "Store"
+        "Store",
+        "Inbox"
     ]
 }
