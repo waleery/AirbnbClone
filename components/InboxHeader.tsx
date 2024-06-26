@@ -9,11 +9,10 @@ const InboxHeader = () => {
     <SafeAreaView edges={['top']} style={{ paddingHorizontal: 20 }}>
       <View style={{ display: 'flex', flexDirection: 'row-reverse', gap: 10 }}>
         <TouchableOpacity style={styles.topBtn}>
-          <Ionicons name="search" size={24} />
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.topBtn}>
           <Ionicons name="options-outline" size={24} />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.topBtn}>
+          <Ionicons name="search" size={24} />
         </TouchableOpacity>
       </View>
     </SafeAreaView>
