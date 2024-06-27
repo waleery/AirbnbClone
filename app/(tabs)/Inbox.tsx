@@ -21,7 +21,8 @@ export default Page
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    flex:1,
+    flex: 1,
+    padding: 16,
   },
   title: {
     fontSize: 30,
