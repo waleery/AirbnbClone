@@ -13,7 +13,11 @@ const Page = () => {
       />
       <View style={styles.container}>
         <Text style={styles.title}>Messages</Text>
-        <ScrollView horizontal contentContainerStyle={styles.scrollView}>
+        <ScrollView
+          horizontal
+          contentContainerStyle={styles.scrollView}
+          showsHorizontalScrollIndicator={false}
+        >
           {messageTypes.map((type) => (
             <TouchableOpacity style={styles.chip}>
               <Text>{type}</Text>
