@@ -1,5 +1,6 @@
 import InboxHeader from '@/components/InboxHeader'
 import { defaultStyles } from '@/constants/Styles'
+import { messageTypes } from '@/constants/messageTypes'
 import { Stack } from 'expo-router'
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
 const Page = () => {
@@ -9,20 +10,15 @@ const Page = () => {
         options={{
           header: () => <InboxHeader />,
         }}
-        
       />
       <View style={styles.container}>
         <Text style={styles.title}>Messages</Text>
         <ScrollView horizontal contentContainerStyle={styles.scrollView}>
-          <TouchableOpacity style={styles.chip}>
-            <Text>All</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.chip}>
-            <Text>Guest mode</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.chip}>
-            <Text>Customer service</Text>
-          </TouchableOpacity>
+          {messageTypes.map((type) => (
+            <TouchableOpacity style={styles.chip}>
+              <Text>{type}</Text>
+            </TouchableOpacity>
+          ))}
         </ScrollView>
       </View>
     </View>
@@ -49,6 +45,6 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   scrollView: {
-    gap: 10
+    gap: 10,
   },
 })
