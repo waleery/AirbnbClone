@@ -10,7 +10,9 @@ const Page = () => {
           header: () => <InboxHeader />,
         }}
       />
-      <View style={styles.container}></View>
+      <View style={styles.container}>
+        <Text style={styles.title}>Messages</Text>
+      </View>
     </View>
   )
 }
@@ -20,5 +22,9 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     flex:1,
+  },
+  title: {
+    fontSize: 30,
+    fontWeight: '500',
   },
 })
