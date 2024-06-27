@@ -113,5 +113,8 @@ export const defaultStyles = StyleSheet.create({
   },  
   pX2:{
     paddingHorizontal:20
-  }
+  },
+  safeArea: {
+    backgroundColor: '#fff',
+  },
 })

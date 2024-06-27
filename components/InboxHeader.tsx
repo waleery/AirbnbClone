@@ -7,7 +7,7 @@ import { defaultStyles } from '@/constants/Styles'
 
 const InboxHeader = () => {
   return (
-    <SafeAreaView edges={['top']} style={defaultStyles.pX2}>
+    <SafeAreaView edges={['top']} style={[defaultStyles.pX2, defaultStyles.safeArea]}>
       <View style={styles.btnBox}>
         <TouchableOpacity style={styles.topBtn}>
           <Ionicons name="options-outline" size={24} />
