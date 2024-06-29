@@ -1,49 +1,46 @@
 [
-    {
-        "conversation_id": 1,
-        "last_message_time": "2024-06-28T10:17:00Z",
-        "messages": [
-            {
-                "timestamp": "2024-06-28T10:15:00Z",
-                "user_id": 123,
-                "user_name": "Alice",
-                "message": "Hello, I'm interested in your apartment.",
-                "id": 1
-            },
-            {
-                "timestamp": "2024-06-28T10:17:00Z",
-                "user_id": 456,
-                "user_name": "Bob",
-                "message": "Sure! Let me know if you have any questions.",
-                "id": 2
-            }
-        ]
-    },
-    {
-        "conversation_id": 2,
-        "last_message_time": "2024-06-27T15:35:00Z",
-        "messages": [
-            {
-                "timestamp": "2024-06-27T15:30:00Z",
-                "user_id": 789,
-                "user_name": "Carol",
-                "message": "Hi there, how can I assist you today?",
-                "id": 1
-            },
-            {
-                "timestamp": "2024-06-27T15:32:00Z",
-                "user_id": 456,
-                "user_name": "Bob",
-                "message": "I'm having trouble with my booking.",
-                "id": 2
-            },
-            {
-                "timestamp": "2024-06-27T15:35:00Z",
-                "user_id": 789,
-                "user_name": "Carol",
-                "message": "Let me check that for you.",
-                "id": 3
-            }
-        ]
-    }
+  {
+    "conversation_id": 1,
+    "last_message_time": "2024-06-28T10:17:00Z",
+    "accomodation_id": 5008123,
+    "messages": [
+      {
+        "timestamp": "2024-06-28T10:15:00Z",
+        "user_id": 420,
+        "message": "Hello, I'm interested in your apartment.",
+        "id": 1
+      },
+      {
+        "timestamp": "2024-06-28T10:17:00Z",
+        "user_id": 25829031,
+        "message": "Sure! Let me know if you have any questions.",
+        "id": 2
+      }
+    ]
+  },
+  {
+    "conversation_id": 2,
+    "last_message_time": "2024-06-27T15:35:00Z",
+    "accomodation_id": 1563562,
+    "messages": [
+      {
+        "timestamp": "2024-06-27T15:30:00Z",
+        "user_id": 8319062,
+        "message": "Hi there, how can I assist you today?",
+        "id": 1
+      },
+      {
+        "timestamp": "2024-06-27T15:32:00Z",
+        "user_id": 420,
+        "message": "I'm having trouble with my booking.",
+        "id": 2
+      },
+      {
+        "timestamp": "2024-06-27T15:35:00Z",
+        "user_id": 8319062,
+        "message": "Let me check that for you.",
+        "id": 3
+      }
+    ]
+  }
 ]
