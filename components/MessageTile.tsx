@@ -8,14 +8,16 @@ const MessageTile = ({ conversation }: { conversation: Conversation }) => {
   const accomodation = useAtomValue(listingsAtom).find(
     (accomodatiom) => accomodatiom.id === conversation.accomodation_id.toString()
   )
-  console.log(accomodation?.medium_url)
+  // Pobranie ostatniej wiadomości z listy
+  const lastMessage = conversation.messages.slice(-1)[0]
   return (
     <View style={styles.messagesContainer}>
       <View>
         <Image source={{ uri: accomodation?.medium_url! }} style={styles.image} />
       </View>
       <View>
-        <Text style={styles.hostName}> {accomodation?.host_name}</Text>
+        <Text style={styles.hostName}>{accomodation?.host_name}</Text>
+        <Text style={styles.hostName}>{lastMessage.message}</Text>
       </View>
     </View>
   )
