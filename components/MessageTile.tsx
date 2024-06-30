@@ -12,12 +12,11 @@ const MessageTile = ({ conversation }: { conversation: Conversation }) => {
   return (
     <View style={styles.messagesContainer}>
       <View>
-        <Image
-          source={{ uri: accomodation?.medium_url! }}
-          style={styles.image}
-        />
+        <Image source={{ uri: accomodation?.medium_url! }} style={styles.image} />
       </View>
-      <View></View>
+      <View>
+        <Text style={styles.hostName}> {accomodation?.host_name}</Text>
+      </View>
     </View>
   )
 }
@@ -27,10 +26,14 @@ export default MessageTile
 const styles = StyleSheet.create({
   messagesContainer: {
     gap: 20,
+    flexDirection: 'row',
   },
   image: {
     width: 80,
     height: 80,
     borderRadius: 10,
+  },
+  hostName: {
+    fontWeight: '300',
   },
 })
