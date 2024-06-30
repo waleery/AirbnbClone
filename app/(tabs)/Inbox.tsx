@@ -2,7 +2,22 @@ import InboxHeader from '@/components/InboxHeader'
 import { defaultStyles } from '@/constants/Styles'
 import { messageTypes } from '@/constants/messageTypes'
 import { Stack } from 'expo-router'
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, ListRenderItem } from 'react-native'
+import { FlatList } from 'react-native-gesture-handler'
+
+import messagesDataRaw from '@/assets/data/messages.json'
+import { Conversation } from '@/types/messages'
+import { parseISO } from 'date-fns'
+
+const messagesData: Conversation[] = messagesDataRaw.map((message: any) => ({
+  ...message,
+  last_message_time: parseISO(message.last_message_time),
+  messages: message.messages.map((msg: any) => ({
+    ...msg,
+    timestamp: parseISO(msg.timestamp),
+  })),
+}))
+
 const Page = () => {
   return (
     <View style={defaultStyles.flex}>
