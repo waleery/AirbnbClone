@@ -42,7 +42,7 @@ const Page = () => {
             </TouchableOpacity>
           ))}
         </ScrollView>
-        <FlatList data={messagesData} renderItem={renderRow} />
+        <FlatList data={messagesData} renderItem={renderRow} contentContainerStyle={{ gap: 20 }} />
       </View>
     </View>
   )
