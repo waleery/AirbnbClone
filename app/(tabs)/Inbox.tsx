@@ -8,6 +8,7 @@ import { FlatList } from 'react-native-gesture-handler'
 import messagesDataRaw from '@/assets/data/messages.json'
 import { Conversation } from '@/types/messages'
 import { parseISO } from 'date-fns'
+import MessageTile from '@/components/MessageTile'
 
 const messagesData: Conversation[] = messagesDataRaw.map((message: any) => ({
   ...message,
@@ -19,6 +20,8 @@ const messagesData: Conversation[] = messagesDataRaw.map((message: any) => ({
 }))
 
 const Page = () => {
+  const renderRow: ListRenderItem<Conversation> = ({ item }) => <MessageTile conversation={item} />
+
   return (
     <View style={defaultStyles.flex}>
       <Stack.Screen
@@ -39,6 +42,7 @@ const Page = () => {
             </TouchableOpacity>
           ))}
         </ScrollView>
+        <FlatList data={messagesData} renderItem={renderRow} />
       </View>
     </View>
   )
