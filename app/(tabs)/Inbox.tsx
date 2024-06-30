@@ -53,11 +53,11 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     padding: 16,
+    gap: 20,
   },
   title: {
     fontSize: 30,
     fontWeight: '500',
-    marginBottom: 15,
   },
   chip: {
     justifyContent: 'center',
