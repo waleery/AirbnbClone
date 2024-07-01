@@ -31,12 +31,12 @@ const MessageTile = ({ conversation }: { conversation: Conversation }) => {
       <View>
         <Image source={{ uri: accomodation?.medium_url! }} style={styles.image} />
       </View>
-      <View>
-        <View>
+      <View style={styles.textContainer}>
+        <View style={styles.firstLine}>
           <Text style={styles.hostName}>{accomodation?.host_name}</Text>
-          <Text>{formatDateLastMessage}</Text>
+          <Text style={styles.hostName}>{formatDateLastMessage}</Text>
         </View>
-        <Text style={styles.hostName}>{lastMessage.message}</Text>
+        <Text style={styles.hostName} numberOfLines={1} ellipsizeMode='tail'>{lastMessage.message}</Text>
       </View>
     </View>
   )
@@ -49,6 +49,9 @@ const styles = StyleSheet.create({
     gap: 20,
     flexDirection: 'row',
   },
+  textContainer:{
+    flex:1,
+  },
   image: {
     width: 80,
     height: 80,
@@ -57,4 +60,8 @@ const styles = StyleSheet.create({
   hostName: {
     fontWeight: '300',
   },
+  firstLine:{
+    flexDirection:'row',
+    justifyContent:'space-between'
+  }
 })
