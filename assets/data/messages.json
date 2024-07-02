@@ -3,6 +3,7 @@
     "conversation_id": 1,
     "last_message_time": "2024-06-28T10:17:00Z",
     "accomodation_id": 5008123,
+    "accomodation_date": "2-8 oct",
     "messages": [
       {
         "timestamp": "2024-06-28T10:15:00Z",
@@ -22,6 +23,7 @@
     "conversation_id": 2,
     "last_message_time": "2024-06-27T15:35:00Z",
     "accomodation_id": 1563562,
+    "accomodation_date": "15-22 dec",
     "messages": [
       {
         "timestamp": "2024-06-27T15:30:00Z",
