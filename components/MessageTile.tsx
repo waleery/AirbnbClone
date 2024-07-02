@@ -34,10 +34,10 @@ const MessageTile = ({ conversation }: { conversation: Conversation }) => {
       </View>
       <View style={styles.textContainer}>
         <View style={styles.firstLine}>
-          <Text style={styles.hostName}>{accomodation?.host_name}</Text>
-          <Text style={styles.hostName}>{formatDateLastMessage}</Text>
+          <Text style={defaultStyles.thinText}>{accomodation?.host_name}</Text>
+          <Text style={defaultStyles.thinText}>{formatDateLastMessage}</Text>
         </View>
-        <Text style={styles.hostName} numberOfLines={1} ellipsizeMode="tail">
+        <Text style={defaultStyles.thinText} numberOfLines={1} ellipsizeMode="tail">
           {lastMessage.message}
         </Text>
         <View>
