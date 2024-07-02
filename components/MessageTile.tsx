@@ -4,6 +4,7 @@ import { useAtomValue } from 'jotai'
 import { listingsAtom } from '@/store/listingsStore'
 import { Conversation } from '@/types/messages'
 import { getDate, getMonth, getYear } from 'date-fns'
+import { defaultStyles } from '@/constants/Styles'
 
 const MessageTile = ({ conversation }: { conversation: Conversation }) => {
   const accomodation = useAtomValue(listingsAtom).find(
@@ -36,7 +37,12 @@ const MessageTile = ({ conversation }: { conversation: Conversation }) => {
           <Text style={styles.hostName}>{accomodation?.host_name}</Text>
           <Text style={styles.hostName}>{formatDateLastMessage}</Text>
         </View>
-        <Text style={styles.hostName} numberOfLines={1} ellipsizeMode='tail'>{lastMessage.message}</Text>
+        <Text style={styles.hostName} numberOfLines={1} ellipsizeMode="tail">
+          {lastMessage.message}
+        </Text>
+        <View>
+          <Text style={defaultStyles.thinText}>{conversation.accomodation_date} · {accomodation?.city}</Text>
+        </View>
       </View>
     </View>
   )
@@ -49,8 +55,8 @@ const styles = StyleSheet.create({
     gap: 20,
     flexDirection: 'row',
   },
-  textContainer:{
-    flex:1,
+  textContainer: {
+    flex: 1,
   },
   image: {
     width: 80,
@@ -60,8 +66,8 @@ const styles = StyleSheet.create({
   hostName: {
     fontWeight: '300',
   },
-  firstLine:{
-    flexDirection:'row',
-    justifyContent:'space-between'
-  }
+  firstLine: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
 })
