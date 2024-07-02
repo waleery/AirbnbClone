@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     flex: 1,
+    justifyContent:'space-between'
   },
   image: {
     width: 80,
