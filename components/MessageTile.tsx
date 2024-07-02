@@ -60,8 +60,8 @@ const styles = StyleSheet.create({
     justifyContent:'space-between'
   },
   image: {
-    width: 80,
-    height: 80,
+    width: 70,
+    height: 70,
     borderRadius: 10,
   },
   hostName: {
