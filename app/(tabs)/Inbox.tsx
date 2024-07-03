@@ -33,8 +33,9 @@ const Page = () => {
         <Text style={styles.title}>Messages</Text>
         <ScrollView
           horizontal
-          contentContainerStyle={styles.scrollView}
+          contentContainerStyle={styles.scrollViewContentContainer}
           showsHorizontalScrollIndicator={false}
+          style={styles.scrollView}
         >
           {messageTypes.map((type) => (
             <TouchableOpacity style={styles.chip}>
@@ -42,7 +43,11 @@ const Page = () => {
             </TouchableOpacity>
           ))}
         </ScrollView>
-        <FlatList data={messagesData} renderItem={renderRow} contentContainerStyle={{ gap: 20 }} />
+        <FlatList
+          data={messagesData}
+          renderItem={renderRow}
+          contentContainerStyle={{ gap: 20, flexGrow: 1 }}
+        />
       </View>
     </View>
   )
@@ -54,6 +59,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 16,
     gap: 20,
+
+    flex: 1,
   },
   title: {
     fontSize: 30,
@@ -68,6 +75,9 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   scrollView: {
+    flexGrow: 0,
+  },
+  scrollViewContentContainer: {
     gap: 10,
   },
 })
