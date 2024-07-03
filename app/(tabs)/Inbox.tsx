@@ -43,11 +43,7 @@ const Page = () => {
             </TouchableOpacity>
           ))}
         </ScrollView>
-        <FlatList
-          data={messagesData}
-          renderItem={renderRow}
-          contentContainerStyle={{ gap: 20, flexGrow: 1 }}
-        />
+        <FlatList data={messagesData} renderItem={renderRow} contentContainerStyle={styles.flatListContainer} />
       </View>
     </View>
   )
@@ -79,5 +75,9 @@ const styles = StyleSheet.create({
   },
   scrollViewContentContainer: {
     gap: 10,
+  },
+  flatListContainer: {
+    gap: 20,
+    flexGrow: 1,
   },
 })
