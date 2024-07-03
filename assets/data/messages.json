@@ -3,6 +3,16 @@
     "conversation_id": 1,
     "last_message_time": "2024-06-28T10:17:00Z",
     "accomodation_id": 5008123,
+    "hosts": [
+      {
+        "name": "Tim",
+        "image": "https://a0.muscache.com/im/users/25829031/profile_pic/1420793239/original.jpg?aki_policy=profile_small"
+      },
+      {
+        "name": "Juri",
+        "image": "https://a0.muscache.com/im/users/12146767/profile_pic/1421980943/original.jpg?aki_policy=profile_small"
+      }
+    ],
     "accomodation_date": "2-8 oct",
     "messages": [
       {
@@ -21,8 +31,48 @@
   },
   {
     "conversation_id": 2,
-    "last_message_time": "2024-06-27T15:35:00Z",
+    "last_message_time": "2024-06-22T10:17:00Z",
+    "accomodation_id": 567741,
+    "hosts": [
+      {
+        "name": "Sonia",
+        "image": "https://a0.muscache.com/im/users/1824047/profile_pic/1331504945/original.jpg?aki_policy=profile_small"
+      },
+      {
+        "name": "Mandy",
+        "image": "https://a0.muscache.com/im/users/45528224/profile_pic/1443788292/original.jpg?aki_policy=profile_small"
+      },
+      {
+        "name": "Gregor",
+        "image": "https://a0.muscache.com/im/users/1903768/profile_pic/1360695234/original.jpg?aki_policy=profile_small"
+      }
+    ],
+    "accomodation_date": "2-8 oct",
+    "messages": [
+      {
+        "timestamp": "2024-06-28T10:15:00Z",
+        "user_id": 420,
+        "message": "Hello, I'm interested in your apartment.",
+        "id": 1
+      },
+      {
+        "timestamp": "2024-06-28T10:17:00Z",
+        "user_id": 25829031,
+        "message": "Sure! Let me know if you have any questions.",
+        "id": 2
+      }
+    ]
+  },
+  {
+    "conversation_id": 3,
+    "last_message_time": "2023-12-02T15:35:00Z",
     "accomodation_id": 1563562,
+    "hosts": [
+      {
+        "name": "Sven",
+        "image": "https://a0.muscache.com/im/users/8319062/profile_pic/1402827631/original.jpg?aki_policy=profile_small"
+      }
+    ],
     "accomodation_date": "15-22 dec",
     "messages": [
       {
