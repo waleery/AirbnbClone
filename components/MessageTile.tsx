@@ -32,12 +32,12 @@ const MessageTile = ({ conversation }: { conversation: Conversation }) => {
   switch (conversation.hosts.length) {
     case 1:
       hostImagePositions = [
-        { translateY: 15, translateX: 10 }, // Przesunięcie dla jednego hosta
+        { translateY: 15, translateX: 10 },
       ]
       break
     case 2:
       hostImagePositions = [
-        { translateY: -9, translateX: 9 }, // Przesunięcia dla dwóch hostów
+        { translateY: -9, translateX: 9 }, 
         { translateY: 9, translateX: -9 },
       ]
       break
@@ -73,7 +73,6 @@ const MessageTile = ({ conversation }: { conversation: Conversation }) => {
           }
           return null
         })}
-        {/* <Image source={{ uri: accomodation?.host_picture_url }} style={styles.hostImage} /> */}
       </View>
       <View style={styles.textContainer}>
         <View style={styles.firstLine}>
