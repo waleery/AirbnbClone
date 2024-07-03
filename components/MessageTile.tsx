@@ -31,6 +31,7 @@ const MessageTile = ({ conversation }: { conversation: Conversation }) => {
     <View style={styles.messagesContainer}>
       <View>
         <Image source={{ uri: accomodation?.medium_url! }} style={styles.image} />
+        <Image source={{ uri: accomodation?.host_picture_url }} style={styles.hostImage} />
       </View>
       <View style={styles.textContainer}>
         <View style={styles.firstLine}>
@@ -41,7 +42,9 @@ const MessageTile = ({ conversation }: { conversation: Conversation }) => {
           {lastMessage.message}
         </Text>
         <View>
-          <Text style={defaultStyles.thinText}>{conversation.accomodation_date} · {accomodation?.city}</Text>
+          <Text style={defaultStyles.thinText}>
+            {conversation.accomodation_date} · {accomodation?.city}
+          </Text>
         </View>
       </View>
     </View>
@@ -57,7 +60,7 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     flex: 1,
-    justifyContent:'space-between'
+    justifyContent: 'space-between',
   },
   image: {
     width: 65,
@@ -71,4 +74,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  hostImage:{
+    position:'absolute',
+    width: 40,
+    height: 40,
+    borderRadius:50,
+    borderWidth:2,
+    borderColor:'#fff',
+    bottom:0,
+    right:0,
+    transform: [{ translateY: 15 }, { translateX: 10 }]
+  }
 })
