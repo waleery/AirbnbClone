@@ -26,12 +26,54 @@ const MessageTile = ({ conversation }: { conversation: Conversation }) => {
     }
     return `${day}.${month}.${year}`
   }, [])
+  const hostImageSize = conversation.hosts.length === 1 ? 42 : 32
+  let hostImagePositions = []
 
+  switch (conversation.hosts.length) {
+    case 1:
+      hostImagePositions = [
+        { translateY: 15, translateX: 10 }, // Przesunięcie dla jednego hosta
+      ]
+      break
+    case 2:
+      hostImagePositions = [
+        { translateY: -9, translateX: 9 }, // Przesunięcia dla dwóch hostów
+        { translateY: 9, translateX: -9 },
+      ]
+      break
+    default:
+      hostImagePositions = [
+        { translateY: -9, translateX: 9 },
+        { translateY: 9, translateX: -9 },
+      ]
+      break
+  }
   return (
     <View style={styles.messagesContainer}>
       <View>
         <Image source={{ uri: accomodation?.medium_url! }} style={styles.image} />
-        <Image source={{ uri: accomodation?.host_picture_url }} style={styles.hostImage} />
+        {conversation.hosts.map((host, index) => {
+          if (index < 2) {
+            return (
+              <Image
+                source={{ uri: host?.image }}
+                style={[
+                  styles.hostImage,
+                  {
+                    width: hostImageSize,
+                    height: hostImageSize,
+                    transform: [
+                      { translateY: hostImagePositions[index]?.translateY || 0 },
+                      { translateX: hostImagePositions[index]?.translateX || 0 },
+                    ],
+                  },
+                ]}
+              />
+            )
+          }
+          return null
+        })}
+        {/* <Image source={{ uri: accomodation?.host_picture_url }} style={styles.hostImage} /> */}
       </View>
       <View style={styles.textContainer}>
         <View style={styles.firstLine}>
@@ -74,15 +116,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  hostImage:{
-    position:'absolute',
+  hostImage: {
+    position: 'absolute',
     width: 40,
     height: 40,
-    borderRadius:50,
-    borderWidth:2,
-    borderColor:'#fff',
-    bottom:0,
-    right:0,
-    transform: [{ translateY: 15 }, { translateX: 10 }]
-  }
+    borderRadius: 50,
+    borderWidth: 2,
+    borderColor: '#fff',
+    bottom: 0,
+    right: 0,
+    transform: [{ translateY: 15 }, { translateX: 10 }],
+  },
 })
