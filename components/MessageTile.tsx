@@ -107,6 +107,7 @@ const styles = StyleSheet.create({
     width: 65,
     height: 65,
     borderRadius: 10,
+    borderBottomRightRadius:40
   },
   hostName: {
     fontWeight: '300',
