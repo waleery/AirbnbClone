@@ -9,6 +9,7 @@ import messagesDataRaw from '@/assets/data/messages.json'
 import { Conversation } from '@/types/messages'
 import { parseISO } from 'date-fns'
 import MessageTile from '@/components/MessageTile'
+import { Ionicons } from '@expo/vector-icons'
 
 const messagesData: Conversation[] = messagesDataRaw.map((message: any) => ({
   ...message,
@@ -43,7 +44,21 @@ const Page = () => {
             </TouchableOpacity>
           ))}
         </ScrollView>
-        <FlatList data={messagesData} renderItem={renderRow} contentContainerStyle={styles.flatListContainer} />
+        {messagesData.length > 0 ? (
+          <FlatList
+            data={messagesData}
+            renderItem={renderRow}
+            contentContainerStyle={styles.flatListContainer}
+          />
+        ) : (
+          <View style={styles.noMessagesContainer}>
+            <Ionicons name="chatbubble-outline" size={50} color="#888" />
+            <Text style={styles.noMessagesText}>No messages available</Text>
+            <Text style={styles.noMessagesText}>
+              When you receive a new message, it will appear here.
+            </Text>
+          </View>
+        )}
       </View>
     </View>
   )
@@ -79,5 +94,15 @@ const styles = StyleSheet.create({
   flatListContainer: {
     gap: 20,
     flexGrow: 1,
+  },
+  noMessagesContainer: {
+    paddingHorizontal: 20,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+  },
+  noMessagesText: {
+    textAlign: 'center',
   },
 })
