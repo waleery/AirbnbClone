@@ -84,7 +84,7 @@ const MessageTile = ({ conversation }: { conversation: Conversation }) => {
         </Text>
         <View>
           <Text style={defaultStyles.thinText}>
-            {conversation.accomodation_date} · {accomodation?.city}
+            {conversation.customer_service ? "Welcome" : `${conversation.accomodation_date}  · ${accomodation?.city}`}
           </Text>
         </View>
       </View>
