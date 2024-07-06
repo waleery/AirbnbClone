@@ -5,6 +5,7 @@ import { listingsAtom } from '@/store/listingsStore'
 import { Conversation } from '@/types/messages'
 import { getDate, getMonth, getYear } from 'date-fns'
 import { defaultStyles } from '@/constants/Styles'
+import { FontAwesome5 } from '@expo/vector-icons'
 
 const MessageTile = ({ conversation }: { conversation: Conversation }) => {
   const accomodation = useAtomValue(listingsAtom).find(
@@ -31,13 +32,11 @@ const MessageTile = ({ conversation }: { conversation: Conversation }) => {
 
   switch (conversation.hosts?.length) {
     case 1:
-      hostImagePositions = [
-        { translateY: 15, translateX: 10 },
-      ]
+      hostImagePositions = [{ translateY: 15, translateX: 10 }]
       break
     case 2:
       hostImagePositions = [
-        { translateY: -9, translateX: 9 }, 
+        { translateY: -9, translateX: 9 },
         { translateY: 9, translateX: -9 },
       ]
       break
@@ -51,7 +50,13 @@ const MessageTile = ({ conversation }: { conversation: Conversation }) => {
   return (
     <View style={styles.messagesContainer}>
       <View>
-        <Image source={{ uri: accomodation?.medium_url! }} style={styles.image} />
+        {conversation.customer_service ? (
+          <View style={styles.customerServiceImage}>
+            <FontAwesome5 name="airbnb" size={30} color={'white'}/>
+          </View>
+        ) : (
+          <Image source={{ uri: accomodation?.medium_url! }} style={styles.image} />
+        )}
         {conversation.hosts?.map((host, index) => {
           if (index < 2) {
             return (
@@ -76,7 +81,9 @@ const MessageTile = ({ conversation }: { conversation: Conversation }) => {
       </View>
       <View style={styles.textContainer}>
         <View style={styles.firstLine}>
-          <Text style={defaultStyles.thinText}>{conversation.customer_service ? "Airbnb Customer Service" : accomodation?.host_name}</Text>
+          <Text style={defaultStyles.thinText}>
+            {conversation.customer_service ? 'Airbnb Customer Service' : accomodation?.host_name}
+          </Text>
           <Text style={defaultStyles.thinText}>{formatDateLastMessage}</Text>
         </View>
         <Text style={defaultStyles.thinText} numberOfLines={1} ellipsizeMode="tail">
@@ -84,7 +91,9 @@ const MessageTile = ({ conversation }: { conversation: Conversation }) => {
         </Text>
         <View>
           <Text style={defaultStyles.thinText}>
-            {conversation.customer_service ? "Welcome" : `${conversation.accomodation_date}  · ${accomodation?.city}`}
+            {conversation.customer_service
+              ? 'Welcome'
+              : `${conversation.accomodation_date}  · ${accomodation?.city}`}
           </Text>
         </View>
       </View>
@@ -107,7 +116,15 @@ const styles = StyleSheet.create({
     width: 65,
     height: 65,
     borderRadius: 10,
-    borderBottomRightRadius:40
+    borderBottomRightRadius: 40,
+  },
+  customerServiceImage:{
+    width: 65,
+    height: 65,
+    justifyContent:'center',
+    alignItems:'center',
+    backgroundColor:'#000',
+    borderRadius:50
   },
   hostName: {
     fontWeight: '300',
