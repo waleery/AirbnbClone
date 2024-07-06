@@ -76,7 +76,7 @@ const MessageTile = ({ conversation }: { conversation: Conversation }) => {
       </View>
       <View style={styles.textContainer}>
         <View style={styles.firstLine}>
-          <Text style={defaultStyles.thinText}>{accomodation?.host_name}</Text>
+          <Text style={defaultStyles.thinText}>{conversation.customer_service ? "Airbnb Customer Service" : accomodation?.host_name}</Text>
           <Text style={defaultStyles.thinText}>{formatDateLastMessage}</Text>
         </View>
         <Text style={defaultStyles.thinText} numberOfLines={1} ellipsizeMode="tail">
