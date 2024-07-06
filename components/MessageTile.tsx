@@ -8,7 +8,7 @@ import { defaultStyles } from '@/constants/Styles'
 
 const MessageTile = ({ conversation }: { conversation: Conversation }) => {
   const accomodation = useAtomValue(listingsAtom).find(
-    (accomodatiom) => accomodatiom.id === conversation.accomodation_id.toString()
+    (accomodatiom) => accomodatiom.id === conversation.accomodation_id?.toString()
   )
   // Pobranie ostatniej wiadomości z listy
   const lastMessage = conversation.messages.slice(-1)[0]
@@ -26,10 +26,10 @@ const MessageTile = ({ conversation }: { conversation: Conversation }) => {
     }
     return `${day}.${month}.${year}`
   }, [])
-  const hostImageSize = conversation.hosts.length === 1 ? 42 : 32
+  const hostImageSize = conversation.hosts?.length === 1 ? 42 : 32
   let hostImagePositions = []
 
-  switch (conversation.hosts.length) {
+  switch (conversation.hosts?.length) {
     case 1:
       hostImagePositions = [
         { translateY: 15, translateX: 10 },
@@ -52,7 +52,7 @@ const MessageTile = ({ conversation }: { conversation: Conversation }) => {
     <View style={styles.messagesContainer}>
       <View>
         <Image source={{ uri: accomodation?.medium_url! }} style={styles.image} />
-        {conversation.hosts.map((host, index) => {
+        {conversation.hosts?.map((host, index) => {
           if (index < 2) {
             return (
               <Image
