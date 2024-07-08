@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Button, Image, StyleSheet, Text, View } from 'react-native'
 import React, { useMemo } from 'react'
 import { useAtomValue } from 'jotai'
 import { listingsAtom } from '@/store/listingsStore'
@@ -6,6 +6,8 @@ import { Conversation } from '@/types/messages'
 import { getDate, getMonth, getYear } from 'date-fns'
 import { defaultStyles } from '@/constants/Styles'
 import { FontAwesome5 } from '@expo/vector-icons'
+import { Swipeable } from 'react-native-gesture-handler'
+import Animated, { interpolate } from 'react-native-reanimated'
 
 const MessageTile = ({ conversation }: { conversation: Conversation }) => {
   const accomodation = useAtomValue(listingsAtom).find(
@@ -47,57 +49,83 @@ const MessageTile = ({ conversation }: { conversation: Conversation }) => {
       ]
       break
   }
+
+  const renderRightActions = () => {
+    const trans = interpolate(0, [-20, 0, 0, 1], [20, 0, 0, 1])
+
+    return (
+      <Animated.View style={styles.rightAction}>
+        <Animated.Text
+          style={[
+            styles.actionText,
+            {
+              transform: [{ translateX: trans }],
+            },
+          ]}
+        >
+          Archive
+        </Animated.Text>
+      </Animated.View>
+    )
+  }
   return (
-    <View style={styles.messagesContainer}>
-      <View>
-        {conversation.customer_service ? (
-          <View style={styles.customerServiceImage}>
-            <FontAwesome5 name="airbnb" size={30} color={'white'}/>
-          </View>
-        ) : (
-          <Image source={{ uri: accomodation?.medium_url! }} style={styles.image} />
-        )}
-        {conversation.hosts?.map((host, index) => {
-          if (index < 2) {
-            return (
-              <Image
-                source={{ uri: host?.image }}
-                style={[
-                  styles.hostImage,
-                  {
-                    width: hostImageSize,
-                    height: hostImageSize,
-                    transform: [
-                      { translateY: hostImagePositions[index]?.translateY || 0 },
-                      { translateX: hostImagePositions[index]?.translateX || 0 },
-                    ],
-                  },
-                ]}
-              />
-            )
-          }
-          return null
-        })}
-      </View>
-      <View style={styles.textContainer}>
-        <View style={styles.firstLine}>
-          <Text style={defaultStyles.thinText}>
-            {conversation.customer_service ? 'Airbnb Customer Service' : accomodation?.host_name}
-          </Text>
-          <Text style={defaultStyles.thinText}>{formatDateLastMessage}</Text>
-        </View>
-        <Text style={defaultStyles.thinText} numberOfLines={1} ellipsizeMode="tail">
-          {lastMessage.message}
-        </Text>
+    <Swipeable
+      renderRightActions={renderRightActions}
+      friction={1}
+      leftThreshold={40}
+      rightThreshold={40}
+      childrenContainerStyle={styles.messagesContainer}
+      containerStyle={{overflow:'visible'}}
+    >
         <View>
-          <Text style={defaultStyles.thinText}>
-            {conversation.customer_service
-              ? 'Welcome'
-              : `${conversation.accomodation_date}  · ${accomodation?.city}`}
-          </Text>
+          {conversation.customer_service ? (
+            <View style={styles.customerServiceImage}>
+              <FontAwesome5 name="airbnb" size={30} color={'white'} />
+            </View>
+          ) : (
+            <Image source={{ uri: accomodation?.medium_url! }} style={styles.image} />
+          )}
+          {conversation.hosts?.map((host, index) => {
+            if (index < 2) {
+              return (
+                <Image
+                  source={{ uri: host?.image }}
+                  style={[
+                    styles.hostImage,
+                    {
+                      width: hostImageSize,
+                      height: hostImageSize,
+                      transform: [
+                        { translateY: hostImagePositions[index]?.translateY || 0 },
+                        { translateX: hostImagePositions[index]?.translateX || 0 },
+                      ],
+                    },
+                  ]}
+                />
+              )
+            }
+            return null
+          })}
         </View>
-      </View>
-    </View>
+        <View style={styles.textContainer}>
+          <View style={styles.firstLine}>
+            <Text style={defaultStyles.thinText}>
+              {conversation.customer_service ? 'Airbnb Customer Service' : accomodation?.host_name}
+            </Text>
+            <Text style={defaultStyles.thinText}>{formatDateLastMessage}</Text>
+          </View>
+          <Text style={defaultStyles.thinText} numberOfLines={1} ellipsizeMode="tail">
+            {lastMessage.message}
+          </Text>
+          <View>
+            <Text style={defaultStyles.thinText}>
+              {conversation.customer_service
+                ? 'Welcome'
+                : `${conversation.accomodation_date}  · ${accomodation?.city}`}
+            </Text>
+          </View>
+        </View>
+    </Swipeable>
   )
 }
 
@@ -118,13 +146,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderBottomRightRadius: 40,
   },
-  customerServiceImage:{
+  customerServiceImage: {
     width: 65,
     height: 65,
-    justifyContent:'center',
-    alignItems:'center',
-    backgroundColor:'#000',
-    borderRadius:50
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#000',
+    borderRadius: 50,
   },
   hostName: {
     fontWeight: '300',
@@ -143,5 +171,14 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     transform: [{ translateY: 15 }, { translateX: 10 }],
+  },
+  rightAction: {
+    justifyContent: 'center',
+    flex: 1,
+    alignItems: 'flex-end',
+  },
+  actionText: {
+    padding: 20,
+    borderWidth: 2,
   },
 })
