@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
   topBtn: {
     padding: 10,
-    backgroundColor: '#e0e0e0',
+    backgroundColor: '#f0f0f0',
     borderRadius: 24,
     elevation: 2,
     shadowColor: '#000',
