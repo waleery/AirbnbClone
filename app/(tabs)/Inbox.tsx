@@ -10,6 +10,7 @@ import { Conversation } from '@/types/messages'
 import { parseISO } from 'date-fns'
 import MessageTile from '@/components/MessageTile'
 import { Ionicons } from '@expo/vector-icons'
+import { useState } from 'react'
 
 const messagesData: Conversation[] = messagesDataRaw.map((message: any) => ({
   ...message,
@@ -22,6 +23,11 @@ const messagesData: Conversation[] = messagesDataRaw.map((message: any) => ({
 
 const Page = () => {
   const renderRow: ListRenderItem<Conversation> = ({ item }) => <MessageTile conversation={item} />
+  const [selectedType, setSelectedType] = useState<string>('All')
+
+  const handleSelectMessagesType = (type: string) => {
+    setSelectedType(type)
+  }
 
   return (
     <View style={defaultStyles.flex}>
@@ -39,8 +45,11 @@ const Page = () => {
           style={styles.scrollView}
         >
           {messageTypes.map((type) => (
-            <TouchableOpacity style={styles.chip}>
-              <Text>{type}</Text>
+            <TouchableOpacity
+              style={[styles.chip, selectedType === type && styles.selectedChip]}
+              onPress={() => handleSelectMessagesType(type)}
+            >
+              <Text style={selectedType === type && styles.selectedChipText}>{type}</Text>
             </TouchableOpacity>
           ))}
         </ScrollView>
@@ -84,6 +93,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     backgroundColor: '#f0f0f0',
     borderRadius: 50,
+  },
+  selectedChip: {
+    backgroundColor: '#000',
+  },
+  selectedChipText: {
+    color: 'white',
   },
   scrollView: {
     flexGrow: 0,
