@@ -10,7 +10,7 @@ import { Conversation } from '@/types/messages'
 import { parseISO } from 'date-fns'
 import MessageTile from '@/components/MessageTile'
 import { Ionicons } from '@expo/vector-icons'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 
 const messagesData: Conversation[] = messagesDataRaw.map((message: any) => ({
   ...message,
@@ -28,6 +28,16 @@ const Page = () => {
   const handleSelectMessagesType = (type: string) => {
     setSelectedType(type)
   }
+
+  const filteredMessagesData = useMemo(() => {
+    if (selectedType === 'All') {
+      return messagesData
+    }
+    if (selectedType === 'Customer service') {
+      return messagesData.filter((conversation) => conversation.customer_service)
+    }
+    return messagesData.filter((conversation) => !conversation.customer_service)
+  }, [selectedType])
 
   return (
     <View style={defaultStyles.flex}>
@@ -53,9 +63,9 @@ const Page = () => {
             </TouchableOpacity>
           ))}
         </ScrollView>
-        {messagesData.length > 0 ? (
+        {filteredMessagesData.length > 0 ? (
           <FlatList
-            data={messagesData}
+            data={filteredMessagesData}
             renderItem={renderRow}
             contentContainerStyle={styles.flatListContainer}
           />
