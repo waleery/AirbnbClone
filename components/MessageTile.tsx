@@ -13,8 +13,8 @@ import { AnimatedInterpolation } from 'react-native-gesture-handler/lib/typescri
 type IconKey = 'Archive' | 'Star'
 
 const iconMap: Record<IconKey, JSX.Element> = {
-  Archive: <Entypo name="archive" size={20} color="white" />,
-  Star: <AntDesign name="star" size={20} color="white" />,
+  Archive: <Entypo name="archive" size={16} color="white" />,
+  Star: <AntDesign name="star" size={16} color="white" />,
 }
 
 const MessageTile = ({ conversation }: { conversation: Conversation }) => {
@@ -153,9 +153,8 @@ const styles = StyleSheet.create({
   messagesContainer: {
     gap: 20,
     flexDirection: 'row',
-    paddingVertical:10,
-    paddingHorizontal:16
-
+    paddingVertical: 10,
+    paddingHorizontal: 16,
   },
   textContainer: {
     flex: 1,
@@ -199,7 +198,5 @@ const styles = StyleSheet.create({
     flex: 1,
     //alignItems: 'flex-end',
   },
-  actionText: {
-    color: 'white',
-  },
+  actionText: { fontSize: 12, color: 'white'},
 })
