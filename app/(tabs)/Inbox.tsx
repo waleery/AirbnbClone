@@ -87,7 +87,7 @@ export default Page
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    padding: 16,
+    //padding: 16,
     gap: 20,
 
     flex: 1,
@@ -95,6 +95,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: '500',
+    paddingTop:16,
+    paddingHorizontal:16
   },
   chip: {
     justifyContent: 'center',
@@ -112,6 +114,8 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     flexGrow: 0,
+    paddingHorizontal:16
+
   },
   scrollViewContentContainer: {
     gap: 10,
