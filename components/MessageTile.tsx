@@ -195,6 +195,7 @@ const styles = StyleSheet.create({
   rightAction: {
     justifyContent: 'center',
     alignItems: 'center',
+    gap:2,
     flex: 1,
     //alignItems: 'flex-end',
   },
