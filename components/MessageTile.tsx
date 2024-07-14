@@ -91,7 +91,6 @@ const MessageTile = ({ conversation }: { conversation: Conversation }) => {
       renderRightActions={renderRightActions}
       friction={1}
       leftThreshold={40}
-      rightThreshold={40}
       childrenContainerStyle={styles.messagesContainer}
       containerStyle={styles.swipableContainer}
     >
@@ -201,6 +200,6 @@ const styles = StyleSheet.create({
   },
   actionText: { fontSize: 12, color: 'white', fontWeight: '500' },
   swipableContainer:{
-    overflow:'visible'
+    //overflow:'visible'
   }
 })
