@@ -198,5 +198,5 @@ const styles = StyleSheet.create({
     flex: 1,
     //alignItems: 'flex-end',
   },
-  actionText: { fontSize: 12, color: 'white'},
+  actionText: { fontSize: 12, color: 'white', fontWeight: '500' },
 })
