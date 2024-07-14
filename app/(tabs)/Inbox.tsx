@@ -117,7 +117,6 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   flatListContainer: {
-    gap: 20,
     flexGrow: 1,
   },
   noMessagesContainer: {

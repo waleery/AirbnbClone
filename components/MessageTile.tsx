@@ -153,6 +153,7 @@ const styles = StyleSheet.create({
   messagesContainer: {
     gap: 20,
     flexDirection: 'row',
+    paddingVertical:10
   },
   textContainer: {
     flex: 1,
