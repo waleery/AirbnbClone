@@ -93,7 +93,7 @@ const MessageTile = ({ conversation }: { conversation: Conversation }) => {
       leftThreshold={40}
       rightThreshold={40}
       childrenContainerStyle={styles.messagesContainer}
-      containerStyle={{ overflow: 'visible' }}
+      containerStyle={styles.swipableContainer}
     >
       <View>
         {conversation.customer_service ? (
@@ -200,4 +200,7 @@ const styles = StyleSheet.create({
     //alignItems: 'flex-end',
   },
   actionText: { fontSize: 12, color: 'white', fontWeight: '500' },
+  swipableContainer:{
+    overflow:'visible'
+  }
 })
