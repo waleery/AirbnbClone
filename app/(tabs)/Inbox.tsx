@@ -3,14 +3,14 @@ import { defaultStyles } from '@/constants/Styles'
 import { messageTypes } from '@/constants/messageTypes'
 import { Stack } from 'expo-router'
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, ListRenderItem } from 'react-native'
-import { FlatList } from 'react-native-gesture-handler'
+import { FlatList, Swipeable } from 'react-native-gesture-handler'
 
 import messagesDataRaw from '@/assets/data/messages.json'
 import { Conversation } from '@/types/messages'
 import { parseISO } from 'date-fns'
 import MessageTile from '@/components/MessageTile'
 import { Ionicons } from '@expo/vector-icons'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 const messagesData: Conversation[] = messagesDataRaw.map((message: any) => ({
   ...message,
@@ -22,9 +22,16 @@ const messagesData: Conversation[] = messagesDataRaw.map((message: any) => ({
 }))
 
 const Page = () => {
-  const renderRow: ListRenderItem<Conversation> = ({ item }) => <MessageTile conversation={item} />
   const [selectedType, setSelectedType] = useState<string>('All')
+  const [openSwipeable, setOpenSwipeable] = useState<React.RefObject<Swipeable> | null>(null)
 
+  const renderRow: ListRenderItem<Conversation> = ({ item }) => (
+    <MessageTile
+      conversation={item}
+      openSwipeable={openSwipeable}
+      setOpenSwipeable={setOpenSwipeable}
+    />
+  )
   const handleSelectMessagesType = (type: string) => {
     setSelectedType(type)
   }
@@ -115,7 +122,7 @@ const styles = StyleSheet.create({
   scrollView: {
     flexGrow: 0,
     paddingHorizontal:16
-
+    
   },
   scrollViewContentContainer: {
     gap: 10,

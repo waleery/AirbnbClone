@@ -1,5 +1,5 @@
 import { Animated, Button, Image, Pressable, StyleSheet, Text, View } from 'react-native'
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { useAtomValue } from 'jotai'
 import { listingsAtom } from '@/store/listingsStore'
 import { Conversation } from '@/types/messages'
@@ -17,12 +17,21 @@ const iconMap: Record<IconKey, JSX.Element> = {
   Star: <AntDesign name="star" size={16} color="white" />,
 }
 
-const MessageTile = ({ conversation }: { conversation: Conversation }) => {
+const MessageTile = ({
+  conversation,
+  setOpenSwipeable,
+  openSwipeable,
+}: {
+  conversation: Conversation
+  setOpenSwipeable: React.Dispatch<React.SetStateAction<React.RefObject<Swipeable> | null>>
+  openSwipeable: React.RefObject<Swipeable> | null
+}) => {
   const accomodation = useAtomValue(listingsAtom).find(
     (accomodatiom) => accomodatiom.id === conversation.accomodation_id?.toString()
   )
   // Pobranie ostatniej wiadomości z listy
   const lastMessage = conversation.messages.slice(-1)[0]
+  const swipeableRef = useRef<Swipeable>(null)
 
   const formatDateLastMessage = useMemo(() => {
     const currentDate = new Date() // Utwórz nowy obiekt daty, reprezentujący bieżącą datę i czas
@@ -71,7 +80,9 @@ const MessageTile = ({ conversation }: { conversation: Conversation }) => {
 
     return (
       <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }}>
-        <Pressable style={[styles.rightAction, { backgroundColor: color }]}>
+        <Pressable
+          style={[styles.rightAction, { backgroundColor: color }]}
+        >
           {iconMap[text]}
           <Text style={styles.actionText}>{text}</Text>
         </Pressable>
@@ -85,12 +96,18 @@ const MessageTile = ({ conversation }: { conversation: Conversation }) => {
       {renderRightAction('Archive', '#484848', 64, progress)}
     </View>
   )
-
+  const handleSwipeableOpen = (swipeable: React.RefObject<Swipeable>) => {
+    if (openSwipeable && openSwipeable !== swipeable) {
+      openSwipeable.current?.close()
+    }
+    setOpenSwipeable(swipeable)
+  }
   return (
     <Swipeable
+      ref={swipeableRef}
       renderRightActions={renderRightActions}
-      friction={1}
-      leftThreshold={40}
+      onSwipeableWillOpen={() => handleSwipeableOpen(swipeableRef)}
+      rightThreshold={10}
       childrenContainerStyle={styles.messagesContainer}
       containerStyle={styles.swipableContainer}
     >
@@ -194,12 +211,12 @@ const styles = StyleSheet.create({
   rightAction: {
     justifyContent: 'center',
     alignItems: 'center',
-    gap:2,
+    gap: 2,
     flex: 1,
     //alignItems: 'flex-end',
   },
   actionText: { fontSize: 12, color: 'white', fontWeight: '500' },
-  swipableContainer:{
+  swipableContainer: {
     //overflow:'visible'
-  }
+  },
 })
