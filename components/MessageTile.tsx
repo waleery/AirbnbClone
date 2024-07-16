@@ -5,9 +5,10 @@ import { listingsAtom } from '@/store/listingsStore'
 import { Conversation } from '@/types/messages'
 import { getDate, getMonth, getYear } from 'date-fns'
 import { defaultStyles } from '@/constants/Styles'
-import { AntDesign, Entypo, FontAwesome5 } from '@expo/vector-icons'
+import { AntDesign, Entypo, FontAwesome5, Ionicons } from '@expo/vector-icons'
 import { RectButton, Swipeable } from 'react-native-gesture-handler'
 import { AnimatedInterpolation } from 'react-native-gesture-handler/lib/typescript/components/Swipeable'
+import Colors from '@/constants/Colors'
 
 // Definiowanie typów kluczy
 type IconKey = 'Archive' | 'Star'
@@ -80,9 +81,7 @@ const MessageTile = ({
 
     return (
       <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }}>
-        <Pressable
-          style={[styles.rightAction, { backgroundColor: color }]}
-        >
+        <Pressable style={[styles.rightAction, { backgroundColor: color }]}>
           {iconMap[text]}
           <Text style={styles.actionText}>{text}</Text>
         </Pressable>
@@ -151,12 +150,13 @@ const MessageTile = ({
         <Text style={defaultStyles.thinText} numberOfLines={1} ellipsizeMode="tail">
           {lastMessage.message}
         </Text>
-        <View>
+        <View style={styles.bottomText}>
           <Text style={defaultStyles.thinText}>
             {conversation.customer_service
               ? 'Welcome'
               : `${conversation.accomodation_date}  · ${accomodation?.city}`}
           </Text>
+          {conversation.favourite && <Ionicons name="star" color={Colors.grey} />}
         </View>
       </View>
     </Swipeable>
@@ -218,5 +218,9 @@ const styles = StyleSheet.create({
   actionText: { fontSize: 12, color: 'white', fontWeight: '500' },
   swipableContainer: {
     //overflow:'visible'
+  },
+  bottomText: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 })
