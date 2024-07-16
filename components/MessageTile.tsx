@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
   },
   actionText: { fontSize: 12, color: 'white', fontWeight: '500' },
   swipableContainer: {
-    //overflow:'visible'
+    overflow:'visible'
   },
   bottomText: {
     flexDirection: 'row',
