@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
   image: {
     width: 65,
     height: 65,
-    borderRadius: 10,
+    borderRadius: 8,
     borderBottomRightRadius: 40,
   },
   customerServiceImage: {
