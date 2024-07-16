@@ -33,6 +33,7 @@
     "conversation_id": 2,
     "last_message_time": "2024-06-22T10:17:00Z",
     "accomodation_id": 567741,
+    "favourite":true,
     "hosts": [
       {
         "name": "Sonia",
