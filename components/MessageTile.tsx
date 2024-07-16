@@ -213,7 +213,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 2,
     flex: 1,
-    //alignItems: 'flex-end',
   },
   actionText: { fontSize: 12, color: 'white', fontWeight: '500' },
   swipableContainer: {
