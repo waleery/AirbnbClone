@@ -68,11 +68,20 @@ const MessageTile = ({
       break
   }
 
+  const handleStarPress = () => {
+    console.log('Star pressed')
+  }
+
+  const handleArchivePress = () => {
+    console.log('Archive pressed')
+  }
+
   const renderRightAction = (
     text: IconKey,
     color: string,
     x: number,
-    progress: AnimatedInterpolation
+    progress: AnimatedInterpolation,
+    onPress: () => void
   ) => {
     const trans = progress.interpolate({
       inputRange: [0, 1],
@@ -81,7 +90,7 @@ const MessageTile = ({
 
     return (
       <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }}>
-        <Pressable style={[styles.rightAction, { backgroundColor: color }]}>
+        <Pressable style={[styles.rightAction, { backgroundColor: color }]} onPress={onPress}>
           {iconMap[text]}
           <Text style={styles.actionText}>{text}</Text>
         </Pressable>
@@ -91,8 +100,8 @@ const MessageTile = ({
 
   const renderRightActions = (progress: AnimatedInterpolation) => (
     <View style={{ width: 128, flexDirection: 'row' }}>
-      {renderRightAction('Star', '#00A699', 128, progress)}
-      {renderRightAction('Archive', '#484848', 64, progress)}
+      {renderRightAction('Star', '#00A699', 128, progress, handleStarPress)}
+      {renderRightAction('Archive', '#484848', 64, progress, handleArchivePress)}
     </View>
   )
   const handleSwipeableOpen = (swipeable: React.RefObject<Swipeable>) => {
@@ -216,7 +225,7 @@ const styles = StyleSheet.create({
   },
   actionText: { fontSize: 12, color: 'white', fontWeight: '500' },
   swipableContainer: {
-    overflow:'visible'
+    overflow: 'visible',
   },
   bottomText: {
     flexDirection: 'row',
