@@ -6,7 +6,7 @@ export interface Conversation {
   accomodation_date?: string
   hosts?: Hosts[]
   customer_service?: boolean
-  favourite?: boolean
+  favourite: boolean
 }
 
 export interface Message {
