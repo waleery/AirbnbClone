@@ -15,9 +15,7 @@ export default Page
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    //padding: 16,
     gap: 20,
-
     flex: 1,
   },
   title: {
