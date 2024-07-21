@@ -8,9 +8,23 @@ import { defaultStyles } from '@/constants/Styles'
 const WishlistHeader = () => {
   return (
     <SafeAreaView edges={['top']} style={[defaultStyles.pX2, defaultStyles.safeArea]}>
-        <Text>Test</Text>
+      <View style={styles.btnBox}>
+        <Text style={styles.edit}>Edit</Text>
+      </View>
     </SafeAreaView>
   )
 }
 
 export default WishlistHeader
+
+const styles = StyleSheet.create({
+  btnBox: {
+    flexDirection: 'row-reverse',
+  },
+  edit: {
+    fontSize: 17,
+    paddingRight: 10,
+    fontWeight: '500',
+    textDecorationLine: 'underline',
+  },
+})
