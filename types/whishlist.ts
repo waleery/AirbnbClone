@@ -8,6 +8,7 @@ export interface Wishlist {
   
   export interface List {
     id: string
+    medium_url: string
   }
   
   
