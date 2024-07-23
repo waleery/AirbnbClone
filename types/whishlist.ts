@@ -1,4 +1,5 @@
 export interface Wishlist {
+    id: number
     recently_viewed?: boolean
     when?: Date
     name: string
