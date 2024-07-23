@@ -1,7 +1,7 @@
 export interface Wishlist {
     recently_viewed?: boolean
     when?: Date
-    name: Date
+    name: string
     list: List[]
   }
   
