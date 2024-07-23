@@ -1,40 +1,48 @@
 [
-    {
-        "id":0,
-        "recently_viewed": true,
-        "when": "2024-07-28T10:17:00Z",
-        "name": "Recently viewed",
-        "list": [
-            {
-                "id":"1563562"
-            },
-            {
-                "id":"7885622"
-            },
-            {
-                "id":"14864910"
-            },
-            {
-                "id":"16305782"
-            }
-        ]
-    },
-    {
-        "id":1,
-        "name": "Berlin",
-        "list": [
-            {
-                "id":"5008123"
-            },
-            {
-                "id":"15162187"
-            },
-            {
-                "id":"9689519"
-            },
-            {
-                "id":"17855915"
-            }
-        ]
-    }
+  {
+    "id": 0,
+    "recently_viewed": true,
+    "when": "2024-07-28T10:17:00Z",
+    "name": "Recently viewed",
+    "list": [
+      {
+        "id": "1563562",
+        "medium_url": "https://a0.muscache.com/im/pictures/bced1392-9538-41df-92d9-f058a7188b0f.jpg?aki_policy=medium"
+      },
+      {
+        "id": "7885622",
+        "medium_url": "https://a0.muscache.com/im/pictures/102085641/64d657b3_original.jpg?aki_policy=medium"
+      },
+      {
+        "id": "14864910",
+        "medium_url": "https://a0.muscache.com/im/pictures/fb97f90e-db94-45c6-84ea-79d5de47cf5e.jpg?aki_policy=medium"
+      },
+      {
+        "id": "16305782",
+        "medium_url": "https://a0.muscache.com/im/pictures/48a28469-6f1a-4c8c-b3e6-56e48e39ef78.jpg?aki_policy=medium"
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "name": "Berlin",
+    "list": [
+      {
+        "id": "5008123",
+        "medium_url": "https://a0.muscache.com/im/pictures/4f366dcd-0481-4d40-9c24-3f99695068b5.jpg?aki_policy=medium"
+      },
+      {
+        "id": "15162187",
+        "medium_url": "https://a0.muscache.com/im/pictures/53a6d65a-992b-481a-b044-68096a7429fc.jpg?aki_policy=medium"
+      },
+      {
+        "id": "9689519",
+        "medium_url": "https://a0.muscache.com/im/pictures/4b006fa8-820b-4f25-b97d-c71c43a78b36.jpg?aki_policy=medium"
+      },
+      {
+        "id": "17855915",
+        "medium_url": "https://a0.muscache.com/im/pictures/404667a8-8641-492f-a62e-a0be53723baf.jpg?aki_policy=medium"
+      }
+    ]
+  }
 ]
