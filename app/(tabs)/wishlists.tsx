@@ -77,8 +77,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     overflow: 'hidden',
-    elevation: 2,
-
   },
   touchable: {
     width: '50%',
