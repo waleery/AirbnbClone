@@ -36,8 +36,8 @@ export default WishlistTiles
 
 const styles = StyleSheet.create({
   containerBox: {
-    display: 'flex',
-    flexDirection: 'row',
+    flexDirection:'row',
+  justifyContent:'center',
   },
   tileBox: {
     borderWidth: 2,

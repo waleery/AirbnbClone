@@ -33,6 +33,5 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     paddingTop: 16,
     paddingHorizontal: 16,
-    
   },
 })
