@@ -11,8 +11,8 @@ const WishlistTiles = () => {
   const wishlists: Wishlist[] = wishlistData as Wishlist[]
 
   const renderRow: ListRenderItem<Wishlist> = ({ item }) => (
-    <View>
-      <View style={styles.tileBox}>
+    <View style={styles.wishlistContainer}>
+      <View style={styles.square}>
         {item.list.map((listItem) => (
           <Link href={`/listing/${listItem.id}`} asChild>
             <TouchableOpacity style={styles.touchable}>
@@ -21,7 +21,10 @@ const WishlistTiles = () => {
           </Link>
         ))}
       </View>
-      <Text>{item.name}</Text>
+      <View style={styles.wishlistTexts}>
+        <Text style={styles.wishlistTitle}>{item.name}</Text>
+        <Text style={styles.wishlistCount}>{item.list.length} saved</Text>
+      </View>
     </View>
   )
 
@@ -40,19 +43,17 @@ export default WishlistTiles
 
 const styles = StyleSheet.create({
   containerBox: {
-    //flexDirection:'row',
     flex: 1,
     width: '100%',
-    padding: 0,
-    margin: 0,
-    //justifyContent:'center',
+    paddingHorizontal: 16,
+    gap: 20,
   },
-  tileBox: {
+  square: {
     borderWidth: 2,
     borderRadius: 10,
     borderColor: 'white',
-    width: 150,
-    height: 150,
+    width: 160,
+    height: 160,
     flexDirection: 'row',
     flexWrap: 'wrap',
     overflow: 'hidden',
@@ -67,9 +68,20 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   columnWrapper: {
-    justifyContent: 'space-evenly',
-    borderWidth: 2,
-    marginHorizontal: 0,
-    //paddingHorizontal:16
+    justifyContent: 'space-between',
+  },
+  wishlistContainer: {
+    gap: 10,
+  },
+  wishlistTexts: {
+    gap: 5,
+  },
+  wishlistTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  wishlistCount: {
+    fontSize: 14,
+    fontWeight: '300',
   },
 })
