@@ -13,13 +13,21 @@ const WishlistTiles = () => {
   const renderRow: ListRenderItem<Wishlist> = ({ item }) => (
     <View style={styles.wishlistContainer}>
       <View style={styles.square}>
-        {item.list.map((listItem) => (
-          <Link href={`/listing/${listItem.id}`} asChild>
-            <TouchableOpacity style={styles.touchable}>
-              <Image source={{ uri: listItem.medium_url! }} style={styles.image} />
+        {item.recently_viewed ? (
+          item.list.map((listItem, index) => (
+            <Link key={index} href={`/listing/${listItem.id}`} asChild>
+              <TouchableOpacity style={styles.touchable}>
+                <Image source={{ uri: listItem.medium_url! }} style={styles.image} />
+              </TouchableOpacity>
+            </Link>
+          ))
+        ) : (
+          <Link href={`/listing/${item.list[0].id}`} asChild>
+            <TouchableOpacity style={styles.touchableFull}>
+              <Image source={{ uri: item.list[0].medium_url! }} style={styles.image} />
             </TouchableOpacity>
           </Link>
-        ))}
+        )}
       </View>
       <View style={styles.wishlistTexts}>
         <Text style={styles.wishlistTitle}>{item.name}</Text>
@@ -61,6 +69,10 @@ const styles = StyleSheet.create({
   touchable: {
     width: '50%',
     height: '50%',
+  },
+  touchableFull: {
+    width: '100%',
+    height: '100%',
   },
   image: {
     width: '100%',
