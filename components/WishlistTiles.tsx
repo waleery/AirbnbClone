@@ -12,22 +12,24 @@ const WishlistTiles = () => {
 
   const renderRow: ListRenderItem<Wishlist> = ({ item }) => (
     <View style={styles.wishlistContainer}>
-      <View style={styles.square}>
-        {item.recently_viewed ? (
-          item.list.map((listItem, index) => (
-            <Link key={index} href={`/listing/${listItem.id}`} asChild>
-              <TouchableOpacity style={styles.touchable}>
-                <Image source={{ uri: listItem.medium_url! }} style={styles.image} />
+      <View style={styles.shadowContainer}>
+        <View style={styles.square}>
+          {item.recently_viewed ? (
+            item.list.map((listItem, index) => (
+              <Link key={index} href={`/listing/${listItem.id}`} asChild>
+                <TouchableOpacity style={styles.touchable}>
+                  <Image source={{ uri: listItem.medium_url! }} style={styles.image} />
+                </TouchableOpacity>
+              </Link>
+            ))
+          ) : (
+            <Link href={`/listing/${item.list[0].id}`} asChild>
+              <TouchableOpacity style={styles.touchableFull}>
+                <Image source={{ uri: item.list[0].medium_url! }} style={styles.image} />
               </TouchableOpacity>
             </Link>
-          ))
-        ) : (
-          <Link href={`/listing/${item.list[0].id}`} asChild>
-            <TouchableOpacity style={styles.touchableFull}>
-              <Image source={{ uri: item.list[0].medium_url! }} style={styles.image} />
-            </TouchableOpacity>
-          </Link>
-        )}
+          )}
+        </View>
       </View>
       <View style={styles.wishlistTexts}>
         <Text style={styles.wishlistTitle}>{item.name}</Text>
@@ -53,13 +55,22 @@ const styles = StyleSheet.create({
   containerBox: {
     flex: 1,
     width: '100%',
+    paddingTop:10,
     paddingHorizontal: 16,
     gap: 20,
+  },
+  shadowContainer: {
+    borderRadius: 10,
+    elevation: 2,
+    shadowColor: '000',
+    shadowOpacity: 0.4,
+    shadowRadius: 6,
+    shadowOffset: { width: 0, height: 2 },
   },
   square: {
     borderWidth: 2,
     borderRadius: 10,
-    borderColor: 'white',
+    borderColor:'#fff',
     width: 160,
     height: 160,
     flexDirection: 'row',
