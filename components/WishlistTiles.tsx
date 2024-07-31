@@ -15,7 +15,7 @@ const WishlistTiles = () => {
       <View style={styles.shadowContainer}>
         <View style={styles.square}>
           {item.recently_viewed ? (
-            item.list.map((listItem, index) => (
+            item.list.slice(0,4).map((listItem, index) => (
               <Link key={index} href={`/listing/${listItem.id}`} asChild>
                 <TouchableOpacity style={styles.touchable}>
                   <Image source={{ uri: listItem.medium_url! }} style={styles.image} />
