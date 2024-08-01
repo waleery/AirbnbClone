@@ -13,7 +13,7 @@ const WishlistTiles = () => {
   const renderRow: ListRenderItem<Wishlist> = ({ item }) => (
     <View style={styles.wishlistContainer}>
       <View style={styles.shadowContainer}>
-        <View style={styles.square}>
+        <View style={styles.tile}>
           {item.recently_viewed ? (
             item.list.slice(0,4).map((listItem, index) => (
               <Link key={index} href={`/listing/${listItem.id}`} asChild>
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
     shadowOffset: { width: 0, height: 2 },
   },
-  square: {
+  tile: {
     borderWidth: 2,
     borderRadius: 10,
     borderColor:'#fff',
