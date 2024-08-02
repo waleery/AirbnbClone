@@ -1,31 +1,28 @@
-import { FlatList } from 'react-native-gesture-handler'
-import { TouchableOpacity } from '@gorhom/bottom-sheet'
-import { View, ListRenderItem, Image, StyleSheet, Text } from 'react-native'
-import { Link } from 'expo-router'
+import { FlatList } from 'react-native-gesture-handler';
+import { TouchableOpacity } from '@gorhom/bottom-sheet';
+import { View, ListRenderItem, Image, StyleSheet, Text } from 'react-native';
+import { Link } from 'expo-router';
 
-import wishlistData from '@/assets/data/wishlist.json'
-import { Wishlist } from '@/types/whishlist'
-const wishlists: Wishlist[] = wishlistData as Wishlist[]
+import wishlistData from '@/assets/data/wishlist.json';
+import { Wishlist } from '@/types/whishlist';
 
 const WishlistTiles = () => {
-  const wishlists: Wishlist[] = wishlistData as Wishlist[]
-
   const renderRow: ListRenderItem<Wishlist> = ({ item }) => (
     <View style={styles.wishlistContainer}>
       <View style={styles.shadowContainer}>
         <View style={styles.tile}>
           {item.recently_viewed ? (
-            item.list.slice(0,4).map((listItem, index) => (
+            item.list.slice(0, 4).map((listItem, index) => (
               <Link key={index} href={`/listing/${listItem.id}`} asChild>
-                <TouchableOpacity style={styles.touchable}>
-                  <Image source={{ uri: listItem.medium_url! }} style={styles.image} />
+                <TouchableOpacity style={getItemStyle(index)}>
+                  <Image source={{ uri: listItem.medium_url }} style={styles.image} />
                 </TouchableOpacity>
               </Link>
             ))
           ) : (
             <Link href={`/listing/${item.list[0].id}`} asChild>
               <TouchableOpacity style={styles.touchableFull}>
-                <Image source={{ uri: item.list[0].medium_url! }} style={styles.image} />
+                <Image source={{ uri: item.list[0].medium_url }} style={styles.image} />
               </TouchableOpacity>
             </Link>
           )}
@@ -36,26 +33,35 @@ const WishlistTiles = () => {
         <Text style={styles.wishlistCount}>{item.list.length} saved</Text>
       </View>
     </View>
-  )
+  );
 
   return (
     <FlatList
-      data={wishlists}
+      data={wishlistData as Wishlist[]}
       renderItem={renderRow}
       numColumns={2}
       contentContainerStyle={styles.containerBox}
       columnWrapperStyle={styles.columnWrapper}
     />
-  )
-}
+  );
+};
 
-export default WishlistTiles
+export default WishlistTiles;
 
+const getItemStyle = (index: number) => {
+  switch (index) {
+    case 0: return styles.item1;
+    case 1: return styles.item2;
+    case 2: return styles.item3;
+    case 3: return styles.item4;
+    default: return styles.item1;
+  }
+};
 const styles = StyleSheet.create({
   containerBox: {
     flex: 1,
     width: '100%',
-    paddingTop:10,
+    paddingTop: 10,
     paddingHorizontal: 16,
     gap: 20,
   },
@@ -70,16 +76,40 @@ const styles = StyleSheet.create({
   tile: {
     borderWidth: 2,
     borderRadius: 10,
-    borderColor:'#fff',
+    borderColor: '#fff',
     width: 160,
     height: 160,
     flexDirection: 'row',
     flexWrap: 'wrap',
     overflow: 'hidden',
   },
-  touchable: {
+  item1: {
     width: '50%',
     height: '50%',
+    borderRightWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: '#fff',
+  },
+  item2: {
+    width: '50%',
+    height: '50%',
+    borderLeftWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: '#fff',
+  },
+  item3: {
+    width: '50%',
+    height: '50%',
+    borderRightWidth: 1,
+    borderTopWidth: 1,
+    borderColor: '#fff',
+  },
+  item4: {
+    width: '50%',
+    height: '50%',
+    borderTopWidth: 1,
+    borderLeftWidth: 1,
+    borderColor: '#fff',
   },
   touchableFull: {
     width: '100%',
@@ -107,4 +137,4 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '300',
   },
-})
+});
