@@ -4,6 +4,3 @@ const store = createStore()
 
 export const wishlistEditMode = atom<boolean>(false)
 
-export const toogleWishlistEditMode = () => {
-    store.set(wishlistEditMode, !wishlistEditMode)
-}
