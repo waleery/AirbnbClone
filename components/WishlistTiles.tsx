@@ -5,7 +5,7 @@ import { Link } from 'expo-router'
 
 import wishlistData from '@/assets/data/wishlist.json'
 import { Wishlist } from '@/types/whishlist'
-import { AntDesign, Entypo } from '@expo/vector-icons'
+import { AntDesign, Entypo, Ionicons } from '@expo/vector-icons'
 import { useAtomValue } from 'jotai'
 import { wishlistEditMode } from '@/store/wishlistStore'
 
@@ -33,7 +33,7 @@ const WishlistTiles = () => {
               </Link>
               {editMode && (
                 <View style={styles.remove}>
-                  <AntDesign name="close" size={14} color="black" />
+                  <Ionicons name="close" size={17} color="black" />
                 </View>
               )}
             </View>
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     left: '6%',
     top: '6%',
-    padding: 4,
+    padding: 3,
     borderRadius: 50,
     borderColor: 'transparent',
   },
