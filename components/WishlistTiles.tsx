@@ -5,7 +5,7 @@ import { Link } from 'expo-router'
 
 import wishlistData from '@/assets/data/wishlist.json'
 import { Wishlist } from '@/types/whishlist'
-import { AntDesign, Entypo, Ionicons } from '@expo/vector-icons'
+import { Ionicons } from '@expo/vector-icons'
 import { useAtomValue } from 'jotai'
 import { wishlistEditMode } from '@/store/wishlistStore'
 
