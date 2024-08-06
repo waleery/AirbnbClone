@@ -30,6 +30,7 @@ const Page = () => {
       conversation={item}
       openSwipeable={openSwipeable}
       setOpenSwipeable={setOpenSwipeable}
+      key={item.conversation_id}
     />
   )
   const handleSelectMessagesType = (type: string) => {
@@ -63,6 +64,7 @@ const Page = () => {
         >
           {messageTypes.map((type) => (
             <TouchableOpacity
+              key={type}
               style={[styles.chip, selectedType === type && styles.selectedChip]}
               onPress={() => handleSelectMessagesType(type)}
             >
@@ -102,8 +104,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: '500',
-    paddingTop:16,
-    paddingHorizontal:16
+    paddingTop: 16,
+    paddingHorizontal: 16,
   },
   chip: {
     justifyContent: 'center',
@@ -121,8 +123,7 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     flexGrow: 0,
-    paddingHorizontal:16
-    
+    paddingHorizontal: 16,
   },
   scrollViewContentContainer: {
     gap: 10,

@@ -131,6 +131,7 @@ const MessageTile = ({
           if (index < 2) {
             return (
               <Image
+                key={`host-${index}`}
                 source={{ uri: host?.image }}
                 style={[
                   styles.hostImage,
