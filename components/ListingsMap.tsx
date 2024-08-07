@@ -10,10 +10,10 @@ interface Props {
 }
 
 const INITIAL_REGION = {
-  latitude: 51,
-  longitude: 11,
-  latitudeDelta: 9,
-  longitudeDelta: 9,
+  latitude:  52.420008,
+  longitude: 13.404954,
+  latitudeDelta: 1,
+  longitudeDelta: 1,
 }
 
 const ListingsMap = memo(({ listings }: Props) => {
