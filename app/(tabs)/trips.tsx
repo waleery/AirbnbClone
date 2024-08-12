@@ -1,11 +1,16 @@
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
-import { Link, Stack } from 'expo-router'
+import { Link, Stack, useRouter } from 'expo-router'
 import { View, Text, StyleSheet, Image } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import { useCallback } from 'react'
 
 const Page = () => {
+  const router = useRouter()
+
+  const handleOnPresStartSearching = useCallback(() => router.push('/'), [])
+
   return (
     <View style={defaultStyles.flex}>
       <Stack.Screen
@@ -21,11 +26,12 @@ const Page = () => {
           <Text style={styles.noTripsText2}>
             Time to dust off your bags and start planning your next adventure
           </Text>
-          <Link href={`/`}>
-            <TouchableOpacity style={[defaultStyles.btn, { paddingHorizontal: 50 }]}>
-              <Text style={[defaultStyles.btnText, { fontWeight: '500' }]}>Start searching</Text>
-            </TouchableOpacity>
-          </Link>
+          <TouchableOpacity
+            style={[defaultStyles.btn, { paddingHorizontal: 50 }]}
+            onPress={handleOnPresStartSearching}
+          >
+            <Text style={[defaultStyles.btnText, { fontWeight: '500' }]}>Start searching</Text>
+          </TouchableOpacity>
         </View>
       </SafeAreaView>
     </View>
