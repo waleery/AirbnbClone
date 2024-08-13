@@ -10,7 +10,7 @@ import { Conversation } from '@/types/messages'
 import { parseISO } from 'date-fns'
 import MessageTile from '@/components/MessageTile'
 import { Ionicons } from '@expo/vector-icons'
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 
 const messagesData: Conversation[] = messagesDataRaw.map((message: any) => ({
   ...message,
@@ -33,9 +33,9 @@ const Page = () => {
       key={item.conversation_id}
     />
   )
-  const handleSelectMessagesType = (type: string) => {
+  const handleSelectMessagesType = useCallback((type: string) => () =>{
     setSelectedType(type)
-  }
+  }, [])
 
   const filteredMessagesData = useMemo(() => {
     if (selectedType === 'All') {
@@ -66,7 +66,7 @@ const Page = () => {
             <TouchableOpacity
               key={type}
               style={[styles.chip, selectedType === type && styles.selectedChip]}
-              onPress={() => handleSelectMessagesType(type)}
+              onPress={handleSelectMessagesType(type)}
             >
               <Text style={selectedType === type && styles.selectedChipText}>{type}</Text>
             </TouchableOpacity>
