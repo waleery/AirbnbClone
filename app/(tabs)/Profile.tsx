@@ -3,7 +3,7 @@ import colors from '@/constants/Colors'
 import { useAuth, useUser } from '@clerk/clerk-expo'
 import { Ionicons } from '@expo/vector-icons'
 import { Link } from 'expo-router'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { View, Text, Button, StyleSheet, SafeAreaView, Image } from 'react-native'
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 import * as ImagePicker from 'expo-image-picker'
@@ -36,7 +36,7 @@ const Page = () => {
     }
   }
 
-  const onCaptureImage = async () => {
+  const onCaptureImage = useCallback(async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
@@ -50,7 +50,7 @@ const Page = () => {
         file: base64,
       })
     }
-  }
+  }, [])
 
   return (
     <SafeAreaView style={defaultStyles.container}>
