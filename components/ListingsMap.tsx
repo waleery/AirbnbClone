@@ -10,7 +10,7 @@ interface Props {
 }
 
 const INITIAL_REGION = {
-  latitude:  52.420008,
+  latitude: 52.420008,
   longitude: 13.404954,
   latitudeDelta: 1,
   longitudeDelta: 1,
@@ -58,6 +58,7 @@ const ListingsMap = memo(({ listings }: Props) => {
         clusterTextColor="#000"
         renderCluster={renderCluster}
         radius={45}
+        mapPadding={{ top: 0, bottom: 60, left: 0, right: 0 }}
       >
         {listings.features.map((item: Feature) => (
           <Marker
