@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native'
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import Colors from '@/constants/Colors'
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 import { TouchableOpacity } from 'react-native-gesture-handler'
@@ -25,7 +25,7 @@ export default function WhenCard({ setOpenCard, openCard }: Props) {
   const [endDate, setEndDate] = useState<DateType>(null)
   const today = new Date().toISOString().substring(0, 10)
 
-  const handleDateChange = (dates: { startDate?: DateType; endDate?: DateType }) => {
+  const handleDateChange = useCallback((dates: { startDate?: DateType; endDate?: DateType }) => {
     const start = dates.startDate ? dayjs(dates.startDate).toDate() : null
     const end = dates.endDate ? dayjs(dates.endDate).toDate() : null
 
@@ -40,7 +40,7 @@ export default function WhenCard({ setOpenCard, openCard }: Props) {
     } else {
       setDaysCount(0)
     }
-  }
+  }, [])
 
   const displayPersonCount = () => {
     console.log('😀daysCount', daysCount)
