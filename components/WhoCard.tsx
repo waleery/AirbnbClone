@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 import { Ionicons } from '@expo/vector-icons'
@@ -31,15 +31,15 @@ const WhoCard = ({ setOpenCard, openCard }: Props) => {
     }
   }
 
-  const displayPersonCount = () => {
+  const displayPersonCount = useCallback(() => {
     const personCount = groups.reduce((prev, current) => prev + current.count, 0)
-    if(personCount == 1){
+    if (personCount == 1) {
       return `${personCount} person`
-    } else if( personCount >1){
+    } else if (personCount > 1) {
       return `${personCount} persons`
     }
-    return "Add person"
-  }
+    return 'Add person'
+  }, [])
   return (
     <View style={defaultStyles.card}>
       {openCard != 2 && (
