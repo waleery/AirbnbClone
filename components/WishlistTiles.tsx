@@ -5,9 +5,13 @@ import { WishlistItem } from './WishlistItem'
 
 import wishlistData from '@/assets/data/wishlist.json'
 import { Wishlist } from '@/types/whishlist'
+import { useCallback } from 'react'
 
 const WishlistTiles = () => {
-  const renderRow: ListRenderItem<Wishlist> = ({ item }) => <WishlistItem wishlist={item} />
+  const renderRow: ListRenderItem<Wishlist> = useCallback(
+    ({ item }) => <WishlistItem wishlist={item} />,
+    []
+  )
   return (
     <FlatList
       data={wishlistData as Wishlist[]}
