@@ -1,5 +1,3 @@
-import { atom, createStore } from 'jotai'
-
-const store = createStore()
+import { atom } from 'jotai'
 
 export const wishlistEditMode = atom<boolean>(false)
