@@ -1,8 +1,6 @@
-import { Ionicons } from '@expo/vector-icons'
-import { useAtom, useAtomValue } from 'jotai'
+import { useAtom } from 'jotai'
 import React from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { defaultStyles } from '@/constants/Styles'
