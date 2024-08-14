@@ -1,17 +1,17 @@
-import ExploreHeader from '@/components/ExploreHeader'
-import Listings from '@/components/Listings'
-import { accomodation_categories } from '@/constants/categories'
 import { Stack } from 'expo-router'
+import { useAtom } from 'jotai'
 import { useCallback, useMemo, useState } from 'react'
 import { View } from 'react-native'
-import listingsDataGeo from '@/assets/data/airbnb-listings.geo.json'
-import { ListingGeo } from '@/types/listingGeo'
 
-import ListingsMap from '@/components/ListingsMap'
+import listingsDataGeo from '@/assets/data/airbnb-listings.geo.json'
+import ExploreHeader from '@/components/ExploreHeader'
+import Listings from '@/components/Listings'
 import ListingsBottomSheet from '@/components/ListingsBottomSheet'
+import ListingsMap from '@/components/ListingsMap'
 import { defaultStyles } from '@/constants/Styles'
-import { useAtom } from 'jotai'
+import { accomodation_categories } from '@/constants/categories'
 import { filteredListingsAtom } from '@/store/listingsStore'
+import { ListingGeo } from '@/types/listingGeo'
 
 const Page = () => {
   const [category, setCategory] = useState(accomodation_categories[0].name)

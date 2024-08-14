@@ -1,18 +1,19 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
 import { Ionicons } from '@expo/vector-icons'
+import { useAtom, useAtomValue } from 'jotai'
+import React from 'react'
+import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import { SafeAreaView } from 'react-native-safe-area-context'
+
 import { defaultStyles } from '@/constants/Styles'
 import { wishlistEditMode } from '@/store/wishlistStore'
-import { useAtom, useAtomValue } from 'jotai'
 
 const WishlistHeader = () => {
-  const [editMode, setEditMode] = useAtom(wishlistEditMode);
+  const [editMode, setEditMode] = useAtom(wishlistEditMode)
 
   const toggleWishlistEditMode = () => {
-    setEditMode(prevMode => !prevMode);
-  };
+    setEditMode((prevMode) => !prevMode)
+  }
   return (
     <SafeAreaView edges={['top']} style={[defaultStyles.pX2, defaultStyles.safeArea]}>
       <Pressable onPress={toggleWishlistEditMode}>

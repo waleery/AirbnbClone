@@ -1,11 +1,12 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { Ionicons } from '@expo/vector-icons'
+import { useAtom, useAtomValue } from 'jotai'
 import React, { useCallback } from 'react'
+import { View, Text, StyleSheet } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
-import { Ionicons } from '@expo/vector-icons'
+
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
-import { useAtom, useAtomValue } from 'jotai'
 import { groupsAtom } from '@/store/listingsStore'
 
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)

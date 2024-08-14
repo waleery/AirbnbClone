@@ -1,19 +1,20 @@
-import { defaultStyles } from '@/constants/Styles'
-import { accomodation_categories } from '@/constants/categories'
-import colors from '@/constants/Colors'
 import { Ionicons, MaterialIcons } from '@expo/vector-icons'
+import * as Haptics from 'expo-haptics'
 import { Link } from 'expo-router'
 import { useRef, useState } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import * as Haptics from 'expo-haptics'
+
+import colors from '@/constants/Colors'
+import { defaultStyles } from '@/constants/Styles'
+import { accomodation_categories } from '@/constants/categories'
 
 interface Props {
   onCategoryChanged: (category: string) => void
 }
 const ExploreHeader = ({ onCategoryChanged }: Props) => {
   const scrollRef = useRef<ScrollView>(null)
-  const itemsRef = useRef<Array<TouchableOpacity>>([])
+  const itemsRef = useRef<TouchableOpacity[]>([])
   const [activeIndex, setActiveIndex] = useState(0)
 
   const selectCategory = (index: number) => {
@@ -93,7 +94,8 @@ const styles = StyleSheet.create({
     padding: 10,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: colors.grey,
-    borderRadius: 24,elevation: 2,
+    borderRadius: 24,
+    elevation: 2,
     shadowColor: '#000',
     shadowOpacity: 0.07,
     shadowRadius: 8,

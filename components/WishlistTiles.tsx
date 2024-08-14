@@ -1,9 +1,10 @@
-import { FlatList } from 'react-native-gesture-handler'
 import { ListRenderItem, StyleSheet } from 'react-native'
+import { FlatList } from 'react-native-gesture-handler'
+
+import { WishlistItem } from './WishlistItem'
 
 import wishlistData from '@/assets/data/wishlist.json'
 import { Wishlist } from '@/types/whishlist'
-import { WishlistItem } from './WishlistItem'
 
 const WishlistTiles = () => {
   const renderRow: ListRenderItem<Wishlist> = ({ item }) => <WishlistItem wishlist={item} />
@@ -20,7 +21,6 @@ const WishlistTiles = () => {
 
 export default WishlistTiles
 
-
 const styles = StyleSheet.create({
   containerBox: {
     flex: 1,
@@ -31,5 +31,5 @@ const styles = StyleSheet.create({
   },
   columnWrapper: {
     justifyContent: 'space-between',
-  }
+  },
 })

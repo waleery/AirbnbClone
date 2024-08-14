@@ -1,16 +1,18 @@
-import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
-import Animated, { SlideInDown } from 'react-native-reanimated'
-import { defaultStyles } from '@/constants/Styles'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 import { Ionicons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
+import React from 'react'
+import { View, Text, StyleSheet } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+import Animated, { SlideInDown } from 'react-native-reanimated'
+
+import { defaultStyles } from '@/constants/Styles'
+
 interface Props {
   onClearAll: () => void
   filter: () => void
 }
 
-const BookingFooter = ({ onClearAll,filter }: Props) => {
+const BookingFooter = ({ onClearAll, filter }: Props) => {
   const router = useRouter()
 
   return (

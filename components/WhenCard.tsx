@@ -1,14 +1,14 @@
-import { View, Text, StyleSheet } from 'react-native'
-import React, { useCallback, useState } from 'react'
-import Colors from '@/constants/Colors'
-import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
-import { TouchableOpacity } from 'react-native-gesture-handler'
-
-import { defaultStyles } from '@/constants/Styles'
-import DateTimePicker, { DateType } from 'react-native-ui-datepicker'
 import { differenceInDays, parseISO } from 'date-fns'
 import dayjs from 'dayjs'
 import { useAtom } from 'jotai'
+import React, { useCallback, useState } from 'react'
+import { View, Text, StyleSheet } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
+import DateTimePicker, { DateType } from 'react-native-ui-datepicker'
+
+import Colors from '@/constants/Colors'
+import { defaultStyles } from '@/constants/Styles'
 import { daysStayFilterAtom } from '@/store/listingsStore'
 
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)

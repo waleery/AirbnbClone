@@ -1,12 +1,13 @@
-import { defaultStyles } from '@/constants/Styles'
-import colors from '@/constants/Colors'
 import { useAuth, useUser } from '@clerk/clerk-expo'
 import { Ionicons } from '@expo/vector-icons'
+import * as ImagePicker from 'expo-image-picker'
 import { Link } from 'expo-router'
 import { useCallback, useEffect, useState } from 'react'
 import { View, Text, Button, StyleSheet, SafeAreaView, Image } from 'react-native'
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
-import * as ImagePicker from 'expo-image-picker'
+
+import colors from '@/constants/Colors'
+import { defaultStyles } from '@/constants/Styles'
 const Page = () => {
   const { signOut, isSignedIn } = useAuth()
 

@@ -1,13 +1,12 @@
-import { StyleSheet } from 'react-native'
 import { BlurView } from 'expo-blur'
-
-import { useEffect, useState } from 'react'
-
-import WhereCard from '@/components/WhereCard'
-import WhenCard from '@/components/WhenCard'
-import WhoCard from '@/components/WhoCard'
-import BookingFooter from '@/components/BookingFooter'
 import { useAtom, useSetAtom } from 'jotai'
+import { useEffect, useState } from 'react'
+import { StyleSheet } from 'react-native'
+
+import BookingFooter from '@/components/BookingFooter'
+import WhenCard from '@/components/WhenCard'
+import WhereCard from '@/components/WhereCard'
+import WhoCard from '@/components/WhoCard'
 import {
   daysStayFilterAtom,
   filterAtom,
@@ -18,13 +17,13 @@ import {
 const Page = () => {
   const setGuestsIncluded = useSetAtom(guestsIncludedFilterAtom)
   const setDaysStayFilterAtom = useSetAtom(daysStayFilterAtom)
-  const [filterFlag,setFilterFlag] = useAtom(filterAtom)
+  const [filterFlag, setFilterFlag] = useAtom(filterAtom)
   const [groups, setGroups] = useAtom(groupsAtom)
   const [openCard, setOpenCard] = useState(0)
   const [selectedPlace, setSelectedPalce] = useState(0)
 
   useEffect(() => {
-    if(filterFlag){
+    if (filterFlag) {
       setFilterFlag(false)
     }
   }, [filterFlag])
@@ -54,10 +53,7 @@ const Page = () => {
       />
       {/* When */}
 
-      <WhenCard
-        openCard={openCard}
-        setOpenCard={setOpenCard}
-      />
+      <WhenCard openCard={openCard} setOpenCard={setOpenCard} />
       {/* Who */}
 
       <WhoCard openCard={openCard} setOpenCard={setOpenCard} />
@@ -74,4 +70,3 @@ const styles = StyleSheet.create({
     paddingTop: 100,
   },
 })
-

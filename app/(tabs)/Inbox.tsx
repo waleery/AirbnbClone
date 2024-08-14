@@ -1,16 +1,16 @@
-import InboxHeader from '@/components/InboxHeader'
-import { defaultStyles } from '@/constants/Styles'
-import { messageTypes } from '@/constants/messageTypes'
+import { Ionicons } from '@expo/vector-icons'
+import { parseISO } from 'date-fns'
 import { Stack } from 'expo-router'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, ListRenderItem } from 'react-native'
 import { FlatList, Swipeable } from 'react-native-gesture-handler'
 
 import messagesDataRaw from '@/assets/data/messages.json'
-import { Conversation } from '@/types/messages'
-import { parseISO } from 'date-fns'
+import InboxHeader from '@/components/InboxHeader'
 import MessageTile from '@/components/MessageTile'
-import { Ionicons } from '@expo/vector-icons'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { defaultStyles } from '@/constants/Styles'
+import { messageTypes } from '@/constants/messageTypes'
+import { Conversation } from '@/types/messages'
 
 const messagesData: Conversation[] = messagesDataRaw.map((message: any) => ({
   ...message,
@@ -33,9 +33,12 @@ const Page = () => {
       key={item.conversation_id}
     />
   )
-  const handleSelectMessagesType = useCallback((type: string) => () =>{
-    setSelectedType(type)
-  }, [])
+  const handleSelectMessagesType = useCallback(
+    (type: string) => () => {
+      setSelectedType(type)
+    },
+    []
+  )
 
   const filteredMessagesData = useMemo(() => {
     if (selectedType === 'All') {

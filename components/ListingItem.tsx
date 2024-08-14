@@ -1,11 +1,12 @@
-import { Link } from 'expo-router'
-import Animated, { FadeIn, FadeOutLeft } from 'react-native-reanimated'
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
-import { useState } from 'react'
-import { Listing } from '@/types/listing'
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons'
-import { defaultStyles } from '@/constants/Styles'
+import { Link } from 'expo-router'
+import { useState } from 'react'
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
+import Animated, { FadeIn, FadeOutLeft } from 'react-native-reanimated'
+
 import Colors from '@/constants/Colors'
+import { defaultStyles } from '@/constants/Styles'
+import { Listing } from '@/types/listing'
 
 interface Props {
   item: Listing
@@ -78,8 +79,8 @@ const styles = StyleSheet.create({
   shortInfo: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems:'flex-start',
-    gap:20
+    alignItems: 'flex-start',
+    gap: 20,
   },
   ratingInfo: {
     flexDirection: 'row',
@@ -95,9 +96,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: 4,
   },
-  infoText:{
-    flex:1,
-    alignItems:'flex-start'
+  infoText: {
+    flex: 1,
+    alignItems: 'flex-start',
   },
   imagePlaceholder: {
     width: '100%',

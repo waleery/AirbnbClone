@@ -1,14 +1,15 @@
-import { Animated, Button, Image, Pressable, StyleSheet, Text, View } from 'react-native'
-import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { useAtomValue } from 'jotai'
-import { listingsAtom } from '@/store/listingsStore'
-import { Conversation } from '@/types/messages'
-import { getDate, getMonth, getYear } from 'date-fns'
-import { defaultStyles } from '@/constants/Styles'
 import { AntDesign, Entypo, FontAwesome5, Ionicons } from '@expo/vector-icons'
+import { getDate, getMonth, getYear } from 'date-fns'
+import { useAtomValue } from 'jotai'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
+import { Animated, Button, Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import { RectButton, Swipeable } from 'react-native-gesture-handler'
 import { AnimatedInterpolation } from 'react-native-gesture-handler/lib/typescript/components/Swipeable'
+
 import Colors from '@/constants/Colors'
+import { defaultStyles } from '@/constants/Styles'
+import { listingsAtom } from '@/store/listingsStore'
+import { Conversation } from '@/types/messages'
 
 // Definiowanie typów kluczy
 type IconKey = 'Archive' | 'Star'

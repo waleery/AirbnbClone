@@ -1,9 +1,10 @@
 // atoms.js
-import { Listing } from '@/types/listing'
 import { atom } from 'jotai'
+
 import listingsData from '@/assets/data/airbnb-listings.json'
-import { GuestsGroup } from '@/types/guestsGroups'
 import { guestsGroups } from '@/constants/guestsGroups'
+import { GuestsGroup } from '@/types/guestsGroups'
+import { Listing } from '@/types/listing'
 
 export const listingsAtom = atom<Listing[]>(listingsData as Listing[])
 
@@ -20,7 +21,7 @@ export const filteredListingsAtom = atom((get) => {
   const filter = get(filterAtom)
   const guestsIncluded = get(guestsIncludedFilterAtom)
   const daysStay = get(daysStayFilterAtom)
-  
+
   if (!filter) {
     return listings
   }

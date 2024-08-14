@@ -1,10 +1,11 @@
+import { Link, Stack, useRouter } from 'expo-router'
+import { useCallback } from 'react'
+import { View, Text, StyleSheet, Image } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+import { SafeAreaView } from 'react-native-safe-area-context'
+
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
-import { Link, Stack, useRouter } from 'expo-router'
-import { View, Text, StyleSheet, Image } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { TouchableOpacity } from 'react-native-gesture-handler'
-import { useCallback } from 'react'
 
 const Page = () => {
   const router = useRouter()

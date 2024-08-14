@@ -1,10 +1,11 @@
-import { Wishlist } from '@/types/whishlist'
-import { Image, StyleSheet, Text, View } from 'react-native'
-import { Link } from 'expo-router'
-import { useAtomValue } from 'jotai'
-import { wishlistEditMode } from '@/store/wishlistStore'
 import { Ionicons } from '@expo/vector-icons'
 import { TouchableOpacity } from '@gorhom/bottom-sheet'
+import { Link } from 'expo-router'
+import { useAtomValue } from 'jotai'
+import { Image, StyleSheet, Text, View } from 'react-native'
+
+import { wishlistEditMode } from '@/store/wishlistStore'
+import { Wishlist } from '@/types/whishlist'
 
 export const WishlistItem = ({ wishlist }: { wishlist: Wishlist }) => {
   const editMode = useAtomValue(wishlistEditMode)

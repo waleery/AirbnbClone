@@ -1,15 +1,11 @@
-import { defaultStyles } from '@/constants/Styles'
-import { Listing } from '@/types/listing'
 import { BottomSheetFlatList, BottomSheetFlatListMethods } from '@gorhom/bottom-sheet'
 import { useEffect, useRef, useState } from 'react'
-import {
-  View,
-  Text,
-  ListRenderItem,
-  StyleSheet,
-} from 'react-native'
+import { View, Text, ListRenderItem, StyleSheet } from 'react-native'
+
 import ListingItem from './ListingItem'
 
+import { defaultStyles } from '@/constants/Styles'
+import { Listing } from '@/types/listing'
 
 interface Props {
   listings: Listing[]

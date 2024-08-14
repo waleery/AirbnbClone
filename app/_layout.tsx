@@ -1,16 +1,17 @@
+import { ClerkProvider, useAuth } from '@clerk/clerk-expo'
 import { Ionicons } from '@expo/vector-icons'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import { useFonts } from 'expo-font'
 import { Stack, useRouter } from 'expo-router'
+import * as SecureStore from 'expo-secure-store'
 import * as SplashScreen from 'expo-splash-screen'
 import { useEffect } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
-import * as SecureStore from 'expo-secure-store'
-import { ClerkProvider, useAuth } from '@clerk/clerk-expo'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
-import { defaultStyles } from '@/constants/Styles'
+
 import ModalHeaderText from '@/components/ModalHeaderText'
 import colors from '@/constants/Colors'
+import { defaultStyles } from '@/constants/Styles'
 const CLERK_PUBLISAHBLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY
 
 const tokenCache = {
@@ -24,9 +25,7 @@ const tokenCache = {
   async saveToken(key: string, value: string) {
     try {
       return SecureStore.setItemAsync(key, value)
-    } catch (error) {
-      return
-    }
+    } catch (error) {}
   },
 }
 

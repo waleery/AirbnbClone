@@ -1,3 +1,5 @@
+import { Ionicons } from '@expo/vector-icons'
+import { useState } from 'react'
 import {
   View,
   Text,
@@ -8,10 +10,9 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
-import { Ionicons } from '@expo/vector-icons'
-import { useState } from 'react'
-import Colors from '@/constants/Colors'
+
 import { places } from '@/assets/data/places'
+import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
@@ -79,7 +80,6 @@ export default function WhereCard({
 }
 
 const styles = StyleSheet.create({
-  
   searchSection: {
     height: 50,
     flexDirection: 'row',

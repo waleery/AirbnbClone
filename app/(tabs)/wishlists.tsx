@@ -1,9 +1,9 @@
-import WishlistHeader from '@/components/WishlistHeader'
-import { defaultStyles } from '@/constants/Styles'
 import { Link, Stack } from 'expo-router'
 import { View, Text, StyleSheet, ListRenderItem, Image } from 'react-native'
 
+import WishlistHeader from '@/components/WishlistHeader'
 import WishlistTiles from '@/components/WishlistTiles'
+import { defaultStyles } from '@/constants/Styles'
 
 const Page = () => {
   return (

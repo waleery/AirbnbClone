@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+
 import colors from './Colors'
 import Colors from './Colors'
 
@@ -106,13 +107,13 @@ export const defaultStyles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '500',
   },
-  cardHeader:{
+  cardHeader: {
     fontSize: 24,
     padding: 20,
     fontWeight: '500',
-  },  
-  pX2:{
-    paddingHorizontal:20
+  },
+  pX2: {
+    paddingHorizontal: 20,
   },
   safeArea: {
     backgroundColor: '#fff',
