@@ -45,7 +45,7 @@ export default [
 
     languageOptions: {
       globals: {
-        ...reactNative.environments['react-native'],
+        ...reactNative.environments['react-native']['react-native'],
       },
 
       parser: tsParser,
