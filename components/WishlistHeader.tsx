@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
@@ -9,9 +9,10 @@ import { wishlistEditMode } from '@/store/wishlistStore'
 const WishlistHeader = () => {
   const [editMode, setEditMode] = useAtom(wishlistEditMode)
 
-  const toggleWishlistEditMode = () => {
+  const toggleWishlistEditMode = useCallback(() => {
     setEditMode((prevMode) => !prevMode)
-  }
+  }, [setEditMode])
+
   return (
     <SafeAreaView edges={['top']} style={[defaultStyles.pX2, defaultStyles.safeArea]}>
       <Pressable onPress={toggleWishlistEditMode}>
