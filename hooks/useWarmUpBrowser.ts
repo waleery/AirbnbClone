@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 export const useWarmUpBrowser = () => {
   useEffect(() => {
     //to prepare browser in the background
-    void WebBrowser.warmUpAsync()
+    WebBrowser.warmUpAsync()
 
     return () => {
       WebBrowser.coolDownAsync()
