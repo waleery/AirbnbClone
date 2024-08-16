@@ -1,6 +1,6 @@
 import { BlurView } from 'expo-blur'
 import { useAtom, useSetAtom } from 'jotai'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { StyleSheet } from 'react-native'
 
 import BookingFooter from '@/components/BookingFooter'
@@ -26,21 +26,21 @@ const Page = () => {
     if (filterFlag) {
       setFilterFlag(false)
     }
-  }, [filterFlag])
+  }, [filterFlag, setFilterFlag])
 
-  const onClearAll = () => {
+  const onClearAll = useCallback(() => {
     setSelectedPalce(0)
     setOpenCard(0)
     setGroups((prev) => prev.map((item) => ({ ...item, count: 0 })))
     setGuestsIncluded(0)
     setDaysStayFilterAtom(null)
-  }
+  }, [setDaysStayFilterAtom, setGroups, setGuestsIncluded])
 
-  const filter = () => {
+  const filter = useCallback(() => {
     const totalPersonCount = groups.reduce((prev, current) => prev + current.count, 0)
     setGuestsIncluded(totalPersonCount)
     setFilterFlag(true)
-  }
+  }, [groups, setFilterFlag, setGuestsIncluded])
   return (
     <BlurView intensity={70} style={styles.container} tint="light">
       {/* Where */}
