@@ -16,7 +16,6 @@ module.exports = {
     'react-native-globals',
     'react',
     'react-native',
-    '@typescript-eslint/recommended',
   ],
   extends: [
     'eslint:recommended',
@@ -45,47 +44,7 @@ module.exports = {
     'react/display-name': 'off',
     'react/prop-types': 'off',
     '@typescript-eslint/no-var-requires': 'off',
-    'react-native/no-raw-text': [
-      2,
-      {
-        skip: [
-          // Headings
-          'Text.H1Bold',
-          'Text.H1Regular',
-          'Text.H2Bold',
-          'Text.H2Regular',
-          'Text.H3Bold',
-          'Text.H3Regular',
-          'Text.H4Bold',
-          'Text.H4Regular',
-          'Text.H5Bold',
-          'Text.H5Regular',
-          'Text.H6Bold',
-          'Text.H6Regular',
-          'Text.HMaxBold',
-          'Text.HMaxRegular',
-          'Text.HMaxDisplay',
-
-          // Body
-          'Text.Body1Regular',
-          'Text.Body1Bold',
-          'Text.Body2Regular',
-          'Text.Body2Bold',
-          'Text.CaptionRegular',
-          'Text.CaptionBold',
-
-          // Overline
-          'Text.OverlineRegular',
-          'Text.OverlineBold',
-
-          // Buttons
-          'Text.CTA',
-
-          // Rest
-          'StronaGlownaHeader',
-        ],
-      },
-    ],
+    '@typescript-eslint/ban-types': 'off',
   },
   settings: {
     'import/ignore': ['react-native'],
