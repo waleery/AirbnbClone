@@ -16,6 +16,7 @@ module.exports = {
     'react-native-globals',
     'react',
     'react-native',
+
   ],
   extends: [
     'eslint:recommended',
