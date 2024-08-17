@@ -1,8 +1,9 @@
-import { Link, Stack } from 'expo-router'
-import { View, Text, StyleSheet, ListRenderItem, Image } from 'react-native'
+import { Stack } from 'expo-router'
+import { View, Text, StyleSheet } from 'react-native'
 
 import WishlistHeader from '@/components/WishlistHeader'
 import WishlistTiles from '@/components/WishlistTiles'
+import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 
 const Page = () => {
@@ -24,7 +25,7 @@ export default Page
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     gap: 20,
     flex: 1,
   },
