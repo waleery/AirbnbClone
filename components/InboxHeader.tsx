@@ -1,9 +1,10 @@
 import { Ionicons } from '@expo/vector-icons'
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
+import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 
 const InboxHeader = () => {
@@ -31,10 +32,10 @@ const styles = StyleSheet.create({
   },
   topBtn: {
     padding: 10,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: Colors.veryLightGrey,
     borderRadius: 24,
     elevation: 2,
-    shadowColor: '#000',
+    shadowColor: Colors.black,
     shadowOpacity: 0.07,
     shadowRadius: 8,
   },
