@@ -1,12 +1,11 @@
 import { StyleSheet } from 'react-native'
 
-import colors from './Colors'
 import Colors from './Colors'
 
 export const defaultStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FDFFFF',
+    backgroundColor: Colors.white,
   },
   flex: {
     flex: 1,
@@ -17,26 +16,26 @@ export const defaultStyles = StyleSheet.create({
   inputField: {
     height: 44,
     borderWidth: 1,
-    borderColor: '#ABABAB',
+    borderColor: Colors.grey,
     borderRadius: 8,
     padding: 10,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
   },
   btn: {
-    backgroundColor: colors.primary,
+    backgroundColor: Colors.primary,
     height: 50,
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
   },
   btnText: {
-    color: '#fff',
+    color: Colors.white,
     fontSize: 16,
   },
   btnOutline: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     borderWidth: 1,
-    borderColor: colors.grey,
+    borderColor: Colors.grey,
     height: 50,
     borderRadius: 8,
     alignItems: 'center',
@@ -45,7 +44,7 @@ export const defaultStyles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   btnOutlineText: {
-    color: '#000',
+    color: Colors.black,
     fontSize: 16,
   },
   btnIcon: {
@@ -67,10 +66,10 @@ export const defaultStyles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     paddingVertical: 10,
     paddingHorizontal: 20,
-    borderTopColor: colors.grey,
+    borderTopColor: Colors.grey,
     borderTopWidth: StyleSheet.hairlineWidth,
   },
   center: {
@@ -80,11 +79,11 @@ export const defaultStyles = StyleSheet.create({
     color: Colors.white,
   },
   card: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     borderRadius: 14,
     margin: 10,
     elevation: 4,
-    shadowColor: '#000',
+    shadowColor: Colors.black,
     shadowOpacity: 0.3,
     shadowRadius: 4,
     shadowOffset: {
@@ -116,6 +115,6 @@ export const defaultStyles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   safeArea: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
   },
 })
