@@ -6,6 +6,7 @@ import { Image, StyleSheet, Text, View } from 'react-native'
 
 import { wishlistEditMode } from '@/store/wishlistStore'
 import { Wishlist } from '@/types/whishlist'
+import Colors from '@/constants/Colors'
 
 export const WishlistItem = ({ wishlist }: { wishlist: Wishlist }) => {
   const editMode = useAtomValue(wishlistEditMode)
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
   shadowContainer: {
     borderRadius: 10,
     elevation: 2,
-    shadowColor: '000',
+    shadowColor: Colors.black,
     shadowOpacity: 0.4,
     shadowRadius: 6,
     shadowOffset: { width: 0, height: 2 },
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
   tile: {
     borderWidth: 2,
     borderRadius: 10,
-    borderColor: '#fff',
+    borderColor: Colors.white,
     width: 160,
     height: 160,
     flexDirection: 'row',
@@ -89,28 +90,28 @@ const styles = StyleSheet.create({
     height: '50%',
     borderRightWidth: 1,
     borderBottomWidth: 1,
-    borderColor: '#fff',
+    borderColor: Colors.white,
   },
   item2: {
     width: '50%',
     height: '50%',
     borderLeftWidth: 1,
     borderBottomWidth: 1,
-    borderColor: '#fff',
+    borderColor: Colors.white,
   },
   item3: {
     width: '50%',
     height: '50%',
     borderRightWidth: 1,
     borderTopWidth: 1,
-    borderColor: '#fff',
+    borderColor: Colors.white,
   },
   item4: {
     width: '50%',
     height: '50%',
     borderTopWidth: 1,
     borderLeftWidth: 1,
-    borderColor: '#fff',
+    borderColor: Colors.white,
   },
   touchableFull: {
     width: '100%',
@@ -138,11 +139,11 @@ const styles = StyleSheet.create({
   remove: {
     position: 'absolute',
     borderWidth: 2,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     left: '6%',
     top: '6%',
     padding: 3,
     borderRadius: 50,
-    borderColor: 'transparent',
+    borderColor: Colors.transparent,
   },
 })
