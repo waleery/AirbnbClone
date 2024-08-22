@@ -1,5 +1,5 @@
 import { Ionicons } from '@expo/vector-icons'
-import { useState } from 'react'
+import { useCallback } from 'react'
 import {
   View,
   Text,
@@ -28,17 +28,24 @@ export default function WhereCard({
   setSelectedPlace,
   selectedPlace,
 }: Props) {
+  const handleOpenCard = useCallback(() => setOpenCard(0), [setOpenCard])
+
+  const handleSelectPlace = useCallback(
+    (i: number) => () => setSelectedPlace(i),
+    [setSelectedPlace]
+  )
+
   return (
     <View style={defaultStyles.card}>
-      {openCard != 0 && (
+      {openCard !== 0 && (
         <AnimatedTouchableOpacity
-          onPress={() => setOpenCard(0)}
+          onPress={handleOpenCard}
           style={defaultStyles.cardPreview}
           entering={FadeIn.duration(200)}
           exiting={FadeOut.duration(200)}
         >
           <Text style={defaultStyles.previewText}>Where</Text>
-          <Text style={defaultStyles.previewDate}>I'm flexible</Text>
+          <Text style={defaultStyles.previewDate}>I&apos;m flexible</Text>
         </AnimatedTouchableOpacity>
       )}
       {openCard === 0 && (
@@ -60,13 +67,13 @@ export default function WhereCard({
             contentContainerStyle={styles.scrollViewStyle}
           >
             {places.map((item, i) => (
-              <TouchableOpacity onPress={() => setSelectedPlace(i)} key={i}>
+              <TouchableOpacity onPress={handleSelectPlace(i)} key={i}>
                 <Image
                   source={item.img}
                   style={selectedPlace === i ? styles.placeSelected : styles.place}
                 />
                 <Text
-                  style={[{ paddingTop: 6 }, selectedPlace === i ? { fontWeight: 'bold' } : null]}
+                  style={[styles.titleText, selectedPlace === i ? defaultStyles.boldText : null]}
                 >
                   {item.title}
                 </Text>
@@ -84,16 +91,16 @@ const styles = StyleSheet.create({
     height: 50,
     flexDirection: 'row',
     borderWidth: 1,
-    borderColor: '#ABABAB',
+    borderColor: Colors.grey,
     borderRadius: 8,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 10,
   },
   inputField: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
   },
   searchIcon: {
     padding: 10,
@@ -114,5 +121,8 @@ const styles = StyleSheet.create({
     gap: 25,
     paddingLeft: 20,
     paddingBottom: 20,
+  },
+  titleText: {
+    paddingTop: 6,
   },
 })
