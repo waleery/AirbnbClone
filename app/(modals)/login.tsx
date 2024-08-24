@@ -1,9 +1,10 @@
 import { useOAuth } from '@clerk/clerk-expo'
 import { Ionicons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
+import { useCallback } from 'react'
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
 
-import colors from '@/constants/Colors'
+import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 import { useWarmUpBrowser } from '@/hooks/useWarmUpBrowser'
 
@@ -20,31 +21,34 @@ const Page = () => {
   const { startOAuthFlow: appleAuth } = useOAuth({ strategy: 'oauth_apple' })
   const { startOAuthFlow: facebookAuth } = useOAuth({ strategy: 'oauth_facebook' })
 
-  const onSelectAuth = async (strategy: Strategy) => {
-    const selectedAuth = {
-      [Strategy.Google]: googleAuth,
-      [Strategy.Apple]: appleAuth,
-      [Strategy.Facebook]: facebookAuth,
-    }[strategy]
+  const onSelectAuth = useCallback(
+    (strategy: Strategy) => async () => {
+      const selectedAuth = {
+        [Strategy.Google]: googleAuth,
+        [Strategy.Apple]: appleAuth,
+        [Strategy.Facebook]: facebookAuth,
+      }[strategy]
 
-    try {
-      const { createdSessionId, setActive } = await selectedAuth()
+      try {
+        const { createdSessionId, setActive } = await selectedAuth()
 
-      if (createdSessionId) {
-        setActive!({ session: createdSessionId })
-        router.back()
+        if (createdSessionId) {
+          setActive!({ session: createdSessionId })
+          router.back()
+        }
+      } catch (err) {
+        console.error('OAuth error', err)
       }
-    } catch (err) {
-      console.error('OAuth error', err)
-    }
-  }
+    },
+    [appleAuth, facebookAuth, googleAuth, router]
+  )
 
   return (
     <View style={styles.container}>
       <TextInput
         autoCapitalize="none"
         placeholder="Email"
-        style={[defaultStyles.inputField, { marginBottom: 30 }]}
+        style={[defaultStyles.inputField, styles.emailInput]}
       />
       <TouchableOpacity style={defaultStyles.btn}>
         <Text style={defaultStyles.btnText}>Continue</Text>
@@ -60,23 +64,17 @@ const Page = () => {
           <Ionicons name="call-outline" style={defaultStyles.btnIcon} size={24} />
           <Text style={defaultStyles.btnOutlineText}>Continue with Phone</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={defaultStyles.btnOutline}
-          onPress={() => onSelectAuth(Strategy.Apple)}
-        >
+        <TouchableOpacity style={defaultStyles.btnOutline} onPress={onSelectAuth(Strategy.Apple)}>
           <Ionicons name="logo-apple" style={defaultStyles.btnIcon} size={24} />
           <Text style={defaultStyles.btnOutlineText}>Continue with Apple</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={defaultStyles.btnOutline}
-          onPress={() => onSelectAuth(Strategy.Google)}
-        >
+        <TouchableOpacity style={defaultStyles.btnOutline} onPress={onSelectAuth(Strategy.Google)}>
           <Ionicons name="logo-google" style={defaultStyles.btnIcon} size={24} />
           <Text style={defaultStyles.btnOutlineText}>Continue with Google</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={defaultStyles.btnOutline}
-          onPress={() => onSelectAuth(Strategy.Facebook)}
+          onPress={onSelectAuth(Strategy.Facebook)}
         >
           <Ionicons name="logo-facebook" style={defaultStyles.btnIcon} size={24} />
           <Text style={defaultStyles.btnOutlineText}>Continue with Facebook</Text>
@@ -89,7 +87,7 @@ const Page = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     padding: 26,
   },
   containerPadding: {
@@ -103,11 +101,14 @@ const styles = StyleSheet.create({
   },
   separatorLine: {
     flex: 1,
-    borderBottomColor: 'black',
+    borderBottomColor: Colors.black,
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   separatorText: {
-    color: colors.grey,
+    color: Colors.grey,
+  },
+  emailInput: {
+    marginBottom: 30,
   },
 })
 export default Page
