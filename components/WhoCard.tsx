@@ -1,5 +1,5 @@
 import { Ionicons } from '@expo/vector-icons'
-import { useAtom, useAtomValue } from 'jotai'
+import { useAtom } from 'jotai'
 import React, { useCallback } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
@@ -18,34 +18,44 @@ interface Props {
 const WhoCard = ({ setOpenCard, openCard }: Props) => {
   const [groups, setGroups] = useAtom(groupsAtom)
 
-  const addPerson = (index: number) => {
-    const newGroups = [...groups]
-    newGroups[index].count++
-    setGroups(newGroups)
-  }
-
-  const removePerson = (index: number) => {
-    const newGroups = [...groups]
-    if (newGroups[index].count > 0) {
-      newGroups[index].count--
+  const addPerson = useCallback(
+    (index: number) => () => {
+      const newGroups = [...groups]
+      newGroups[index].count++
       setGroups(newGroups)
-    }
-  }
+    },
+    [groups, setGroups]
+  )
+
+  const removePerson = useCallback(
+    (index: number) => () => {
+      const newGroups = [...groups]
+      if (newGroups[index].count > 0) {
+        newGroups[index].count--
+        setGroups(newGroups)
+      }
+    },
+    [groups, setGroups]
+  )
 
   const displayPersonCount = useCallback(() => {
     const personCount = groups.reduce((prev, current) => prev + current.count, 0)
-    if (personCount == 1) {
+    if (personCount === 1) {
       return `${personCount} person`
     } else if (personCount > 1) {
       return `${personCount} persons`
     }
     return 'Add person'
-  }, [])
+  }, [groups])
+
+  const handleOpenCard = useCallback(() => {
+    setOpenCard(2)
+  }, [setOpenCard])
   return (
     <View style={defaultStyles.card}>
-      {openCard != 2 && (
+      {openCard !== 2 && (
         <AnimatedTouchableOpacity
-          onPress={() => setOpenCard(2)}
+          onPress={handleOpenCard}
           style={defaultStyles.cardPreview}
           entering={FadeIn.duration(200)}
           exiting={FadeOut.duration(200)}
@@ -56,7 +66,7 @@ const WhoCard = ({ setOpenCard, openCard }: Props) => {
       )}
       {openCard === 2 && (
         <>
-          <Text style={defaultStyles.cardHeader}>Who's comming?</Text>
+          <Text style={defaultStyles.cardHeader}>Who&apos;s coming?</Text>
 
           <Animated.View style={defaultStyles.pX2}>
             {groups.map((item, index) => (
@@ -69,7 +79,7 @@ const WhoCard = ({ setOpenCard, openCard }: Props) => {
                 <View style={styles.managePersonCount}>
                   <TouchableOpacity
                     disabled={!(groups[index].count > 0)}
-                    onPress={() => removePerson(index)}
+                    onPress={removePerson(index)}
                   >
                     <Ionicons
                       name="remove-circle-outline"
@@ -78,7 +88,7 @@ const WhoCard = ({ setOpenCard, openCard }: Props) => {
                     />
                   </TouchableOpacity>
                   <Text style={styles.personCount}>{item.count}</Text>
-                  <TouchableOpacity onPress={() => addPerson(index)}>
+                  <TouchableOpacity onPress={addPerson(index)}>
                     <Ionicons name="add-circle-outline" size={26} color={Colors.grey} />
                   </TouchableOpacity>
                 </View>
