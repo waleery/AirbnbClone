@@ -1,6 +1,6 @@
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons'
 import { Link } from 'expo-router'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import Animated, { FadeIn, FadeOutLeft } from 'react-native-reanimated'
 
@@ -13,6 +13,8 @@ interface Props {
 }
 const ListingItem = ({ item }: Props) => {
   const [imageError, setImageError] = useState(false)
+
+  const handleImageError = useCallback(() => setImageError(true), [])
 
   return (
     <Link href={`/listing/${item.id}`} asChild>
@@ -27,7 +29,7 @@ const ListingItem = ({ item }: Props) => {
             <Image
               source={{ uri: item.medium_url! }}
               style={styles.image}
-              onError={() => setImageError(true)}
+              onError={handleImageError}
             />
           )}
           <TouchableOpacity style={styles.favouriteBtn}>
@@ -91,11 +93,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 4,
   },
-  info: {
-    textAlign: 'center',
-    fontSize: 16,
-    marginTop: 4,
-  },
   infoText: {
     flex: 1,
     alignItems: 'flex-start',
@@ -106,6 +103,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f0f0f0',
+    backgroundColor: Colors.veryLightGrey,
   },
 })
