@@ -35,7 +35,7 @@ interface Properties {
   host_about?: string
   host_response_time: string
   host_response_rate: number
-  host_acceptance_rate?: any
+  host_acceptance_rate?: unknown
   host_thumbnail_url: string
   host_picture_url: string
   host_neighbourhood?: string
@@ -74,7 +74,7 @@ interface Properties {
   minimum_nights: number
   maximum_nights: number
   calendar_updated: string
-  has_availability?: any
+  has_availability?: unknown
   availability_30: number
   availability_60: number
   availability_90: number
@@ -90,8 +90,8 @@ interface Properties {
   review_scores_communication?: number
   review_scores_location?: number
   review_scores_value?: number
-  license?: any
-  jurisdiction_names?: any
+  license?: unknown
+  jurisdiction_names?: unknown
   cancellation_policy: string
   calculated_host_listings_count: number
   reviews_per_month?: number
