@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import Animated, { SlideInDown } from 'react-native-reanimated'
@@ -15,6 +15,11 @@ interface Props {
 const BookingFooter = ({ onClearAll, filter }: Props) => {
   const router = useRouter()
 
+  const handlePressFilter = useCallback(() => {
+    filter()
+    router.back()
+  }, [filter, router])
+
   return (
     <Animated.View style={defaultStyles.footer} entering={SlideInDown.delay(200)}>
       <View style={styles.footer}>
@@ -22,15 +27,9 @@ const BookingFooter = ({ onClearAll, filter }: Props) => {
           <Text style={styles.clearText}>Clear all</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={() => {
-            filter()
-            router.back()
-          }}
-          style={[defaultStyles.btn, { paddingRight: 20, paddingLeft: 50 }]}
-        >
+        <TouchableOpacity onPress={handlePressFilter} style={[defaultStyles.btn, styles.button]}>
           <Ionicons name="search-outline" size={24} color={'#fff'} style={defaultStyles.btnIcon} />
-          <Text style={[defaultStyles.btnText, { fontWeight: '500' }]}>Search</Text>
+          <Text style={[defaultStyles.btnText, defaultStyles.font500]}>Search</Text>
         </TouchableOpacity>
       </View>
     </Animated.View>
@@ -48,6 +47,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     textDecorationLine: 'underline',
   },
+  button: { paddingRight: 20, paddingLeft: 50 },
 })
 
 export default BookingFooter

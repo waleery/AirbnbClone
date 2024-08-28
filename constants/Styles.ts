@@ -54,6 +54,9 @@ export const defaultStyles = StyleSheet.create({
   boldText: {
     fontWeight: '600',
   },
+  font500: {
+    fontWeight: '500',
+  },
   thinText: {
     fontWeight: '300',
   },
