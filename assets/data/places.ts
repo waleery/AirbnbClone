@@ -1,26 +1,33 @@
+import world0 from '@/assets/data/world-0.png'
+import world1 from '@/assets/data/world-1.png'
+import world2 from '@/assets/data/world-2.png'
+import world3 from '@/assets/data/world-3.png'
+import world4 from '@/assets/data/world-4.png'
+import world5 from '@/assets/data/world-5.png'
+
 export const places = [
   {
     title: "I'm flexible",
-    img: require('@/assets/data/world-0.png'),
+    img: world0,
   },
   {
     title: 'United States',
-    img: require('@/assets/data/world-1.png'),
+    img: world1,
   },
   {
     title: 'Italy',
-    img: require('@/assets/data/world-2.png'),
+    img: world2,
   },
   {
     title: 'Middle East',
-    img: require('@/assets/data/world-3.png'),
+    img: world3,
   },
   {
     title: 'Netherlands',
-    img: require('@/assets/data/world-4.png'),
+    img: world4,
   },
   {
     title: 'Southeast Asia',
-    img: require('@/assets/data/world-5.png'),
+    img: world5,
   },
 ]
