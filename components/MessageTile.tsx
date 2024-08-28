@@ -1,9 +1,10 @@
 import { AntDesign, Entypo, FontAwesome5, Ionicons } from '@expo/vector-icons'
 import { getDate, getMonth, getYear } from 'date-fns'
 import { useAtomValue } from 'jotai'
-import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { Animated, Button, Image, Pressable, StyleSheet, Text, View } from 'react-native'
-import { RectButton, Swipeable } from 'react-native-gesture-handler'
+import React, { useCallback, useMemo, useRef } from 'react'
+import { Animated, Image, Pressable, StyleSheet, Text, View } from 'react-native'
+import { Swipeable } from 'react-native-gesture-handler'
+// @ts-expect-error expected error -> works fine
 import { AnimatedInterpolation } from 'react-native-gesture-handler/lib/typescript/components/Swipeable'
 
 import Colors from '@/constants/Colors'
@@ -43,11 +44,11 @@ const MessageTile = ({
     const month = getMonth(conversation.last_message_time) + 1
     const day = getDate(conversation.last_message_time)
 
-    if (currentYear == year) {
+    if (currentYear === year) {
       return `${day}.${month}`
     }
     return `${day}.${month}.${year}`
-  }, [])
+  }, [conversation.last_message_time])
   const hostImageSize = conversation.hosts?.length === 1 ? 42 : 32
   let hostImagePositions = []
 
@@ -90,6 +91,7 @@ const MessageTile = ({
     })
 
     return (
+      // eslint-disable-next-line react-native/no-inline-styles
       <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }}>
         <Pressable style={[styles.rightAction, { backgroundColor: color }]} onPress={onPress}>
           {iconMap[text]}
@@ -99,23 +101,29 @@ const MessageTile = ({
     )
   }
 
-  const renderRightActions = (progress: AnimatedInterpolation) => (
-    <View style={{ width: 128, flexDirection: 'row' }}>
-      {renderRightAction('Star', '#00A699', 128, progress, handleStarPress)}
-      {renderRightAction('Archive', '#484848', 64, progress, handleArchivePress)}
-    </View>
+  const renderRightActions = useCallback(
+    (progress: AnimatedInterpolation) => (
+      <View style={styles.rightActions}>
+        {renderRightAction('Star', '#00A699', 128, progress, handleStarPress)}
+        {renderRightAction('Archive', '#484848', 64, progress, handleArchivePress)}
+      </View>
+    ),
+    []
   )
-  const handleSwipeableOpen = (swipeable: React.RefObject<Swipeable>) => {
-    if (openSwipeable && openSwipeable !== swipeable) {
-      openSwipeable.current?.close()
-    }
-    setOpenSwipeable(swipeable)
-  }
+  const handleSwipeableOpen = useCallback(
+    (swipeable: React.RefObject<Swipeable>) => () => {
+      if (openSwipeable && openSwipeable !== swipeable) {
+        openSwipeable.current?.close()
+      }
+      setOpenSwipeable(swipeable)
+    },
+    [openSwipeable, setOpenSwipeable]
+  )
   return (
     <Swipeable
       ref={swipeableRef}
       renderRightActions={renderRightActions}
-      onSwipeableWillOpen={() => handleSwipeableOpen(swipeableRef)}
+      onSwipeableWillOpen={handleSwipeableOpen(swipeableRef)}
       rightThreshold={10}
       childrenContainerStyle={styles.messagesContainer}
       containerStyle={styles.swipableContainer}
@@ -125,9 +133,9 @@ const MessageTile = ({
           <View style={styles.customerServiceImage}>
             <FontAwesome5 name="airbnb" size={30} color={'white'} />
           </View>
-        ) : (
-          <Image source={{ uri: accomodation?.medium_url! }} style={styles.image} />
-        )}
+        ) : accomodation?.medium_url ? (
+          <Image source={{ uri: accomodation?.medium_url }} style={styles.image} />
+        ) : null}
         {conversation.hosts?.map((host, index) => {
           if (index < 2) {
             return (
@@ -193,16 +201,17 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderBottomRightRadius: 40,
   },
+  rightActions: {
+    width: 128,
+    flexDirection: 'row',
+  },
   customerServiceImage: {
     width: 65,
     height: 65,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#000',
+    backgroundColor: Colors.black,
     borderRadius: 50,
-  },
-  hostName: {
-    fontWeight: '300',
   },
   firstLine: {
     flexDirection: 'row',
@@ -214,7 +223,7 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 50,
     borderWidth: 2,
-    borderColor: '#fff',
+    borderColor: Colors.white,
     bottom: 0,
     right: 0,
     transform: [{ translateY: 15 }, { translateX: 10 }],
@@ -225,7 +234,7 @@ const styles = StyleSheet.create({
     gap: 2,
     flex: 1,
   },
-  actionText: { fontSize: 12, color: 'white', fontWeight: '500' },
+  actionText: { fontSize: 12, color: Colors.white, fontWeight: '500' },
   swipableContainer: {
     overflow: 'visible',
   },
