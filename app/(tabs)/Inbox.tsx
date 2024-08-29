@@ -1,21 +1,22 @@
 import { Ionicons } from '@expo/vector-icons'
 import { parseISO } from 'date-fns'
 import { Stack } from 'expo-router'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, ListRenderItem } from 'react-native'
 import { FlatList, Swipeable } from 'react-native-gesture-handler'
 
 import messagesDataRaw from '@/assets/data/messages.json'
 import InboxHeader from '@/components/InboxHeader'
 import MessageTile from '@/components/MessageTile'
+import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 import { messageTypes } from '@/constants/messageTypes'
 import { Conversation } from '@/types/messages'
 
-const messagesData: Conversation[] = messagesDataRaw.map((message: any) => ({
+const messagesData: Conversation[] = messagesDataRaw.map((message) => ({
   ...message,
   last_message_time: parseISO(message.last_message_time),
-  messages: message.messages.map((msg: any) => ({
+  messages: message.messages.map((msg) => ({
     ...msg,
     timestamp: parseISO(msg.timestamp),
   })),
@@ -25,13 +26,16 @@ const Page = () => {
   const [selectedType, setSelectedType] = useState<string>('All')
   const [openSwipeable, setOpenSwipeable] = useState<React.RefObject<Swipeable> | null>(null)
 
-  const renderRow: ListRenderItem<Conversation> = ({ item }) => (
-    <MessageTile
-      conversation={item}
-      openSwipeable={openSwipeable}
-      setOpenSwipeable={setOpenSwipeable}
-      key={item.conversation_id}
-    />
+  const renderRow: ListRenderItem<Conversation> = useCallback(
+    ({ item }) => (
+      <MessageTile
+        conversation={item}
+        openSwipeable={openSwipeable}
+        setOpenSwipeable={setOpenSwipeable}
+        key={item.conversation_id}
+      />
+    ),
+    [openSwipeable]
   )
   const handleSelectMessagesType = useCallback(
     (type: string) => () => {
@@ -98,10 +102,8 @@ export default Page
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
-    //padding: 16,
+    backgroundColor: Colors.white,
     gap: 20,
-
     flex: 1,
   },
   title: {
@@ -115,14 +117,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 10,
     paddingHorizontal: 20,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: Colors.veryLightGrey,
     borderRadius: 50,
   },
   selectedChip: {
-    backgroundColor: '#000',
+    backgroundColor: Colors.black,
   },
   selectedChipText: {
-    color: 'white',
+    color: Colors.white,
   },
   scrollView: {
     flexGrow: 0,
