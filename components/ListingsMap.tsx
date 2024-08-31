@@ -4,10 +4,23 @@ import { View, Text, StyleSheet } from 'react-native'
 import MapView from 'react-native-map-clustering'
 import { Marker, PROVIDER_GOOGLE } from 'react-native-maps'
 
+import Colors from '@/constants/Colors'
+import { defaultStyles } from '@/constants/Styles'
 import { Feature, ListingGeo } from '@/types/listingGeo'
 
 interface Props {
   listings: ListingGeo
+}
+
+interface Cluster {
+  id: string
+  geometry: {
+    coordinates: [number, number]
+  }
+  properties: {
+    point_count: number
+  }
+  onPress: () => void
 }
 
 const INITIAL_REGION = {
@@ -24,10 +37,10 @@ const ListingsMap = memo(({ listings }: Props) => {
     (item: Feature) => () => {
       router.push(`/listing/${item.properties.id}`)
     },
-    []
+    [router]
   )
 
-  const renderCluster = (cluster: any) => {
+  const renderCluster = useCallback((cluster: Cluster) => {
     const { id, geometry, onPress, properties } = cluster
     const points = properties.point_count
 
@@ -41,11 +54,11 @@ const ListingsMap = memo(({ listings }: Props) => {
         onPress={onPress}
       >
         <View style={styles.marker}>
-          <Text style={[styles.markerText, { textAlign: 'center' }]}>{points}</Text>
+          <Text style={[styles.markerText, defaultStyles.textCenter]}>{points}</Text>
         </View>
       </Marker>
     )
-  }
+  }, [])
 
   return (
     <View style={styles.container}>
@@ -89,13 +102,13 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   marker: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 12,
     padding: 7,
     elevation: 5,
-    shadowColor: '#000',
+    shadowColor: Colors.black,
     shadowOpacity: 0.5,
     shadowRadius: 6,
     shadowOffset: {

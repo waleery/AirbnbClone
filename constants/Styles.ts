@@ -123,4 +123,7 @@ export const defaultStyles = StyleSheet.create({
   safeArea: {
     backgroundColor: Colors.white,
   },
+  textCenter: {
+    textAlign: 'center',
+  },
 })
