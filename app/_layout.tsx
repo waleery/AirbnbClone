@@ -5,13 +5,16 @@ import { useFonts } from 'expo-font'
 import { Stack, useRouter } from 'expo-router'
 import * as SecureStore from 'expo-secure-store'
 import * as SplashScreen from 'expo-splash-screen'
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
+import SpaceMonoFont from '../assets/fonts/SpaceMono-Regular.ttf'
+
 import ModalHeaderText from '@/components/ModalHeaderText'
-import colors from '@/constants/Colors'
+import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
+
 const CLERK_PUBLISAHBLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY
 
 const tokenCache = {
@@ -19,13 +22,16 @@ const tokenCache = {
     try {
       return SecureStore.getItemAsync(key)
     } catch (error) {
+      console.log(error)
       return null
     }
   },
   async saveToken(key: string, value: string) {
     try {
       return SecureStore.setItemAsync(key, value)
-    } catch (error) {}
+    } catch (error) {
+      console.log(error)
+    }
   },
 }
 
@@ -44,7 +50,7 @@ SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    SpaceMono: SpaceMonoFont,
     ...FontAwesome.font,
   })
 
@@ -80,7 +86,9 @@ function RootLayoutNav() {
     if (isLoaded && !isSignedIn) {
       //router.push('/(modals)/login')
     }
-  }, [isLoaded])
+  }, [isLoaded, isSignedIn])
+
+  const handleGoBack = useCallback(() => router.back(), [router])
 
   return (
     <Stack>
@@ -91,7 +99,7 @@ function RootLayoutNav() {
           presentation: 'modal',
           title: 'Log in or sign up',
           headerLeft: () => (
-            <TouchableOpacity onPress={() => router.back()}>
+            <TouchableOpacity onPress={handleGoBack}>
               <Ionicons name="close-outline" size={28} />
             </TouchableOpacity>
           ),
@@ -106,7 +114,7 @@ function RootLayoutNav() {
           animation: 'fade',
           headerTitle: () => <ModalHeaderText />,
           headerLeft: () => (
-            <TouchableOpacity onPress={() => router.back()} style={styles.headerLeft}>
+            <TouchableOpacity onPress={handleGoBack} style={styles.headerLeft}>
               <Ionicons name="close-outline" size={28} />
             </TouchableOpacity>
           ),
@@ -118,8 +126,8 @@ function RootLayoutNav() {
 
 const styles = StyleSheet.create({
   headerLeft: {
-    backgroundColor: 'white',
-    borderColor: colors.grey,
+    backgroundColor: Colors.white,
+    borderColor: Colors.grey,
     borderRadius: 20,
     borderWidth: 1,
     padding: 4,
