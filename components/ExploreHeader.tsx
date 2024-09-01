@@ -1,11 +1,11 @@
 import { Ionicons, MaterialIcons } from '@expo/vector-icons'
 import * as Haptics from 'expo-haptics'
 import { Link } from 'expo-router'
-import { useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-import colors from '@/constants/Colors'
+import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 import { accomodation_categories } from '@/constants/categories'
 
@@ -17,18 +17,31 @@ const ExploreHeader = ({ onCategoryChanged }: Props) => {
   const itemsRef = useRef<TouchableOpacity[]>([])
   const [activeIndex, setActiveIndex] = useState(0)
 
-  const selectCategory = (index: number) => {
-    const selectedItem = itemsRef.current[index]
+  const getRefHandler = useCallback(
+    (index: number) => (element: TouchableOpacity | null) => {
+      if (!element) return
+      itemsRef.current[index] = element
+    },
+    []
+  )
 
-    selectedItem.measure((x) => {
-      scrollRef.current?.scrollTo({ x: x - 16, y: 0, animated: true })
-    })
+  const selectCategory = useCallback(
+    (index: number) => () => {
+      const selectedItem = itemsRef.current[index]
 
-    setActiveIndex(index)
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
+      selectedItem.measure((x) => {
+        scrollRef.current?.scrollTo({ x: x - 16, y: 0, animated: true })
+      })
 
-    onCategoryChanged(accomodation_categories[index].name)
-  }
+      setActiveIndex(index)
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
+
+      onCategoryChanged(accomodation_categories[index].name)
+    },
+    [onCategoryChanged]
+  )
+
+  console.log(typeof MaterialIcons.glyphMap)
 
   return (
     <SafeAreaView style={defaultStyles.safeArea} edges={['top']}>
@@ -57,14 +70,14 @@ const ExploreHeader = ({ onCategoryChanged }: Props) => {
           {accomodation_categories.map((category, index) => (
             <TouchableOpacity
               key={index}
-              ref={(element) => (itemsRef.current[index] = element!)}
+              ref={getRefHandler(index)}
               style={activeIndex === index ? styles.categoryBtnActive : styles.categoryBtn}
-              onPress={() => selectCategory(index)}
+              onPress={selectCategory(index)}
             >
               <MaterialIcons
                 size={24}
-                name={category.icon as any}
-                color={activeIndex === index ? '#000' : colors.grey}
+                name={category.icon as keyof typeof MaterialIcons.glyphMap}
+                color={activeIndex === index ? Colors.black : Colors.grey}
               />
               <Text style={activeIndex === index ? styles.categoryTextActive : styles.categoryText}>
                 {category.name}
@@ -80,7 +93,7 @@ export default ExploreHeader
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
   },
   rowAction: {
     flexDirection: 'row',
@@ -93,10 +106,10 @@ const styles = StyleSheet.create({
   filterBtn: {
     padding: 10,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: colors.grey,
+    borderColor: Colors.lightGrey,
     borderRadius: 24,
     elevation: 2,
-    shadowColor: '#000',
+    shadowColor: Colors.black,
     shadowOpacity: 0.07,
     shadowRadius: 8,
   },
@@ -105,23 +118,23 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
-    borderColor: '#c2c2c2',
+    borderColor: Colors.lightGrey,
     borderWidth: StyleSheet.hairlineWidth,
     padding: 12,
     borderRadius: 30,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     elevation: 2,
-    shadowColor: '#000',
+    shadowColor: Colors.black,
     shadowOpacity: 0.07,
     shadowRadius: 8,
   },
   categoryText: {
     fontSize: 14,
-    color: colors.grey,
+    color: Colors.grey,
   },
   categoryTextActive: {
     fontSize: 14,
-    color: '#000',
+    color: Colors.black,
   },
   categoryBtn: {
     flex: 1,
@@ -130,7 +143,7 @@ const styles = StyleSheet.create({
     gap: 5,
     paddingBottom: 6,
     borderBottomWidth: 2,
-    borderBottomColor: 'transparent',
+    borderBottomColor: Colors.transparent,
   },
   categoryBtnActive: {
     flex: 1,
@@ -138,7 +151,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 5,
     paddingBottom: 6,
-    borderBottomColor: '#000',
+    borderBottomColor: Colors.black,
     borderBottomWidth: 2,
   },
   acommodationsScrollView: {
