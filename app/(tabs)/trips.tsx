@@ -1,16 +1,17 @@
-import { Link, Stack, useRouter } from 'expo-router'
+import { Stack, useRouter } from 'expo-router'
 import { useCallback } from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, ImageSourcePropType } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
+import hello from '@/assets/data/hello.png'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 
 const Page = () => {
   const router = useRouter()
 
-  const handleOnPresStartSearching = useCallback(() => router.push('/'), [])
+  const handleOnPresStartSearching = useCallback(() => router.push('/'), [router])
 
   return (
     <View style={defaultStyles.flex}>
@@ -22,16 +23,16 @@ const Page = () => {
       <SafeAreaView edges={['top']} style={[styles.container]}>
         <Text style={styles.title}>Trips</Text>
         <View style={styles.noTrips}>
-          <Image source={require('@/assets/data/hello.png')} style={styles.helloIcon} />
+          <Image source={hello as ImageSourcePropType} style={styles.helloIcon} />
           <Text style={styles.noTripsText1}>No trips booked...yet</Text>
           <Text style={styles.noTripsText2}>
             Time to dust off your bags and start planning your next adventure
           </Text>
           <TouchableOpacity
-            style={[defaultStyles.btn, { paddingHorizontal: 50 }]}
+            style={[defaultStyles.btn, defaultStyles.pX5]}
             onPress={handleOnPresStartSearching}
           >
-            <Text style={[defaultStyles.btnText, { fontWeight: '500' }]}>Start searching</Text>
+            <Text style={[defaultStyles.btnText, defaultStyles.font500]}>Start searching</Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
@@ -42,7 +43,7 @@ export default Page
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     gap: 20,
     flex: 1,
     paddingTop: 20,
