@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons'
 import { useLocalSearchParams, useNavigation } from 'expo-router'
-import { useLayoutEffect } from 'react'
+import { useCallback, useLayoutEffect } from 'react'
 import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity, Share } from 'react-native'
 import Animated, {
   SlideInDown,
@@ -12,7 +12,7 @@ import Animated, {
 import { AnimatedScrollView } from 'react-native-reanimated/lib/typescript/reanimated2/component/ScrollView'
 
 import listingsData from '@/assets/data/airbnb-listings.json'
-import colors from '@/constants/Colors'
+import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 import { Listing } from '@/types/listing'
 
@@ -28,16 +28,28 @@ const Page = () => {
 
   const navigation = useNavigation()
 
-  const shareListing = async () => {
-    try {
-      await Share.share({
-        title: listing?.name,
-        url: listing?.listing_url!,
-      })
-    } catch (error) {
-      console.log(error)
+  const headerAnimatedStyle = useAnimatedStyle(() => {
+    return {
+      opacity: interpolate(scrollOffset.value, [0, IMG_HEIGHT / 2], [0, 1]),
     }
-  }
+  })
+
+  const shareListing = useCallback(async () => {
+    if (listing?.name && listing?.listing_url) {
+      try {
+        await Share.share({
+          title: listing.name,
+          url: listing.listing_url,
+        })
+      } catch (error) {
+        console.log(error)
+      }
+    } else {
+      console.log('Listing details are missing.')
+    }
+  }, [listing?.listing_url, listing?.name])
+
+  const handleGoBack = useCallback(() => navigation.goBack(), [navigation])
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -55,12 +67,12 @@ const Page = () => {
         </View>
       ),
       headerLeft: () => (
-        <TouchableOpacity style={styles.roundBtn} onPress={() => navigation.goBack()}>
+        <TouchableOpacity style={styles.roundBtn} onPress={handleGoBack}>
           <Ionicons name="chevron-back" size={22} color={'#000'} />
         </TouchableOpacity>
       ),
     })
-  }, [])
+  }, [handleGoBack, headerAnimatedStyle, navigation, shareListing])
 
   const imageAnimatedStyle = useAnimatedStyle(() => {
     return {
@@ -79,11 +91,6 @@ const Page = () => {
     }
   })
 
-  const headerAnimatedStyle = useAnimatedStyle(() => {
-    return {
-      opacity: interpolate(scrollOffset.value, [0, IMG_HEIGHT / 2], [0, 1]),
-    }
-  })
   return (
     listing && (
       <View style={styles.container}>
@@ -133,7 +140,7 @@ const Page = () => {
               <Text style={styles.footerPrice}>€ {listing.price}</Text>
               <Text style={styles.nightText}>night</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[defaultStyles.btn, { paddingHorizontal: 20 }]}>
+            <TouchableOpacity style={[defaultStyles.btn, defaultStyles.pX2]}>
               <Text style={defaultStyles.btnText}>Reserve</Text>
             </TouchableOpacity>
           </View>
@@ -147,16 +154,16 @@ export default Page
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: Colors.white,
   },
   image: {
     height: IMG_HEIGHT,
     width,
   },
-  infoContainer: { padding: 24, backgroundColor: '#fff' },
+  infoContainer: { padding: 24, backgroundColor: Colors.white },
   name: { fontSize: 26, fontWeight: 'bold' },
   location: { fontSize: 18, marginTop: 10 },
-  rooms: { fontSize: 16, color: colors.grey, marginVertical: 4 },
+  rooms: { fontSize: 16, color: Colors.grey, marginVertical: 4 },
   score: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -165,7 +172,7 @@ const styles = StyleSheet.create({
   ratings: { fontSize: 16 },
   divider: {
     height: StyleSheet.hairlineWidth,
-    backgroundColor: colors.grey,
+    backgroundColor: Colors.grey,
     marginVertical: 16,
   },
   hostView: { flexDirection: 'row', alignItems: 'center', gap: 12 },
@@ -173,7 +180,7 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 50,
-    backgroundColor: colors.grey,
+    backgroundColor: Colors.grey,
   },
   hostText: {
     fontWeight: '500',
@@ -206,17 +213,17 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 50,
-    backgroundColor: 'white',
+    backgroundColor: Colors.white,
     alignItems: 'center',
     justifyContent: 'center',
-    color: colors.primary,
+    color: Colors.primary,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: colors.grey,
+    borderColor: Colors.grey,
   },
   header: {
-    backgroundColor: 'white',
+    backgroundColor: Colors.white,
     height: 100,
-    borderBottomColor: colors.grey,
+    borderBottomColor: Colors.grey,
     borderWidth: StyleSheet.hairlineWidth,
   },
   paddingBottom100: {
