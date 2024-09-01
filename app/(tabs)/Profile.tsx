@@ -6,8 +6,9 @@ import { useCallback, useEffect, useState } from 'react'
 import { View, Text, Button, StyleSheet, SafeAreaView, Image } from 'react-native'
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 
-import colors from '@/constants/Colors'
+import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
+
 const Page = () => {
   const { signOut, isSignedIn } = useAuth()
 
@@ -24,7 +25,7 @@ const Page = () => {
     setEmail(user.emailAddresses[0].emailAddress)
   }, [user])
 
-  const onSaveUser = async () => {
+  const onSaveUser = useCallback(async () => {
     setEdit(false)
     try {
       if (!firstName || !lastName) return
@@ -35,7 +36,7 @@ const Page = () => {
     } catch (error) {
       console.log(error)
     }
-  }
+  }, [firstName, lastName, user])
 
   const onCaptureImage = useCallback(async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -51,7 +52,17 @@ const Page = () => {
         file: base64,
       })
     }
-  }, [])
+  }, [user])
+
+  const handleSetEdit = useCallback(() => setEdit(true), [setEdit])
+
+  const handleSignOut = useCallback(async () => {
+    try {
+      await signOut()
+    } catch (error) {
+      console.error('Error signing out:', error)
+    }
+  }, [signOut])
 
   return (
     <SafeAreaView style={defaultStyles.container}>
@@ -71,16 +82,16 @@ const Page = () => {
                   placeholder="First name"
                   value={firstName || ''}
                   onChangeText={setFirstName}
-                  style={[defaultStyles.inputField, { width: 100 }]}
+                  style={[defaultStyles.inputField, styles.inputWidth]}
                 />
                 <TextInput
                   placeholder="Last name"
                   value={lastName || ''}
                   onChangeText={setLastName}
-                  style={[defaultStyles.inputField, { width: 100 }]}
+                  style={[defaultStyles.inputField, styles.inputWidth]}
                 />
                 <TouchableOpacity onPress={onSaveUser}>
-                  <Ionicons name="checkmark-outline" size={24} color={colors.dark} />
+                  <Ionicons name="checkmark-outline" size={24} color={Colors.dark} />
                 </TouchableOpacity>
               </View>
             ) : (
@@ -88,8 +99,8 @@ const Page = () => {
                 <Text style={styles.name}>
                   {firstName} {lastName}
                 </Text>
-                <TouchableOpacity onPress={() => setEdit(true)}>
-                  <Ionicons name="create-outline" size={24} color={colors.dark} />
+                <TouchableOpacity onPress={handleSetEdit}>
+                  <Ionicons name="create-outline" size={24} color={Colors.dark} />
                 </TouchableOpacity>
               </View>
             )}
@@ -99,10 +110,10 @@ const Page = () => {
           <Text>Since {user?.createdAt?.toLocaleDateString()}</Text>
         </View>
       )}
-      {isSignedIn && <Button title="Log out" onPress={() => signOut()} color={colors.dark} />}
+      {isSignedIn && <Button title="Log out" onPress={handleSignOut} color={Colors.dark} />}
       {!isSignedIn ? (
         <Link href="/(modals)/login" asChild>
-          <Button title="Log In" color={colors.dark} />
+          <Button title="Log In" color={Colors.dark} />
         </Link>
       ) : null}
     </SafeAreaView>
@@ -122,13 +133,13 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   card: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     padding: 24,
     borderRadius: 16,
     marginHorizontal: 24,
     marginTop: 24,
     elevation: 2,
-    shadowColor: '#000',
+    shadowColor: Colors.black,
     shadowOpacity: 0.2,
     shadowRadius: 6,
     shadowOffset: {
@@ -143,7 +154,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 50,
-    backgroundColor: colors.grey,
+    backgroundColor: Colors.grey,
   },
   editRow: {
     flex: 1,
@@ -160,5 +171,8 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 22,
     fontWeight: 'bold',
+  },
+  inputWidth: {
+    width: 100,
   },
 })
