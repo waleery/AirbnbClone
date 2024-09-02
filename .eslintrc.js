@@ -1,6 +1,7 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
   root: true,
+  ignorePatterns: ["babel.config.js"],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
