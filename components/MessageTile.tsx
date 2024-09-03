@@ -91,8 +91,7 @@ const MessageTile = ({
     })
 
     return (
-      // eslint-disable-next-line react-native/no-inline-styles
-      <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }}>
+      <Animated.View style={[defaultStyles.flex, { transform: [{ translateX: trans }]}]}>
         <Pressable style={[styles.rightAction, { backgroundColor: color }]} onPress={onPress}>
           {iconMap[text]}
           <Text style={styles.actionText}>{text}</Text>
