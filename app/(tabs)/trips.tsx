@@ -17,7 +17,7 @@ const Page = () => {
     <View style={defaultStyles.flex}>
       <Stack.Screen
         options={{
-          headerShown: false, // Wyłączenie nagłówka
+          headerShown: false,
         }}
       />
       <SafeAreaView edges={['top']} style={[styles.container]}>

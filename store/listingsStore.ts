@@ -1,4 +1,3 @@
-// atoms.js
 import { atom } from 'jotai'
 
 import listingsData from '@/assets/data/airbnb-listings.json'
@@ -8,7 +7,6 @@ import { Listing } from '@/types/listing'
 
 export const listingsAtom = atom<Listing[]>(listingsData as Listing[])
 
-// Atom do przechowywania filtra guests_included
 export const guestsIncludedFilterAtom = atom<number | null>(null)
 
 export const daysStayFilterAtom = atom<number | null>(null)

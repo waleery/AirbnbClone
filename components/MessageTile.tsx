@@ -12,7 +12,6 @@ import { defaultStyles } from '@/constants/Styles'
 import { listingsAtom } from '@/store/listingsStore'
 import { Conversation } from '@/types/messages'
 
-// Definiowanie typów kluczy
 type IconKey = 'Archive' | 'Star'
 
 const iconMap: Record<IconKey, JSX.Element> = {
@@ -32,12 +31,12 @@ const MessageTile = ({
   const accomodation = useAtomValue(listingsAtom).find(
     (accomodatiom) => accomodatiom.id === conversation.accomodation_id?.toString()
   )
-  // Pobranie ostatniej wiadomości z listy
+
   const lastMessage = conversation.messages.slice(-1)[0]
   const swipeableRef = useRef<Swipeable>(null)
 
   const formatDateLastMessage = useMemo(() => {
-    const currentDate = new Date() // Utwórz nowy obiekt daty, reprezentujący bieżącą datę i czas
+    const currentDate = new Date()
     const currentYear = getYear(currentDate) % 100
 
     const year = getYear(conversation.last_message_time) % 100
@@ -91,7 +90,7 @@ const MessageTile = ({
     })
 
     return (
-      <Animated.View style={[defaultStyles.flex, { transform: [{ translateX: trans }]}]}>
+      <Animated.View style={[defaultStyles.flex, { transform: [{ translateX: trans }] }]}>
         <Pressable style={[styles.rightAction, { backgroundColor: color }]} onPress={onPress}>
           {iconMap[text]}
           <Text style={styles.actionText}>{text}</Text>
