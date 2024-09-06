@@ -30,6 +30,7 @@ const ListingsBottomSheet = ({ listings, category }: Props) => {
       index={1}
       ref={bottomSheetRef}
       snapPoints={snapPoitns}
+      topInset={-50}
       handleIndicatorStyle={{ backgroundColor: Colors.grey }}
       style={styles.sheetContainer}
     >
