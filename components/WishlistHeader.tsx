@@ -14,7 +14,10 @@ const WishlistHeader = () => {
   }, [setEditMode])
 
   return (
-    <SafeAreaView edges={['top']} style={[defaultStyles.pX2, defaultStyles.safeArea]}>
+    <SafeAreaView
+      edges={['top']}
+      style={[defaultStyles.pX2, defaultStyles.safeArea, defaultStyles.pb1]}
+    >
       <Pressable onPress={toggleWishlistEditMode}>
         <View style={styles.btnBox}>
           <Text style={styles.edit}>{editMode ? 'Done' : 'Edit'}</Text>
