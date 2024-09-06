@@ -4,7 +4,8 @@ import { useAtomValue } from 'jotai'
 import React, { useCallback, useMemo, useRef } from 'react'
 import { Animated, Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import { Swipeable } from 'react-native-gesture-handler'
-// @ts-expect-error expected error -> works fine
+// @ts-expect-error - Importing `AnimatedInterpolation` from 'react-native-gesture-handler' is correct,
+// but TypeScript may not recognize it due to issues with type definitions in the library.
 import { AnimatedInterpolation } from 'react-native-gesture-handler/lib/typescript/components/Swipeable'
 
 import Colors from '@/constants/Colors'
