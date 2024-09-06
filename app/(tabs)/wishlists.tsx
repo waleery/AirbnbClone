@@ -1,5 +1,5 @@
 import { Stack } from 'expo-router'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 
 import WishlistHeader from '@/components/WishlistHeader'
 import WishlistTiles from '@/components/WishlistTiles'
@@ -15,7 +15,6 @@ const Page = () => {
         }}
       />
       <View style={styles.container}>
-        <Text style={styles.title}>Wishlist</Text>
         <WishlistTiles />
       </View>
     </View>
@@ -28,11 +27,5 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     gap: 20,
     flex: 1,
-  },
-  title: {
-    fontSize: 30,
-    fontWeight: '500',
-    paddingTop: 16,
-    paddingHorizontal: 16,
   },
 })

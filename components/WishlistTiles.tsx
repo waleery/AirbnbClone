@@ -1,5 +1,5 @@
-import { useCallback } from 'react'
-import { ListRenderItem, StyleSheet } from 'react-native'
+import { useCallback, useMemo } from 'react'
+import { ListRenderItem, StyleSheet, Text } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 
 import { WishlistItem } from './WishlistItem'
@@ -12,6 +12,8 @@ const WishlistTiles = () => {
     ({ item }) => <WishlistItem wishlist={item} />,
     []
   )
+  const renderHeader = useMemo(() => <Text style={styles.title}>Wishlist</Text>, [])
+
   return (
     <FlatList
       data={wishlistData as Wishlist[]}
@@ -19,6 +21,7 @@ const WishlistTiles = () => {
       numColumns={2}
       contentContainerStyle={styles.containerBox}
       columnWrapperStyle={styles.columnWrapper}
+      ListHeaderComponent={renderHeader}
     />
   )
 }
@@ -35,5 +38,9 @@ const styles = StyleSheet.create({
   },
   columnWrapper: {
     justifyContent: 'space-between',
+  },
+  title: {
+    fontSize: 30,
+    fontWeight: '500',
   },
 })
