@@ -24,6 +24,7 @@ const Layout = () => {
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="heart-outline" color={color} size={size} />
           ),
+          unmountOnBlur: true,
         }}
       />
       <Tabs.Screen
