@@ -120,6 +120,9 @@ export const defaultStyles = StyleSheet.create({
   pX5: {
     paddingHorizontal: 20,
   },
+  pb1: {
+    paddingBottom: 10,
+  },
   pb2: {
     paddingBottom: 20,
   },
