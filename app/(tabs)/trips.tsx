@@ -56,7 +56,8 @@ const styles = StyleSheet.create({
   },
   noTrips: {
     marginHorizontal: 16,
-    padding: 16,
+    paddingVertical: 16,
+    paddingHorizontal: 20,
 
     borderWidth: StyleSheet.hairlineWidth,
     borderBlockColor: Colors.grey,
