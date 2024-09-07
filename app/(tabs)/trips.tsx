@@ -35,6 +35,8 @@ const Page = () => {
             <Text style={[defaultStyles.btnText, defaultStyles.font500]}>Start searching</Text>
           </TouchableOpacity>
         </View>
+
+        <Text style={styles.whereText}>Where you&apos;ve been</Text>
       </SafeAreaView>
     </View>
   )
@@ -44,7 +46,6 @@ export default Page
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.white,
-    gap: 20,
     flex: 1,
     paddingTop: 20,
     paddingHorizontal: 16,
@@ -53,6 +54,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: '500',
     paddingTop: 16,
+    marginBottom: 20,
   },
   noTrips: {
     paddingVertical: 16,
@@ -64,6 +66,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     gap: 20,
+    marginBottom: 40,
   },
   noTripsText1: {
     fontSize: 18,
@@ -78,5 +81,9 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     width: 50,
     height: 50,
+  },
+  whereText: {
+    fontSize: 20,
+    fontWeight: '500',
   },
 })
