@@ -47,15 +47,14 @@ const styles = StyleSheet.create({
     gap: 20,
     flex: 1,
     paddingTop: 20,
+    paddingHorizontal: 16,
   },
   title: {
     fontSize: 30,
     fontWeight: '500',
     paddingTop: 16,
-    paddingHorizontal: 16,
   },
   noTrips: {
-    marginHorizontal: 16,
     paddingVertical: 16,
     paddingHorizontal: 20,
 
