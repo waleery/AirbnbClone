@@ -24,9 +24,9 @@ const Page = () => {
         <Text style={styles.title}>Trips</Text>
         <View style={styles.noTrips}>
           <Image source={hello as ImageSourcePropType} style={styles.helloIcon} />
-          <Text style={styles.noTripsText1}>No trips booked...yet</Text>
+          <Text style={styles.noTripsText1}>No trips booked...yet!</Text>
           <Text style={styles.noTripsText2}>
-            Time to dust off your bags and start planning your next adventure
+            Time to dust off your bags and start planning your next adventure.
           </Text>
           <TouchableOpacity
             style={[defaultStyles.btn, defaultStyles.pX5]}
