@@ -41,8 +41,6 @@ const ExploreHeader = ({ onCategoryChanged }: Props) => {
     [onCategoryChanged]
   )
 
-  console.log(typeof MaterialIcons.glyphMap)
-
   return (
     <SafeAreaView style={defaultStyles.safeArea} edges={['top']}>
       <View style={styles.container}>

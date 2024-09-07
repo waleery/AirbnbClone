@@ -45,7 +45,6 @@ export default function WhenCard({ setOpenCard, openCard }: Props) {
   )
 
   const displayPersonCount = () => {
-    console.log('😀daysCount', daysCount)
     if (daysCount === 1) {
       return `${daysCount} day`
     } else if (daysCount && daysCount > 1) {
