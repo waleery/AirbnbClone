@@ -1,0 +1,65 @@
+[
+    {
+    "id": 0,
+    "medium_url": "https://a0.muscache.com/im/pictures/110698993/d4f3f51b_original.jpg?aki_policy=medium",
+    "date_from": "2024-01-28T10:17:00Z",
+    "date_to": "2024-02-10T10:17:00Z",
+    "host": "Romina",
+    "city": "Berlin",
+    "accomodation_id": "8685370"
+    },
+    {
+    "id": 1,
+    "medium_url": "https://a0.muscache.com/im/pictures/49982883/d86bf265_original.jpg?aki_policy=medium",
+    "date_from": "2024-02-15T14:30:00Z",
+    "date_to": "2024-02-28T14:30:00Z",
+    "host": "Juri",
+    "city": "Berlin",
+    "accomodation_id": "2377736"
+    },
+    {
+    "id": 2,
+    "medium_url": "https://a0.muscache.com/im/pictures/8f098fc4-fd17-417f-8215-3bd75ea93865.jpg?aki_policy=medium",
+    "date_from": "2024-03-05T09:00:00Z",
+    "date_to": "2024-03-18T09:00:00Z",
+    "host": "Maria",
+    "city": "Berlin",
+    "accomodation_id": "13419585"
+    },
+    {
+    "id": 3,
+    "medium_url": "https://a0.muscache.com/im/pictures/ce593a18-747a-4151-8a05-1a88c64388b8.jpg?aki_policy=medium",
+    "date_from": "2024-03-20T12:00:00Z",
+    "date_to": "2024-04-02T12:00:00Z",
+    "host": "Kateryna",
+    "city": "Berlin",
+    "accomodation_id": "15878264"
+    },
+    {
+    "id": 4,
+    "medium_url": "https://a0.muscache.com/im/pictures/9946705/00eef8da_original.jpg?aki_policy=medium",
+    "date_from": "2024-04-10T15:45:00Z",
+    "date_to": "2024-04-23T15:45:00Z",
+    "host": "Klaus",
+    "city": "Berlin",
+    "accomodation_id": "727289"
+    },
+    {
+    "id": 5,
+    "medium_url": "https://a0.muscache.com/im/pictures/15f3502d-0b3e-452d-9246-a74df52efa2b.jpg?aki_policy=medium",
+    "date_from": "2024-05-01T11:30:00Z",
+    "date_to": "2024-05-14T11:30:00Z",
+    "host": "Xiao",
+    "city": "Berlin",
+    "accomodation_id": "16439215"
+    },
+    {
+    "id": 6,
+    "medium_url": "https://a0.muscache.com/im/pictures/21465869/027f4751_original.jpg?aki_policy=medium",
+    "date_from": "2024-05-20T08:00:00Z",
+    "date_to": "2024-06-02T08:00:00Z",
+    "host": "* Nicole",
+    "city": "Berlin",
+    "accomodation_id": "1346323"
+    }
+    ]
