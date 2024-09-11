@@ -5,10 +5,14 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import hello from '@/assets/data/hello.png'
+import visitedPlaces from '@/assets/data/visitedPlaces.json'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
+import { WhereBeen } from '@/types/visitedPlaces'
 
 const Page = () => {
+  const visited: WhereBeen[] = visitedPlaces
+
   const router = useRouter()
 
   const handleOnPresStartSearching = useCallback(() => router.push('/'), [router])
@@ -37,6 +41,14 @@ const Page = () => {
         </View>
 
         <Text style={styles.whereText}>Where you&apos;ve been</Text>
+
+        <View style={styles.placesContainer}>
+          {visited.map((place) => (
+            <View key={place.id}>
+              <Image source={{ uri: place.medium_url }} style={styles.image} />
+            </View>
+          ))}
+        </View>
       </SafeAreaView>
     </View>
   )
@@ -85,5 +97,15 @@ const styles = StyleSheet.create({
   whereText: {
     fontSize: 20,
     fontWeight: '500',
+    marginBottom: 30,
+  },
+  placesContainer: {
+    gap: 30,
+  },
+  image: {
+    borderRadius: 10,
+    width: 75,
+    height: 75,
+    resizeMode: 'cover',
   },
 })
