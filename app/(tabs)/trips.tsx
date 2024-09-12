@@ -1,3 +1,4 @@
+import { parseISO } from 'date-fns'
 import { Stack, useRouter } from 'expo-router'
 import { useCallback } from 'react'
 import { View, Text, StyleSheet, Image, ImageSourcePropType } from 'react-native'
@@ -11,7 +12,11 @@ import { defaultStyles } from '@/constants/Styles'
 import { WhereBeen } from '@/types/visitedPlaces'
 
 const Page = () => {
-  const visited: WhereBeen[] = visitedPlaces
+  const visited: WhereBeen[] = visitedPlaces.map((place) => ({
+    ...place,
+    date_from: parseISO(place.date_from),
+    date_to: parseISO(place.date_to),
+  }))
 
   const router = useRouter()
 
