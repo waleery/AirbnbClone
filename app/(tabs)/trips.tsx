@@ -113,8 +113,8 @@ const styles = StyleSheet.create({
   },
   image: {
     borderRadius: 10,
-    width: 75,
-    height: 75,
+    width: 80,
+    height: 80,
     resizeMode: 'cover',
   },
   place: {
