@@ -51,7 +51,7 @@ const Page = () => {
           {visited.map((place) => (
             <View key={place.id} style={styles.place}>
               <Image source={{ uri: place.medium_url }} style={styles.image} />
-              <View>
+              <View style={styles.placeText}>
                 <Text style={styles.city}>{place.city}</Text>
               </View>
             </View>
@@ -123,5 +123,8 @@ const styles = StyleSheet.create({
   city: {
     fontSize: 18,
     fontWeight: '500',
+  },
+  placeText: {
+    justifyContent: 'center',
   },
 })
