@@ -53,6 +53,7 @@ const Page = () => {
               <Image source={{ uri: place.medium_url }} style={styles.image} />
               <View style={styles.placeText}>
                 <Text style={styles.city}>{place.city}</Text>
+                <Text style={styles.host}>Hosted by {place.host}</Text>
               </View>
             </View>
           ))}
@@ -124,7 +125,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '500',
   },
+  host: {
+    fontSize: 16,
+    fontWeight: '300',
+  },
   placeText: {
     justifyContent: 'center',
+    gap: 2,
   },
 })
