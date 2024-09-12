@@ -1,5 +1,5 @@
 export interface WhereBeen {
-  id: string
+  id: number
   medium_url: string
   date_from: Date
   date_to: Date
