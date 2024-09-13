@@ -2,7 +2,7 @@ import { parseISO } from 'date-fns'
 import { Stack, useRouter } from 'expo-router'
 import { useCallback } from 'react'
 import { View, Text, StyleSheet, Image, ImageSourcePropType } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import hello from '@/assets/data/hello.png'
@@ -30,34 +30,36 @@ const Page = () => {
         }}
       />
       <SafeAreaView edges={['top']} style={[styles.container]}>
-        <Text style={styles.title}>Trips</Text>
-        <View style={styles.noTrips}>
-          <Image source={hello as ImageSourcePropType} style={styles.helloIcon} />
-          <Text style={styles.noTripsText1}>No trips booked...yet!</Text>
-          <Text style={styles.noTripsText2}>
-            Time to dust off your bags and start planning your next adventure.
-          </Text>
-          <TouchableOpacity
-            style={[defaultStyles.btn, defaultStyles.pX5]}
-            onPress={handleOnPresStartSearching}
-          >
-            <Text style={[defaultStyles.btnText, defaultStyles.font500]}>Start searching</Text>
-          </TouchableOpacity>
-        </View>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <Text style={styles.title}>Trips</Text>
+          <View style={styles.noTrips}>
+            <Image source={hello as ImageSourcePropType} style={styles.helloIcon} />
+            <Text style={styles.noTripsText1}>No trips booked...yet!</Text>
+            <Text style={styles.noTripsText2}>
+              Time to dust off your bags and start planning your next adventure.
+            </Text>
+            <TouchableOpacity
+              style={[defaultStyles.btn, defaultStyles.pX5]}
+              onPress={handleOnPresStartSearching}
+            >
+              <Text style={[defaultStyles.btnText, defaultStyles.font500]}>Start searching</Text>
+            </TouchableOpacity>
+          </View>
 
-        <Text style={styles.whereText}>Where you&apos;ve been</Text>
+          <Text style={styles.whereText}>Where you&apos;ve been</Text>
 
-        <View style={styles.placesContainer}>
-          {visited.map((place) => (
-            <View key={place.id} style={styles.place}>
-              <Image source={{ uri: place.medium_url }} style={styles.image} />
-              <View style={styles.placeText}>
-                <Text style={styles.city}>{place.city}</Text>
-                <Text style={styles.host}>Hosted by {place.host}</Text>
+          <View style={styles.placesContainer}>
+            {visited.map((place) => (
+              <View key={place.id} style={styles.place}>
+                <Image source={{ uri: place.medium_url }} style={styles.image} />
+                <View style={styles.placeText}>
+                  <Text style={styles.city}>{place.city}</Text>
+                  <Text style={styles.host}>Hosted by {place.host}</Text>
+                </View>
               </View>
-            </View>
-          ))}
-        </View>
+            ))}
+          </View>
+        </ScrollView>
       </SafeAreaView>
     </View>
   )
