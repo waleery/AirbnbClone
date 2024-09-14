@@ -1,4 +1,4 @@
-import { parseISO } from 'date-fns'
+import { format, parseISO } from 'date-fns'
 import { Stack, useRouter } from 'expo-router'
 import { useCallback } from 'react'
 import { View, Text, StyleSheet, Image, ImageSourcePropType } from 'react-native'
@@ -21,6 +21,17 @@ const Page = () => {
   const router = useRouter()
 
   const handleOnPresStartSearching = useCallback(() => router.push('/'), [router])
+
+  const renderDate = (date_from: Date, date_to: Date) => {
+    const yearFrom = format(date_from, 'yyyy')
+    const yearTo = format(date_to, 'yyyy')
+
+    if (format(date_from, 'MMM') === format(date_to, 'MMM')) {
+      return `${format(date_from, 'MMM dd')}-${format(date_to, 'dd')}, ${yearFrom}`
+    }
+
+    return `${format(date_from, 'MMM dd')}-${format(date_to, 'MMM dd')}, ${yearFrom === yearTo ? yearFrom : `${yearFrom} - ${yearTo}`}`
+  }
 
   return (
     <View style={defaultStyles.flex}>
@@ -55,6 +66,7 @@ const Page = () => {
                 <View style={styles.placeText}>
                   <Text style={styles.city}>{place.city}</Text>
                   <Text style={styles.host}>Hosted by {place.host}</Text>
+                  <Text style={styles.host}>{renderDate(place.date_from, place.date_to)}</Text>
                 </View>
               </View>
             ))}
