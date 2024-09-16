@@ -3,11 +3,12 @@ import { Ionicons } from '@expo/vector-icons'
 import * as ImagePicker from 'expo-image-picker'
 import { Link } from 'expo-router'
 import { useCallback, useEffect, useState } from 'react'
-import { View, Text, Button, StyleSheet, SafeAreaView, Image } from 'react-native'
-import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
+import { View, Text, Button, StyleSheet, Image } from 'react-native'
+import { ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const Page = () => {
   const { signOut, isSignedIn } = useAuth()
@@ -65,11 +66,18 @@ const Page = () => {
   }, [signOut])
 
   return (
-    <SafeAreaView style={defaultStyles.container}>
-      <View style={styles.headerContainer}>
-        <Text style={styles.header}>Profile</Text>
-        <Ionicons name="notifications-outline" size={26} />
-      </View>
+    <SafeAreaView edges={['top']} style={[defaultStyles.container, styles.container]}>
+      <ScrollView>
+        <View style={styles.headerContainer}>
+          <Text style={styles.header}>Profile</Text>
+          <Text style={styles.headerSecond}>Log in to start planning your next trip.</Text>
+        </View>
+        {!isSignedIn ? (
+          <Link href="/(modals)/login" asChild>
+            <Button title="Log In" color={Colors.dark} />
+          </Link>
+        ) : null}
+      </ScrollView>
       {user && (
         <View style={styles.card}>
           <TouchableOpacity onPress={onCaptureImage}>
@@ -111,26 +119,27 @@ const Page = () => {
         </View>
       )}
       {isSignedIn && <Button title="Log out" onPress={handleSignOut} color={Colors.dark} />}
-      {!isSignedIn ? (
-        <Link href="/(modals)/login" asChild>
-          <Button title="Log In" color={Colors.dark} />
-        </Link>
-      ) : null}
     </SafeAreaView>
   )
 }
 export default Page
 
 const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 16,
+  },
   headerContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 24,
-    alignItems: 'center',
+    paddingTop: 36,
   },
   header: {
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: '500',
+  },
+  headerSecond: {
+    fontSize: 20,
+    fontWeight: '400',
+    color: Colors.grey,
+    paddingTop: 12
   },
   card: {
     backgroundColor: Colors.white,
