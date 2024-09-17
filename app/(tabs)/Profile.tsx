@@ -1,7 +1,7 @@
 import { useAuth, useUser } from '@clerk/clerk-expo'
 import { Ionicons } from '@expo/vector-icons'
 import * as ImagePicker from 'expo-image-picker'
-import { Link } from 'expo-router'
+import { Link, useRouter } from 'expo-router'
 import { useCallback, useEffect, useState } from 'react'
 import { View, Text, Button, StyleSheet, Image } from 'react-native'
 import { ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler'
@@ -12,6 +12,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 
 const Page = () => {
   const { signOut, isSignedIn } = useAuth()
+  const router = useRouter()
 
   const { user } = useUser()
   const [firstName, setFirstName] = useState(user?.firstName)
@@ -65,6 +66,8 @@ const Page = () => {
     }
   }, [signOut])
 
+  const handleOpenLogin = useCallback(() => router.push('/(modals)/login'), [router])
+
   return (
     <SafeAreaView edges={['top']} style={[defaultStyles.container, styles.container]}>
       <ScrollView>
@@ -72,10 +75,22 @@ const Page = () => {
           <Text style={styles.header}>Profile</Text>
           <Text style={styles.headerSecond}>Log in to start planning your next trip.</Text>
         </View>
+
         {!isSignedIn ? (
-          <Link href="/(modals)/login" asChild>
-            <Button title="Log In" color={Colors.dark} />
-          </Link>
+          <>
+            <TouchableOpacity
+              style={{ ...styles.logInBtn, ...defaultStyles.btn }}
+              onPress={handleOpenLogin}
+            >
+              <Text style={[defaultStyles.btnText, defaultStyles.font500]}>Log in</Text>
+            </TouchableOpacity>
+            <View style={styles.signUpContainer}>
+              <Text style={styles.questionText}>Don't have account?</Text>
+              <Link href="/(modals)/login" asChild>
+                <Text style={styles.signUp}>Sign up</Text>
+              </Link>
+            </View>
+          </>
         ) : null}
       </ScrollView>
       {user && (
@@ -136,10 +151,26 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   headerSecond: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: '400',
     color: Colors.grey,
-    paddingTop: 12
+    paddingTop: 12,
+  },
+  logInBtn: {
+    marginTop: 40,
+  },
+  signUpContainer: {
+    paddingTop: 20,
+    flexDirection: 'row',
+    gap: 5,
+  },
+  questionText: {
+    fontWeight: '400',
+    color: Colors.grey,
+  },
+  signUp: {
+    fontWeight: '500',
+    textDecorationLine: 'underline',
   },
   card: {
     backgroundColor: Colors.white,
