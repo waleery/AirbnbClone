@@ -5,10 +5,10 @@ import { Link, useRouter } from 'expo-router'
 import { useCallback, useEffect, useState } from 'react'
 import { View, Text, Button, StyleSheet, Image } from 'react-native'
 import { ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
-import { SafeAreaView } from 'react-native-safe-area-context'
 
 const Page = () => {
   const { signOut, isSignedIn } = useAuth()
@@ -85,7 +85,7 @@ const Page = () => {
               <Text style={[defaultStyles.btnText, defaultStyles.font500]}>Log in</Text>
             </TouchableOpacity>
             <View style={styles.signUpContainer}>
-              <Text style={styles.questionText}>Don't have account?</Text>
+              <Text style={styles.questionText}>Don&apos;t have account?</Text>
               <Link href="/(modals)/login" asChild>
                 <Text style={styles.signUp}>Sign up</Text>
               </Link>
