@@ -197,11 +197,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: Colors.white,
     shadowColor: Colors.black,
-    shadowOpacity: 0.2,
-    shadowRadius: 6,
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
     shadowOffset: {
       width: 1,
-      height: 2,
+      height: 1,
     },
   },
   modalTextContainer: {
