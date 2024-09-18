@@ -3,10 +3,11 @@ import { Ionicons } from '@expo/vector-icons'
 import * as ImagePicker from 'expo-image-picker'
 import { Link, useRouter } from 'expo-router'
 import { useCallback, useEffect, useState } from 'react'
-import { View, Text, Button, StyleSheet, Image } from 'react-native'
+import { View, Text, Button, StyleSheet, Image, ImageSourcePropType } from 'react-native'
 import { ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
+import home from '@/assets/data/home.png'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 
@@ -90,6 +91,15 @@ const Page = () => {
                 <Text style={styles.signUp}>Sign up</Text>
               </Link>
             </View>
+            <View style={styles.modal}>
+              <View style={styles.modalTextContainer}>
+                <Text style={styles.modalHeader}>Airbnb your place</Text>
+                <Text>It&apos;s simple to get up and start earning</Text>
+              </View>
+              <View style={styles.modalImageContainer}>
+                <Image source={home as ImageSourcePropType} style={styles.homeIcon} />
+              </View>
+            </View>
           </>
         ) : null}
       </ScrollView>
@@ -163,6 +173,7 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     flexDirection: 'row',
     gap: 5,
+    marginBottom: 40,
   },
   questionText: {
     fontWeight: '400',
@@ -171,6 +182,42 @@ const styles = StyleSheet.create({
   signUp: {
     fontWeight: '500',
     textDecorationLine: 'underline',
+  },
+  modal: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    overflow: 'visible',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: Colors.lightGrey,
+    borderRadius: 10,
+    backgroundColor: Colors.white,
+    shadowColor: Colors.black,
+    shadowOpacity: 0.2,
+    shadowRadius: 6,
+    shadowOffset: {
+      width: 1,
+      height: 2,
+    },
+  },
+  modalTextContainer: {
+    flex: 2,
+    gap: 10,
+  },
+  modalImageContainer: {
+    flex: 1,
+  },
+  homeIcon: {
+    width: '100%',
+    height: undefined,
+    resizeMode: 'contain',
+    aspectRatio: 1,
+  },
+
+  modalHeader: {
+    fontSize: 18,
+    fontWeight: '500',
   },
   card: {
     backgroundColor: Colors.white,
