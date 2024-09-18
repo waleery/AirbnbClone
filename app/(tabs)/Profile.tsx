@@ -94,7 +94,9 @@ const Page = () => {
             <View style={styles.modal}>
               <View style={styles.modalTextContainer}>
                 <Text style={styles.modalHeader}>Airbnb your place</Text>
-                <Text>It&apos;s simple to get up and start earning</Text>
+                <Text style={styles.modalSecondText}>
+                  It&apos;s simple to get up and start earning
+                </Text>
               </View>
               <View style={styles.modalImageContainer}>
                 <Image source={home as ImageSourcePropType} style={styles.homeIcon} />
@@ -221,6 +223,10 @@ const styles = StyleSheet.create({
   modalHeader: {
     fontSize: 18,
     fontWeight: '500',
+  },
+  modalSecondText: {
+    fontWeight: '400',
+    color: Colors.grey,
   },
   card: {
     backgroundColor: Colors.white,
