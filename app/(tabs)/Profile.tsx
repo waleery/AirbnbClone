@@ -74,11 +74,11 @@ const Page = () => {
       <ScrollView style={styles.scrollView}>
         <View style={styles.headerContainer}>
           <Text style={styles.header}>Profile</Text>
-          <Text style={styles.headerSecond}>Log in to start planning your next trip.</Text>
         </View>
 
         {!isSignedIn ? (
           <>
+            <Text style={styles.headerSecond}>Log in to start planning your next trip.</Text>
             <TouchableOpacity
               style={{ ...styles.logInBtn, ...defaultStyles.btn }}
               onPress={handleOpenLogin}
@@ -104,48 +104,48 @@ const Page = () => {
             </View>
           </>
         ) : null}
-      </ScrollView>
-      {user && (
-        <View style={styles.card}>
-          <TouchableOpacity onPress={onCaptureImage}>
-            <Image source={{ uri: user?.imageUrl }} style={styles.avatar} />
-          </TouchableOpacity>
-          <View style={styles.inputView}>
-            {edit ? (
-              <View style={styles.editRow}>
-                <TextInput
-                  placeholder="First name"
-                  value={firstName || ''}
-                  onChangeText={setFirstName}
-                  style={[defaultStyles.inputField, styles.inputWidth]}
-                />
-                <TextInput
-                  placeholder="Last name"
-                  value={lastName || ''}
-                  onChangeText={setLastName}
-                  style={[defaultStyles.inputField, styles.inputWidth]}
-                />
-                <TouchableOpacity onPress={onSaveUser}>
-                  <Ionicons name="checkmark-outline" size={24} color={Colors.dark} />
-                </TouchableOpacity>
-              </View>
-            ) : (
-              <View style={styles.editRow}>
-                <Text style={styles.name}>
-                  {firstName} {lastName}
-                </Text>
-                <TouchableOpacity onPress={handleSetEdit}>
-                  <Ionicons name="create-outline" size={24} color={Colors.dark} />
-                </TouchableOpacity>
-              </View>
-            )}
-          </View>
+        {user && (
+          <View style={styles.card}>
+            <TouchableOpacity onPress={onCaptureImage}>
+              <Image source={{ uri: user?.imageUrl }} style={styles.avatar} />
+            </TouchableOpacity>
+            <View style={styles.inputView}>
+              {edit ? (
+                <View style={styles.editRow}>
+                  <TextInput
+                    placeholder="First name"
+                    value={firstName || ''}
+                    onChangeText={setFirstName}
+                    style={[defaultStyles.inputField, styles.inputWidth]}
+                  />
+                  <TextInput
+                    placeholder="Last name"
+                    value={lastName || ''}
+                    onChangeText={setLastName}
+                    style={[defaultStyles.inputField, styles.inputWidth]}
+                  />
+                  <TouchableOpacity onPress={onSaveUser}>
+                    <Ionicons name="checkmark-outline" size={24} color={Colors.dark} />
+                  </TouchableOpacity>
+                </View>
+              ) : (
+                <View style={styles.editRow}>
+                  <Text style={styles.name}>
+                    {firstName} {lastName}
+                  </Text>
+                  <TouchableOpacity onPress={handleSetEdit}>
+                    <Ionicons name="create-outline" size={24} color={Colors.dark} />
+                  </TouchableOpacity>
+                </View>
+              )}
+            </View>
 
-          <Text>{email}</Text>
-          <Text>Since {user?.createdAt?.toLocaleDateString()}</Text>
-        </View>
-      )}
-      {isSignedIn && <Button title="Log out" onPress={handleSignOut} color={Colors.dark} />}
+            <Text>{email}</Text>
+            <Text>Since {user?.createdAt?.toLocaleDateString()}</Text>
+          </View>
+        )}
+        {isSignedIn && <Button title="Log out" onPress={handleSignOut} color={Colors.dark} />}
+      </ScrollView>
     </SafeAreaView>
   )
 }
