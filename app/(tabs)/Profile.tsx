@@ -91,17 +91,6 @@ const Page = () => {
                 <Text style={styles.signUp}>Sign up</Text>
               </Link>
             </View>
-            <View style={styles.modal}>
-              <View style={styles.modalTextContainer}>
-                <Text style={styles.modalHeader}>Airbnb your place</Text>
-                <Text style={styles.modalSecondText}>
-                  It&apos;s simple to get up and start earning
-                </Text>
-              </View>
-              <View style={styles.modalImageContainer}>
-                <Image source={home as ImageSourcePropType} style={styles.homeIcon} />
-              </View>
-            </View>
           </>
         ) : null}
         {user && (
@@ -144,6 +133,15 @@ const Page = () => {
             <Text>Since {user?.createdAt?.toLocaleDateString()}</Text>
           </View>
         )}
+        <View style={styles.modal}>
+          <View style={styles.modalTextContainer}>
+            <Text style={styles.modalHeader}>Airbnb your place</Text>
+            <Text style={styles.modalSecondText}>It&apos;s simple to get up and start earning</Text>
+          </View>
+          <View style={styles.modalImageContainer}>
+            <Image source={home as ImageSourcePropType} style={styles.homeIcon} />
+          </View>
+        </View>
         {isSignedIn && <Button title="Log out" onPress={handleSignOut} color={Colors.dark} />}
       </ScrollView>
     </SafeAreaView>
