@@ -45,7 +45,7 @@ const Page = () => {
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
-      quality: 0.75,
+      quality: 0.9,
       base64: true,
     })
 
