@@ -8,6 +8,7 @@ import { ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-ha
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import home from '@/assets/data/home.png'
+import { settings } from '@/assets/data/settings'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 
@@ -75,7 +76,6 @@ const Page = () => {
         <View style={styles.headerContainer}>
           <Text style={styles.header}>Profile</Text>
         </View>
-
         {!isSignedIn ? (
           <>
             <Text style={styles.headerSecond}>Log in to start planning your next trip.</Text>
@@ -94,54 +94,67 @@ const Page = () => {
           </>
         ) : null}
         {user && (
-          <View style={styles.card}>
-            <TouchableOpacity onPress={onCaptureImage}>
-              <Image source={{ uri: user?.imageUrl }} style={styles.avatar} />
-            </TouchableOpacity>
-            <View style={styles.inputView}>
-              {edit ? (
-                <View style={styles.editRow}>
-                  <TextInput
-                    placeholder="First name"
-                    value={firstName || ''}
-                    onChangeText={setFirstName}
-                    style={[defaultStyles.inputField, styles.inputWidth]}
-                  />
-                  <TextInput
-                    placeholder="Last name"
-                    value={lastName || ''}
-                    onChangeText={setLastName}
-                    style={[defaultStyles.inputField, styles.inputWidth]}
-                  />
-                  <TouchableOpacity onPress={onSaveUser}>
-                    <Ionicons name="checkmark-outline" size={24} color={Colors.dark} />
-                  </TouchableOpacity>
-                </View>
-              ) : (
-                <View style={styles.editRow}>
-                  <Text style={styles.name}>
-                    {firstName} {lastName}
-                  </Text>
-                  <TouchableOpacity onPress={handleSetEdit}>
-                    <Ionicons name="create-outline" size={24} color={Colors.dark} />
-                  </TouchableOpacity>
-                </View>
-              )}
-            </View>
+          <>
+            <View style={styles.card}>
+              <TouchableOpacity onPress={onCaptureImage}>
+                <Image source={{ uri: user?.imageUrl }} style={styles.avatar} />
+              </TouchableOpacity>
+              <View style={styles.inputView}>
+                {edit ? (
+                  <View style={styles.editRow}>
+                    <TextInput
+                      placeholder="First name"
+                      value={firstName || ''}
+                      onChangeText={setFirstName}
+                      style={[defaultStyles.inputField, styles.inputWidth]}
+                    />
+                    <TextInput
+                      placeholder="Last name"
+                      value={lastName || ''}
+                      onChangeText={setLastName}
+                      style={[defaultStyles.inputField, styles.inputWidth]}
+                    />
+                    <TouchableOpacity onPress={onSaveUser}>
+                      <Ionicons name="checkmark-outline" size={24} color={Colors.dark} />
+                    </TouchableOpacity>
+                  </View>
+                ) : (
+                  <View style={styles.editRow}>
+                    <Text style={styles.name}>
+                      {firstName} {lastName}
+                    </Text>
+                    <TouchableOpacity onPress={handleSetEdit}>
+                      <Ionicons name="create-outline" size={24} color={Colors.dark} />
+                    </TouchableOpacity>
+                  </View>
+                )}
+              </View>
 
-            <Text>{email}</Text>
-            <Text>Since {user?.createdAt?.toLocaleDateString()}</Text>
-          </View>
+              <Text>{email}</Text>
+              <Text>Since {user?.createdAt?.toLocaleDateString()}</Text>
+            </View>
+            <View style={styles.modal}>
+              <View style={styles.modalTextContainer}>
+                <Text style={styles.modalHeader}>Airbnb your place</Text>
+                <Text style={styles.modalSecondText}>
+                  It&apos;s simple to get up and start earning
+                </Text>
+              </View>
+              <View style={styles.modalImageContainer}>
+                <Image source={home as ImageSourcePropType} style={styles.homeIcon} />
+              </View>
+            </View>
+            <Text style={styles.settingsText}>Settings</Text>
+            {settings.map((item) => (
+              <View key={item.title} style={styles.settingItem}>
+                <Ionicons name={item.icon} size={28} />
+
+                <Text style={styles.settingText}>{item.title}</Text>
+              </View>
+            ))}
+          </>
         )}
-        <View style={styles.modal}>
-          <View style={styles.modalTextContainer}>
-            <Text style={styles.modalHeader}>Airbnb your place</Text>
-            <Text style={styles.modalSecondText}>It&apos;s simple to get up and start earning</Text>
-          </View>
-          <View style={styles.modalImageContainer}>
-            <Image source={home as ImageSourcePropType} style={styles.homeIcon} />
-          </View>
-        </View>
+
         {isSignedIn && <Button title="Log out" onPress={handleSignOut} color={Colors.dark} />}
       </ScrollView>
     </SafeAreaView>
@@ -268,5 +281,23 @@ const styles = StyleSheet.create({
   },
   inputWidth: {
     width: 100,
+  },
+  settingsText: {
+    paddingTop: 35,
+    paddingBottom: 20,
+    fontSize: 25,
+    fontWeight: '500',
+  },
+  settingItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 14,
+    gap: 20,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: Colors.lightGrey,
+  },
+  settingText: {
+    fontSize: 16,
+    fontWeight: '400',
   },
 })
