@@ -1,5 +1,5 @@
 import { useAuth, useUser } from '@clerk/clerk-expo'
-import { Ionicons } from '@expo/vector-icons'
+import { AntDesign, Ionicons } from '@expo/vector-icons'
 import * as ImagePicker from 'expo-image-picker'
 import { Link, useRouter } from 'expo-router'
 import { useCallback, useEffect, useState } from 'react'
@@ -147,9 +147,12 @@ const Page = () => {
             <Text style={styles.settingsText}>Settings</Text>
             {settings.map((item) => (
               <View key={item.title} style={styles.settingItem}>
-                <Ionicons name={item.icon} size={28} />
+                <View style={styles.leftSetting}>
+                  <Ionicons name={item.icon} size={28} />
 
-                <Text style={styles.settingText}>{item.title}</Text>
+                  <Text style={styles.settingText}>{item.title}</Text>
+                </View>
+                <AntDesign name="right" size={20} color="black" />
               </View>
             ))}
           </>
@@ -290,14 +293,19 @@ const styles = StyleSheet.create({
   },
   settingItem: {
     flexDirection: 'row',
-    alignItems: 'center',
+    justifyContent: 'space-between',
     paddingVertical: 14,
-    gap: 20,
+    alignItems: 'center',
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: Colors.lightGrey,
   },
   settingText: {
     fontSize: 16,
     fontWeight: '400',
+  },
+  leftSetting: {
+    flexDirection: 'row',
+    gap: 20,
+    alignItems: 'center',
   },
 })
