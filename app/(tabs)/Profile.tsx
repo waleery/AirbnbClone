@@ -8,6 +8,7 @@ import { ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-ha
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import home from '@/assets/data/home.png'
+import { hosting } from '@/assets/data/hosting'
 import { settings } from '@/assets/data/settings'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
@@ -146,6 +147,17 @@ const Page = () => {
             </View>
             <Text style={styles.settingsText}>Settings</Text>
             {settings.map((item) => (
+              <View key={item.title} style={styles.settingItem}>
+                <View style={styles.leftSetting}>
+                  <Ionicons name={item.icon} size={28} />
+
+                  <Text style={styles.settingText}>{item.title}</Text>
+                </View>
+                <AntDesign name="right" size={20} color="black" />
+              </View>
+            ))}
+            <Text style={styles.settingsText}>Hosting</Text>
+            {hosting.map((item) => (
               <View key={item.title} style={styles.settingItem}>
                 <View style={styles.leftSetting}>
                   <Ionicons name={item.icon} size={28} />
