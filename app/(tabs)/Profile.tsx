@@ -10,6 +10,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import home from '@/assets/data/home.png'
 import { hosting } from '@/assets/data/hosting'
 import { settings } from '@/assets/data/settings'
+import { tools } from '@/assets/data/tools'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 
@@ -167,6 +168,20 @@ const Page = () => {
                 <AntDesign name="right" size={20} color="black" />
               </View>
             ))}
+            <Text style={styles.settingsText}>Tools</Text>
+            {tools.map((item) => (
+              <View key={item.title} style={styles.settingItem}>
+                <View style={styles.leftSetting}>
+                  {item.icon ? (
+                    <Ionicons name={item.icon} size={28} />
+                  ) : (
+                    <Image source={item.img} style={styles.iconImg} />
+                  )}
+                  <Text style={styles.settingText}>{item.title}</Text>
+                </View>
+                <AntDesign name="right" size={20} color="black" />
+              </View>
+            ))}
           </>
         )}
 
@@ -319,5 +334,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 20,
     alignItems: 'center',
+  },
+  iconImg: {
+    width: 28,
+    height: 28,
   },
 })
