@@ -1,18 +1,16 @@
-import { Ionicons } from '@expo/vector-icons'
+import { TOption } from '@/types/option'
 
-type IconNames = keyof typeof Ionicons.glyphMap
-
-export const hosting = [
+export const hosting: TOption[] = [
   {
     title: 'List your spaces',
-    icon: 'home-outline' as IconNames,
+    icon: 'home-outline',
   },
   {
     title: 'Find a co-host',
-    icon: 'person-add-outline' as IconNames,
+    icon: 'person-add-outline',
   },
   {
     title: 'Host an experience',
-    icon: 'footsteps-outline' as IconNames,
+    icon: 'footsteps-outline',
   },
 ]

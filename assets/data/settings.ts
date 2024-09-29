@@ -1,38 +1,36 @@
-import { Ionicons } from '@expo/vector-icons'
+import { TOption } from '@/types/option'
 
-type IconNames = keyof typeof Ionicons.glyphMap
-
-export const settings = [
+export const settings: TOption[] = [
   {
     title: 'Personal information',
-    icon: 'person-circle-outline' as IconNames,
+    icon: 'person-circle-outline',
   },
   {
     title: 'Payments and payouts',
-    icon: 'cash-outline' as IconNames,
+    icon: 'cash-outline',
   },
   {
     title: 'Taxes',
-    icon: 'document-outline' as IconNames,
+    icon: 'document-outline',
   },
   {
     title: 'Login & security',
-    icon: 'shield-outline' as IconNames,
+    icon: 'shield-outline',
   },
   {
     title: 'Accessibility',
-    icon: 'accessibility-outline' as IconNames,
+    icon: 'accessibility-outline',
   },
   {
     title: 'Translation',
-    icon: 'language-outline' as IconNames,
+    icon: 'language-outline',
   },
   {
     title: 'Notifications',
-    icon: 'notifications-outline' as IconNames,
+    icon: 'notifications-outline',
   },
   {
     title: 'Privacy and sharing',
-    icon: 'lock-closed-outline' as IconNames,
+    icon: 'lock-closed-outline',
   },
 ]

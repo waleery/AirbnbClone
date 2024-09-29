@@ -1,8 +1,10 @@
-import siriPng from '@/assets/data/siri.png'
+import { ImageSourcePropType } from 'react-native'
 
-export const tools = [
+import { TOption } from '@/types/option'
+
+export const tools: TOption[] = [
   {
     title: 'Siri settings',
-    img: siriPng,
+    img: require('@/assets/data/siri.png') as ImageSourcePropType,
   },
 ]
