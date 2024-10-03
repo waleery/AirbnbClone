@@ -10,7 +10,9 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import home from '@/assets/data/home.png'
 import { hosting } from '@/assets/data/hosting'
 import { settings } from '@/assets/data/settings'
+import { support } from '@/assets/data/support'
 import { tools } from '@/assets/data/tools'
+import IconRenderer from '@/components/ItemRenderer'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 
@@ -150,8 +152,7 @@ const Page = () => {
             {settings.map((item) => (
               <View key={item.title} style={styles.settingItem}>
                 <View style={styles.leftSetting}>
-                  <Ionicons name={item.icon} size={28} />
-
+                  <IconRenderer option={item} />
                   <Text style={styles.settingText}>{item.title}</Text>
                 </View>
                 <AntDesign name="right" size={20} color="black" />
@@ -161,8 +162,7 @@ const Page = () => {
             {hosting.map((item) => (
               <View key={item.title} style={styles.settingItem}>
                 <View style={styles.leftSetting}>
-                  <Ionicons name={item.icon} size={28} />
-
+                  <IconRenderer option={item} />
                   <Text style={styles.settingText}>{item.title}</Text>
                 </View>
                 <AntDesign name="right" size={20} color="black" />
@@ -172,11 +172,17 @@ const Page = () => {
             {tools.map((item) => (
               <View key={item.title} style={styles.settingItem}>
                 <View style={styles.leftSetting}>
-                  {item.icon ? (
-                    <Ionicons name={item.icon} size={28} />
-                  ) : (
-                    <Image source={item.img} style={styles.iconImg} />
-                  )}
+                  <IconRenderer option={item} />
+                  <Text style={styles.settingText}>{item.title}</Text>
+                </View>
+                <AntDesign name="right" size={20} color="black" />
+              </View>
+            ))}
+            <Text style={styles.settingsText}>Support</Text>
+            {support.map((item) => (
+              <View key={item.title} style={styles.settingItem}>
+                <View style={styles.leftSetting}>
+                  <IconRenderer option={item} />
                   <Text style={styles.settingText}>{item.title}</Text>
                 </View>
                 <AntDesign name="right" size={20} color="black" />
@@ -334,9 +340,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 20,
     alignItems: 'center',
-  },
-  iconImg: {
-    width: 28,
-    height: 28,
   },
 })
