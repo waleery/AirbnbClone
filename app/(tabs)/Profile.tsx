@@ -15,6 +15,7 @@ import { tools } from '@/assets/data/tools'
 import IconRenderer from '@/components/ItemRenderer'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
+import { legal } from '@/assets/data/legal'
 
 const Page = () => {
   const { signOut, isSignedIn } = useAuth()
@@ -180,6 +181,16 @@ const Page = () => {
             ))}
             <Text style={styles.settingsText}>Support</Text>
             {support.map((item) => (
+              <View key={item.title} style={styles.settingItem}>
+                <View style={styles.leftSetting}>
+                  <IconRenderer option={item} />
+                  <Text style={styles.settingText}>{item.title}</Text>
+                </View>
+                <AntDesign name="right" size={20} color="black" />
+              </View>
+            ))}
+            <Text style={styles.settingsText}>Legal</Text>
+            {legal.map((item) => (
               <View key={item.title} style={styles.settingItem}>
                 <View style={styles.leftSetting}>
                   <IconRenderer option={item} />
