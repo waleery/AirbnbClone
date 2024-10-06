@@ -3,19 +3,19 @@ import { AntDesign, Ionicons } from '@expo/vector-icons'
 import * as ImagePicker from 'expo-image-picker'
 import { Link, useRouter } from 'expo-router'
 import { useCallback, useEffect, useState } from 'react'
-import { View, Text, Button, StyleSheet, Image, ImageSourcePropType } from 'react-native'
+import { View, Text, StyleSheet, Image, ImageSourcePropType } from 'react-native'
 import { ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import home from '@/assets/data/home.png'
 import { hosting } from '@/assets/data/hosting'
+import { legal } from '@/assets/data/legal'
 import { settings } from '@/assets/data/settings'
 import { support } from '@/assets/data/support'
 import { tools } from '@/assets/data/tools'
 import IconRenderer from '@/components/ItemRenderer'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
-import { legal } from '@/assets/data/legal'
 
 const Page = () => {
   const { signOut, isSignedIn } = useAuth()
@@ -202,7 +202,11 @@ const Page = () => {
           </>
         )}
 
-        {isSignedIn && <Button title="Log out" onPress={handleSignOut} color={Colors.dark} />}
+        {isSignedIn && (
+          <Text onPress={handleSignOut} style={styles.logoutText}>
+            Log out
+          </Text>
+        )}
       </ScrollView>
     </SafeAreaView>
   )
@@ -351,5 +355,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 20,
     alignItems: 'center',
+  },
+  logoutText: {
+    marginVertical: 45,
+    fontSize: 17,
+    textDecorationLine: 'underline',
   },
 })
