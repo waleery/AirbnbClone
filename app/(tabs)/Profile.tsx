@@ -77,7 +77,7 @@ const Page = () => {
 
   return (
     <SafeAreaView edges={['top']} style={[defaultStyles.container, styles.container]}>
-      <ScrollView style={styles.scrollView}>
+      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         <View style={styles.headerContainer}>
           <Text style={styles.header}>Profile</Text>
         </View>
