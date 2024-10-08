@@ -77,7 +77,7 @@ const Page = () => {
 
   return (
     <SafeAreaView edges={['top']} style={[defaultStyles.container, styles.container]}>
-      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.headerContainer}>
           <Text style={styles.header}>Profile</Text>
         </View>
@@ -216,9 +216,6 @@ export default Page
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 16,
-  },
-  scrollView: {
-    overflow: 'visible',
   },
   headerContainer: {
     paddingTop: 36,
