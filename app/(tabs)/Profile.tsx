@@ -24,14 +24,14 @@ const Page = () => {
   const { user } = useUser()
   const [firstName, setFirstName] = useState(user?.firstName)
   const [lastName, setLastName] = useState(user?.lastName)
-  const [email, setEmail] = useState(user?.emailAddresses[0].emailAddress)
+  // const [email, setEmail] = useState(user?.emailAddresses[0].emailAddress)
   const [edit, setEdit] = useState(false)
 
   useEffect(() => {
     if (!user) return
     setFirstName(user.firstName)
     setLastName(user.lastName)
-    setEmail(user.emailAddresses[0].emailAddress)
+    // setEmail(user.emailAddresses[0].emailAddress)
   }, [user])
 
   const onSaveUser = useCallback(async () => {
@@ -63,7 +63,7 @@ const Page = () => {
     }
   }, [user])
 
-  const handleSetEdit = useCallback(() => setEdit(true), [setEdit])
+  // const handleSetEdit = useCallback(() => setEdit(true), [setEdit])
 
   const handleSignOut = useCallback(async () => {
     try {
@@ -126,18 +126,14 @@ const Page = () => {
                   </View>
                 ) : (
                   <View style={styles.editRow}>
-                    <Text style={styles.name}>
-                      {firstName} {lastName}
-                    </Text>
-                    <TouchableOpacity onPress={handleSetEdit}>
+                    <Text style={styles.name}>{firstName}</Text>
+                    <Text style={styles.secondText}>Show profile</Text>
+                    {/* <TouchableOpacity onPress={handleSetEdit}>
                       <Ionicons name="create-outline" size={24} color={Colors.dark} />
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                   </View>
                 )}
               </View>
-
-              <Text>{email}</Text>
-              <Text>Since {user?.createdAt?.toLocaleDateString()}</Text>
             </View>
             <View style={styles.modal}>
               <View style={styles.modalTextContainer}>
@@ -219,7 +215,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   headerContainer: {
-    paddingTop: 36,
+    paddingVertical: 36,
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
@@ -292,44 +288,35 @@ const styles = StyleSheet.create({
     color: Colors.grey,
   },
   card: {
-    backgroundColor: Colors.white,
-    padding: 24,
-    borderRadius: 16,
-    marginHorizontal: 24,
-    marginTop: 24,
-    elevation: 2,
-    shadowColor: Colors.black,
-    shadowOpacity: 0.2,
-    shadowRadius: 6,
-    shadowOffset: {
-      width: 1,
-      height: 2,
-    },
+    flexDirection: 'row',
     alignItems: 'center',
-    gap: 14,
+    backgroundColor: Colors.white,
+    paddingBottom: 20,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: Colors.lightGrey,
+    gap: 18,
     marginBottom: 24,
   },
   avatar: {
-    width: 100,
-    height: 100,
+    width: 60,
+    height: 60,
     borderRadius: 50,
     backgroundColor: Colors.grey,
   },
   editRow: {
-    flex: 1,
-    height: 60,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: 8,
+    gap: 2,
   },
   inputView: {
     flexDirection: 'row',
-    gap: 6,
+    gap: 60,
   },
   name: {
-    fontSize: 22,
-    fontWeight: 'bold',
+    fontSize: 20,
+    fontWeight: '400',
+  },
+  secondText: {
+    fontSize: 15,
+    fontWeight: '300',
   },
   inputWidth: {
     width: 100,
