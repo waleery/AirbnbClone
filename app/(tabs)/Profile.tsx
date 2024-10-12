@@ -2,9 +2,9 @@ import { useAuth, useUser } from '@clerk/clerk-expo'
 import { AntDesign, Ionicons } from '@expo/vector-icons'
 import * as ImagePicker from 'expo-image-picker'
 import { Link, useRouter } from 'expo-router'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback } from 'react'
 import { View, Text, StyleSheet, Image, ImageSourcePropType } from 'react-native'
-import { ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler'
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import home from '@/assets/data/home.png'
@@ -22,30 +22,6 @@ const Page = () => {
   const router = useRouter()
 
   const { user } = useUser()
-  const [firstName, setFirstName] = useState(user?.firstName)
-  const [lastName, setLastName] = useState(user?.lastName)
-  // const [email, setEmail] = useState(user?.emailAddresses[0].emailAddress)
-  const [edit, setEdit] = useState(false)
-
-  useEffect(() => {
-    if (!user) return
-    setFirstName(user.firstName)
-    setLastName(user.lastName)
-    // setEmail(user.emailAddresses[0].emailAddress)
-  }, [user])
-
-  const onSaveUser = useCallback(async () => {
-    setEdit(false)
-    try {
-      if (!firstName || !lastName) return
-      await user?.update({
-        firstName,
-        lastName,
-      })
-    } catch (error) {
-      console.log(error)
-    }
-  }, [firstName, lastName, user])
 
   const onCaptureImage = useCallback(async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -54,7 +30,6 @@ const Page = () => {
       quality: 0.9,
       base64: true,
     })
-
     if (!result.canceled) {
       const base64 = `data:image/png;base64,${result.assets[0].base64}`
       user?.setProfileImage({
@@ -62,8 +37,6 @@ const Page = () => {
       })
     }
   }, [user])
-
-  // const handleSetEdit = useCallback(() => setEdit(true), [setEdit])
 
   const handleSignOut = useCallback(async () => {
     try {
@@ -106,33 +79,13 @@ const Page = () => {
                 <Image source={{ uri: user?.imageUrl }} style={styles.avatar} />
               </TouchableOpacity>
               <View style={styles.inputView}>
-                {edit ? (
-                  <View style={styles.editRow}>
-                    <TextInput
-                      placeholder="First name"
-                      value={firstName || ''}
-                      onChangeText={setFirstName}
-                      style={[defaultStyles.inputField, styles.inputWidth]}
-                    />
-                    <TextInput
-                      placeholder="Last name"
-                      value={lastName || ''}
-                      onChangeText={setLastName}
-                      style={[defaultStyles.inputField, styles.inputWidth]}
-                    />
-                    <TouchableOpacity onPress={onSaveUser}>
-                      <Ionicons name="checkmark-outline" size={24} color={Colors.dark} />
-                    </TouchableOpacity>
-                  </View>
-                ) : (
-                  <View style={styles.editRow}>
-                    <Text style={styles.name}>{firstName}</Text>
-                    <Text style={styles.secondText}>Show profile</Text>
-                    {/* <TouchableOpacity onPress={handleSetEdit}>
+                <View style={styles.editRow}>
+                  <Text style={styles.name}>{user.firstName}</Text>
+                  <Text style={styles.secondText}>Show profile</Text>
+                  {/* <TouchableOpacity onPress={handleSetEdit}>
                       <Ionicons name="create-outline" size={24} color={Colors.dark} />
                     </TouchableOpacity> */}
-                  </View>
-                )}
+                </View>
               </View>
             </View>
             <View style={styles.modal}>
@@ -317,9 +270,6 @@ const styles = StyleSheet.create({
   secondText: {
     fontSize: 15,
     fontWeight: '300',
-  },
-  inputWidth: {
-    width: 100,
   },
   settingsText: {
     paddingTop: 35,
