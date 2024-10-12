@@ -101,7 +101,7 @@ const Page = () => {
         ) : null}
         {user && (
           <>
-            <View style={styles.card}>
+            <View style={styles.profileRow}>
               <TouchableOpacity onPress={onCaptureImage}>
                 <Image source={{ uri: user?.imageUrl }} style={styles.avatar} />
               </TouchableOpacity>
@@ -287,7 +287,7 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     color: Colors.grey,
   },
-  card: {
+  profileRow: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: Colors.white,
