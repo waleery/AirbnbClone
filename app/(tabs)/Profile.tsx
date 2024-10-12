@@ -82,9 +82,6 @@ const Page = () => {
                 <View style={styles.profileTextSection}>
                   <Text style={styles.name}>{user.firstName}</Text>
                   <Text style={styles.secondText}>Show profile</Text>
-                  {/* <TouchableOpacity onPress={handleSetEdit}>
-                      <Ionicons name="create-outline" size={24} color={Colors.dark} />
-                    </TouchableOpacity> */}
                 </View>
               </View>
             </View>
