@@ -79,7 +79,7 @@ const Page = () => {
                 <Image source={{ uri: user?.imageUrl }} style={styles.avatar} />
               </TouchableOpacity>
               <View style={styles.inputView}>
-                <View style={styles.editRow}>
+                <View style={styles.profileTextSection}>
                   <Text style={styles.name}>{user.firstName}</Text>
                   <Text style={styles.secondText}>Show profile</Text>
                   {/* <TouchableOpacity onPress={handleSetEdit}>
@@ -256,7 +256,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     backgroundColor: Colors.grey,
   },
-  editRow: {
+  profileTextSection: {
     gap: 2,
   },
   inputView: {
