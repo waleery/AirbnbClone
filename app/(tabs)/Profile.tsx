@@ -1,5 +1,5 @@
 import { useAuth, useUser } from '@clerk/clerk-expo'
-import { AntDesign, Ionicons } from '@expo/vector-icons'
+import { Ionicons } from '@expo/vector-icons'
 import * as ImagePicker from 'expo-image-picker'
 import { Link, useRouter } from 'expo-router'
 import { useCallback } from 'react'
@@ -13,7 +13,7 @@ import { legal } from '@/assets/data/legal'
 import { settings } from '@/assets/data/settings'
 import { support } from '@/assets/data/support'
 import { tools } from '@/assets/data/tools'
-import IconRenderer from '@/components/ItemRenderer'
+import RenderOptions from '@/components/RenderOptions'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 
@@ -96,56 +96,11 @@ const Page = () => {
                 <Image source={home as ImageSourcePropType} style={styles.homeIcon} />
               </View>
             </View>
-            <Text style={styles.settingsText}>Settings</Text>
-            {settings.map((item) => (
-              <View key={item.title} style={styles.settingItem}>
-                <View style={styles.leftSetting}>
-                  <IconRenderer option={item} />
-                  <Text style={styles.settingText}>{item.title}</Text>
-                </View>
-                <AntDesign name="right" size={20} color="black" />
-              </View>
-            ))}
-            <Text style={styles.settingsText}>Hosting</Text>
-            {hosting.map((item) => (
-              <View key={item.title} style={styles.settingItem}>
-                <View style={styles.leftSetting}>
-                  <IconRenderer option={item} />
-                  <Text style={styles.settingText}>{item.title}</Text>
-                </View>
-                <AntDesign name="right" size={20} color="black" />
-              </View>
-            ))}
-            <Text style={styles.settingsText}>Tools</Text>
-            {tools.map((item) => (
-              <View key={item.title} style={styles.settingItem}>
-                <View style={styles.leftSetting}>
-                  <IconRenderer option={item} />
-                  <Text style={styles.settingText}>{item.title}</Text>
-                </View>
-                <AntDesign name="right" size={20} color="black" />
-              </View>
-            ))}
-            <Text style={styles.settingsText}>Support</Text>
-            {support.map((item) => (
-              <View key={item.title} style={styles.settingItem}>
-                <View style={styles.leftSetting}>
-                  <IconRenderer option={item} />
-                  <Text style={styles.settingText}>{item.title}</Text>
-                </View>
-                <AntDesign name="right" size={20} color="black" />
-              </View>
-            ))}
-            <Text style={styles.settingsText}>Legal</Text>
-            {legal.map((item) => (
-              <View key={item.title} style={styles.settingItem}>
-                <View style={styles.leftSetting}>
-                  <IconRenderer option={item} />
-                  <Text style={styles.settingText}>{item.title}</Text>
-                </View>
-                <AntDesign name="right" size={20} color="black" />
-              </View>
-            ))}
+            <RenderOptions options={settings} title="Settings" />
+            <RenderOptions options={hosting} title="Hosting" />
+            <RenderOptions options={tools} title="Tools" />
+            <RenderOptions options={support} title="Support" />
+            <RenderOptions options={legal} title="Legal" />
           </>
         )}
 
@@ -267,29 +222,6 @@ const styles = StyleSheet.create({
   secondText: {
     fontSize: 15,
     fontWeight: '300',
-  },
-  settingsText: {
-    paddingTop: 35,
-    paddingBottom: 20,
-    fontSize: 25,
-    fontWeight: '500',
-  },
-  settingItem: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingVertical: 14,
-    alignItems: 'center',
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: Colors.lightGrey,
-  },
-  settingText: {
-    fontSize: 16,
-    fontWeight: '400',
-  },
-  leftSetting: {
-    flexDirection: 'row',
-    gap: 20,
-    alignItems: 'center',
   },
   logoutText: {
     marginVertical: 45,
