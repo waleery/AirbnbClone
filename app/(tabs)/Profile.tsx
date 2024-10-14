@@ -1,5 +1,5 @@
 import { useAuth, useUser } from '@clerk/clerk-expo'
-import { Ionicons } from '@expo/vector-icons'
+import { AntDesign, Ionicons } from '@expo/vector-icons'
 import * as ImagePicker from 'expo-image-picker'
 import { Link, useRouter } from 'expo-router'
 import { useCallback } from 'react'
@@ -75,15 +75,16 @@ const Page = () => {
         {user && (
           <>
             <View style={styles.profileRow}>
-              <TouchableOpacity onPress={onCaptureImage}>
-                <Image source={{ uri: user?.imageUrl }} style={styles.avatar} />
-              </TouchableOpacity>
               <View style={styles.inputView}>
+                <TouchableOpacity onPress={onCaptureImage}>
+                  <Image source={{ uri: user?.imageUrl }} style={styles.avatar} />
+                </TouchableOpacity>
                 <View style={styles.profileTextSection}>
                   <Text style={styles.name}>{user.firstName}</Text>
                   <Text style={styles.secondText}>Show profile</Text>
                 </View>
               </View>
+              <AntDesign name="right" size={20} color="black" />
             </View>
             <View style={styles.modal}>
               <View style={styles.modalTextContainer}>
@@ -194,12 +195,12 @@ const styles = StyleSheet.create({
   },
   profileRow: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: Colors.white,
     paddingBottom: 20,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: Colors.lightGrey,
-    gap: 18,
     marginBottom: 24,
   },
   avatar: {
@@ -213,7 +214,8 @@ const styles = StyleSheet.create({
   },
   inputView: {
     flexDirection: 'row',
-    gap: 60,
+    gap: 18,
+    alignItems: 'center',
   },
   name: {
     fontSize: 20,
