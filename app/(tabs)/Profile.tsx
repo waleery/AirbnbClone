@@ -75,7 +75,7 @@ const Page = () => {
         {user && (
           <>
             <View style={styles.profileRow}>
-              <View style={styles.inputView}>
+              <View style={styles.profileInfoSection}>
                 <TouchableOpacity onPress={onCaptureImage}>
                   <Image source={{ uri: user?.imageUrl }} style={styles.avatar} />
                 </TouchableOpacity>
@@ -212,7 +212,7 @@ const styles = StyleSheet.create({
   profileTextSection: {
     gap: 2,
   },
-  inputView: {
+  profileInfoSection: {
     flexDirection: 'row',
     gap: 18,
     alignItems: 'center',
