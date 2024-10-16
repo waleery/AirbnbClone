@@ -8,7 +8,7 @@ import { TOption } from '@/types/option'
 
 const RenderOptions = ({ options, title }: { options: TOption[]; title: string }) => {
   return (
-    <>
+    <View>
       <Text style={styles.title}>{title}</Text>
       {options.map((item) => (
         <View key={item.title} style={styles.settingItem}>
@@ -19,7 +19,7 @@ const RenderOptions = ({ options, title }: { options: TOption[]; title: string }
           <AntDesign name="right" size={20} color="black" />
         </View>
       ))}
-    </>
+    </View>
   )
 }
 
@@ -27,7 +27,6 @@ export default RenderOptions
 
 const styles = StyleSheet.create({
   title: {
-    paddingTop: 35,
     paddingBottom: 20,
     fontSize: 25,
     fontWeight: '500',

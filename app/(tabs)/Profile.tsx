@@ -97,11 +97,13 @@ const Page = () => {
                 <Image source={home as ImageSourcePropType} style={styles.homeIcon} />
               </View>
             </View>
-            <RenderOptions options={settings} title="Settings" />
-            <RenderOptions options={hosting} title="Hosting" />
-            <RenderOptions options={tools} title="Tools" />
-            <RenderOptions options={support} title="Support" />
-            <RenderOptions options={legal} title="Legal" />
+            <View style={styles.optionsSection}>
+              <RenderOptions options={settings} title="Settings" />
+              <RenderOptions options={hosting} title="Hosting" />
+              <RenderOptions options={tools} title="Tools" />
+              <RenderOptions options={support} title="Support" />
+              <RenderOptions options={legal} title="Legal" />
+            </View>
           </>
         )}
 
@@ -170,6 +172,7 @@ const styles = StyleSheet.create({
       width: 1,
       height: 1,
     },
+    marginBottom: 35,
   },
   modalTextContainer: {
     flex: 2,
@@ -229,5 +232,8 @@ const styles = StyleSheet.create({
     marginVertical: 45,
     fontSize: 17,
     textDecorationLine: 'underline',
+  },
+  optionsSection: {
+    gap: 35,
   },
 })
