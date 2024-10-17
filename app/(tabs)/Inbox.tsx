@@ -56,11 +56,6 @@ const Page = () => {
 
   return (
     <View style={defaultStyles.flex}>
-      <Stack.Screen
-        options={{
-          header: () => <InboxHeader />,
-        }}
-      />
       <View style={styles.container}>
         <Text style={styles.title}>Messages</Text>
         <ScrollView

@@ -2,6 +2,7 @@ import { FontAwesome5, Ionicons, MaterialCommunityIcons } from '@expo/vector-ico
 import { Tabs } from 'expo-router'
 
 import Colors from '@/constants/Colors'
+import InboxHeader from '@/components/InboxHeader'
 
 const Layout = () => {
   return (
@@ -37,6 +38,7 @@ const Layout = () => {
       <Tabs.Screen
         name="Inbox"
         options={{
+          header: () => <InboxHeader />,
           tabBarLabel: 'Inbox',
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="message-outline" color={color} size={size} />
