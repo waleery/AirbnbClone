@@ -35,11 +35,6 @@ const Page = () => {
 
   return (
     <View style={defaultStyles.flex}>
-      <Stack.Screen
-        options={{
-          headerShown: false,
-        }}
-      />
       <SafeAreaView edges={['top']} style={[styles.container]}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <Text style={styles.title}>Trips</Text>

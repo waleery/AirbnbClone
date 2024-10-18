@@ -33,6 +33,7 @@ const Layout = () => {
         options={{
           tabBarLabel: 'Trips',
           tabBarIcon: ({ color, size }) => <FontAwesome5 name="airbnb" color={color} size={size} />,
+          headerShown: false,
         }}
       />
       <Tabs.Screen
