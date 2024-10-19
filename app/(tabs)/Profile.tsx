@@ -8,11 +8,7 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import home from '@/assets/data/home.png'
-import { hosting } from '@/assets/data/hosting'
-import { legal } from '@/assets/data/legal'
-import { settings } from '@/assets/data/settings'
-import { support } from '@/assets/data/support'
-import { tools } from '@/assets/data/tools'
+import { hosting, legal, settings, support, tools } from '@/assets/data';
 import RenderOptions from '@/components/RenderOptions'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
