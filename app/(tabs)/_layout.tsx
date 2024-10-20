@@ -3,6 +3,7 @@ import { Tabs } from 'expo-router'
 
 import Colors from '@/constants/Colors'
 import InboxHeader from '@/components/InboxHeader'
+import WishlistHeader from '@/components/WishlistHeader'
 
 const Layout = () => {
   return (
@@ -25,6 +26,7 @@ const Layout = () => {
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="heart-outline" color={color} size={size} />
           ),
+          header: () => <WishlistHeader />,
           unmountOnBlur: true,
         }}
       />

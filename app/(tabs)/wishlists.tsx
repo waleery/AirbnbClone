@@ -20,11 +20,6 @@ const Page = () => {
 
   return (
     <View style={defaultStyles.flex}>
-      <Stack.Screen
-        options={{
-          header: () => <WishlistHeader />,
-        }}
-      />
       <View style={styles.container}>
         <WishlistTiles />
       </View>
