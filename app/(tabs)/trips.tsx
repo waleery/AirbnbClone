@@ -1,5 +1,5 @@
 import { format, parseISO } from 'date-fns'
-import { Stack, useRouter } from 'expo-router'
+import { useRouter } from 'expo-router'
 import { useCallback } from 'react'
 import { View, Text, StyleSheet, Image, ImageSourcePropType } from 'react-native'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'

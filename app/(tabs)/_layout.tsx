@@ -1,9 +1,9 @@
 import { FontAwesome5, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 import { Tabs } from 'expo-router'
 
-import Colors from '@/constants/Colors'
 import InboxHeader from '@/components/InboxHeader'
 import WishlistHeader from '@/components/WishlistHeader'
+import Colors from '@/constants/Colors'
 
 const Layout = () => {
   return (

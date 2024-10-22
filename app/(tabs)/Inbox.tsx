@@ -1,12 +1,10 @@
 import { Ionicons } from '@expo/vector-icons'
 import { parseISO } from 'date-fns'
-import { Stack } from 'expo-router'
 import { useCallback, useMemo, useState } from 'react'
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, ListRenderItem } from 'react-native'
 import { FlatList, Swipeable } from 'react-native-gesture-handler'
 
 import messagesDataRaw from '@/assets/data/messages.json'
-import InboxHeader from '@/components/InboxHeader'
 import MessageTile from '@/components/MessageTile'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
