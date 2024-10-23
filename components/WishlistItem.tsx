@@ -6,7 +6,7 @@ import { Image, StyleSheet, Text, View } from 'react-native'
 
 import Colors from '@/constants/Colors'
 import { wishlistEditMode } from '@/store/wishlistStore'
-import { Wishlist } from '@/types/whishlist'
+import { Wishlist } from '@/types'
 
 export const WishlistItem = ({ wishlist }: { wishlist: Wishlist }) => {
   const editMode = useAtomValue(wishlistEditMode)

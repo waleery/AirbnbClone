@@ -1,6 +1,6 @@
 import { ImageSourcePropType } from 'react-native'
 
-import { TOption } from '@/types/option'
+import { TOption } from '@/types'
 
 export const tools: TOption[] = [
   {

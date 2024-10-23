@@ -1,10 +1,10 @@
 import { Ionicons, FontAwesome5 } from '@expo/vector-icons'
 import { Image } from 'react-native'
 
-import { TOption } from '@/types/option' // Załaduj typ TOption
+import { TOption } from '@/types'
 
 interface IconRendererProps {
-  option: TOption // Używamy TOption
+  option: TOption
   size?: number
   color?: string
 }

@@ -10,7 +10,7 @@ import ListingsMap from '@/components/ListingsMap'
 import { defaultStyles } from '@/constants/Styles'
 import { accomodation_categories } from '@/constants/categories'
 import { filteredListingsAtom } from '@/store/listingsStore'
-import { ListingGeo } from '@/types/listingGeo'
+import { ListingGeo } from '@/types'
 
 const Page = () => {
   const [category, setCategory] = useState(accomodation_categories[0].name)

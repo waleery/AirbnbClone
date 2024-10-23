@@ -5,7 +5,7 @@ import { View, Text, ListRenderItem, StyleSheet } from 'react-native'
 import ListingItem from './ListingItem'
 
 import { defaultStyles } from '@/constants/Styles'
-import { Listing } from '@/types/listing'
+import { Listing } from '@/types'
 
 interface Props {
   listings: Listing[]

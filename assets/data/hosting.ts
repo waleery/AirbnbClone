@@ -1,4 +1,4 @@
-import { TOption } from '@/types/option'
+import { TOption } from '@/types'
 
 export const hosting: TOption[] = [
   {

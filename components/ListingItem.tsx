@@ -6,7 +6,7 @@ import Animated, { FadeIn, FadeOutLeft } from 'react-native-reanimated'
 
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
-import { Listing } from '@/types/listing'
+import { Listing } from '@/types'
 
 interface Props {
   item: Listing

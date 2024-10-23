@@ -9,7 +9,7 @@ import MessageTile from '@/components/MessageTile'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 import { messageTypes } from '@/constants/messageTypes'
-import { Conversation } from '@/types/messages'
+import { Conversation } from '@/types'
 
 const messagesData: Conversation[] = messagesDataRaw.map((message) => ({
   ...message,

@@ -6,7 +6,7 @@ import { Marker, PROVIDER_GOOGLE } from 'react-native-maps'
 
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
-import { Feature, ListingGeo } from '@/types/listingGeo'
+import { Feature, ListingGeo } from '@/types'
 
 interface Props {
   listings: ListingGeo

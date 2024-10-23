@@ -14,7 +14,7 @@ import { AnimatedScrollView } from 'react-native-reanimated/lib/typescript/reani
 import listingsData from '@/assets/data/airbnb-listings.json'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
-import { Listing } from '@/types/listing'
+import { Listing } from '@/types'
 
 const IMG_HEIGHT = 300
 const { width } = Dimensions.get('window')

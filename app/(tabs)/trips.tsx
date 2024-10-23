@@ -9,7 +9,7 @@ import hello from '@/assets/data/hello.png'
 import visitedPlaces from '@/assets/data/visitedPlaces.json'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
-import { WhereBeen } from '@/types/visitedPlaces'
+import { WhereBeen } from '@/types'
 
 const Page = () => {
   const visited: WhereBeen[] = visitedPlaces.map((place) => ({

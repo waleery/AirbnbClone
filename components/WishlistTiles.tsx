@@ -5,7 +5,7 @@ import { FlatList } from 'react-native-gesture-handler'
 import { WishlistItem } from './WishlistItem'
 
 import wishlistData from '@/assets/data/wishlist.json'
-import { Wishlist } from '@/types/whishlist'
+import { Wishlist } from '@/types'
 
 const WishlistTiles = () => {
   const renderRow: ListRenderItem<Wishlist> = useCallback(

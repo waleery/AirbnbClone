@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import IconRenderer from './ItemRenderer'
 
 import Colors from '@/constants/Colors'
-import { TOption } from '@/types/option'
+import { TOption } from '@/types'
 
 const RenderOptions = ({ options, title }: { options: TOption[]; title: string }) => {
   return (

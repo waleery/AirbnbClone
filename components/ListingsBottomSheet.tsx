@@ -8,7 +8,7 @@ import Listings from './Listings'
 
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
-import { Listing } from '@/types/listing'
+import { Listing } from '@/types'
 
 interface Props {
   listings: Listing[]
