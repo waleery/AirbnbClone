@@ -20,7 +20,7 @@ import home from '@/assets/data/home.png'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 
-const AuthorizedProfile = () => {
+export const AuthorizedProfile = () => {
   const { signOut } = useAuth()
   const { user } = useUser()
 
@@ -49,13 +49,16 @@ const AuthorizedProfile = () => {
           <Ionicons name="notifications-outline" size={32} />
         </View>
         <View style={styles.profileRow}>
-          <TouchableOpacity onPress={onCaptureImage}>
-            <Image source={{ uri: user?.imageUrl }} style={styles.avatar} />
-          </TouchableOpacity>
-          <View style={styles.profileTextSection}>
-            <Text style={styles.name}>{user?.firstName}</Text>
-            <Text style={styles.secondText}>Show profile</Text>
+          <View style={styles.profileInfoSection}>
+            <TouchableOpacity onPress={onCaptureImage}>
+              <Image source={{ uri: user?.imageUrl }} style={styles.avatar} />
+            </TouchableOpacity>
+            <View style={styles.profileTextSection}>
+              <Text style={styles.name}>{user?.firstName}</Text>
+              <Text style={styles.secondText}>Show profile</Text>
+            </View>
           </View>
+
           <AntDesign name="right" size={20} />
         </View>
         <View style={styles.modal}>
@@ -155,6 +158,11 @@ const styles = StyleSheet.create({
   },
   profileTextSection: {
     gap: 2,
+  },
+  profileInfoSection: {
+    flexDirection: 'row',
+    gap: 18,
+    alignItems: 'center',
   },
   name: {
     fontSize: 20,
