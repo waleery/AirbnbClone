@@ -7,12 +7,7 @@ import BookingFooter from '@/components/BookingFooter'
 import WhenCard from '@/components/WhenCard'
 import WhereCard from '@/components/WhereCard'
 import WhoCard from '@/components/WhoCard'
-import {
-  daysStayFilterAtom,
-  filterAtom,
-  groupsAtom,
-  guestsIncludedFilterAtom,
-} from '@/store/listingsStore'
+import { daysStayFilterAtom, filterAtom, groupsAtom, guestsIncludedFilterAtom } from '@/store'
 
 const Page = () => {
   const setGuestsIncluded = useSetAtom(guestsIncludedFilterAtom)

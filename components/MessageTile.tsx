@@ -10,7 +10,7 @@ import { AnimatedInterpolation } from 'react-native-gesture-handler/lib/typescri
 
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
-import { listingsAtom } from '@/store/listingsStore'
+import { listingsAtom } from '@/store'
 import { Conversation } from '@/types'
 
 type IconKey = 'Archive' | 'Star'

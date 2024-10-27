@@ -8,7 +8,7 @@ import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 import DateTimePicker, { DateType } from 'react-native-ui-datepicker'
 
 import { defaultStyles } from '@/constants/Styles'
-import { daysStayFilterAtom } from '@/store/listingsStore'
+import { daysStayFilterAtom } from '@/store'
 
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
 

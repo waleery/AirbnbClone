@@ -5,7 +5,7 @@ import { View, StyleSheet } from 'react-native'
 import WishlistTiles from '@/components/WishlistTiles'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
-import { wishlistEditMode } from '@/store/wishlistStore'
+import { wishlistEditMode } from '@/store'
 
 const Page = () => {
   const setEditMode = useSetAtom(wishlistEditMode)

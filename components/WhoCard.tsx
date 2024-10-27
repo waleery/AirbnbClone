@@ -7,7 +7,7 @@ import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
-import { groupsAtom } from '@/store/listingsStore'
+import { groupsAtom } from '@/store'
 
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
 interface Props {

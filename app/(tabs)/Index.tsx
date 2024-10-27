@@ -9,7 +9,7 @@ import ListingsBottomSheet from '@/components/ListingsBottomSheet'
 import ListingsMap from '@/components/ListingsMap'
 import { defaultStyles } from '@/constants/Styles'
 import { accomodation_categories } from '@/constants/categories'
-import { filteredListingsAtom } from '@/store/listingsStore'
+import { filteredListingsAtom } from '@/store'
 import { ListingGeo } from '@/types'
 
 const Page = () => {
