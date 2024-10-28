@@ -5,6 +5,6 @@ import { TOption } from '@/types'
 export const tools: TOption[] = [
   {
     title: 'Siri settings',
-    img: require('@/assets/data/siri.png') as ImageSourcePropType,
+    img: require('@/assets/images/siri.png') as ImageSourcePropType,
   },
 ]

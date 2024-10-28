@@ -16,7 +16,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import RenderOptions from './RenderOptions'
 
 import { hosting, legal, settings, support, tools } from '@/assets/data'
-import home from '@/assets/data/home.png'
+import home from '@/assets/images/home.png'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 
