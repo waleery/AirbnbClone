@@ -4,7 +4,7 @@ import { FlatList } from 'react-native-gesture-handler'
 
 import { WishlistItem } from './WishlistItem'
 
-import wishlistData from '@/assets/data/wishlist.json'
+import wishlistData from '@/assets/data/json/wishlist.json'
 import { Wishlist } from '@/types'
 
 const WishlistTiles = () => {

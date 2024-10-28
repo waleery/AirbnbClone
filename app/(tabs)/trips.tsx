@@ -5,7 +5,7 @@ import { View, Text, StyleSheet, Image, ImageSourcePropType } from 'react-native
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-import visitedPlaces from '@/assets/data/visitedPlaces.json'
+import visitedPlaces from '@/assets/data/json/visitedPlaces.json'
 import hello from '@/assets/images/hello.png'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'

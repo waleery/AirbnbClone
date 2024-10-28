@@ -11,7 +11,7 @@ import Animated, {
 } from 'react-native-reanimated'
 import { AnimatedScrollView } from 'react-native-reanimated/lib/typescript/reanimated2/component/ScrollView'
 
-import listingsData from '@/assets/data/airbnb-listings.json'
+import listingsData from '@/assets/data/json/airbnb-listings.json'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 import { Listing } from '@/types'

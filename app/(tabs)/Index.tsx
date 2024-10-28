@@ -3,7 +3,7 @@ import { useAtom } from 'jotai'
 import { useCallback, useMemo, useState } from 'react'
 import { View } from 'react-native'
 
-import listingsDataGeo from '@/assets/data/airbnb-listings.geo.json'
+import listingsDataGeo from '@/assets/data/json/airbnb-listings.geo.json'
 import ExploreHeader from '@/components/ExploreHeader'
 import ListingsBottomSheet from '@/components/ListingsBottomSheet'
 import ListingsMap from '@/components/ListingsMap'
