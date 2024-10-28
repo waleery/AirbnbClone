@@ -8,7 +8,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 
-const UnauthorizedProfile = () => {
+export const UnauthorizedProfile = () => {
   const { isSignedIn } = useAuth()
   const router = useRouter()
 
@@ -41,7 +41,6 @@ const UnauthorizedProfile = () => {
     </SafeAreaView>
   )
 }
-export default UnauthorizedProfile
 
 const styles = StyleSheet.create({
   container: {

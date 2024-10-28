@@ -2,7 +2,7 @@ import { BottomSheetFlatList, BottomSheetFlatListMethods } from '@gorhom/bottom-
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { View, Text, ListRenderItem, StyleSheet } from 'react-native'
 
-import ListingItem from './ListingItem'
+import { ListingItem } from './ListingItem'
 
 import { defaultStyles } from '@/constants/Styles'
 import { Listing } from '@/types'
@@ -12,7 +12,8 @@ interface Props {
   category: string
   refresh: number
 }
-const Listings = ({ category, listings: items, refresh }: Props) => {
+
+export const Listings = ({ category, listings: items, refresh }: Props) => {
   const [loading, setLoading] = useState(false)
   const listRef = useRef<BottomSheetFlatListMethods>(null)
 
@@ -56,4 +57,3 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
 })
-export default Listings

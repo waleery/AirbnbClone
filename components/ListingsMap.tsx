@@ -30,7 +30,7 @@ const INITIAL_REGION = {
   longitudeDelta: 1,
 }
 
-const ListingsMap = memo(({ listings }: Props) => {
+export const ListingsMap = memo(({ listings }: Props) => {
   const router = useRouter()
 
   const onMarkerSeleted = useCallback(
@@ -92,7 +92,7 @@ const ListingsMap = memo(({ listings }: Props) => {
     </View>
   )
 })
-export default ListingsMap
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

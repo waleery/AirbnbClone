@@ -17,7 +17,7 @@ interface Props {
   openCard: number
 }
 
-export default function WhenCard({ setOpenCard, openCard }: Props) {
+export const WhenCard = ({ setOpenCard, openCard }: Props) => {
   const [daysCount, setDaysCount] = useAtom(daysStayFilterAtom)
 
   const [startDate, setStartDate] = useState<DateType>(null)

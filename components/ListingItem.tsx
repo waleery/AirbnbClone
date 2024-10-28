@@ -11,7 +11,7 @@ import { Listing } from '@/types'
 interface Props {
   item: Listing
 }
-const ListingItem = ({ item }: Props) => {
+export const ListingItem = ({ item }: Props) => {
   const [imageError, setImageError] = useState(false)
 
   const handleImageError = useCallback(() => setImageError(true), [])
@@ -59,7 +59,6 @@ const ListingItem = ({ item }: Props) => {
     </Link>
   )
 }
-export default ListingItem
 
 const styles = StyleSheet.create({
   listing: {

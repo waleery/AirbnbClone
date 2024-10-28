@@ -22,12 +22,7 @@ interface Props {
   setSelectedPlace: (i: number) => void
   selectedPlace: number
 }
-export default function WhereCard({
-  setOpenCard,
-  openCard,
-  setSelectedPlace,
-  selectedPlace,
-}: Props) {
+export const WhereCard = ({ setOpenCard, openCard, setSelectedPlace, selectedPlace }: Props) => {
   const handleOpenCard = useCallback(() => setOpenCard(0), [setOpenCard])
 
   const handleSelectPlace = useCallback(

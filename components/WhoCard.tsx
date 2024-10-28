@@ -15,7 +15,7 @@ interface Props {
   openCard: number
 }
 
-const WhoCard = ({ setOpenCard, openCard }: Props) => {
+export const WhoCard = ({ setOpenCard, openCard }: Props) => {
   const [groups, setGroups] = useAtom(groupsAtom)
 
   const addPerson = useCallback(

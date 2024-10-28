@@ -5,7 +5,7 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity, ListRenderItem } 
 import { FlatList, Swipeable } from 'react-native-gesture-handler'
 
 import messagesDataRaw from '@/assets/data/json/messages.json'
-import MessageTile from '@/components/MessageTile'
+import { MessageTile } from '@/components'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 import { messageTypes } from '@/constants/messageTypes'

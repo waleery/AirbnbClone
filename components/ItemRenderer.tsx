@@ -9,7 +9,11 @@ interface IconRendererProps {
   color?: string
 }
 
-const IconRenderer: React.FC<IconRendererProps> = ({ option, size = 28, color = 'black' }) => {
+export const IconRenderer: React.FC<IconRendererProps> = ({
+  option,
+  size = 28,
+  color = 'black',
+}) => {
   if ('img' in option) {
     return <Image source={option.img} style={{ width: size, height: size }} />
   }
@@ -20,5 +24,3 @@ const IconRenderer: React.FC<IconRendererProps> = ({ option, size = 28, color = 
 
   return null
 }
-
-export default IconRenderer

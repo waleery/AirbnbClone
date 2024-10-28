@@ -4,18 +4,18 @@ import { useCallback, useMemo, useRef, useState } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
-import Listings from './Listings'
 
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 import { Listing } from '@/types'
+import { Listings } from './Listings'
 
 interface Props {
   listings: Listing[]
   category: string
 }
 
-const ListingsBottomSheet = ({ listings, category }: Props) => {
+export const ListingsBottomSheet = ({ listings, category }: Props) => {
   const bottomSheetRef = useRef<BottomSheet>(null)
   const snapPoitns = useMemo(() => ['10%', '100%'], [])
   const [refresh, setRefresh] = useState(0)
@@ -46,7 +46,7 @@ const ListingsBottomSheet = ({ listings, category }: Props) => {
     </BottomSheet>
   )
 }
-export default ListingsBottomSheet
+
 const styles = StyleSheet.create({
   absoluteBtn: {
     position: 'absolute',

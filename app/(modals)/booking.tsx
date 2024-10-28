@@ -3,10 +3,7 @@ import { useAtom, useSetAtom } from 'jotai'
 import { useCallback, useEffect, useState } from 'react'
 import { StyleSheet } from 'react-native'
 
-import BookingFooter from '@/components/BookingFooter'
-import WhenCard from '@/components/WhenCard'
-import WhereCard from '@/components/WhereCard'
-import WhoCard from '@/components/WhoCard'
+import { BookingFooter, WhenCard, WhereCard, WhoCard } from '@/components'
 import { daysStayFilterAtom, filterAtom, groupsAtom, guestsIncludedFilterAtom } from '@/store'
 
 const Page = () => {

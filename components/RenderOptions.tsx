@@ -1,12 +1,12 @@
 import { AntDesign } from '@expo/vector-icons'
 import { View, Text, StyleSheet } from 'react-native'
 
-import IconRenderer from './ItemRenderer'
+import { IconRenderer } from './ItemRenderer'
 
 import Colors from '@/constants/Colors'
 import { TOption } from '@/types'
 
-const RenderOptions = ({ options, title }: { options: TOption[]; title: string }) => {
+export const RenderOptions = ({ options, title }: { options: TOption[]; title: string }) => {
   return (
     <View>
       <Text style={styles.title}>{title}</Text>
@@ -22,8 +22,6 @@ const RenderOptions = ({ options, title }: { options: TOption[]; title: string }
     </View>
   )
 }
-
-export default RenderOptions
 
 const styles = StyleSheet.create({
   title: {

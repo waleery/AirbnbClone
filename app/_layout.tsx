@@ -11,7 +11,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 import SpaceMonoFont from '../assets/fonts/SpaceMono-Regular.ttf'
 
-import ModalHeaderText from '@/components/ModalHeaderText'
+import { ModalHeaderText } from '@/components'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 

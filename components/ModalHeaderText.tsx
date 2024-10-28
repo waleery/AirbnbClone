@@ -4,7 +4,8 @@ import { View, Text, StyleSheet } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
 import Colors from '@/constants/Colors'
-const ModalHeaderText = () => {
+
+export const ModalHeaderText = () => {
   const [active, setActive] = useState(0)
 
   const handleSetActive = useCallback((index: number) => () => setActive(index), [])
@@ -39,7 +40,6 @@ const ModalHeaderText = () => {
     </View>
   )
 }
-export default ModalHeaderText
 
 const styles = StyleSheet.create({
   headerContainer: {

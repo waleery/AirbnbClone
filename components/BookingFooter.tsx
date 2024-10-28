@@ -12,7 +12,7 @@ interface Props {
   filter: () => void
 }
 
-const BookingFooter = ({ onClearAll, filter }: Props) => {
+export const BookingFooter = ({ onClearAll, filter }: Props) => {
   const router = useRouter()
 
   const handlePressFilter = useCallback(() => {
@@ -49,5 +49,3 @@ const styles = StyleSheet.create({
   },
   button: { paddingRight: 20, paddingLeft: 50 },
 })
-
-export default BookingFooter

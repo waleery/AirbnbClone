@@ -7,7 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 
-const InboxHeader = () => {
+export const InboxHeader = () => {
   return (
     <SafeAreaView edges={['top']} style={[defaultStyles.pX2, defaultStyles.safeArea]}>
       <View style={styles.btnBox}>
@@ -21,8 +21,6 @@ const InboxHeader = () => {
     </SafeAreaView>
   )
 }
-
-export default InboxHeader
 
 const styles = StyleSheet.create({
   btnBox: {

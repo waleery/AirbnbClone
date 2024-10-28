@@ -7,7 +7,7 @@ import { WishlistItem } from './WishlistItem'
 import wishlistData from '@/assets/data/json/wishlist.json'
 import { Wishlist } from '@/types'
 
-const WishlistTiles = () => {
+export const WishlistTiles = () => {
   const renderRow: ListRenderItem<Wishlist> = useCallback(
     ({ item }) => <WishlistItem wishlist={item} />,
     []
@@ -25,8 +25,6 @@ const WishlistTiles = () => {
     />
   )
 }
-
-export default WishlistTiles
 
 const styles = StyleSheet.create({
   containerBox: {

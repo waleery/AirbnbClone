@@ -12,7 +12,7 @@ import { accomodation_categories } from '@/constants/categories'
 interface Props {
   onCategoryChanged: (category: string) => void
 }
-const ExploreHeader = ({ onCategoryChanged }: Props) => {
+export const ExploreHeader = ({ onCategoryChanged }: Props) => {
   const scrollRef = useRef<ScrollView>(null)
   const itemsRef = useRef<TouchableOpacity[]>([])
   const [activeIndex, setActiveIndex] = useState(0)
@@ -87,7 +87,6 @@ const ExploreHeader = ({ onCategoryChanged }: Props) => {
     </SafeAreaView>
   )
 }
-export default ExploreHeader
 
 const styles = StyleSheet.create({
   container: {

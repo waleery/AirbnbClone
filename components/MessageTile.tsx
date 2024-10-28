@@ -20,7 +20,7 @@ const iconMap: Record<IconKey, JSX.Element> = {
   Star: <AntDesign name="star" size={16} color="white" />,
 }
 
-const MessageTile = ({
+export const MessageTile = ({
   conversation,
   setOpenSwipeable,
   openSwipeable,
@@ -180,8 +180,6 @@ const MessageTile = ({
     </Swipeable>
   )
 }
-
-export default MessageTile
 
 const styles = StyleSheet.create({
   messagesContainer: {
