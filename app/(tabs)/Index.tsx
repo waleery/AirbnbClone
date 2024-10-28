@@ -6,12 +6,12 @@ import { View } from 'react-native'
 import listingsDataGeo from '@/assets/data/json/airbnb-listings.geo.json'
 import { ExploreHeader, ListingsBottomSheet, ListingsMap } from '@/components'
 import { defaultStyles } from '@/constants/Styles'
-import { accomodation_categories } from '@/constants/categories'
+import { accommodation_categories } from '@/constants/categories'
 import { filteredListingsAtom } from '@/store'
 import { ListingGeo } from '@/types'
 
 const Page = () => {
-  const [category, setCategory] = useState(accomodation_categories[0].name)
+  const [category, setCategory] = useState(accommodation_categories[0].name)
   const [listings] = useAtom(filteredListingsAtom)
   const listingsGeo = useMemo(() => listingsDataGeo as ListingGeo, [])
 

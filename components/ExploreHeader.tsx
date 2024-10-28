@@ -7,7 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
-import { accomodation_categories } from '@/constants/categories'
+import { accommodation_categories } from '@/constants/categories'
 
 interface Props {
   onCategoryChanged: (category: string) => void
@@ -36,7 +36,7 @@ export const ExploreHeader = ({ onCategoryChanged }: Props) => {
       setActiveIndex(index)
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
 
-      onCategoryChanged(accomodation_categories[index].name)
+      onCategoryChanged(accommodation_categories[index].name)
     },
     [onCategoryChanged]
   )
@@ -65,7 +65,7 @@ export const ExploreHeader = ({ onCategoryChanged }: Props) => {
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.acommodationsScrollView}
         >
-          {accomodation_categories.map((category, index) => (
+          {accommodation_categories.map((category, index) => (
             <TouchableOpacity
               key={index}
               ref={getRefHandler(index)}

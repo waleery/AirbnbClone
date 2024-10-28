@@ -1,4 +1,4 @@
-export const accomodation_categories = [
+export const accommodation_categories = [
   {
     name: 'Tiny homes',
     icon: 'home',
