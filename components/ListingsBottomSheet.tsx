@@ -4,11 +4,11 @@ import { useCallback, useMemo, useRef, useState } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
+import { Listings } from './Listings'
 
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 import { Listing } from '@/types'
-import { Listings } from './Listings'
 
 interface Props {
   listings: Listing[]
