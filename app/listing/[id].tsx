@@ -9,7 +9,6 @@ import Animated, {
   useAnimatedStyle,
   useScrollViewOffset,
 } from 'react-native-reanimated'
-import { AnimatedScrollView } from 'react-native-reanimated/lib/typescript/reanimated2/component/ScrollView'
 
 import listingsData from '@/assets/data/json/airbnb-listings.json'
 import Colors from '@/constants/Colors'
@@ -23,7 +22,7 @@ const Page = () => {
   const { id } = useLocalSearchParams<{ id: string }>()
   const listing = (listingsData as Listing[]).find((item) => item.id === id)
 
-  const scrollRef = useAnimatedRef<AnimatedScrollView>()
+  const scrollRef = useAnimatedRef<Animated.ScrollView>()
   const scrollOffset = useScrollViewOffset(scrollRef)
 
   const navigation = useNavigation()
