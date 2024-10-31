@@ -84,7 +84,7 @@ function RootLayoutNav() {
 
   useEffect(() => {
     if (isLoaded && !isSignedIn) {
-      //router.push('/(modals)/login')
+      router.push('/(profilePage)/ProfilePage')
     }
   }, [isLoaded, isSignedIn])
 
@@ -106,7 +106,12 @@ function RootLayoutNav() {
         }}
       />
       <Stack.Screen name="listing/[id]" options={{ headerTitle: '', headerTransparent: true }} />
-      <Stack.Screen name="(profilePage)/ProdilePage" />
+      <Stack.Screen
+        name="(profilePage)/ProfilePage"
+        options={{
+          headerShown: false,
+        }}
+      />
       <Stack.Screen
         name="(modals)/booking"
         options={{
