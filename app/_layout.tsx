@@ -6,7 +6,7 @@ import { Stack, useRouter } from 'expo-router'
 import * as SecureStore from 'expo-secure-store'
 import * as SplashScreen from 'expo-splash-screen'
 import { useCallback, useEffect } from 'react'
-import { StyleSheet, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 import SpaceMonoFont from '../assets/fonts/SpaceMono-Regular.ttf'
@@ -116,6 +116,7 @@ function RootLayoutNav() {
               <Ionicons name="chevron-back" size={22} color={'#000'} />
             </TouchableOpacity>
           ),
+          headerRight: () => <Text style={styles.logoutText}>Edit</Text>,
         }}
       />
       <Stack.Screen
@@ -143,5 +144,10 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderWidth: 1,
     padding: 4,
+  },
+  logoutText: {
+    fontSize: 16,
+    fontWeight: '500',
+    textDecorationLine: 'underline',
   },
 })
