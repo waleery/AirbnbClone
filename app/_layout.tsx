@@ -109,7 +109,12 @@ function RootLayoutNav() {
       <Stack.Screen
         name="(profilePage)/ProfilePage"
         options={{
-          headerShown: false,
+          headerTitle: '',
+          headerLeft: () => (
+            <TouchableOpacity onPress={handleGoBack}>
+              <Ionicons name="chevron-back" size={22} color={'#000'} />
+            </TouchableOpacity>
+          ),
         }}
       />
       <Stack.Screen
