@@ -1,6 +1,7 @@
 import { useAuth, useUser } from '@clerk/clerk-expo'
 import { Ionicons, AntDesign } from '@expo/vector-icons'
 import * as ImagePicker from 'expo-image-picker'
+import { useRouter } from 'expo-router'
 import { useCallback } from 'react'
 import {
   View,
@@ -10,6 +11,7 @@ import {
   TouchableOpacity,
   ScrollView,
   ImageSourcePropType,
+  Pressable,
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
@@ -23,6 +25,7 @@ import { defaultStyles } from '@/constants/Styles'
 export const AuthorizedProfile = () => {
   const { signOut } = useAuth()
   const { user } = useUser()
+  const router = useRouter()
 
   const onCaptureImage = useCallback(async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -41,6 +44,10 @@ export const AuthorizedProfile = () => {
     await signOut()
   }, [signOut])
 
+  const navigateToProfilePage = useCallback(() => {
+    router.push('/(profilePage)/ProfilePage')
+  }, [router])
+
   return (
     <SafeAreaView edges={['top']} style={[defaultStyles.container, styles.container]}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -58,8 +65,9 @@ export const AuthorizedProfile = () => {
               <Text style={styles.secondText}>Show profile</Text>
             </View>
           </View>
-
-          <AntDesign name="right" size={20} />
+          <Pressable onPress={navigateToProfilePage}>
+            <AntDesign name="right" size={20} />
+          </Pressable>
         </View>
         <View style={styles.modal}>
           <View style={styles.modalTextContainer}>

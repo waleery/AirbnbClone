@@ -84,7 +84,7 @@ function RootLayoutNav() {
 
   useEffect(() => {
     if (isLoaded && !isSignedIn) {
-      router.push('/(profilePage)/ProfilePage')
+      //router.push('/(profilePage)/ProfilePage')
     }
   }, [isLoaded, isSignedIn])
 
