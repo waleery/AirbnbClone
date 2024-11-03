@@ -1,5 +1,5 @@
 import { useUser } from '@clerk/clerk-expo'
-import { Image, StyleSheet, View } from 'react-native'
+import { Image, StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import Colors from '@/constants/Colors'
@@ -10,7 +10,10 @@ export default function ProfilePage() {
   return (
     <SafeAreaView edges={['top']} style={[styles.container]}>
       <View style={styles.modal}>
-        <Image source={{ uri: user?.imageUrl }} style={styles.avatar} />
+        <View style={styles.leftSide}>
+          <Image source={{ uri: user?.imageUrl }} style={styles.avatar} />
+          <Text>{user?.firstName}</Text>
+        </View>
       </View>
     </SafeAreaView>
   )
@@ -37,8 +40,13 @@ const styles = StyleSheet.create({
       height: 5,
     },
   },
+  leftSide: {
+    width: '50%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   avatar: {
-    width: '25%',
+    width: '50%',
     aspectRatio: 1,
     borderRadius: 50,
     backgroundColor: Colors.grey,
