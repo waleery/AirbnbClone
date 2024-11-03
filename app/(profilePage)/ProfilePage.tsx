@@ -12,7 +12,7 @@ export default function ProfilePage() {
       <View style={styles.modal}>
         <View style={styles.leftSide}>
           <Image source={{ uri: user?.imageUrl }} style={styles.avatar} />
-          <Text>{user?.firstName}</Text>
+          <Text style={styles.firstName}>{user?.firstName}</Text>
         </View>
       </View>
     </SafeAreaView>
@@ -50,5 +50,9 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     borderRadius: 50,
     backgroundColor: Colors.grey,
+  },
+  firstName: {
+    fontSize: 29,
+    fontWeight: '600',
   },
 })
