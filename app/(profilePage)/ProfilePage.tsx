@@ -2,17 +2,21 @@ import { useUser } from '@clerk/clerk-expo'
 import { Image, StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
+import profile from '@/assets/data/json/profile.json'
 import Colors from '@/constants/Colors'
+import { Profile } from '@/types/profile'
+
 export default function ProfilePage() {
   const { user } = useUser()
 
-  console.log(user)
+  const profileData = profile as Profile
   return (
     <SafeAreaView edges={['top']} style={[styles.container]}>
       <View style={styles.modal}>
         <View style={styles.leftSide}>
           <Image source={{ uri: user?.imageUrl }} style={styles.avatar} />
           <Text style={styles.firstName}>{user?.firstName}</Text>
+          <Text style={styles.guest}>{profileData.guest ? 'Guest' : null}</Text>
         </View>
       </View>
     </SafeAreaView>
@@ -54,5 +58,9 @@ const styles = StyleSheet.create({
   firstName: {
     fontSize: 29,
     fontWeight: '600',
+  },
+  guest: {
+    fontSize: 15,
+    fontWeight: '500',
   },
 })
