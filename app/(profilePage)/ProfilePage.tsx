@@ -18,6 +18,12 @@ export default function ProfilePage() {
           <Text style={styles.firstName}>{user?.firstName}</Text>
           <Text style={styles.guest}>{profileData.guest ? 'Guest' : null}</Text>
         </View>
+        <View style={styles.rightSide}>
+          <View>
+            <Text>{profileData.revievs}</Text>
+            <Text>Reviews</Text>
+          </View>
+        </View>
       </View>
     </SafeAreaView>
   )
@@ -32,6 +38,9 @@ const styles = StyleSheet.create({
   },
   modal: {
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 20,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: Colors.lightGrey,
     borderRadius: 15,
@@ -45,12 +54,12 @@ const styles = StyleSheet.create({
     },
   },
   leftSide: {
-    width: '50%',
+    width: '40%',
     justifyContent: 'center',
     alignItems: 'center',
   },
   avatar: {
-    width: '50%',
+    width: '70%',
     aspectRatio: 1,
     borderRadius: 50,
     backgroundColor: Colors.grey,
@@ -62,5 +71,8 @@ const styles = StyleSheet.create({
   guest: {
     fontSize: 15,
     fontWeight: '500',
+  },
+  rightSide: {
+    width: '30%',
   },
 })
