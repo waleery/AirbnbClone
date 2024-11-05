@@ -20,8 +20,8 @@ export default function ProfilePage() {
         </View>
         <View style={styles.rightSide}>
           <View>
-            <Text>{profileData.revievs}</Text>
-            <Text>Reviews</Text>
+            <Text style={styles.numberModal}>{profileData.revievs}</Text>
+            <Text style={styles.infoNumberModal}>Reviews</Text>
           </View>
         </View>
       </View>
@@ -74,5 +74,13 @@ const styles = StyleSheet.create({
   },
   rightSide: {
     width: '30%',
+  },
+  numberModal: {
+    fontSize: 22,
+    fontWeight: '700',
+  },
+  infoNumberModal: {
+    fontSize: 10,
+    fontWeight: '400',
   },
 })
