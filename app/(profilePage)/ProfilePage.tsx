@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
       width: 5,
       height: 5,
     },
+    paddingVertical: 30,
   },
   leftSide: {
     width: '40%',
