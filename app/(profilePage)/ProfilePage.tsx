@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     borderRadius: 50,
     backgroundColor: Colors.grey,
+    marginBottom: 5,
   },
   firstName: {
     fontSize: 29,
