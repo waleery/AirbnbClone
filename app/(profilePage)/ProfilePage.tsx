@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 20,
+    gap: 40,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: Colors.lightGrey,
     borderRadius: 15,
