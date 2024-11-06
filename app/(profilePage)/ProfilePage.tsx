@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
   numberModal: {
     fontSize: 22,
     fontWeight: '700',
+    marginBottom: 3,
   },
   infoNumberModal: {
     fontSize: 10,
