@@ -22,6 +22,8 @@ export default function ProfilePage() {
           <View>
             <Text style={styles.numberModal}>{profileData.revievs}</Text>
             <Text style={styles.infoNumberModal}>Reviews</Text>
+            <Text style={styles.numberModal}>{profileData.yearsOnAirbnb}</Text>
+            <Text style={styles.infoNumberModal}>Years on Airbnb</Text>
           </View>
         </View>
       </View>
