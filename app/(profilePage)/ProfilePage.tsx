@@ -22,6 +22,7 @@ export default function ProfilePage() {
           <View>
             <Text style={styles.numberModal}>{profileData.revievs}</Text>
             <Text style={styles.infoNumberModal}>Reviews</Text>
+            <View style={styles.separatorLine} />
             <Text style={styles.numberModal}>{profileData.yearsOnAirbnb}</Text>
             <Text style={styles.infoNumberModal}>Years on Airbnb</Text>
           </View>
@@ -85,5 +86,10 @@ const styles = StyleSheet.create({
   infoNumberModal: {
     fontSize: 10,
     fontWeight: '400',
+  },
+  separatorLine: {
+    borderBottomColor: Colors.grey,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    marginVertical: 12,
   },
 })
