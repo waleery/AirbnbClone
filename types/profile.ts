@@ -3,4 +3,6 @@ export interface Profile {
   verified: boolean
   revievs: number
   yearsOnAirbnb: number
+  city: string
+  country: string
 }
