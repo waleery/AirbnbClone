@@ -1,4 +1,5 @@
 import { useUser } from '@clerk/clerk-expo'
+import { Ionicons } from '@expo/vector-icons'
 import { Image, StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
@@ -28,6 +29,12 @@ export default function ProfilePage() {
           </View>
         </View>
       </View>
+      <View style={styles.placeTextContainer}>
+        <Ionicons name="globe-outline" size={24} color="black" />
+        <Text style={styles.placeText}>
+          Lives in {profileData.city}, {profileData.country}
+        </Text>
+      </View>
     </SafeAreaView>
   )
 }
@@ -56,6 +63,7 @@ const styles = StyleSheet.create({
       height: 5,
     },
     paddingVertical: 30,
+    marginBottom: 30,
   },
   leftSide: {
     width: '40%',
@@ -93,5 +101,14 @@ const styles = StyleSheet.create({
     borderBottomColor: Colors.grey,
     borderBottomWidth: StyleSheet.hairlineWidth,
     marginVertical: 12,
+  },
+  placeTextContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 15,
+  },
+  placeText: {
+    fontSize: 17,
+    fontWeight: '400',
   },
 })
