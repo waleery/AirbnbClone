@@ -35,6 +35,7 @@ export default function ProfilePage() {
           Lives in {profileData.city}, {profileData.country}
         </Text>
       </View>
+      <View style={styles.separatorLine} />
     </SafeAreaView>
   )
 }
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
     fontWeight: '400',
   },
   separatorLine: {
-    borderBottomColor: Colors.grey,
+    borderBottomColor: Colors.mediumGrey,
     borderBottomWidth: StyleSheet.hairlineWidth,
     marginVertical: 12,
   },
