@@ -107,6 +107,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 15,
+    marginBottom: 30,
   },
   placeText: {
     fontSize: 17,
