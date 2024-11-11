@@ -36,6 +36,12 @@ export default function ProfilePage() {
         </Text>
       </View>
       <View style={styles.separatorLine} />
+
+      <Text style={styles.reviewsTest}>
+        {profileData.guest
+          ? `What Hosts are saying about ${user?.firstName}`
+          : `${user?.firstName}'s reviews`}
+      </Text>
     </SafeAreaView>
   )
 }
@@ -112,5 +118,11 @@ const styles = StyleSheet.create({
   placeText: {
     fontSize: 17,
     fontWeight: '400',
+  },
+  reviewsTest: {
+    fontSize: 20,
+    paddingRight: '30%',
+    fontWeight: '600',
+    marginTop: 30,
   },
 })
