@@ -23,7 +23,7 @@ export default function ProfilePage() {
           <View>
             <Text style={styles.numberModal}>{profileData.revievs}</Text>
             <Text style={styles.infoNumberModal}>Reviews</Text>
-            <View style={styles.separatorLine} />
+            <View style={styles.separatorLineModal} />
             <Text style={styles.numberModal}>{profileData.yearsOnAirbnb}</Text>
             <Text style={styles.infoNumberModal}>Years on Airbnb</Text>
           </View>
@@ -42,6 +42,7 @@ export default function ProfilePage() {
           ? `What Hosts are saying about ${user?.firstName}`
           : `${user?.firstName}'s reviews`}
       </Text>
+      <View style={styles.separatorLine} />
     </SafeAreaView>
   )
 }
@@ -104,16 +105,20 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: '400',
   },
-  separatorLine: {
+  separatorLineModal: {
     borderBottomColor: Colors.mediumGrey,
     borderBottomWidth: StyleSheet.hairlineWidth,
     marginVertical: 12,
+  },
+  separatorLine: {
+    borderBottomColor: Colors.mediumGrey,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    marginVertical: 35,
   },
   placeTextContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 15,
-    marginBottom: 30,
   },
   placeText: {
     fontSize: 17,
@@ -123,6 +128,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingRight: '30%',
     fontWeight: '600',
-    marginTop: 30,
   },
 })
