@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     flex: 1,
     paddingTop: 50,
-    paddingHorizontal: 16,
+    paddingHorizontal: 20,
   },
   modal: {
     flexDirection: 'row',
