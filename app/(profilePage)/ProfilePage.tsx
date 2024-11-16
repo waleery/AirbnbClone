@@ -93,7 +93,6 @@ const styles = StyleSheet.create({
   avatar: {
     aspectRatio: 1,
     borderRadius: 50,
-    backgroundColor: Colors.grey,
   },
   firstName: {
     fontSize: 29,
