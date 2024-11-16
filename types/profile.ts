@@ -7,7 +7,7 @@ export interface Profile {
   city: string
   country: string
   confirmedIndormation: confirmedIndormation
-  reviews: Review[]
+  reviews?: Review[]
 }
 
 interface confirmedIndormation {

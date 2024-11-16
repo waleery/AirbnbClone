@@ -1,5 +1,6 @@
 import { useUser } from '@clerk/clerk-expo'
 import { Ionicons } from '@expo/vector-icons'
+import { parseISO } from 'date-fns'
 import { Image, StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
@@ -10,7 +11,14 @@ import { Profile } from '@/types/profile'
 export default function ProfilePage() {
   const { user } = useUser()
 
-  const profileData = profile as Profile
+  const profileData: Profile = {
+    ...profile,
+    reviews: profile.reviews.map((review) => ({
+      ...review,
+      date: parseISO(review.date),
+    })),
+  }
+
   return (
     <SafeAreaView edges={['top']} style={[styles.container]}>
       <View style={styles.modal}>
@@ -28,7 +36,7 @@ export default function ProfilePage() {
         </View>
         <View style={styles.rightSide}>
           <View>
-            <Text style={styles.numberModal}>{profileData.revievs}</Text>
+            <Text style={styles.numberModal}>{profileData.reviews?.length}</Text>
             <Text style={styles.infoNumberModal}>Reviews</Text>
             <View style={styles.separatorLineModal} />
             <Text style={styles.numberModal}>{profileData.yearsOnAirbnb}</Text>
