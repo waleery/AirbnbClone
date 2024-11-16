@@ -3,7 +3,6 @@ import { Review } from './review'
 export interface Profile {
   guest: boolean
   verified: boolean
-  revievs: number
   yearsOnAirbnb: number
   city: string
   country: string
