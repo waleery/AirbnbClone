@@ -15,7 +15,14 @@ export default function ProfilePage() {
     <SafeAreaView edges={['top']} style={[styles.container]}>
       <View style={styles.modal}>
         <View style={styles.leftSide}>
-          <Image source={{ uri: user?.imageUrl }} style={styles.avatar} />
+          <View style={styles.imageBox}>
+            <Image source={{ uri: user?.imageUrl }} style={styles.avatar} />
+            {profileData.verified && (
+              <View style={styles.verfied}>
+                <Ionicons name="shield-checkmark" size={17} color="white" />
+              </View>
+            )}
+          </View>
           <Text style={styles.firstName}>{user?.firstName}</Text>
           <Text style={styles.guest}>{profileData.guest ? 'Guest' : null}</Text>
         </View>
@@ -78,12 +85,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  avatar: {
+  imageBox: {
     width: '70%',
+    aspectRatio: 1,
+    marginBottom: 5,
+  },
+  avatar: {
     aspectRatio: 1,
     borderRadius: 50,
     backgroundColor: Colors.grey,
-    marginBottom: 5,
   },
   firstName: {
     fontSize: 29,
@@ -128,5 +138,16 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingRight: '30%',
     fontWeight: '600',
+  },
+  verfied: {
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.primary,
+    width: '30%',
+    height: '30%',
+    borderRadius: 100,
   },
 })
