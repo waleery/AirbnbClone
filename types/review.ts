@@ -1,10 +1,10 @@
 export interface Review {
-    comment: string
-    user: ReviewProfile
+  comment: string
+  user: ReviewProfile
 }
 
 interface ReviewProfile {
-    name: string
-    date: Date
-    profileImage: string
+  name: string
+  date: Date
+  profileImage: string
 }

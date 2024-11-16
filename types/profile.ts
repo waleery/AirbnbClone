@@ -1,3 +1,5 @@
+import { Review } from './review'
+
 export interface Profile {
   guest: boolean
   verified: boolean
@@ -6,6 +8,7 @@ export interface Profile {
   city: string
   country: string
   confirmedIndormation: confirmedIndormation
+  reviews: Review[]
 }
 
 interface confirmedIndormation {
