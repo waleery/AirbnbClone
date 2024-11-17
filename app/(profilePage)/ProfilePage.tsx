@@ -58,6 +58,7 @@ export default function ProfilePage() {
           : `${user?.firstName}'s reviews`}
       </Text>
       <View style={styles.separatorLine} />
+      <Text style={styles.confirmedInformationsText}>{`${user?.firstName}'s confirmed information`}</Text>
     </SafeAreaView>
   )
 }
@@ -144,6 +145,10 @@ const styles = StyleSheet.create({
   reviewsTest: {
     fontSize: 20,
     paddingRight: '30%',
+    fontWeight: '600',
+  },
+  confirmedInformationsText: {
+    fontSize: 20,
     fontWeight: '600',
   },
   verfied: {
