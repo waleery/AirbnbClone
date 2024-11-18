@@ -1,5 +1,5 @@
 import { useUser } from '@clerk/clerk-expo'
-import { Ionicons } from '@expo/vector-icons'
+import { FontAwesome6, Ionicons } from '@expo/vector-icons'
 import { parseISO } from 'date-fns'
 import { Image, StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -58,7 +58,28 @@ export default function ProfilePage() {
           : `${user?.firstName}'s reviews`}
       </Text>
       <View style={styles.separatorLine} />
-      <Text style={styles.confirmedInformationsText}>{`${user?.firstName}'s confirmed information`}</Text>
+      <Text
+        style={styles.confirmedInformationsText}
+      >{`${user?.firstName}'s confirmed information`}</Text>
+
+      {profileData.confirmedIndormation.identity && (
+        <View style={styles.connfirmedInformationRow}>
+          <FontAwesome6 name="check" size={24} color="black" />
+          <Text style={styles.connfirmedInformationRowText}>Identity</Text>
+        </View>
+      )}
+      {profileData.confirmedIndormation.emailAddress && (
+        <View style={styles.connfirmedInformationRow}>
+          <FontAwesome6 name="check" size={24} color="black" />
+          <Text style={styles.connfirmedInformationRowText}>Email adress</Text>
+        </View>
+      )}
+      {profileData.confirmedIndormation.phoneNumber && (
+        <View style={styles.connfirmedInformationRow}>
+          <FontAwesome6 name="check" size={24} color="black" />
+          <Text style={styles.connfirmedInformationRowText}>Phone number</Text>
+        </View>
+      )}
     </SafeAreaView>
   )
 }
@@ -150,6 +171,7 @@ const styles = StyleSheet.create({
   confirmedInformationsText: {
     fontSize: 20,
     fontWeight: '600',
+    marginBottom: 20,
   },
   verfied: {
     position: 'absolute',
@@ -161,5 +183,14 @@ const styles = StyleSheet.create({
     width: '30%',
     height: '30%',
     borderRadius: 100,
+  },
+  connfirmedInformationRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 15,
+    marginBottom: 12,
+  },
+  connfirmedInformationRowText: {
+    fontSize: 17,
   },
 })
