@@ -10,7 +10,7 @@ export interface Profile {
   reviews?: Review[]
 }
 
-interface confirmedIndormation {
+export interface confirmedIndormation {
   identity: boolean
   emailAddress: boolean
   phoneNumber: boolean

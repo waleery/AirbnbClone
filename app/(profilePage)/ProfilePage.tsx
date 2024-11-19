@@ -6,7 +6,13 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 
 import profile from '@/assets/data/json/profile.json'
 import Colors from '@/constants/Colors'
-import { Profile } from '@/types/profile'
+import { confirmedIndormation, Profile } from '@/types/profile'
+
+const confirmedInformationLabels: Record<keyof confirmedIndormation, string> = {
+  identity: 'Identity',
+  emailAddress: 'Email address',
+  phoneNumber: 'Phone number',
+}
 
 export default function ProfilePage() {
   const { user } = useUser()
@@ -61,24 +67,15 @@ export default function ProfilePage() {
       <Text
         style={styles.confirmedInformationsText}
       >{`${user?.firstName}'s confirmed information`}</Text>
-
-      {profileData.confirmedIndormation.identity && (
-        <View style={styles.connfirmedInformationRow}>
-          <FontAwesome6 name="check" size={24} color="black" />
-          <Text style={styles.connfirmedInformationRowText}>Identity</Text>
-        </View>
-      )}
-      {profileData.confirmedIndormation.emailAddress && (
-        <View style={styles.connfirmedInformationRow}>
-          <FontAwesome6 name="check" size={24} color="black" />
-          <Text style={styles.connfirmedInformationRowText}>Email adress</Text>
-        </View>
-      )}
-      {profileData.confirmedIndormation.phoneNumber && (
-        <View style={styles.connfirmedInformationRow}>
-          <FontAwesome6 name="check" size={24} color="black" />
-          <Text style={styles.connfirmedInformationRowText}>Phone number</Text>
-        </View>
+      {Object.entries(profileData.confirmedIndormation).map(([key, value]) =>
+        value ? (
+          <View key={key} style={styles.connfirmedInformationRow}>
+            <FontAwesome6 name="check" size={24} color="black" />
+            <Text style={styles.connfirmedInformationRowText}>
+              {confirmedInformationLabels[key as keyof confirmedIndormation]}
+            </Text>
+          </View>
+        ) : null
       )}
     </SafeAreaView>
   )
