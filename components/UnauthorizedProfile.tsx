@@ -9,7 +9,6 @@ import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 
 export const UnauthorizedProfile = () => {
-  const { isSignedIn } = useAuth()
   const router = useRouter()
 
   const handleOpenLogin = useCallback(() => router.push('/(modals)/login'), [router])
@@ -20,23 +19,20 @@ export const UnauthorizedProfile = () => {
         <View style={styles.headerContainer}>
           <Text style={styles.header}>Profile</Text>
         </View>
-        {!isSignedIn ? (
-          <>
-            <Text style={styles.headerSecond}>Log in to start planning your next trip.</Text>
-            <TouchableOpacity
-              style={{ ...styles.logInBtn, ...defaultStyles.btn }}
-              onPress={handleOpenLogin}
-            >
-              <Text style={[defaultStyles.btnText, defaultStyles.font500]}>Log in</Text>
-            </TouchableOpacity>
-            <View style={styles.signUpContainer}>
-              <Text style={styles.questionText}>Don&apos;t have account?</Text>
-              <Link href="/(modals)/login" asChild>
-                <Text style={styles.signUp}>Sign up</Text>
-              </Link>
-            </View>
-          </>
-        ) : null}
+
+        <Text style={styles.headerSecond}>Log in to start planning your next trip.</Text>
+        <TouchableOpacity
+          style={{ ...styles.logInBtn, ...defaultStyles.btn }}
+          onPress={handleOpenLogin}
+        >
+          <Text style={[defaultStyles.btnText, defaultStyles.font500]}>Log in</Text>
+        </TouchableOpacity>
+        <View style={styles.signUpContainer}>
+          <Text style={styles.questionText}>Don&apos;t have account?</Text>
+          <Link href="/(modals)/login" asChild>
+            <Text style={styles.signUp}>Sign up</Text>
+          </Link>
+        </View>
       </ScrollView>
     </SafeAreaView>
   )
