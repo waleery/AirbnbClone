@@ -1,4 +1,3 @@
-import { useAuth } from '@clerk/clerk-expo'
 import { Link, useRouter } from 'expo-router'
 import { useCallback } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
