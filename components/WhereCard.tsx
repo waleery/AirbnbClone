@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   },
   scrollViewStyle: {
     gap: 25,
-    paddingLeft: 20,
+    paddingHorizontal: 20,
     paddingBottom: 20,
   },
   titleText: {
