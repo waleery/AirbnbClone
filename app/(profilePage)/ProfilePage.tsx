@@ -63,6 +63,12 @@ export default function ProfilePage() {
           ? `What Hosts are saying about ${user?.firstName}`
           : `${user?.firstName}'s reviews`}
       </Text>
+
+      <View style={styles.reviewTile}>
+        {profileData.reviews && profileData.reviews.length > 0 && (
+          <Text style={styles.reviewComent}>{profileData.reviews[0].comment}</Text>
+        )}
+      </View>
       <View style={styles.separatorLine} />
       <Text
         style={styles.confirmedInformationsText}
@@ -189,5 +195,9 @@ const styles = StyleSheet.create({
   },
   connfirmedInformationRowText: {
     fontSize: 17,
+  },
+  reviewTile: {
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: Colors.mediumGrey,
   },
 })
