@@ -200,5 +200,6 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: Colors.mediumGrey,
     padding: 20,
+    borderRadius: 10,
   },
 })
