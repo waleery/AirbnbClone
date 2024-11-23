@@ -170,6 +170,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingRight: '30%',
     fontWeight: '600',
+    marginBottom: 25,
   },
   confirmedInformationsText: {
     fontSize: 20,
