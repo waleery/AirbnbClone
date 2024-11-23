@@ -199,5 +199,6 @@ const styles = StyleSheet.create({
   reviewTile: {
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: Colors.mediumGrey,
+    padding: 20,
   },
 })
