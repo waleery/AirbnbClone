@@ -66,7 +66,7 @@ export default function ProfilePage() {
 
       <View style={styles.reviewTile}>
         {profileData.reviews && profileData.reviews.length > 0 && (
-          <Text style={styles.reviewComent}>{profileData.reviews[0].comment}</Text>
+          <Text style={styles.reviewComent}>{`"${profileData.reviews[0].comment}"`}</Text>
         )}
       </View>
       <View style={styles.separatorLine} />
