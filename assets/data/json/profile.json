@@ -15,7 +15,7 @@
       "comment": "An excellent guest! Very polite, clean, and respectful of house rules. Highly recommended!",
       "date": "2024-11-01T10:00:00Z",
       "user": {
-        "name": "Anna Host",
+        "name": "Anna",
         "profileImage": "https://example.com/images/anna_host.jpg"
       }
     },
@@ -23,7 +23,7 @@
       "comment": "Great communication and left the apartment in perfect condition. Would gladly host again!",
       "date": "2024-10-30T14:30:00Z",
       "user": {
-        "name": "David Owner",
+        "name": "David",
         "profileImage": "https://example.com/images/david_owner.jpg"
       }
     },
@@ -31,7 +31,7 @@
       "comment": "A bit noisy during their stay, but overall a good guest. Apartment was left clean.",
       "date": "2024-10-25T18:45:00Z",
       "user": {
-        "name": "Lisa Host",
+        "name": "Lisa",
         "profileImage": "https://example.com/images/lisa_host.jpg"
       }
     },
@@ -39,7 +39,7 @@
       "comment": "Perfect guest! They treated the property as if it were their own. Hope to host them again soon!",
       "date": "2024-10-20T09:15:00Z",
       "user": {
-        "name": "Tom Landlord",
+        "name": "Tom",
         "profileImage": "https://example.com/images/tom_landlord.jpg"
       }
     },
@@ -47,7 +47,7 @@
       "comment": "The guest was respectful and followed all the house rules. Highly recommend to other hosts!",
       "date": "2024-10-18T12:00:00Z",
       "user": {
-        "name": "Sophia Host",
+        "name": "Sophia",
         "profileImage": "https://example.com/images/sophia_host.jpg"
       }
     }
