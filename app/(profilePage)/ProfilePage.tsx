@@ -66,7 +66,10 @@ export default function ProfilePage() {
 
       <View style={styles.reviewTile}>
         {profileData.reviews && profileData.reviews.length > 0 && (
+          <>
           <Text style={styles.reviewComment}>{`"${profileData.reviews[0].comment}"`}</Text>
+          <Text style={styles.reviewName}>{profileData.reviews[0].user.name}</Text>
+          </>
         )}
       </View>
       <View style={styles.separatorLine} />
@@ -207,4 +210,8 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '400',
   },
+  reviewName:{
+    fontSize: 15,
+    fontWeight: '600',
+  }
 })
