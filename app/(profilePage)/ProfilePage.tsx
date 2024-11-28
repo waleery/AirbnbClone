@@ -231,8 +231,9 @@ const styles = StyleSheet.create({
   reviewTile: {
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: Colors.mediumGrey,
-    padding: 20,
+    padding: 25,
     borderRadius: 10,
+    gap: 30,
   },
   reviewComment: {
     fontSize: 15,
