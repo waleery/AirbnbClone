@@ -13,23 +13,23 @@ const confirmedInformationLabels: Record<keyof confirmedIndormation, string> = {
   emailAddress: 'Email address',
   phoneNumber: 'Phone number',
 }
-const timeSince = (dateString) =>  {
-  const now = new Date();
-  const date = new Date(dateString);
+const timeSince = (dateString: Date) => {
+  const now = new Date()
+  const date = new Date(dateString)
 
-  const diffInMs = now.getTime() - date.getTime(); // Wywołaj getTime(), aby uzyskać liczbę (timestamp)
-  const diffInDays = diffInMs / (1000 * 60 * 60 * 24); // Różnica w dniach
+  const diffInMs = now.getTime() - date.getTime()
+  const diffInDays = diffInMs / (1000 * 60 * 60 * 24)
 
-  const years = Math.floor(diffInDays / 365);
-  const months = Math.floor((diffInDays % 365) / 30);
+  const years = Math.floor(diffInDays / 365)
+  const months = Math.floor((diffInDays % 365) / 30)
 
   if (years > 0) {
-    return years === 1 ? `${years} year ago` : `${years} years ago`;
+    return years === 1 ? `${years} year ago` : `${years} years ago`
   }
   if (months > 0) {
-    return months === 1 ? `${months} month ago` : `${months} months ago`;
+    return months === 1 ? `${months} month ago` : `${months} months ago`
   }
-  return "less than a month ago";
+  return 'less than a month ago'
 }
 
 export default function ProfilePage() {
@@ -85,9 +85,9 @@ export default function ProfilePage() {
       <View style={styles.reviewTile}>
         {profileData.reviews && profileData.reviews.length > 0 && (
           <>
-          <Text style={styles.reviewComment}>{`"${profileData.reviews[0].comment}"`}</Text>
-          <Text style={styles.reviewName}>{profileData.reviews[0].user.name}</Text>
-          <Text style={styles.reviewDate}>{timeSince(profileData.reviews[0].date)}</Text>
+            <Text style={styles.reviewComment}>{`"${profileData.reviews[0].comment}"`}</Text>
+            <Text style={styles.reviewName}>{profileData.reviews[0].user.name}</Text>
+            <Text style={styles.reviewDate}>{timeSince(profileData.reviews[0].date)}</Text>
           </>
         )}
       </View>
@@ -229,12 +229,12 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '400',
   },
-  reviewName:{
+  reviewName: {
     fontSize: 15,
     fontWeight: '600',
   },
-  reviewDate:{
+  reviewDate: {
     fontSize: 13,
     fontWeight: '400',
-  }
+  },
 })
