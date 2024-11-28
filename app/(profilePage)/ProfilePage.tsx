@@ -86,7 +86,7 @@ export default function ProfilePage() {
         {profileData.reviews && profileData.reviews.length > 0 && (
           <>
             <Text style={styles.reviewComment}>{`"${profileData.reviews[0].comment}"`}</Text>
-            <View>
+            <View style={styles.bottomReview}>
               <Image
                 source={{ uri: profileData.reviews[0].user.profileImage }}
                 style={styles.reviewAvatar}
@@ -253,5 +253,10 @@ const styles = StyleSheet.create({
     width: '15%',
     aspectRatio: 1,
     borderRadius: 50,
+  },
+  bottomReview: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 20,
   },
 })
