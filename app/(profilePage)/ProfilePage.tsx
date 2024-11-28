@@ -234,6 +234,7 @@ const styles = StyleSheet.create({
     padding: 25,
     borderRadius: 10,
     gap: 30,
+    maxWidth: '85%',
   },
   reviewComment: {
     fontSize: 15,
