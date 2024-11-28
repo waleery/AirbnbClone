@@ -86,9 +86,16 @@ export default function ProfilePage() {
         {profileData.reviews && profileData.reviews.length > 0 && (
           <>
             <Text style={styles.reviewComment}>{`"${profileData.reviews[0].comment}"`}</Text>
-            <View style={styles.nameAndDate}>
-              <Text style={styles.reviewName}>{profileData.reviews[0].user.name}</Text>
-              <Text style={styles.reviewDate}>{timeSince(profileData.reviews[0].date)}</Text>
+            <View>
+              <Image
+                source={{ uri: profileData.reviews[0].user.profileImage }}
+                style={styles.reviewAvatar}
+              />
+
+              <View style={styles.nameAndDate}>
+                <Text style={styles.reviewName}>{profileData.reviews[0].user.name}</Text>
+                <Text style={styles.reviewDate}>{timeSince(profileData.reviews[0].date)}</Text>
+              </View>
             </View>
           </>
         )}
@@ -241,5 +248,10 @@ const styles = StyleSheet.create({
   },
   nameAndDate: {
     gap: 2,
+  },
+  reviewAvatar: {
+    width: '15%',
+    aspectRatio: 1,
+    borderRadius: 50,
   },
 })
