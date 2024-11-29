@@ -1,12 +1,14 @@
 import { useUser } from '@clerk/clerk-expo'
 import { FontAwesome6, Ionicons } from '@expo/vector-icons'
 import { parseISO } from 'date-fns'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import profile from '@/assets/data/json/profile.json'
 import Colors from '@/constants/Colors'
 import { confirmedIndormation, Profile } from '@/types/profile'
+
+import { defaultStyles } from '@/constants/Styles'
 
 const confirmedInformationLabels: Record<keyof confirmedIndormation, string> = {
   identity: 'Identity',
@@ -100,6 +102,10 @@ export default function ProfilePage() {
           </>
         )}
       </View>
+
+      <TouchableOpacity style={[defaultStyles.btn]}>
+          <Text style={[defaultStyles.btnText, defaultStyles.font500]}>Show all {profileData.reviews?.length} reviews</Text>
+        </TouchableOpacity>
       <View style={styles.separatorLine} />
       <Text
         style={styles.confirmedInformationsText}
