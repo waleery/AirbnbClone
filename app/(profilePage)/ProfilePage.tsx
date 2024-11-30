@@ -1,7 +1,7 @@
 import { useUser } from '@clerk/clerk-expo'
 import { FontAwesome6, Ionicons } from '@expo/vector-icons'
 import { parseISO } from 'date-fns'
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import profile from '@/assets/data/json/profile.json'
@@ -47,6 +47,8 @@ export default function ProfilePage() {
 
   return (
     <SafeAreaView edges={['top']} style={[styles.container]}>
+            <ScrollView showsVerticalScrollIndicator={false}>
+
       <View style={styles.modal}>
         <View style={styles.leftSide}>
           <View style={styles.imageBox}>
@@ -120,6 +122,7 @@ export default function ProfilePage() {
           </View>
         ) : null
       )}
+      </ScrollView>
     </SafeAreaView>
   )
 }
