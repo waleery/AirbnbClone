@@ -105,8 +105,8 @@ export default function ProfilePage() {
         )}
       </View>
 
-      <TouchableOpacity style={[defaultStyles.btn]}>
-          <Text style={[defaultStyles.btnText, defaultStyles.font500]}>Show all {profileData.reviews?.length} reviews</Text>
+      <TouchableOpacity style={[defaultStyles.btn, styles.reviewsButton]}>
+          <Text style={styles.reviewsButtonText}>Show all {profileData.reviews?.length} reviews</Text>
         </TouchableOpacity>
       <View style={styles.separatorLine} />
       <Text
@@ -270,4 +270,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 20,
   },
+  reviewsButton:{
+    marginTop:30,
+    backgroundColor:'transparent',
+    borderWidth:1
+  },
+  reviewsButtonText:{
+    fontSize:15,
+    fontWeight:'500'
+  }
+
 })
