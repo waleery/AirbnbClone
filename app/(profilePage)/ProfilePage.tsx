@@ -6,9 +6,8 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 
 import profile from '@/assets/data/json/profile.json'
 import Colors from '@/constants/Colors'
-import { confirmedIndormation, Profile } from '@/types/profile'
-
 import { defaultStyles } from '@/constants/Styles'
+import { confirmedIndormation, Profile } from '@/types/profile'
 
 const confirmedInformationLabels: Record<keyof confirmedIndormation, string> = {
   identity: 'Identity',
@@ -47,81 +46,82 @@ export default function ProfilePage() {
 
   return (
     <SafeAreaView edges={['top']} style={[styles.container]}>
-            <ScrollView showsVerticalScrollIndicator={false}>
-
-      <View style={styles.modal}>
-        <View style={styles.leftSide}>
-          <View style={styles.imageBox}>
-            <Image source={{ uri: user?.imageUrl }} style={styles.avatar} />
-            {profileData.verified && (
-              <View style={styles.verfied}>
-                <Ionicons name="shield-checkmark" size={17} color="white" />
-              </View>
-            )}
-          </View>
-          <Text style={styles.firstName}>{user?.firstName}</Text>
-          <Text style={styles.guest}>{profileData.guest ? 'Guest' : null}</Text>
-        </View>
-        <View style={styles.rightSide}>
-          <View>
-            <Text style={styles.numberModal}>{profileData.reviews?.length}</Text>
-            <Text style={styles.infoNumberModal}>Reviews</Text>
-            <View style={styles.separatorLineModal} />
-            <Text style={styles.numberModal}>{profileData.yearsOnAirbnb}</Text>
-            <Text style={styles.infoNumberModal}>Years on Airbnb</Text>
-          </View>
-        </View>
-      </View>
-      <View style={styles.placeTextContainer}>
-        <Ionicons name="globe-outline" size={24} color="black" />
-        <Text style={styles.placeText}>
-          Lives in {profileData.city}, {profileData.country}
-        </Text>
-      </View>
-      <View style={styles.separatorLine} />
-
-      <Text style={styles.reviewsTest}>
-        {profileData.guest
-          ? `What Hosts are saying about ${user?.firstName}`
-          : `${user?.firstName}'s reviews`}
-      </Text>
-
-      <View style={styles.reviewTile}>
-        {profileData.reviews && profileData.reviews.length > 0 && (
-          <>
-            <Text style={styles.reviewComment}>{`"${profileData.reviews[0].comment}"`}</Text>
-            <View style={styles.bottomReview}>
-              <Image
-                source={{ uri: profileData.reviews[0].user.profileImage }}
-                style={styles.reviewAvatar}
-              />
-
-              <View style={styles.nameAndDate}>
-                <Text style={styles.reviewName}>{profileData.reviews[0].user.name}</Text>
-                <Text style={styles.reviewDate}>{timeSince(profileData.reviews[0].date)}</Text>
-              </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.modal}>
+          <View style={styles.leftSide}>
+            <View style={styles.imageBox}>
+              <Image source={{ uri: user?.imageUrl }} style={styles.avatar} />
+              {profileData.verified && (
+                <View style={styles.verfied}>
+                  <Ionicons name="shield-checkmark" size={17} color="white" />
+                </View>
+              )}
             </View>
-          </>
-        )}
-      </View>
-
-      <TouchableOpacity style={[defaultStyles.btn, styles.reviewsButton]}>
-          <Text style={styles.reviewsButtonText}>Show all {profileData.reviews?.length} reviews</Text>
-        </TouchableOpacity>
-      <View style={styles.separatorLine} />
-      <Text
-        style={styles.confirmedInformationsText}
-      >{`${user?.firstName}'s confirmed information`}</Text>
-      {Object.entries(profileData.confirmedIndormation).map(([key, value]) =>
-        value ? (
-          <View key={key} style={styles.connfirmedInformationRow}>
-            <FontAwesome6 name="check" size={24} color="black" />
-            <Text style={styles.connfirmedInformationRowText}>
-              {confirmedInformationLabels[key as keyof confirmedIndormation]}
-            </Text>
+            <Text style={styles.firstName}>{user?.firstName}</Text>
+            <Text style={styles.guest}>{profileData.guest ? 'Guest' : null}</Text>
           </View>
-        ) : null
-      )}
+          <View style={styles.rightSide}>
+            <View>
+              <Text style={styles.numberModal}>{profileData.reviews?.length}</Text>
+              <Text style={styles.infoNumberModal}>Reviews</Text>
+              <View style={styles.separatorLineModal} />
+              <Text style={styles.numberModal}>{profileData.yearsOnAirbnb}</Text>
+              <Text style={styles.infoNumberModal}>Years on Airbnb</Text>
+            </View>
+          </View>
+        </View>
+        <View style={styles.placeTextContainer}>
+          <Ionicons name="globe-outline" size={24} color="black" />
+          <Text style={styles.placeText}>
+            Lives in {profileData.city}, {profileData.country}
+          </Text>
+        </View>
+        <View style={styles.separatorLine} />
+
+        <Text style={styles.reviewsTest}>
+          {profileData.guest
+            ? `What Hosts are saying about ${user?.firstName}`
+            : `${user?.firstName}'s reviews`}
+        </Text>
+
+        <View style={styles.reviewTile}>
+          {profileData.reviews && profileData.reviews.length > 0 && (
+            <>
+              <Text style={styles.reviewComment}>{`"${profileData.reviews[0].comment}"`}</Text>
+              <View style={styles.bottomReview}>
+                <Image
+                  source={{ uri: profileData.reviews[0].user.profileImage }}
+                  style={styles.reviewAvatar}
+                />
+
+                <View style={styles.nameAndDate}>
+                  <Text style={styles.reviewName}>{profileData.reviews[0].user.name}</Text>
+                  <Text style={styles.reviewDate}>{timeSince(profileData.reviews[0].date)}</Text>
+                </View>
+              </View>
+            </>
+          )}
+        </View>
+
+        <TouchableOpacity style={[defaultStyles.btn, styles.reviewsButton]}>
+          <Text style={styles.reviewsButtonText}>
+            Show all {profileData.reviews?.length} reviews
+          </Text>
+        </TouchableOpacity>
+        <View style={styles.separatorLine} />
+        <Text
+          style={styles.confirmedInformationsText}
+        >{`${user?.firstName}'s confirmed information`}</Text>
+        {Object.entries(profileData.confirmedIndormation).map(([key, value]) =>
+          value ? (
+            <View key={key} style={styles.connfirmedInformationRow}>
+              <FontAwesome6 name="check" size={24} color="black" />
+              <Text style={styles.connfirmedInformationRowText}>
+                {confirmedInformationLabels[key as keyof confirmedIndormation]}
+              </Text>
+            </View>
+          ) : null
+        )}
       </ScrollView>
     </SafeAreaView>
   )
@@ -270,14 +270,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 20,
   },
-  reviewsButton:{
-    marginTop:30,
-    backgroundColor:'transparent',
-    borderWidth:1
+  reviewsButton: {
+    marginTop: 30,
+    backgroundColor: Colors.transparent,
+    borderWidth: 1,
   },
-  reviewsButtonText:{
-    fontSize:15,
-    fontWeight:'500'
-  }
-
+  reviewsButtonText: {
+    fontSize: 15,
+    fontWeight: '500',
+  },
 })
