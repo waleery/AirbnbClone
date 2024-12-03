@@ -1,12 +1,24 @@
 import { useUser } from '@clerk/clerk-expo'
 import { FontAwesome6, Ionicons } from '@expo/vector-icons'
 import { parseISO } from 'date-fns'
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { useCallback } from 'react'
+import {
+  Image,
+  ListRenderItem,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Dimensions,
+} from 'react-native'
+import { FlatList } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import profile from '@/assets/data/json/profile.json'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
+import { Review } from '@/types'
 import { confirmedIndormation, Profile } from '@/types/profile'
 
 const confirmedInformationLabels: Record<keyof confirmedIndormation, string> = {
@@ -43,6 +55,30 @@ export default function ProfilePage() {
       date: parseISO(review.date),
     })),
   }
+
+  const renderRow: ListRenderItem<Review> = useCallback(
+    ({ item }) => (
+      <View
+        style={[
+          styles.reviewTile,
+          {
+            width: Dimensions.get('window').width * 0.7,
+          },
+        ]}
+      >
+        <Text style={styles.reviewComment}>{`"${item.comment}"`}</Text>
+        <View style={styles.bottomReview}>
+          <Image source={{ uri: item.user.profileImage }} style={styles.reviewAvatar} />
+
+          <View style={styles.nameAndDate}>
+            <Text style={styles.reviewName}>{item.user.name}</Text>
+            <Text style={styles.reviewDate}>{timeSince(item.date)}</Text>
+          </View>
+        </View>
+      </View>
+    ),
+    []
+  )
 
   return (
     <SafeAreaView edges={['top']} style={[styles.container]}>
@@ -84,24 +120,13 @@ export default function ProfilePage() {
             : `${user?.firstName}'s reviews`}
         </Text>
 
-        <View style={styles.reviewTile}>
-          {profileData.reviews && profileData.reviews.length > 0 && (
-            <>
-              <Text style={styles.reviewComment}>{`"${profileData.reviews[0].comment}"`}</Text>
-              <View style={styles.bottomReview}>
-                <Image
-                  source={{ uri: profileData.reviews[0].user.profileImage }}
-                  style={styles.reviewAvatar}
-                />
-
-                <View style={styles.nameAndDate}>
-                  <Text style={styles.reviewName}>{profileData.reviews[0].user.name}</Text>
-                  <Text style={styles.reviewDate}>{timeSince(profileData.reviews[0].date)}</Text>
-                </View>
-              </View>
-            </>
-          )}
-        </View>
+        <FlatList
+          data={profileData.reviews}
+          renderItem={renderRow}
+          contentContainerStyle={styles.containerBox}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+        />
 
         <TouchableOpacity style={[defaultStyles.btn, styles.reviewsButton]}>
           <Text style={styles.reviewsButtonText}>
@@ -242,8 +267,8 @@ const styles = StyleSheet.create({
     borderColor: Colors.mediumGrey,
     padding: 25,
     borderRadius: 10,
-    gap: 30,
-    maxWidth: '85%',
+    justifyContent: 'space-between',
+    gap: 20,
   },
   reviewComment: {
     fontSize: 15,
@@ -261,7 +286,7 @@ const styles = StyleSheet.create({
     gap: 2,
   },
   reviewAvatar: {
-    width: '15%',
+    width: '25%',
     aspectRatio: 1,
     borderRadius: 50,
   },
@@ -278,5 +303,8 @@ const styles = StyleSheet.create({
   reviewsButtonText: {
     fontSize: 15,
     fontWeight: '500',
+  },
+  containerBox: {
+    gap: 40,
   },
 })
