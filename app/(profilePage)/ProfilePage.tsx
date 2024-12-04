@@ -82,7 +82,7 @@ export default function ProfilePage() {
 
   return (
     <SafeAreaView edges={['top']} style={[styles.container]}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollViewStyle}>
         <View style={styles.modal}>
           <View style={styles.leftSide}>
             <View style={styles.imageBox}>
@@ -126,6 +126,7 @@ export default function ProfilePage() {
           contentContainerStyle={styles.containerBox}
           horizontal
           showsHorizontalScrollIndicator={false}
+          style={styles.flatListStyle}
         />
 
         <TouchableOpacity style={[defaultStyles.btn, styles.reviewsButton]}>
@@ -306,5 +307,11 @@ const styles = StyleSheet.create({
   },
   containerBox: {
     gap: 40,
+  },
+  scrollViewStyle: {
+    overflow: 'visible',
+  },
+  flatListStyle: {
+    overflow: 'visible',
   },
 })
