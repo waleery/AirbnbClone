@@ -62,7 +62,7 @@ export default function ProfilePage() {
         style={[
           styles.reviewTile,
           {
-            width: Dimensions.get('window').width * 0.7,
+            width: Dimensions.get('window').width * 0.8,
           },
         ]}
       >
@@ -306,7 +306,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   containerBox: {
-    gap: 40,
+    gap: 30,
   },
   scrollViewStyle: {
     overflow: 'visible',
