@@ -127,6 +127,7 @@ export default function ProfilePage() {
           horizontal
           showsHorizontalScrollIndicator={false}
           style={styles.flatListStyle}
+          pagingEnabled
         />
 
         <TouchableOpacity style={[defaultStyles.btn, styles.reviewsButton]}>
