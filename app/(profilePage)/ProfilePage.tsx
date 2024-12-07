@@ -149,6 +149,7 @@ export default function ProfilePage() {
             </View>
           ) : null
         )}
+        <Text style={styles.learnText}>Learn about identity verification</Text>
       </ScrollView>
     </SafeAreaView>
   )
@@ -315,4 +316,11 @@ const styles = StyleSheet.create({
   flatListStyle: {
     overflow: 'visible',
   },
+  learnText:{
+    marginTop: 10,
+    marginBottom: 50,
+    fontSize: 14,
+    fontWeight: '500',
+    textDecorationLine: 'underline',
+  }
 })
