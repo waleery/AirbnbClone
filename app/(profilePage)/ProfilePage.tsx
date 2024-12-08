@@ -56,30 +56,6 @@ export default function ProfilePage() {
     })),
   }
 
-  const renderRow: ListRenderItem<Review> = useCallback(
-    ({ item }) => (
-      <View
-        style={[
-          styles.reviewTile,
-          {
-            width: Dimensions.get('window').width * 0.8,
-          },
-        ]}
-      >
-        <Text style={styles.reviewComment}>{`"${item.comment}"`}</Text>
-        <View style={styles.bottomReview}>
-          <Image source={{ uri: item.user.profileImage }} style={styles.reviewAvatar} />
-
-          <View style={styles.nameAndDate}>
-            <Text style={styles.reviewName}>{item.user.name}</Text>
-            <Text style={styles.reviewDate}>{timeSince(item.date)}</Text>
-          </View>
-        </View>
-      </View>
-    ),
-    []
-  )
-
   return (
     <SafeAreaView edges={['top']} style={[styles.container]}>
       <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollViewStyle}>
@@ -113,28 +89,8 @@ export default function ProfilePage() {
           </Text>
         </View>
         <View style={styles.separatorLine} />
+        <ReviewSection profileData={profileData} />
 
-        <Text style={styles.reviewsTest}>
-          {profileData.guest
-            ? `What Hosts are saying about ${user?.firstName}`
-            : `${user?.firstName}'s reviews`}
-        </Text>
-
-        <FlatList
-          data={profileData.reviews}
-          renderItem={renderRow}
-          contentContainerStyle={styles.containerBox}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          style={styles.flatListStyle}
-          pagingEnabled
-        />
-
-        <TouchableOpacity style={[defaultStyles.btn, styles.reviewsButton]}>
-          <Text style={styles.reviewsButtonText}>
-            Show all {profileData.reviews?.length} reviews
-          </Text>
-        </TouchableOpacity>
         <View style={styles.separatorLine} />
         <Text
           style={styles.confirmedInformationsText}
@@ -152,6 +108,56 @@ export default function ProfilePage() {
         <Text style={styles.learnText}>Learn about identity verification</Text>
       </ScrollView>
     </SafeAreaView>
+  )
+}
+
+const ReviewSection = ({ profileData }: { profileData: Profile }) => {
+  const { user } = useUser()
+
+  const renderRow: ListRenderItem<Review> = useCallback(
+    ({ item }) => (
+      <View
+        style={[
+          styles.reviewTile,
+          {
+            width: Dimensions.get('window').width * 0.8,
+          },
+        ]}
+      >
+        <Text style={styles.reviewComment}>{`"${item.comment}"`}</Text>
+        <View style={styles.bottomReview}>
+          <Image source={{ uri: item.user.profileImage }} style={styles.reviewAvatar} />
+
+          <View style={styles.nameAndDate}>
+            <Text style={styles.reviewName}>{item.user.name}</Text>
+            <Text style={styles.reviewDate}>{timeSince(item.date)}</Text>
+          </View>
+        </View>
+      </View>
+    ),
+    []
+  )
+  return (
+    <>
+      <Text style={styles.reviewsTest}>
+        {profileData.guest
+          ? `What Hosts are saying about ${user?.firstName}`
+          : `${user?.firstName}'s reviews`}
+      </Text>
+
+      <FlatList
+        data={profileData.reviews}
+        renderItem={renderRow}
+        contentContainerStyle={styles.containerBox}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={styles.flatListStyle}
+        pagingEnabled
+      />
+      <TouchableOpacity style={[defaultStyles.btn, styles.reviewsButton]}>
+        <Text style={styles.reviewsButtonText}>Show all {profileData.reviews?.length} reviews</Text>
+      </TouchableOpacity>
+    </>
   )
 }
 
@@ -316,11 +322,11 @@ const styles = StyleSheet.create({
   flatListStyle: {
     overflow: 'visible',
   },
-  learnText:{
+  learnText: {
     marginTop: 10,
     marginBottom: 50,
     fontSize: 14,
     fontWeight: '500',
     textDecorationLine: 'underline',
-  }
+  },
 })
