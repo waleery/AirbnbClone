@@ -90,24 +90,33 @@ export default function ProfilePage() {
         </View>
         <View style={styles.separatorLine} />
         <ReviewSection profileData={profileData} />
-
         <View style={styles.separatorLine} />
-        <Text
-          style={styles.confirmedInformationsText}
-        >{`${user?.firstName}'s confirmed information`}</Text>
-        {Object.entries(profileData.confirmedIndormation).map(([key, value]) =>
-          value ? (
-            <View key={key} style={styles.connfirmedInformationRow}>
-              <FontAwesome6 name="check" size={24} color="black" />
-              <Text style={styles.connfirmedInformationRowText}>
-                {confirmedInformationLabels[key as keyof confirmedIndormation]}
-              </Text>
-            </View>
-          ) : null
-        )}
-        <Text style={styles.learnText}>Learn about identity verification</Text>
+        <ConfirmedInformationsSection profileData={profileData} />
       </ScrollView>
     </SafeAreaView>
+  )
+}
+
+const ConfirmedInformationsSection = ({ profileData }: { profileData: Profile }) => {
+  const { user } = useUser()
+
+  return (
+    <>
+      <Text
+        style={styles.confirmedInformationsText}
+      >{`${user?.firstName}'s confirmed information`}</Text>
+      {Object.entries(profileData.confirmedIndormation).map(([key, value]) =>
+        value ? (
+          <View key={key} style={styles.connfirmedInformationRow}>
+            <FontAwesome6 name="check" size={24} color="black" />
+            <Text style={styles.connfirmedInformationRowText}>
+              {confirmedInformationLabels[key as keyof confirmedIndormation]}
+            </Text>
+          </View>
+        ) : null
+      )}
+      <Text style={styles.learnText}>Learn about identity verification</Text>
+    </>
   )
 }
 
