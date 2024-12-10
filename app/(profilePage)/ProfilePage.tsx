@@ -59,29 +59,7 @@ export default function ProfilePage() {
   return (
     <SafeAreaView edges={['top']} style={[styles.container]}>
       <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollViewStyle}>
-        <View style={styles.modal}>
-          <View style={styles.leftSide}>
-            <View style={styles.imageBox}>
-              <Image source={{ uri: user?.imageUrl }} style={styles.avatar} />
-              {profileData.verified && (
-                <View style={styles.verfied}>
-                  <Ionicons name="shield-checkmark" size={17} color="white" />
-                </View>
-              )}
-            </View>
-            <Text style={styles.firstName}>{user?.firstName}</Text>
-            <Text style={styles.guest}>{profileData.guest ? 'Guest' : null}</Text>
-          </View>
-          <View style={styles.rightSide}>
-            <View>
-              <Text style={styles.numberModal}>{profileData.reviews?.length}</Text>
-              <Text style={styles.infoNumberModal}>Reviews</Text>
-              <View style={styles.separatorLineModal} />
-              <Text style={styles.numberModal}>{profileData.yearsOnAirbnb}</Text>
-              <Text style={styles.infoNumberModal}>Years on Airbnb</Text>
-            </View>
-          </View>
-        </View>
+        <ModalSection profileData={profileData} />
         <View style={styles.placeTextContainer}>
           <Ionicons name="globe-outline" size={24} color="black" />
           <Text style={styles.placeText}>
@@ -117,6 +95,36 @@ const ConfirmedInformationsSection = ({ profileData }: { profileData: Profile })
       )}
       <Text style={styles.learnText}>Learn about identity verification</Text>
     </>
+  )
+}
+
+const ModalSection = ({ profileData }: { profileData: Profile }) => {
+  const { user } = useUser()
+
+  return (
+    <View style={styles.modal}>
+      <View style={styles.leftSide}>
+        <View style={styles.imageBox}>
+          <Image source={{ uri: user?.imageUrl }} style={styles.avatar} />
+          {profileData.verified && (
+            <View style={styles.verfied}>
+              <Ionicons name="shield-checkmark" size={17} color="white" />
+            </View>
+          )}
+        </View>
+        <Text style={styles.firstName}>{user?.firstName}</Text>
+        <Text style={styles.guest}>{profileData.guest ? 'Guest' : null}</Text>
+      </View>
+      <View style={styles.rightSide}>
+        <View>
+          <Text style={styles.numberModal}>{profileData.reviews?.length}</Text>
+          <Text style={styles.infoNumberModal}>Reviews</Text>
+          <View style={styles.separatorLineModal} />
+          <Text style={styles.numberModal}>{profileData.yearsOnAirbnb}</Text>
+          <Text style={styles.infoNumberModal}>Years on Airbnb</Text>
+        </View>
+      </View>
+    </View>
   )
 }
 
