@@ -46,8 +46,6 @@ const timeSince = (dateString: Date) => {
 }
 
 export default function ProfilePage() {
-  const { user } = useUser()
-
   const profileData: Profile = {
     ...profile,
     reviews: profile.reviews.map((review) => ({
@@ -60,18 +58,24 @@ export default function ProfilePage() {
     <SafeAreaView edges={['top']} style={[styles.container]}>
       <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollViewStyle}>
         <ModalSection profileData={profileData} />
-        <View style={styles.placeTextContainer}>
-          <Ionicons name="globe-outline" size={24} color="black" />
-          <Text style={styles.placeText}>
-            Lives in {profileData.city}, {profileData.country}
-          </Text>
-        </View>
+        <PlaceSection profileData={profileData} />
         <View style={styles.separatorLine} />
         <ReviewSection profileData={profileData} />
         <View style={styles.separatorLine} />
         <ConfirmedInformationsSection profileData={profileData} />
       </ScrollView>
     </SafeAreaView>
+  )
+}
+
+const PlaceSection = ({ profileData }: { profileData: Profile }) => {
+  return (
+    <View style={styles.placeTextContainer}>
+      <Ionicons name="globe-outline" size={24} color="black" />
+      <Text style={styles.placeText}>
+        Lives in {profileData.city}, {profileData.country}
+      </Text>
+    </View>
   )
 }
 
