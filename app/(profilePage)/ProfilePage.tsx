@@ -1,7 +1,7 @@
 import { useUser } from '@clerk/clerk-expo'
 import { FontAwesome6, Ionicons } from '@expo/vector-icons'
 import { parseISO } from 'date-fns'
-import { useCallback } from 'react'
+import { useCallback, useMemo } from 'react'
 import {
   Image,
   ListRenderItem,
@@ -46,94 +46,66 @@ const timeSince = (dateString: Date) => {
 }
 
 export default function ProfilePage() {
-  const profileData: Profile = {
-    ...profile,
-    reviews: profile.reviews.map((review) => ({
-      ...review,
-      date: parseISO(review.date),
-    })),
-  }
-
-  return (
-    <SafeAreaView edges={['top']} style={[styles.container]}>
-      <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollViewStyle}>
-        <ModalSection profileData={profileData} />
-        <PlaceSection profileData={profileData} />
-        <View style={styles.separatorLine} />
-        <ReviewSection profileData={profileData} />
-        <View style={styles.separatorLine} />
-        <ConfirmedInformationsSection profileData={profileData} />
-      </ScrollView>
-    </SafeAreaView>
-  )
-}
-
-const PlaceSection = ({ profileData }: { profileData: Profile }) => {
-  return (
-    <View style={styles.placeTextContainer}>
-      <Ionicons name="globe-outline" size={24} color="black" />
-      <Text style={styles.placeText}>
-        Lives in {profileData.city}, {profileData.country}
-      </Text>
-    </View>
-  )
-}
-
-const ConfirmedInformationsSection = ({ profileData }: { profileData: Profile }) => {
   const { user } = useUser()
 
-  return (
-    <>
-      <Text
-        style={styles.confirmedInformationsText}
-      >{`${user?.firstName}'s confirmed information`}</Text>
-      {Object.entries(profileData.confirmedIndormation).map(([key, value]) =>
-        value ? (
-          <View key={key} style={styles.connfirmedInformationRow}>
-            <FontAwesome6 name="check" size={24} color="black" />
-            <Text style={styles.connfirmedInformationRowText}>
-              {confirmedInformationLabels[key as keyof confirmedIndormation]}
-            </Text>
+  const profileData: Profile = useMemo(
+    () => ({
+      ...profile,
+      reviews: profile.reviews.map((review) => ({
+        ...review,
+        date: parseISO(review.date),
+      })),
+    }),
+    []
+  )
+
+  const modalSection = useMemo(
+    () => (
+      <View style={styles.modal}>
+        <View style={styles.leftSide}>
+          <View style={styles.imageBox}>
+            <Image source={{ uri: user?.imageUrl }} style={styles.avatar} />
+            {profileData.verified && (
+              <View style={styles.verfied}>
+                <Ionicons name="shield-checkmark" size={17} color="white" />
+              </View>
+            )}
           </View>
-        ) : null
-      )}
-      <Text style={styles.learnText}>Learn about identity verification</Text>
-    </>
-  )
-}
-
-const ModalSection = ({ profileData }: { profileData: Profile }) => {
-  const { user } = useUser()
-
-  return (
-    <View style={styles.modal}>
-      <View style={styles.leftSide}>
-        <View style={styles.imageBox}>
-          <Image source={{ uri: user?.imageUrl }} style={styles.avatar} />
-          {profileData.verified && (
-            <View style={styles.verfied}>
-              <Ionicons name="shield-checkmark" size={17} color="white" />
-            </View>
-          )}
+          <Text style={styles.firstName}>{user?.firstName}</Text>
+          <Text style={styles.guest}>{profileData.guest ? 'Guest' : null}</Text>
         </View>
-        <Text style={styles.firstName}>{user?.firstName}</Text>
-        <Text style={styles.guest}>{profileData.guest ? 'Guest' : null}</Text>
-      </View>
-      <View style={styles.rightSide}>
-        <View>
-          <Text style={styles.numberModal}>{profileData.reviews?.length}</Text>
-          <Text style={styles.infoNumberModal}>Reviews</Text>
-          <View style={styles.separatorLineModal} />
-          <Text style={styles.numberModal}>{profileData.yearsOnAirbnb}</Text>
-          <Text style={styles.infoNumberModal}>Years on Airbnb</Text>
+        <View style={styles.rightSide}>
+          <View>
+            <Text style={styles.numberModal}>{profileData.reviews?.length}</Text>
+            <Text style={styles.infoNumberModal}>Reviews</Text>
+            <View style={styles.separatorLineModal} />
+            <Text style={styles.numberModal}>{profileData.yearsOnAirbnb}</Text>
+            <Text style={styles.infoNumberModal}>Years on Airbnb</Text>
+          </View>
         </View>
       </View>
-    </View>
+    ),
+    [
+      profileData.verified,
+      profileData.guest,
+      profileData.reviews,
+      profileData.yearsOnAirbnb,
+      user?.imageUrl,
+      user?.firstName,
+    ]
   )
-}
 
-const ReviewSection = ({ profileData }: { profileData: Profile }) => {
-  const { user } = useUser()
+  const placeSection = useMemo(
+    () => (
+      <View style={styles.placeTextContainer}>
+        <Ionicons name="globe-outline" size={24} color="black" />
+        <Text style={styles.placeText}>
+          Lives in {profileData.city}, {profileData.country}
+        </Text>
+      </View>
+    ),
+    [profileData.city, profileData.country]
+  )
 
   const renderRow: ListRenderItem<Review> = useCallback(
     ({ item }) => (
@@ -158,27 +130,68 @@ const ReviewSection = ({ profileData }: { profileData: Profile }) => {
     ),
     []
   )
-  return (
-    <>
-      <Text style={styles.reviewsTest}>
-        {profileData.guest
-          ? `What Hosts are saying about ${user?.firstName}`
-          : `${user?.firstName}'s reviews`}
-      </Text>
 
-      <FlatList
-        data={profileData.reviews}
-        renderItem={renderRow}
-        contentContainerStyle={styles.containerBox}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={styles.flatListStyle}
-        pagingEnabled
-      />
-      <TouchableOpacity style={[defaultStyles.btn, styles.reviewsButton]}>
-        <Text style={styles.reviewsButtonText}>Show all {profileData.reviews?.length} reviews</Text>
-      </TouchableOpacity>
-    </>
+  const reviewSection = useMemo(
+    () => (
+      <>
+        <Text style={styles.reviewsTest}>
+          {profileData.guest
+            ? `What Hosts are saying about ${user?.firstName}`
+            : `${user?.firstName}'s reviews`}
+        </Text>
+
+        <FlatList
+          data={profileData.reviews}
+          renderItem={renderRow}
+          contentContainerStyle={styles.containerBox}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.flatListStyle}
+          pagingEnabled
+        />
+        <TouchableOpacity style={[defaultStyles.btn, styles.reviewsButton]}>
+          <Text style={styles.reviewsButtonText}>
+            Show all {profileData.reviews?.length} reviews
+          </Text>
+        </TouchableOpacity>
+      </>
+    ),
+    [profileData.guest, profileData.reviews, renderRow, user?.firstName]
+  )
+
+  const confirmedInformationsSection = useMemo(
+    () => (
+      <>
+        <Text
+          style={styles.confirmedInformationsText}
+        >{`${user?.firstName}'s confirmed information`}</Text>
+        {Object.entries(profileData.confirmedIndormation).map(([key, value]) =>
+          value ? (
+            <View key={key} style={styles.connfirmedInformationRow}>
+              <FontAwesome6 name="check" size={24} color="black" />
+              <Text style={styles.connfirmedInformationRowText}>
+                {confirmedInformationLabels[key as keyof confirmedIndormation]}
+              </Text>
+            </View>
+          ) : null
+        )}
+        <Text style={styles.learnText}>Learn about identity verification</Text>
+      </>
+    ),
+    [profileData.confirmedIndormation, user?.firstName]
+  )
+
+  return (
+    <SafeAreaView edges={['top']} style={[styles.container]}>
+      <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollViewStyle}>
+        {modalSection}
+        {placeSection}
+        <View style={styles.separatorLine} />
+        {reviewSection}
+        <View style={styles.separatorLine} />
+        {confirmedInformationsSection}
+      </ScrollView>
+    </SafeAreaView>
   )
 }
 
