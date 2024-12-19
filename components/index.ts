@@ -1,5 +1,5 @@
 export * from './booking/BookingFooter'
-export * from './ExploreHeader'
+export * from './listings/ExploreHeader'
 export * from './inbox/InboxHeader'
 export * from './ItemRenderer'
 export * from './inbox/MessageTile'
