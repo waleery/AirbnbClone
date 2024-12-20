@@ -2,7 +2,7 @@ import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons'
 import { Link } from 'expo-router'
 import { useCallback, useState } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
-import Animated, { FadeIn, FadeOutLeft } from 'react-native-reanimated'
+import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
@@ -19,7 +19,11 @@ export const ListingItem = ({ item }: Props) => {
   return (
     <Link href={`/listing/${item.id}`} asChild>
       <TouchableOpacity>
-        <Animated.View style={styles.listing} entering={FadeIn.duration(200)} exiting={FadeOutLeft}>
+        <Animated.View
+          style={styles.listing}
+          entering={FadeIn.duration(300)}
+          exiting={FadeOut.duration(300)}
+        >
           {imageError ? (
             <View style={styles.imagePlaceholder}>
               <MaterialCommunityIcons name="image-off-outline" size={50} color={Colors.primary} />
