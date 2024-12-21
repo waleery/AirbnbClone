@@ -20,7 +20,7 @@ import { hosting, legal, settings, support, tools } from '@/assets/data'
 import home from '@/assets/images/home.png'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
-import { RenderOptions } from '../RenderOptions'
+import { RenderOptions } from './RenderOptions'
 
 export const AuthorizedProfile = () => {
   const { signOut } = useAuth()

@@ -1,7 +1,7 @@
 import { AntDesign } from '@expo/vector-icons'
 import { View, Text, StyleSheet } from 'react-native'
 
-import { IconRenderer } from './ItemRenderer'
+import { IconRenderer } from '../ItemRenderer'
 
 import Colors from '@/constants/Colors'
 import { TOption } from '@/types'
