@@ -6,7 +6,7 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-nativ
 
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
-import { useWarmUpBrowser } from '@/hooks/useWarmUpBrowser'
+import { useWarmUpBrowser } from '@/hooks'
 
 enum Strategy {
   Google = 'oauth_google',
