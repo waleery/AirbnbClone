@@ -1,8 +1,8 @@
 import { useRouter } from 'expo-router'
 import { memo, useCallback } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Platform } from 'react-native'
 import MapView from 'react-native-map-clustering'
-import { Marker, PROVIDER_GOOGLE } from 'react-native-maps'
+import { Marker, PROVIDER_DEFAULT, PROVIDER_GOOGLE } from 'react-native-maps'
 
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
@@ -64,7 +64,7 @@ export const ListingsMap = memo(({ listings }: Props) => {
     <View style={styles.container}>
       <MapView
         style={styles.map}
-        provider={PROVIDER_GOOGLE}
+        provider={Platform.OS === 'android' ? PROVIDER_GOOGLE : PROVIDER_DEFAULT}
         showsUserLocation={true}
         showsMyLocationButton
         initialRegion={INITIAL_REGION}
