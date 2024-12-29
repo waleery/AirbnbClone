@@ -84,9 +84,9 @@ function RootLayoutNav() {
 
   useEffect(() => {
     if (isLoaded && !isSignedIn) {
-      router.push('/(profilePage)/ProfilePage')
+      router.push('/(modals)/login')
     }
-  }, [isLoaded, isSignedIn])
+  }, [isLoaded, isSignedIn, router])
 
   const handleGoBack = useCallback(() => router.back(), [router])
 
