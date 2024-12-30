@@ -113,7 +113,7 @@ function RootLayoutNav() {
           title: '',
           headerLeft: () => (
             <TouchableOpacity onPress={handleGoBack}>
-              <Ionicons name="chevron-back" size={22} color={'#000'} />
+              <Ionicons name="chevron-back" size={22} color={Colors.black} />
             </TouchableOpacity>
           ),
           headerRight: () => <Text style={styles.logoutText}>Edit</Text>,
