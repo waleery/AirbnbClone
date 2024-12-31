@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  ratings: { fontSize: 16 },
+  ratings: { marginTop: 20, fontSize: 16 },
   divider: {
     height: StyleSheet.hairlineWidth,
     backgroundColor: Colors.grey,
@@ -207,6 +207,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 4,
     alignItems: 'flex-start',
+    marginTop: 5,
+    marginBottom: 5,
   },
   roundBtn: {
     width: 40,
