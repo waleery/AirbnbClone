@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.grey,
     marginVertical: 16,
   },
-  hostView: { flexDirection: 'row', alignItems: 'center', gap: 12 },
+  hostView: { marginVertical: 5, flexDirection: 'row', alignItems: 'center', gap: 12 },
   host: {
     width: 50,
     height: 50,
