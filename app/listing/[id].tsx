@@ -113,12 +113,12 @@ const Page = () => {
               {listing.bedrooms} bedrooms · {listing.bathrooms} bathrooms
             </Text>
             {listing.review_scores_rating ? (
-              <Text style={styles.textRating}>
+              <View style={styles.textRating}>
                 <Ionicons name="star" size={16} />
                 <Text style={styles.ratings}>
                   {listing.review_scores_rating / 20} · {listing.number_of_reviews} reviews
                 </Text>
-              </Text>
+              </View>
             ) : null}
             <View style={styles.divider} />
             <View style={styles.hostView}>
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  ratings: { marginTop: 20, fontSize: 16 },
+  ratings: { fontSize: 16 },
   divider: {
     height: StyleSheet.hairlineWidth,
     backgroundColor: Colors.grey,
@@ -206,8 +206,8 @@ const styles = StyleSheet.create({
   textRating: {
     flexDirection: 'row',
     gap: 4,
-    alignItems: 'flex-start',
-    marginTop: 5,
+    alignItems: 'center',
+    marginTop: 10,
     marginBottom: 5,
   },
   roundBtn: {
