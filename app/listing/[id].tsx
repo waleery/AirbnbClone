@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
   },
   infoContainer: { padding: 24, backgroundColor: Colors.white },
   name: { fontSize: 26, fontWeight: '600' },
-  location: { fontSize: 18, marginTop: 15 },
+  location: { fontSize: 16, marginTop: 15, fontWeight: '500' },
   rooms: { fontSize: 16, color: Colors.grey, marginVertical: 4 },
   score: {
     flexDirection: 'row',
