@@ -116,7 +116,8 @@ const Page = () => {
               <View style={styles.textRating}>
                 <Ionicons name="star" size={16} />
                 <Text style={styles.ratings}>
-                  {listing.review_scores_rating / 20} · {listing.number_of_reviews} reviews
+                  <Text style={styles.rating_number}>{listing.review_scores_rating / 20}</Text>·{' '}
+                  {listing.number_of_reviews} reviews
                 </Text>
               </View>
             ) : null}
@@ -169,6 +170,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   ratings: { fontSize: 16 },
+  rating_number: {
+    fontWeight: '500',
+  },
   divider: {
     height: StyleSheet.hairlineWidth,
     backgroundColor: Colors.grey,
