@@ -3,6 +3,7 @@ import { Link } from 'expo-router'
 import { useCallback, useState } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
+import Svg, { Path } from 'react-native-svg'
 
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
@@ -37,7 +38,14 @@ export const ListingItem = ({ item }: Props) => {
             />
           )}
           <TouchableOpacity style={styles.favouriteBtn}>
-            <Ionicons name="heart-outline" size={24} />
+            <Svg fill={Colors.primary} height="100%" width="100%">
+              <Path
+                fill={Colors.grey} // kolor wypełnienia
+                stroke={Colors.white} // kolor linii
+                strokeWidth="1.5" // grubość linii
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+              />
+            </Svg>
           </TouchableOpacity>
           <View style={styles.shortInfo}>
             <Text style={[defaultStyles.biggerText, styles.infoText]}>{item.name}</Text>
@@ -80,6 +88,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 30,
     right: 30,
+    overflow: 'hidden',
+    width: '7%',
+    height: '7%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   shortInfo: {
     flexDirection: 'row',
