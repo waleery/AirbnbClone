@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
 import React, { useCallback } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { Pressable, TouchableOpacity } from 'react-native-gesture-handler'
+import { Pressable } from 'react-native-gesture-handler'
 import Animated, { SlideInDown } from 'react-native-reanimated'
 
 import { defaultStyles } from '@/constants'
