@@ -60,15 +60,17 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
         viewabilityConfig={viewabilityConfig}
         renderItem={renderItem}
       />
-      <View style={styles.dotsContainer}>
-        {items.map((_, index) => (
-          <TouchableOpacity
-            key={index}
-            style={[styles.dot, currentIndex === index && styles.activeDot]}
-            onPress={handleDotPress(index)}
-          />
-        ))}
-      </View>
+      {items.length > 1 && (
+        <View style={styles.dotsContainer}>
+          {items.map((_, index) => (
+            <TouchableOpacity
+              key={index}
+              style={[styles.dot, currentIndex === index && styles.activeDot]}
+              onPress={handleDotPress(index)}
+            />
+          ))}
+        </View>
+      )}
     </View>
   )
 }
