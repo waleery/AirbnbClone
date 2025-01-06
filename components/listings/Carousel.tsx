@@ -1,12 +1,14 @@
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 import React, { useCallback, useRef, useState } from 'react'
 import {
   View,
-  Text,
   FlatList,
   Dimensions,
   StyleSheet,
   TouchableOpacity,
   ViewToken,
+  Image,
+  Text,
 } from 'react-native'
 
 import Colors from '@/constants/Colors'
@@ -19,7 +21,11 @@ type CarouselProps = {
 
 const Carousel: React.FC<CarouselProps> = ({ items }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [imageError, setImageError] = useState(false)
+
   const flatListRef = useRef<FlatList<string>>(null)
+
+  const handleImageError = useCallback(() => setImageError(true), [])
 
   const onViewableItemsChanged = React.useRef(
     ({ viewableItems }: { viewableItems: ViewToken[] }) => {
@@ -33,12 +39,19 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
 
   const keyExtractor = useCallback((_: string, index: number) => index.toString(), [])
   const renderItem = useCallback(
-    ({ item }) => (
-      <View style={styles.slide}>
-        <Text style={styles.slideText}>{item}</Text>
-      </View>
-    ),
-    []
+    ({ item }: { item: string }) => {
+      if (imageError) {
+        return (
+          <View style={styles.imagePlaceholder}>
+            <MaterialCommunityIcons name="image-off-outline" size={50} color={Colors.primary} />
+            <Text>Image failed to load</Text>
+          </View>
+        )
+      } else {
+        return <Image source={{ uri: item }} style={styles.image} onError={handleImageError} />
+      }
+    },
+    [handleImageError, imageError]
   )
   const handleDotPress = useCallback(
     (index: number) => () => {
@@ -83,14 +96,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  slide: {
-    width,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  slideText: {
-    fontSize: 24,
-    fontWeight: 'bold',
+  image: {
+    width: width - 32,
+    height: 300,
+    borderRadius: 10,
   },
   dotsContainer: {
     flexDirection: 'row',
@@ -106,5 +115,13 @@ const styles = StyleSheet.create({
   },
   activeDot: {
     backgroundColor: Colors.black,
+  },
+  imagePlaceholder: {
+    width: width - 32,
+    height: 300,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.veryLightGrey,
   },
 })

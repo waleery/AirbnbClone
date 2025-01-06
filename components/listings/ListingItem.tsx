@@ -1,9 +1,11 @@
-import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons'
+import { Ionicons } from '@expo/vector-icons'
 import { Link } from 'expo-router'
 import { useCallback, useState } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 import Svg, { Path } from 'react-native-svg'
+
+import Carousel from './Carousel'
 
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
@@ -13,10 +15,7 @@ interface Props {
   item: Listing
 }
 export const ListingItem = ({ item }: Props) => {
-  const [imageError, setImageError] = useState(false)
   const [isFavourite, setIsFavourite] = useState<boolean>(false)
-
-  const handleImageError = useCallback(() => setImageError(true), [])
 
   const handleFavourite = useCallback(() => {
     setIsFavourite(!isFavourite)
@@ -30,18 +29,7 @@ export const ListingItem = ({ item }: Props) => {
           entering={FadeIn.duration(300)}
           exiting={FadeOut.duration(300)}
         >
-          {imageError ? (
-            <View style={styles.imagePlaceholder}>
-              <MaterialCommunityIcons name="image-off-outline" size={50} color={Colors.primary} />
-              <Text>Image failed to load</Text>
-            </View>
-          ) : (
-            <Image
-              source={{ uri: item.medium_url! }}
-              style={styles.image}
-              onError={handleImageError}
-            />
-          )}
+          <Carousel items={[item.xl_picture_url!]} />
           <TouchableOpacity style={styles.favouriteBtn} onPress={handleFavourite}>
             <Svg fill={Colors.primary} height="100%" width="100%">
               <Path
@@ -84,11 +72,6 @@ const styles = StyleSheet.create({
     marginVertical: 16,
     zIndex: 1,
   },
-  image: {
-    width: '100%',
-    height: 300,
-    borderRadius: 10,
-  },
   favouriteBtn: {
     position: 'absolute',
     top: 30,
@@ -117,13 +100,5 @@ const styles = StyleSheet.create({
   infoText: {
     flex: 1,
     alignItems: 'flex-start',
-  },
-  imagePlaceholder: {
-    width: '100%',
-    height: 300,
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: Colors.veryLightGrey,
   },
 })
