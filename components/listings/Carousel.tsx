@@ -9,6 +9,7 @@ import {
   ViewToken,
   Image,
   Text,
+  Pressable,
 } from 'react-native'
 
 import Colors from '@/constants/Colors'
@@ -17,9 +18,10 @@ const { width } = Dimensions.get('window')
 
 type CarouselProps = {
   items: string[]
+  onPress?: () => void
 }
 
-const Carousel: React.FC<CarouselProps> = ({ items }) => {
+const Carousel: React.FC<CarouselProps> = ({ items, onPress = () => {} }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [imageError, setImageError] = useState(false)
 
@@ -37,6 +39,10 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
 
   const viewabilityConfig = { viewAreaCoveragePercentThreshold: 50 }
 
+  const handleOnPress = useCallback(() => {
+    onPress()
+  }, [onPress])
+
   const keyExtractor = useCallback((_: string, index: number) => index.toString(), [])
   const renderItem = useCallback(
     ({ item }: { item: string }) => {
@@ -48,10 +54,14 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
           </View>
         )
       } else {
-        return <Image source={{ uri: item }} style={styles.image} onError={handleImageError} />
+        return (
+          <Pressable onPress={handleOnPress}>
+            <Image source={{ uri: item }} style={styles.image} onError={handleImageError} />
+          </Pressable>
+        )
       }
     },
-    [handleImageError, imageError]
+    [handleImageError, imageError, handleOnPress]
   )
   const handleDotPress = useCallback(
     (index: number) => () => {
