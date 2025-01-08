@@ -112,19 +112,23 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   dotsContainer: {
+    position:'absolute',
+    bottom: 15,
     flexDirection: 'row',
     justifyContent: 'center',
     marginTop: 16,
   },
   dot: {
-    width: 10,
-    height: 10,
+    width: 6,
+    height: 6,
     borderRadius: 5,
-    backgroundColor: Colors.lightGrey,
-    marginHorizontal: 5,
+    backgroundColor: Colors.veryLightGrey,
+    marginHorizontal: 3.5,
+    opacity: 0.5,
   },
   activeDot: {
-    backgroundColor: Colors.black,
+    backgroundColor: Colors.white,
+    opacity: 1,
   },
   imagePlaceholder: {
     width: width - 32,
