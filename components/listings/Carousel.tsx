@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: width - 32,
-    height: 300,
+    height: 350,
     borderRadius: 10,
   },
   dotsContainer: {
