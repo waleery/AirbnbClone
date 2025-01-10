@@ -71,6 +71,8 @@ const Carousel: React.FC<CarouselProps> = ({ items, onPress = () => {} }) => {
     []
   )
   return (
+    <View style={styles.backgroundContainer}>
+
     <View style={styles.container}>
       <FlatList
         ref={flatListRef}
@@ -95,12 +97,19 @@ const Carousel: React.FC<CarouselProps> = ({ items, onPress = () => {} }) => {
         </View>
       )}
     </View>
+    </View>
   )
 }
 
 export default Carousel
 
 const styles = StyleSheet.create({
+  backgroundContainer: {
+    flex: 1,
+    backgroundColor: Colors.lightGrey , 
+    borderRadius: 10,
+    overflow: 'hidden',
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -109,7 +118,6 @@ const styles = StyleSheet.create({
   image: {
     width: width - 32,
     height: 350,
-    borderRadius: 10,
   },
   dotsContainer: {
     position:'absolute',
