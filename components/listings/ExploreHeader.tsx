@@ -64,6 +64,7 @@ export const ExploreHeader = ({ onCategoryChanged }: Props) => {
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.acommodationsScrollView}
+          style={styles.acommodationsScrollViewContainer}
         >
           {accommodation_categories.map((category, index) => (
             <TouchableOpacity
@@ -91,6 +92,8 @@ export const ExploreHeader = ({ onCategoryChanged }: Props) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.white,
+    overflow: 'visible',
+
   },
   rowAction: {
     flexDirection: 'row',
@@ -156,4 +159,16 @@ const styles = StyleSheet.create({
     gap: 30,
     paddingHorizontal: 16,
   },
+  acommodationsScrollViewContainer:{
+    elevation: 4,
+    shadowColor: Colors.lightGrey,
+    shadowOpacity: 0.2,
+    shadowRadius: 1,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    overflow: 'visible',
+    backgroundColor: Colors.white,
+  }
 })
