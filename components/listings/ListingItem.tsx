@@ -72,7 +72,8 @@ const styles = StyleSheet.create({
   listing: {
     padding: 16,
     gap: 10,
-    marginVertical: 16,
+    marginTop:5,
+    marginBottom: 5,
     zIndex: 1,
   },
   favouriteBtn: {
