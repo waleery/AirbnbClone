@@ -44,23 +44,24 @@ export const ListingItem = ({ item }: Props) => {
         </Svg>
       </TouchableOpacity>
       <TouchableOpacity onPress={handlePress}>
-        <View style={styles.shortInfo}>
-          <Text style={[defaultStyles.biggerText, styles.infoText]}>{item.name}</Text>
-          {item.review_scores_rating ? (
-            <View style={styles.ratingInfo}>
-              <Ionicons name="star" size={16} />
-              <Text style={[defaultStyles.boldText, defaultStyles.biggerText]}>
-                {item.review_scores_rating / 20}
-              </Text>
+        <View style={styles.typeAndPriceContainer}>
+          <View style={styles.shortInfo}>
+            <Text style={[defaultStyles.biggerText, styles.infoText]}>{item.name}</Text>
+            {item.review_scores_rating ? (
+              <View style={styles.ratingInfo}>
+                <Ionicons name="star" size={16} />
+                <Text style={[defaultStyles.boldText, defaultStyles.biggerText]}>
+                  {item.review_scores_rating / 20}
+                </Text>
+              </View>
+            ) : null}
+          </View>
+          <View style={defaultStyles.mediumGap}>
+            <Text>{item.room_type}</Text>
+            <View style={styles.priceInfo}>
+              <Text style={[defaultStyles.boldText, defaultStyles.biggerText]}>€ {item.price}</Text>
+              <Text style={defaultStyles.biggerText}>night</Text>
             </View>
-          ) : null}
-        </View>
-        <View style={defaultStyles.mediumGap}>
-          <Text>{item.room_type}</Text>
-
-          <View style={styles.priceInfo}>
-            <Text style={[defaultStyles.boldText, defaultStyles.biggerText]}>€ {item.price}</Text>
-            <Text style={defaultStyles.biggerText}>night</Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -105,4 +106,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'flex-start',
   },
+  typeAndPriceContainer:{
+    gap:3
+  }
 })
