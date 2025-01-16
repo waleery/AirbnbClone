@@ -116,7 +116,7 @@ const Page = () => {
               <View style={styles.textRating}>
                 <Ionicons name="star" size={16} />
                 <Text style={styles.ratings}>
-                  <Text style={styles.rating_number}>{listing.review_scores_rating / 20}</Text>·{' '}
+                  <Text style={styles.rating_number}>{listing.review_scores_rating / 20}</Text> ·{' '}
                   {listing.number_of_reviews} reviews
                 </Text>
               </View>
