@@ -50,7 +50,7 @@ export const ListingItem = ({ item }: Props) => {
             {item.review_scores_rating ? (
               <View style={styles.ratingInfo}>
                 <Ionicons name="star" size={16} />
-                <Text style={[defaultStyles.boldText, defaultStyles.biggerText]}>
+                <Text style={[styles.starText, defaultStyles.biggerText]}>
                   {item.review_scores_rating / 20}
                 </Text>
               </View>
@@ -106,7 +106,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'flex-start',
   },
-  typeAndPriceContainer:{
+  typeAndPriceContainer :{
     gap:3
+  },
+  starText:{
+    fontWeight:'500'
   }
 })
