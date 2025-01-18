@@ -38,8 +38,8 @@ export const ListingsBottomSheet = ({ listings, category }: Props) => {
         <Listings listings={listings} category={category} refresh={refresh} />
         <View style={styles.absoluteBtn}>
           <TouchableOpacity onPress={showMap} style={styles.btn}>
-            <Text style={defaultStyles.white}>Map</Text>
-            <Ionicons name="map" size={20} color={'#fff'} />
+            <Text style={[defaultStyles.white, defaultStyles.boldText]}>Map</Text>
+            <Ionicons name="map" size={17} color={'#fff'} />
           </TouchableOpacity>
         </View>
       </View>
@@ -56,8 +56,8 @@ const styles = StyleSheet.create({
   },
   btn: {
     backgroundColor: Colors.dark,
-    padding: 16,
-    height: 50,
+    padding: 13,
+    paddingHorizontal: 20,
     alignItems: 'center',
     flexDirection: 'row',
     borderRadius: 30,
