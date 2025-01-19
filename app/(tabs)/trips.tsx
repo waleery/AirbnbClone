@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   noTrips: {
-    paddingVertical: 16,
+    paddingVertical: 20,
     paddingHorizontal: 20,
 
     borderWidth: StyleSheet.hairlineWidth,
