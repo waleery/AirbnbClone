@@ -65,6 +65,8 @@ const styles = StyleSheet.create({
   },
   sheetContainer: {
     backgroundColor: Colors.white,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
     borderRadius: 0,
     elevation: 4,
     shadowColor: Colors.black,
