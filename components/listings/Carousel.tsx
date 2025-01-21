@@ -100,7 +100,7 @@ const Carousel: React.FC<CarouselProps> = ({ items, onPress = () => {} }) => {
         viewabilityConfig={viewabilityConfig}
         renderItem={renderItem}
       />
-      {items.length > 1 && (
+      {allImages.length > 1 && (
         <View style={styles.dotsContainer}>
           {allImages.map((_, index) => (
             <TouchableOpacity
