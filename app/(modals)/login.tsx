@@ -1,7 +1,7 @@
 import { useOAuth } from '@clerk/clerk-expo'
 import { Ionicons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
 
 import Colors from '@/constants/Colors'
@@ -16,6 +16,8 @@ enum Strategy {
 const Page = () => {
   useWarmUpBrowser()
   const router = useRouter()
+
+  const [isTyped, setIsTyped] = useState(false)
 
   const { startOAuthFlow: googleAuth } = useOAuth({ strategy: 'oauth_google' })
   const { startOAuthFlow: appleAuth } = useOAuth({ strategy: 'oauth_apple' })
@@ -42,6 +44,9 @@ const Page = () => {
     },
     [appleAuth, facebookAuth, googleAuth, router]
   )
+  const handleTextChange = (text: string) => {
+    setIsTyped(!!text)
+  }
 
   return (
     <View style={styles.container}>
@@ -49,9 +54,10 @@ const Page = () => {
         autoCapitalize="none"
         placeholder="Email"
         style={[defaultStyles.inputField, styles.emailInput]}
+        onChangeText={handleTextChange}
       />
-      <TouchableOpacity style={defaultStyles.btn}>
-        <Text style={defaultStyles.btnText}>Continue</Text>
+<TouchableOpacity style={[defaultStyles.btn, !isTyped && { backgroundColor: Colors.lightGrey }]}>
+<Text style={defaultStyles.btnText}>Continue</Text>
       </TouchableOpacity>
       <View style={styles.separatorView}>
         <View style={styles.separatorLine} />
