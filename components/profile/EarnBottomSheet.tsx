@@ -24,6 +24,7 @@ export const EarnBottomSheet = () => {
       ref={earnBottomSheetRef}
       snapPoints={snapPoints}
       index={-1}
+      handleIndicatorStyle={styles.indicator}
       style={[styles.sheetContainer]}
       enablePanDownToClose={true}
     >
@@ -35,5 +36,8 @@ export const EarnBottomSheet = () => {
 const styles = StyleSheet.create({
   sheetContainer: {
     backgroundColor: Colors.white,
+  },
+  indicator: {
+    display: 'none',
   },
 })
