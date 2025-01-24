@@ -15,6 +15,7 @@ import {
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
+import { handlePresentEarnBottomSheet } from './EarnBottomSheet'
 import { RenderOptions } from './RenderOptions'
 
 import { hosting, legal, settings, support, tools } from '@/assets/data'
@@ -69,15 +70,21 @@ export const AuthorizedProfile = () => {
             <AntDesign name="right" size={20} />
           </Pressable>
         </View>
-        <View style={styles.modal}>
-          <View style={styles.modalTextContainer}>
-            <Text style={styles.modalHeader}>Airbnb your place</Text>
-            <Text style={styles.modalSecondText}>It&apos;s simple to get up and start earning</Text>
+
+        <TouchableOpacity onPress={handlePresentEarnBottomSheet}>
+          <View style={styles.modal}>
+            <View style={styles.modalTextContainer}>
+              <Text style={styles.modalHeader}>Airbnb your place</Text>
+              <Text style={styles.modalSecondText}>
+                It&apos;s simple to get up and start earning
+              </Text>
+            </View>
+            <View style={styles.modalImageContainer}>
+              <Image source={home as ImageSourcePropType} style={styles.homeIcon} />
+            </View>
           </View>
-          <View style={styles.modalImageContainer}>
-            <Image source={home as ImageSourcePropType} style={styles.homeIcon} />
-          </View>
-        </View>
+        </TouchableOpacity>
+
         <View style={styles.optionsSection}>
           <RenderOptions options={settings} title="Settings" />
           <RenderOptions options={hosting} title="Hosting" />
