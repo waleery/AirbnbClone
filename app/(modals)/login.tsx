@@ -44,9 +44,9 @@ const Page = () => {
     },
     [appleAuth, facebookAuth, googleAuth, router]
   )
-  const handleTextChange = (text: string) => {
+  const handleTextChange = useCallback((text: string) => {
     setIsTyped(!!text)
-  }
+  }, [])
 
   return (
     <View style={styles.container}>
@@ -56,8 +56,10 @@ const Page = () => {
         style={[defaultStyles.inputField, styles.emailInput]}
         onChangeText={handleTextChange}
       />
-<TouchableOpacity style={[defaultStyles.btn, !isTyped && { backgroundColor: Colors.lightGrey }]}>
-<Text style={defaultStyles.btnText}>Continue</Text>
+      <TouchableOpacity
+        style={[defaultStyles.btn, !isTyped && { backgroundColor: Colors.lightGrey }]}
+      >
+        <Text style={defaultStyles.btnText}>Continue</Text>
       </TouchableOpacity>
       <View style={styles.separatorView}>
         <View style={styles.separatorLine} />
