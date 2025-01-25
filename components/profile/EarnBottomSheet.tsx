@@ -27,6 +27,7 @@ export const EarnBottomSheet = () => {
       handleIndicatorStyle={styles.indicator}
       style={[styles.sheetContainer]}
       enablePanDownToClose={true}
+      animationConfigs={{ duration: 500 }}
     >
       <View style={defaultStyles.flex}></View>
     </BottomSheet>
