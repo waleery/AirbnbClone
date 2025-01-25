@@ -1,6 +1,7 @@
 import BottomSheet from '@gorhom/bottom-sheet'
 import { createRef, useMemo } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, Text } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
@@ -29,7 +30,7 @@ export const EarnBottomSheet = () => {
       enablePanDownToClose={true}
       animationConfigs={{ duration: 500 }}
     >
-      <View style={defaultStyles.flex}></View>
+      <SafeAreaView edges={['top']} style={defaultStyles.container}></SafeAreaView>
     </BottomSheet>
   )
 }
