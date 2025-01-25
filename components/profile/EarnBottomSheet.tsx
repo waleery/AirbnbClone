@@ -30,7 +30,10 @@ export const EarnBottomSheet = () => {
       enablePanDownToClose={true}
       animationConfigs={{ duration: 500 }}
     >
-      <SafeAreaView edges={['top']} style={defaultStyles.container}></SafeAreaView>
+      <SafeAreaView
+        edges={['top']}
+        style={[defaultStyles.container, styles.container]}
+      ></SafeAreaView>
     </BottomSheet>
   )
 }
@@ -41,5 +44,8 @@ const styles = StyleSheet.create({
   },
   indicator: {
     display: 'none',
+  },
+  container: {
+    paddingHorizontal: 16,
   },
 })
