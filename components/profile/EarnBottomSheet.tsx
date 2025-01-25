@@ -54,7 +54,7 @@ const LoadingDots = () => {
         }),
         Animated.timing(dot, {
           toValue: 0,
-          duration: 900,
+          duration: 300,
           useNativeDriver: true,
         }),
       ])
