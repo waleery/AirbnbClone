@@ -74,7 +74,7 @@ export const AuthorizedProfile = () => {
         <TouchableOpacity onPress={handlePresentEarnBottomSheet}>
           <View style={styles.modal}>
             <View style={styles.modalTextContainer}>
-              <Text style={styles.modalHeader}>Airbnb your place</Text>
+              <Text style={styles.modalHeader}>Airbnb your home</Text>
               <Text style={styles.modalSecondText}>
                 It&apos;s simple to get up and start earning
               </Text>
