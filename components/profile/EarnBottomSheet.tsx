@@ -1,5 +1,5 @@
 import BottomSheet from '@gorhom/bottom-sheet'
-import { createRef, useMemo, useEffect, useRef } from 'react'
+import { createRef, useMemo, useEffect, useRef, useState, useCallback } from 'react'
 import { View, StyleSheet, Animated } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
@@ -18,7 +18,24 @@ export const handleCloseEarnBottomSheet = () => {
 }
 
 export const EarnBottomSheet = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  const [showLoadingDots, setShowLoadingDots] = useState(false)
+
   const snapPoints = useMemo(() => ['100%', '100%'], [])
+
+  //to simulate loading data
+  useEffect(() => {
+    if (isOpen) {
+      const timeout = setTimeout(() => setShowLoadingDots(false), 600)
+      return () => clearTimeout(timeout)
+    } else {
+      setShowLoadingDots(true)
+    }
+  }, [isOpen])
+
+  const handleChangeBottomSheetState = useCallback((index: number) => {
+    setIsOpen(index !== -1)
+  }, [])
 
   return (
     <BottomSheet
@@ -29,12 +46,11 @@ export const EarnBottomSheet = () => {
       style={styles.sheetContainer}
       enablePanDownToClose
       animationConfigs={{ duration: 500 }}
+      onChange={handleChangeBottomSheetState}
     >
-      <SafeAreaView
-        edges={['top']}
-        style={[defaultStyles.container, styles.container]}
-      ></SafeAreaView>
-      <LoadingDots />
+      <SafeAreaView edges={['top']} style={[defaultStyles.container, styles.container]}>
+        {showLoadingDots && <LoadingDots />}
+      </SafeAreaView>
     </BottomSheet>
   )
 }
