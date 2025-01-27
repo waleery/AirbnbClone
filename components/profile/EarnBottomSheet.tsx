@@ -26,7 +26,7 @@ export const EarnBottomSheet = () => {
   //to simulate loading data
   useEffect(() => {
     if (isOpen) {
-      const timeout = setTimeout(() => setShowLoadingDots(false), 600)
+      const timeout = setTimeout(() => setShowLoadingDots(false), 800)
       return () => clearTimeout(timeout)
     } else {
       setShowLoadingDots(true)
@@ -64,7 +64,7 @@ const LoadingDots = () => {
     const sequence = (dot: Animated.Value) =>
       Animated.sequence([
         Animated.timing(dot, {
-          toValue: 1,
+          toValue: -15,
           duration: 300,
           useNativeDriver: true,
         }),
@@ -86,9 +86,9 @@ const LoadingDots = () => {
 
   return (
     <View style={styles.loadingContainer}>
-      <Animated.View style={[styles.dot, { opacity: dot1 }]} />
-      <Animated.View style={[styles.dot, { opacity: dot2 }]} />
-      <Animated.View style={[styles.dot, { opacity: dot3 }]} />
+      <Animated.View style={[styles.dot, { transform: [{ translateY: dot1 }] }]} />
+      <Animated.View style={[styles.dot, { transform: [{ translateY: dot2 }] }]} />
+      <Animated.View style={[styles.dot, { transform: [{ translateY: dot3 }] }]} />
     </View>
   )
 }
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
   },
   container: { paddingHorizontal: 16 },
   loadingContainer: {
-    ...StyleSheet.absoluteFillObject, // Rozciąga element na cały ekran
+    ...StyleSheet.absoluteFillObject,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -112,6 +112,6 @@ const styles = StyleSheet.create({
     height: 10,
     borderRadius: 5,
     backgroundColor: Colors.primary,
-    marginHorizontal: 5,
+    marginHorizontal: 4,
   },
 })
