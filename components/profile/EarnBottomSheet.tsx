@@ -55,10 +55,8 @@ export const EarnBottomSheet = () => {
   )
 }
 
-const LoadingDots = () => {
-  const dot1 = useRef(new Animated.Value(0)).current
-  const dot2 = useRef(new Animated.Value(0)).current
-  const dot3 = useRef(new Animated.Value(0)).current
+const LoadingDots = ({numberOfDots = 3}: {numberOfDots?: number}) => {
+  const dots = useRef([...Array(numberOfDots)].map(() => new Animated.Value(0))).current
 
   useEffect(() => {
     const sequence = (dot: Animated.Value) =>
@@ -75,9 +73,9 @@ const LoadingDots = () => {
         }),
       ])
 
-    const animation = Animated.loop(
-      Animated.stagger(150, [sequence(dot1), sequence(dot2), sequence(dot3)])
-    )
+    const animation = Animated.loop(Animated.stagger(150, dots.map(sequence)))
+
+
 
     animation.start()
 
@@ -86,9 +84,9 @@ const LoadingDots = () => {
 
   return (
     <View style={styles.loadingContainer}>
-      <Animated.View style={[styles.dot, { transform: [{ translateY: dot1 }] }]} />
-      <Animated.View style={[styles.dot, { transform: [{ translateY: dot2 }] }]} />
-      <Animated.View style={[styles.dot, { transform: [{ translateY: dot3 }] }]} />
+   {dots.map((dot, i) => (
+      <Animated.View key={i} style={[styles.dot, { transform: [{ translateY: dot }] }]} />
+    ))}
     </View>
   )
 }
