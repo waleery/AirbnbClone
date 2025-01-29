@@ -1,10 +1,11 @@
 import BottomSheet from '@gorhom/bottom-sheet'
 import { createRef, useMemo, useEffect, useRef, useState, useCallback } from 'react'
-import { View, StyleSheet, Animated } from 'react-native'
+import { View, StyleSheet, Animated, Pressable } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
+import { Ionicons } from '@expo/vector-icons'
 
 export const earnBottomSheetRef = createRef<BottomSheet>()
 
@@ -49,8 +50,12 @@ export const EarnBottomSheet = () => {
       onChange={handleChangeBottomSheetState}
     >
       <SafeAreaView edges={['top']} style={[defaultStyles.container, styles.container]}>
-        {showLoadingDots && <LoadingDots />}
+        <Pressable onPress={handleCloseEarnBottomSheet}>
+
+        <Ionicons name="close-outline" size={20} />
+        </Pressable>
       </SafeAreaView>
+      {showLoadingDots && <LoadingDots />}
     </BottomSheet>
   )
 }
@@ -104,6 +109,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: Colors.white,
   },
   dot: {
     width: 10,
