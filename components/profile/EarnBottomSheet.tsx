@@ -1,11 +1,11 @@
+import { Ionicons } from '@expo/vector-icons'
 import BottomSheet from '@gorhom/bottom-sheet'
 import { createRef, useMemo, useEffect, useRef, useState, useCallback } from 'react'
-import { View, StyleSheet, Animated, Pressable } from 'react-native'
+import { View, StyleSheet, Animated, Pressable, Text } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
-import { Ionicons } from '@expo/vector-icons'
 
 export const earnBottomSheetRef = createRef<BottomSheet>()
 
@@ -51,16 +51,18 @@ export const EarnBottomSheet = () => {
     >
       <SafeAreaView edges={['top']} style={[defaultStyles.container, styles.container]}>
         <Pressable onPress={handleCloseEarnBottomSheet}>
-
-        <Ionicons name="close-outline" size={20} />
+          <Ionicons name="close-outline" size={20} />
         </Pressable>
+        <View style={styles.headerContainer}>
+          <Text style={styles.header}>Your home could make xxxx zł on Airbnb</Text>
+        </View>
       </SafeAreaView>
       {showLoadingDots && <LoadingDots />}
     </BottomSheet>
   )
 }
 
-const LoadingDots = ({numberOfDots = 3}: {numberOfDots?: number}) => {
+const LoadingDots = ({ numberOfDots = 3 }: { numberOfDots?: number }) => {
   const dots = useRef([...Array(numberOfDots)].map(() => new Animated.Value(0))).current
 
   useEffect(() => {
@@ -80,8 +82,6 @@ const LoadingDots = ({numberOfDots = 3}: {numberOfDots?: number}) => {
 
     const animation = Animated.loop(Animated.stagger(150, dots.map(sequence)))
 
-
-
     animation.start()
 
     return () => animation.stop()
@@ -89,9 +89,9 @@ const LoadingDots = ({numberOfDots = 3}: {numberOfDots?: number}) => {
 
   return (
     <View style={styles.loadingContainer}>
-   {dots.map((dot, i) => (
-      <Animated.View key={i} style={[styles.dot, { transform: [{ translateY: dot }] }]} />
-    ))}
+      {dots.map((dot, i) => (
+        <Animated.View key={i} style={[styles.dot, { transform: [{ translateY: dot }] }]} />
+      ))}
     </View>
   )
 }
@@ -117,5 +117,15 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: Colors.primary,
     marginHorizontal: 4,
+  },
+  headerContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 30,
+  },
+  header: {
+    fontSize: 35,
+    fontWeight: '600',
+    textAlign: 'center',
   },
 })
