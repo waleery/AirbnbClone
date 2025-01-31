@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
   indicator: {
     display: 'none',
   },
-  container: { paddingHorizontal: 16 },
+  container: { paddingHorizontal: 20 },
   loadingContainer: {
     ...StyleSheet.absoluteFillObject,
     flexDirection: 'row',
