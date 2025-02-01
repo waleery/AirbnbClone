@@ -1,5 +1,6 @@
 import { Ionicons } from '@expo/vector-icons'
 import BottomSheet from '@gorhom/bottom-sheet'
+import Slider from '@react-native-community/slider'
 import { createRef, useMemo, useEffect, useRef, useState, useCallback } from 'react'
 import { View, StyleSheet, Animated, Pressable, Text } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -21,6 +22,7 @@ export const handleCloseEarnBottomSheet = () => {
 export const EarnBottomSheet = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [showLoadingDots, setShowLoadingDots] = useState(false)
+  const [price, setPrice] = useState(1000) // domyślna wartość
 
   const snapPoints = useMemo(() => ['100%', '100%'], [])
 
@@ -54,7 +56,20 @@ export const EarnBottomSheet = () => {
           <Ionicons name="close-outline" size={20} />
         </Pressable>
         <View style={styles.headerContainer}>
-          <Text style={styles.header}>Your home could make xxxx zł on Airbnb</Text>
+          <Text style={styles.header}>Your home could make {price} zł on Airbnb</Text>
+        </View>
+        <View style={styles.sliderContainer}>
+          <Slider
+            style={styles.slider}
+            minimumValue={500}
+            maximumValue={10000}
+            step={100}
+            value={price}
+            onValueChange={setPrice}
+            minimumTrackTintColor={Colors.primary}
+            maximumTrackTintColor="#ccc"
+            thumbTintColor={Colors.veryLightGrey}
+          />
         </View>
       </SafeAreaView>
       {showLoadingDots && <LoadingDots />}
@@ -127,5 +142,13 @@ const styles = StyleSheet.create({
     fontSize: 35,
     fontWeight: '600',
     textAlign: 'center',
+  },
+  sliderContainer: {
+    marginTop: 50,
+    alignItems: 'center',
+  },
+  slider: {
+    width: '80%',
+    height: 40,
   },
 })
