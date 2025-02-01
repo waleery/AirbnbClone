@@ -43,7 +43,8 @@
     "react-native-svg": "^15.10.1",
     "react-native-swipeable": "^0.6.0",
     "react-native-ui-datepicker": "^2.0.3",
-    "react-native-web": "~0.19.6"
+    "react-native-web": "~0.19.6",
+    "@react-native-community/slider": "4.5.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
