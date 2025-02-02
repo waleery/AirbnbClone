@@ -93,7 +93,6 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.white,
     overflow: 'visible',
-
   },
   rowAction: {
     flexDirection: 'row',
@@ -159,7 +158,7 @@ const styles = StyleSheet.create({
     gap: 30,
     paddingHorizontal: 16,
   },
-  acommodationsScrollViewContainer:{
+  acommodationsScrollViewContainer: {
     elevation: 4,
     shadowColor: Colors.lightGrey,
     shadowOpacity: 0.2,
@@ -170,5 +169,5 @@ const styles = StyleSheet.create({
     },
     overflow: 'visible',
     backgroundColor: Colors.white,
-  }
+  },
 })

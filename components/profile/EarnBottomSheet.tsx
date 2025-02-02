@@ -1,6 +1,7 @@
 import { Ionicons } from '@expo/vector-icons'
 import BottomSheet from '@gorhom/bottom-sheet'
 import Slider from '@react-native-community/slider'
+import * as Haptics from 'expo-haptics'
 import { createRef, useMemo, useEffect, useRef, useState, useCallback } from 'react'
 import { View, StyleSheet, Animated, Pressable, Text } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -40,6 +41,11 @@ export const EarnBottomSheet = () => {
     setIsOpen(index !== -1)
   }, [])
 
+  const handleSliderChange = useCallback((value: number) => {
+    setPrice(value)
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
+  }, [])
+
   return (
     <BottomSheet
       ref={earnBottomSheetRef}
@@ -65,7 +71,7 @@ export const EarnBottomSheet = () => {
             maximumValue={10000}
             step={100}
             value={price}
-            onValueChange={setPrice}
+            onValueChange={handleSliderChange}
             minimumTrackTintColor={Colors.primary}
             maximumTrackTintColor="#ccc"
             thumbTintColor={Colors.veryLightGrey}
@@ -100,7 +106,7 @@ const LoadingDots = ({ numberOfDots = 3 }: { numberOfDots?: number }) => {
     animation.start()
 
     return () => animation.stop()
-  }, [])
+  }, [dots])
 
   return (
     <View style={styles.loadingContainer}>
