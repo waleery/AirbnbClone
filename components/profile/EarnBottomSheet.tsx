@@ -1,9 +1,11 @@
 import { Ionicons } from '@expo/vector-icons'
 import BottomSheet from '@gorhom/bottom-sheet'
-import Slider from '@react-native-community/slider'
+// import Slider from '@react-native-community/slider'
 import * as Haptics from 'expo-haptics'
 import { createRef, useMemo, useEffect, useRef, useState, useCallback } from 'react'
 import { View, StyleSheet, Animated, Pressable, Text } from 'react-native'
+import { Slider } from 'react-native-awesome-slider'
+import { useSharedValue } from 'react-native-reanimated'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import Colors from '@/constants/Colors'
@@ -23,8 +25,9 @@ export const handleCloseEarnBottomSheet = () => {
 export const EarnBottomSheet = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [showLoadingDots, setShowLoadingDots] = useState(false)
-  const [price, setPrice] = useState(1000) // domyślna wartość
-
+  const price = useSharedValue(50)
+  const minPrice = useSharedValue(0)
+  const maxPrice = useSharedValue(100)
   const snapPoints = useMemo(() => ['100%', '100%'], [])
 
   //to simulate loading data
@@ -42,7 +45,7 @@ export const EarnBottomSheet = () => {
   }, [])
 
   const handleSliderChange = useCallback((value: number) => {
-    setPrice(value)
+    price.value = value
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
   }, [])
 
@@ -62,19 +65,24 @@ export const EarnBottomSheet = () => {
           <Ionicons name="close-outline" size={20} />
         </Pressable>
         <View style={styles.headerContainer}>
-          <Text style={styles.header}>Your home could make {price} zł on Airbnb</Text>
+          <Text style={styles.header}>
+            Your home could make {Math.round(price.value)} zł on Airbnb
+          </Text>
         </View>
         <View style={styles.sliderContainer}>
           <Slider
+            progress={price}
+            minimumValue={minPrice}
+            maximumValue={maxPrice}
             style={styles.slider}
-            minimumValue={500}
-            maximumValue={10000}
-            step={100}
-            value={price}
             onValueChange={handleSliderChange}
-            minimumTrackTintColor={Colors.primary}
-            maximumTrackTintColor="#ccc"
-            thumbTintColor={Colors.veryLightGrey}
+            steps={20}
+            snapToStep={true}
+            markStyle={{ backgroundColor: Colors.transparent }}
+            theme={{
+              minimumTrackTintColor: Colors.primary,
+            }}
+            sliderHeight={10}
           />
         </View>
       </SafeAreaView>
