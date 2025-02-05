@@ -82,6 +82,7 @@ export const EarnBottomSheet = () => {
             theme={{
               minimumTrackTintColor: Colors.primary,
             }}
+            containerStyle={styles.sliderTrackStyle}
             sliderHeight={10}
           />
         </View>
@@ -164,5 +165,8 @@ const styles = StyleSheet.create({
   slider: {
     width: '80%',
     height: 40,
+  },
+  sliderTrackStyle: {
+    borderRadius: 10,
   },
 })
