@@ -28,6 +28,7 @@ export const EarnBottomSheet = () => {
   const price = useSharedValue(50)
   const minPrice = useSharedValue(0)
   const maxPrice = useSharedValue(100)
+  const [sliderHeight, setSliderHeight] = useState(5)
   const snapPoints = useMemo(() => ['100%', '100%'], [])
 
   //to simulate loading data
@@ -48,6 +49,9 @@ export const EarnBottomSheet = () => {
     price.value = value
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
   }, [])
+
+  const handleStartSliding = useCallback(() => setSliderHeight(8) ,[])
+  const handleEndSliding = useCallback(() => setSliderHeight(5),[])
 
   return (
     <BottomSheet
@@ -82,9 +86,12 @@ export const EarnBottomSheet = () => {
             theme={{
               minimumTrackTintColor: Colors.primary,
             }}
+            onSlidingStart={handleStartSliding}
+            onSlidingComplete={handleEndSliding}
             containerStyle={styles.sliderTrackStyle}
-            sliderHeight={10}
+            sliderHeight={sliderHeight}
           />
+
         </View>
       </SafeAreaView>
       {showLoadingDots && <LoadingDots />}
