@@ -45,13 +45,24 @@ export const EarnBottomSheet = () => {
     setIsOpen(index !== -1)
   }, [])
 
-  const handleSliderChange = useCallback((value: number) => {
-    price.value = value
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
-  }, [])
+  const handleSliderChange = useCallback(
+    (value: number) => {
+      price.value = value
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
+    },
+    [price]
+  )
 
-  const handleStartSliding = useCallback(() => setSliderHeight(8) ,[])
-  const handleEndSliding = useCallback(() => setSliderHeight(5),[])
+  const handleStartSliding = useCallback(() => setSliderHeight(8), [])
+  const handleEndSliding = useCallback(() => setSliderHeight(5), [])
+
+  const sliderBubble = useCallback(() => {
+    return (
+      <View style={styles.bubbleContainer}>
+        <Text style={styles.bubbleText}>{Math.round(price.value)} zł</Text>
+      </View>
+    )
+  }, [price.value])
 
   return (
     <BottomSheet
@@ -90,8 +101,10 @@ export const EarnBottomSheet = () => {
             onSlidingComplete={handleEndSliding}
             containerStyle={styles.sliderTrackStyle}
             sliderHeight={sliderHeight}
+            bubbleMaxWidth={80}
+            bubbleTranslateY={-35}
+            renderBubble={sliderBubble}
           />
-
         </View>
       </SafeAreaView>
       {showLoadingDots && <LoadingDots />}
@@ -175,5 +188,20 @@ const styles = StyleSheet.create({
   },
   sliderTrackStyle: {
     borderRadius: 10,
+  },
+  bubbleContainer: {
+    backgroundColor: Colors.black,
+    borderWidth: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 25,
+    paddingHorizontal: 3,
+    paddingVertical: 5,
+    height: 40,
+  },
+  bubbleText: {
+    color: Colors.white,
+    fontSize: 16,
+    fontWeight: '600',
   },
 })
