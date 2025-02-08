@@ -1,7 +1,5 @@
 import { Ionicons } from '@expo/vector-icons'
 import BottomSheet from '@gorhom/bottom-sheet'
-// import Slider from '@react-native-community/slider'
-import * as Haptics from 'expo-haptics'
 import { createRef, useMemo, useEffect, useRef, useState, useCallback } from 'react'
 import { View, StyleSheet, Animated, Pressable, Text } from 'react-native'
 import { Slider } from 'react-native-awesome-slider'
@@ -48,7 +46,6 @@ export const EarnBottomSheet = () => {
   const handleSliderChange = useCallback(
     (value: number) => {
       price.value = value
-      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
     },
     [price]
   )
@@ -104,6 +101,7 @@ export const EarnBottomSheet = () => {
             bubbleMaxWidth={80}
             bubbleTranslateY={-35}
             renderBubble={sliderBubble}
+            hapticMode="step"
           />
         </View>
       </SafeAreaView>
