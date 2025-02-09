@@ -1,10 +1,12 @@
 import { Ionicons } from '@expo/vector-icons'
 import BottomSheet from '@gorhom/bottom-sheet'
-import { createRef, useMemo, useEffect, useRef, useState, useCallback } from 'react'
-import { View, StyleSheet, Animated, Pressable, Text } from 'react-native'
+import { createRef, useMemo, useEffect, useState, useCallback } from 'react'
+import { View, StyleSheet, Pressable, Text } from 'react-native'
 import { Slider } from 'react-native-awesome-slider'
 import { useSharedValue } from 'react-native-reanimated'
 import { SafeAreaView } from 'react-native-safe-area-context'
+
+import { LoadingDots } from '../LoadingDots'
 
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
@@ -110,40 +112,6 @@ export const EarnBottomSheet = () => {
   )
 }
 
-const LoadingDots = ({ numberOfDots = 3 }: { numberOfDots?: number }) => {
-  const dots = useRef([...Array(numberOfDots)].map(() => new Animated.Value(0))).current
-
-  useEffect(() => {
-    const sequence = (dot: Animated.Value) =>
-      Animated.sequence([
-        Animated.timing(dot, {
-          toValue: -15,
-          duration: 300,
-          useNativeDriver: true,
-        }),
-        Animated.timing(dot, {
-          toValue: 0,
-          duration: 300,
-          useNativeDriver: true,
-        }),
-      ])
-
-    const animation = Animated.loop(Animated.stagger(150, dots.map(sequence)))
-
-    animation.start()
-
-    return () => animation.stop()
-  }, [dots])
-
-  return (
-    <View style={styles.loadingContainer}>
-      {dots.map((dot, i) => (
-        <Animated.View key={i} style={[styles.dot, { transform: [{ translateY: dot }] }]} />
-      ))}
-    </View>
-  )
-}
-
 const styles = StyleSheet.create({
   sheetContainer: {
     backgroundColor: Colors.white,
@@ -152,20 +120,6 @@ const styles = StyleSheet.create({
     display: 'none',
   },
   container: { paddingHorizontal: 20 },
-  loadingContainer: {
-    ...StyleSheet.absoluteFillObject,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: Colors.white,
-  },
-  dot: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    backgroundColor: Colors.primary,
-    marginHorizontal: 4,
-  },
   headerContainer: {
     justifyContent: 'center',
     alignItems: 'center',
