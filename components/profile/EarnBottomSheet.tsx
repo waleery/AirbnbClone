@@ -23,6 +23,7 @@ export const handleCloseEarnBottomSheet = () => {
 }
 
 export const EarnBottomSheet = () => {
+  const [value, setValue] = useState(50)
   const [isOpen, setIsOpen] = useState(false)
   const [showLoadingDots, setShowLoadingDots] = useState(false)
   const price = useSharedValue(50)
@@ -45,12 +46,9 @@ export const EarnBottomSheet = () => {
     setIsOpen(index !== -1)
   }, [])
 
-  const handleSliderChange = useCallback(
-    (value: number) => {
-      price.value = value
-    },
-    [price]
-  )
+  const handleSliderChange = useCallback((value: number) => {
+    setValue(value)
+  }, [])
 
   const handleStartSliding = useCallback(() => setSliderHeight(8), [])
   const handleEndSliding = useCallback(() => setSliderHeight(5), [])
@@ -58,10 +56,10 @@ export const EarnBottomSheet = () => {
   const sliderBubble = useCallback(() => {
     return (
       <View style={styles.bubbleContainer}>
-        <Text style={styles.bubbleText}>{Math.round(price.value)} zł</Text>
+        <Text style={styles.bubbleText}>{value} zł</Text>
       </View>
     )
-  }, [price.value])
+  }, [value])
 
   return (
     <BottomSheet
