@@ -23,12 +23,12 @@ export const handleCloseEarnBottomSheet = () => {
 }
 
 export const EarnBottomSheet = () => {
-  const [value, setValue] = useState(50)
+  const [value, setValue] = useState(7)
   const [isOpen, setIsOpen] = useState(false)
   const [showLoadingDots, setShowLoadingDots] = useState(false)
-  const price = useSharedValue(50)
-  const minPrice = useSharedValue(0)
-  const maxPrice = useSharedValue(100)
+  const price = useSharedValue(7)
+  const minPrice = useSharedValue(1)
+  const maxPrice = useSharedValue(30)
   const [sliderHeight, setSliderHeight] = useState(5)
   const snapPoints = useMemo(() => ['100%', '100%'], [])
 
@@ -56,7 +56,9 @@ export const EarnBottomSheet = () => {
   const sliderBubble = useCallback(() => {
     return (
       <View style={styles.bubbleContainer}>
-        <Text style={styles.bubbleText}>{value} zł</Text>
+        <Text style={styles.bubbleText}>
+          {value === 1 ? '1 night' : `${Math.round(value)} nights`}
+        </Text>
       </View>
     )
   }, [value])
@@ -78,7 +80,7 @@ export const EarnBottomSheet = () => {
         </Pressable>
         <View style={styles.headerContainer}>
           <Text style={styles.header}>
-            Your home could make {Math.round(price.value)} zł on Airbnb
+            Your home could make {Math.round(price.value) * 300} zł on Airbnb
           </Text>
         </View>
         <View style={styles.sliderContainer}>
