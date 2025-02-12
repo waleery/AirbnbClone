@@ -82,13 +82,14 @@ export const EarnBottomSheet = () => {
         <View style={styles.headerContainer}>
           <Text style={styles.header}>Airbnb it.</Text>
           <Text style={[styles.header, { color: Colors.black }]}>You could earn</Text>
-
-          <AnimatedNumbers
-            includeComma
-            animateToNumber={value * 300}
-            fontStyle={[styles.header, { color: Colors.black }]}
-            animationDuration={1000}
-          />
+          <View style={styles.animatedNumberContainer}>
+            <AnimatedNumbers
+              includeComma
+              animateToNumber={value * 300}
+              fontStyle={[styles.animatedNumber]}
+              animationDuration={1000}
+            />
+          </View>
         </View>
         <View style={styles.sliderContainer}>
           <Slider
@@ -137,6 +138,14 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     textAlign: 'center',
     color: Colors.primary,
+  },
+  animatedNumber: {
+    fontSize: 55,
+    fontWeight: '600',
+    textAlign: 'center',
+  },
+  animatedNumberContainer: {
+    marginTop: 30,
   },
   sliderContainer: {
     marginTop: 50,
