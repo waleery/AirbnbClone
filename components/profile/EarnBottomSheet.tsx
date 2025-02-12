@@ -2,6 +2,7 @@ import { Ionicons } from '@expo/vector-icons'
 import BottomSheet from '@gorhom/bottom-sheet'
 import { createRef, useMemo, useEffect, useState, useCallback } from 'react'
 import { View, StyleSheet, Pressable, Text } from 'react-native'
+import AnimatedNumbers from 'react-native-animated-numbers'
 import { Slider } from 'react-native-awesome-slider'
 import { useSharedValue } from 'react-native-reanimated'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -47,7 +48,7 @@ export const EarnBottomSheet = () => {
   }, [])
 
   const handleSliderChange = useCallback((value: number) => {
-    setValue(value)
+    setValue(Math.round(value))
   }, [])
 
   const handleStartSliding = useCallback(() => setSliderHeight(8), [])
@@ -79,9 +80,15 @@ export const EarnBottomSheet = () => {
           <Ionicons name="close-outline" size={20} />
         </Pressable>
         <View style={styles.headerContainer}>
-          <Text style={styles.header}>
-            Your home could make {Math.round(price.value) * 300} zł on Airbnb
-          </Text>
+          <Text style={styles.header}>Airbnb it.</Text>
+          <Text style={[styles.header, { color: Colors.black }]}>You could earn</Text>
+
+          <AnimatedNumbers
+            includeComma
+            animateToNumber={value * 300}
+            fontStyle={[styles.header, { color: Colors.black }]}
+            animationDuration={1000}
+          />
         </View>
         <View style={styles.sliderContainer}>
           <Slider
@@ -129,6 +136,7 @@ const styles = StyleSheet.create({
     fontSize: 35,
     fontWeight: '600',
     textAlign: 'center',
+    color: Colors.primary,
   },
   sliderContainer: {
     marginTop: 50,
