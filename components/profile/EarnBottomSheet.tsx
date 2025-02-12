@@ -86,9 +86,10 @@ export const EarnBottomSheet = () => {
             <AnimatedNumbers
               includeComma
               animateToNumber={value * 300}
-              fontStyle={[styles.animatedNumber]}
+              fontStyle={styles.animatedNumber}
               animationDuration={1000}
             />
+            <Text style={styles.animatedNumber}> zł</Text>
           </View>
         </View>
         <View style={styles.sliderContainer}>
@@ -146,6 +147,7 @@ const styles = StyleSheet.create({
   },
   animatedNumberContainer: {
     marginTop: 30,
+    flexDirection: 'row',
   },
   sliderContainer: {
     marginTop: 50,
