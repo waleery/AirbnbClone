@@ -57,9 +57,7 @@ export const EarnBottomSheet = () => {
   const sliderBubble = useCallback(() => {
     return (
       <View style={styles.bubbleContainer}>
-        <Text style={styles.bubbleText}>
-          {value === 1 ? '1 night' : `${Math.round(value)} nights`}
-        </Text>
+        <Text style={styles.bubbleText}>{value === 1 ? '1 night' : `${value} nights`}</Text>
       </View>
     )
   }, [value])
@@ -92,6 +90,10 @@ export const EarnBottomSheet = () => {
             <Text style={styles.animatedNumber}> zł</Text>
           </View>
         </View>
+        <Text style={styles.hideText}>
+          <Text>{value === 1 ? '1 night' : `${value} nights`}</Text>
+          <Text> at an estimated 300 zł a night</Text>
+        </Text>
         <View style={styles.sliderContainer}>
           <Slider
             progress={price}
@@ -110,7 +112,7 @@ export const EarnBottomSheet = () => {
             containerStyle={styles.sliderTrackStyle}
             sliderHeight={sliderHeight}
             bubbleMaxWidth={80}
-            bubbleTranslateY={-35}
+            bubbleTranslateY={-50}
             renderBubble={sliderBubble}
             hapticMode="step"
           />
@@ -150,7 +152,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   sliderContainer: {
-    marginTop: 50,
+    marginTop: 40,
     alignItems: 'center',
   },
   slider: {
@@ -174,5 +176,11 @@ const styles = StyleSheet.create({
     color: Colors.white,
     fontSize: 16,
     fontWeight: '600',
+  },
+  hideText: {
+    marginTop: 30,
+    textAlign: 'center',
+    fontSize: 16,
+    color: Colors.black,
   },
 })
