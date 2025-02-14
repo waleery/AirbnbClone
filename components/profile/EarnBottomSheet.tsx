@@ -79,6 +79,11 @@ export const EarnBottomSheet = () => {
     )
   }, [value])
 
+  const hiddenTextStyle = useMemo(
+    () => [styles.hideText, { opacity: isVisibleText ? 1 : 0 }],
+    [isVisibleText]
+  )
+
   return (
     <BottomSheet
       ref={earnBottomSheetRef}
@@ -107,7 +112,7 @@ export const EarnBottomSheet = () => {
             <Text style={styles.animatedNumber}> zł</Text>
           </View>
         </View>
-        <Text style={[styles.hideText, { opacity: isVisibleText ? 1 : 0 }]}>
+        <Text style={hiddenTextStyle}>
           <Text style={styles.underlineText}>{value === 1 ? '1 night' : `${value} nights`}</Text>
           <Text> at an estimated 300 zł a night</Text>
         </Text>
