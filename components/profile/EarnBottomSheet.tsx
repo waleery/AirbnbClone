@@ -28,6 +28,7 @@ export const EarnBottomSheet = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [showLoadingDots, setShowLoadingDots] = useState(false)
   const [isVisibleText, setIsVisibleText] = useState(true)
+  const [pricePerNight, setPricePerNight] = useState(300)
   const price = useSharedValue(1)
   const minPrice = useSharedValue(1)
   const maxPrice = useSharedValue(30)
@@ -105,7 +106,7 @@ export const EarnBottomSheet = () => {
           <View style={styles.animatedNumberContainer}>
             <AnimatedNumbers
               includeComma
-              animateToNumber={value * 300}
+              animateToNumber={value * pricePerNight}
               fontStyle={styles.animatedNumber}
               animationDuration={1000}
             />
@@ -114,7 +115,7 @@ export const EarnBottomSheet = () => {
         </View>
         <Text style={hiddenTextStyle}>
           <Text style={styles.underlineText}>{value === 1 ? '1 night' : `${value} nights`}</Text>
-          <Text> at an estimated 300 zł a night</Text>
+          <Text> at an estimated {pricePerNight} zł a night</Text>
         </Text>
         <View style={styles.sliderContainer}>
           <Slider
