@@ -24,10 +24,10 @@ export const handleCloseEarnBottomSheet = () => {
 }
 
 export const EarnBottomSheet = () => {
-  const [value, setValue] = useState(7)
+  const [value, setValue] = useState(1)
   const [isOpen, setIsOpen] = useState(false)
   const [showLoadingDots, setShowLoadingDots] = useState(false)
-  const price = useSharedValue(7)
+  const price = useSharedValue(1)
   const minPrice = useSharedValue(1)
   const maxPrice = useSharedValue(30)
   const [sliderHeight, setSliderHeight] = useState(5)
@@ -37,11 +37,21 @@ export const EarnBottomSheet = () => {
   useEffect(() => {
     if (isOpen) {
       const timeout = setTimeout(() => setShowLoadingDots(false), 800)
-      return () => clearTimeout(timeout)
+      const timeout2 = setTimeout(() => {
+        setValue(7)
+        price.value = 7
+      }, 1500)
+      return () => {
+        setValue(1)
+        price.value = 1
+
+        clearTimeout(timeout)
+        clearTimeout(timeout2)
+      }
     } else {
       setShowLoadingDots(true)
     }
-  }, [isOpen])
+  }, [isOpen, price])
 
   const handleChangeBottomSheetState = useCallback((index: number) => {
     setIsOpen(index !== -1)
