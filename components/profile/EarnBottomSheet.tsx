@@ -140,6 +140,7 @@ export const EarnBottomSheet = () => {
             hapticMode="step"
           />
         </View>
+        <Text style={styles.estimateText}>Learn how we estimate your earnings</Text>
       </SafeAreaView>
       {showLoadingDots && <LoadingDots />}
     </BottomSheet>
@@ -209,5 +210,12 @@ const styles = StyleSheet.create({
   underlineText: {
     textDecorationLine: 'underline',
     fontWeight: '600',
+  },
+  estimateText: {
+    marginTop: 30,
+    textAlign: 'center',
+    textDecorationLine: 'underline',
+    fontSize: 13,
+    color: Colors.grey,
   },
 })
