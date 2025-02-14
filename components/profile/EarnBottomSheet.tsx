@@ -91,7 +91,7 @@ export const EarnBottomSheet = () => {
           </View>
         </View>
         <Text style={styles.hideText}>
-          <Text>{value === 1 ? '1 night' : `${value} nights`}</Text>
+          <Text style={styles.underlineText}>{value === 1 ? '1 night' : `${value} nights`}</Text>
           <Text> at an estimated 300 zł a night</Text>
         </Text>
         <View style={styles.sliderContainer}>
@@ -182,5 +182,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 16,
     color: Colors.black,
+  },
+  underlineText: {
+    textDecorationLine: 'underline',
+    fontWeight: '600',
   },
 })
