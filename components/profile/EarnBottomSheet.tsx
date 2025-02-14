@@ -27,6 +27,7 @@ export const EarnBottomSheet = () => {
   const [value, setValue] = useState(1)
   const [isOpen, setIsOpen] = useState(false)
   const [showLoadingDots, setShowLoadingDots] = useState(false)
+  const [isVisibleText, setIsVisibleText] = useState(true)
   const price = useSharedValue(1)
   const minPrice = useSharedValue(1)
   const maxPrice = useSharedValue(30)
@@ -61,8 +62,14 @@ export const EarnBottomSheet = () => {
     setValue(Math.round(value))
   }, [])
 
-  const handleStartSliding = useCallback(() => setSliderHeight(8), [])
-  const handleEndSliding = useCallback(() => setSliderHeight(5), [])
+  const handleStartSliding = useCallback(() => {
+    setSliderHeight(8)
+    setIsVisibleText(false)
+  }, [])
+  const handleEndSliding = useCallback(() => {
+    setSliderHeight(5)
+    setIsVisibleText(true)
+  }, [])
 
   const sliderBubble = useCallback(() => {
     return (
@@ -100,7 +107,7 @@ export const EarnBottomSheet = () => {
             <Text style={styles.animatedNumber}> zł</Text>
           </View>
         </View>
-        <Text style={styles.hideText}>
+        <Text style={[styles.hideText, { opacity: isVisibleText ? 1 : 0 }]}>
           <Text style={styles.underlineText}>{value === 1 ? '1 night' : `${value} nights`}</Text>
           <Text> at an estimated 300 zł a night</Text>
         </Text>
