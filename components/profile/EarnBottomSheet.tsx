@@ -97,7 +97,7 @@ export const EarnBottomSheet = () => {
       onChange={handleChangeBottomSheetState}
     >
       <SafeAreaView edges={['top']} style={[defaultStyles.container, styles.container]}>
-        <Pressable onPress={handleCloseEarnBottomSheet}>
+        <Pressable style={styles.backContainer} onPress={handleCloseEarnBottomSheet}>
           <Ionicons name="close-outline" size={20} />
         </Pressable>
         <View style={styles.headerContainer}>
@@ -150,6 +150,24 @@ export const EarnBottomSheet = () => {
 const styles = StyleSheet.create({
   sheetContainer: {
     backgroundColor: Colors.white,
+    overflow: 'visible',
+  },
+  backContainer: {
+    backgroundColor: Colors.white,
+    borderWidth: 1,
+    borderColor: Colors.lightGrey,
+    padding: 4,
+    display: 'flex',
+    alignSelf: 'flex-start',
+    borderRadius: 50,
+
+    shadowColor: Colors.black,
+    shadowOpacity: 0.2,
+    shadowRadius: 1.5,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
   },
   indicator: {
     display: 'none',
