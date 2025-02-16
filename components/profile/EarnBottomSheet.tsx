@@ -28,7 +28,7 @@ export const EarnBottomSheet = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [showLoadingDots, setShowLoadingDots] = useState(false)
   const [isVisibleText, setIsVisibleText] = useState(true)
-  const [pricePerNight, setPricePerNight] = useState(300)
+  const [pricePerNight] = useState(300)
   const price = useSharedValue(1)
   const minPrice = useSharedValue(1)
   const maxPrice = useSharedValue(30)
