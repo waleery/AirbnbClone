@@ -141,6 +141,9 @@ export const EarnBottomSheet = () => {
           />
         </View>
         <Text style={styles.estimateText}>Learn how we estimate your earnings</Text>
+
+        <View style={styles.placeContainer}>
+        </View>
       </SafeAreaView>
       {showLoadingDots && <LoadingDots />}
     </BottomSheet>
@@ -236,4 +239,12 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: Colors.grey,
   },
+  placeContainer:{
+    marginTop: 40,
+    borderWidth: 1,
+    borderColor: Colors.lightGrey,
+    borderRadius: 30,
+    paddingVertical:15,
+    paddingHorizontal:25,
+  }
 })
