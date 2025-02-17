@@ -1,4 +1,4 @@
-import { Ionicons } from '@expo/vector-icons'
+import { AntDesign, Ionicons } from '@expo/vector-icons'
 import BottomSheet from '@gorhom/bottom-sheet'
 import { createRef, useMemo, useEffect, useState, useCallback } from 'react'
 import { View, StyleSheet, Pressable, Text } from 'react-native'
@@ -143,6 +143,7 @@ export const EarnBottomSheet = () => {
         <Text style={styles.estimateText}>Learn how we estimate your earnings</Text>
 
         <View style={styles.placeContainer}>
+          <AntDesign name="search1" size={18} color={Colors.primary} />
         </View>
       </SafeAreaView>
       {showLoadingDots && <LoadingDots />}
