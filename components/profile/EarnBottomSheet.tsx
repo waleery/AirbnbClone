@@ -245,7 +245,7 @@ const styles = StyleSheet.create({
     color: Colors.grey,
   },
   placeContainer:{
-    marginTop: 40,
+    marginTop: 35,
     borderWidth: 1,
     borderColor: Colors.lightGrey,
     borderRadius: 30,
