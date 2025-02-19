@@ -144,8 +144,10 @@ export const EarnBottomSheet = () => {
 
         <View style={styles.placeContainer}>
           <AntDesign name="search1" size={18} color={Colors.primary} />
-          <Text style={styles.placeCity}>Berlin</Text>
-          <Text style={styles.placeCitySecond}> · Entire place · 2 bedrooms</Text>
+          <Text>
+            <Text style={styles.placeCity}>Berlin</Text>
+            <Text style={styles.placeCitySecond}> · Entire place · 2 bedrooms</Text>
+          </Text>
         </View>
       </SafeAreaView>
       {showLoadingDots && <LoadingDots />}
@@ -250,6 +252,7 @@ const styles = StyleSheet.create({
     paddingVertical:15,
     paddingHorizontal:25,
     flexDirection: 'row',
+    gap:10
   },
   placeCity:{
     fontWeight:'600'
