@@ -1,4 +1,4 @@
-import { AntDesign, Ionicons } from '@expo/vector-icons'
+import { AntDesign } from '@expo/vector-icons'
 import BottomSheet from '@gorhom/bottom-sheet'
 import { createRef, useMemo, useEffect, useState, useCallback } from 'react'
 import { View, StyleSheet, Pressable, Text } from 'react-native'
@@ -98,7 +98,7 @@ export const EarnBottomSheet = () => {
     >
       <SafeAreaView edges={['top']} style={[defaultStyles.container, styles.container]}>
         <Pressable style={styles.backContainer} onPress={handleCloseEarnBottomSheet}>
-          <Ionicons name="close-outline" size={20} />
+          <AntDesign name="arrowleft" size={18}  />
         </Pressable>
         <View style={styles.headerContainer}>
           <Text style={styles.header}>Airbnb it.</Text>
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     borderWidth: 1,
     borderColor: Colors.lightGrey,
-    padding: 4,
+    padding: 5,
     display: 'flex',
     alignSelf: 'flex-start',
     borderRadius: 50,
