@@ -252,7 +252,8 @@ const styles = StyleSheet.create({
     paddingVertical:15,
     paddingHorizontal:25,
     flexDirection: 'row',
-    gap:10
+    gap:10,
+    alignItems: 'center'
   },
   placeCity:{
     fontWeight:'600'
