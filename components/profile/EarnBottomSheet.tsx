@@ -149,6 +149,8 @@ export const EarnBottomSheet = () => {
             <Text style={styles.placeCitySecond}> · Entire place · 2 bedrooms</Text>
           </Text>
         </View>
+
+        <View style={styles.mapContainer}></View>
       </SafeAreaView>
       {showLoadingDots && <LoadingDots />}
     </BottomSheet>
