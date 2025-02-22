@@ -11,6 +11,7 @@ import { LoadingDots } from '../LoadingDots'
 
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
+import MapView from 'react-native-maps'
 
 export const earnBottomSheetRef = createRef<BottomSheet>()
 
@@ -150,7 +151,17 @@ export const EarnBottomSheet = () => {
           </Text>
         </View>
 
-        <View style={styles.mapContainer}></View>
+        <View style={styles.mapContainer}>
+        <MapView
+          style={{flex:1}}
+          initialRegion={{
+            latitude: 52.52, // Przykładowe koordynaty dla Berlina
+            longitude: 13.405,
+            latitudeDelta: 0.1,
+            longitudeDelta: 0.1,
+          }}
+        />
+        </View>
       </SafeAreaView>
       {showLoadingDots && <LoadingDots />}
     </BottomSheet>
@@ -262,5 +273,9 @@ const styles = StyleSheet.create({
   },
   placeCitySecond:{
     color:Colors.grey 
+  },
+  mapContainer: {
+    height:200,
+    marginTop:40,
   }
 })
