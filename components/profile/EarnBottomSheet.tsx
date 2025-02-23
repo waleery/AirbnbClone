@@ -12,6 +12,7 @@ import { LoadingDots } from '../LoadingDots'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 import MapView from 'react-native-maps'
+import { ScrollView } from 'react-native-gesture-handler'
 
 export const earnBottomSheetRef = createRef<BottomSheet>()
 
@@ -101,67 +102,69 @@ export const EarnBottomSheet = () => {
         <Pressable style={styles.backContainer} onPress={handleCloseEarnBottomSheet}>
           <AntDesign name="arrowleft" size={18}  />
         </Pressable>
-        <View style={styles.headerContainer}>
-          <Text style={styles.header}>Airbnb it.</Text>
-          <Text style={[styles.header, { color: Colors.black }]}>You could earn</Text>
-          <View style={styles.animatedNumberContainer}>
-            <AnimatedNumbers
-              includeComma
-              animateToNumber={value * pricePerNight}
-              fontStyle={styles.animatedNumber}
-              animationDuration={1000}
-            />
-            <Text style={styles.animatedNumber}> zł</Text>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={styles.headerContainer}>
+            <Text style={styles.header}>Airbnb it.</Text>
+            <Text style={[styles.header, { color: Colors.black }]}>You could earn</Text>
+            <View style={styles.animatedNumberContainer}>
+              <AnimatedNumbers
+                includeComma
+                animateToNumber={value * pricePerNight}
+                fontStyle={styles.animatedNumber}
+                animationDuration={1000}
+              />
+              <Text style={styles.animatedNumber}> zł</Text>
+            </View>
           </View>
-        </View>
-        <Text style={hiddenTextStyle}>
-          <Text style={styles.underlineText}>{value === 1 ? '1 night' : `${value} nights`}</Text>
-          <Text> at an estimated {pricePerNight} zł a night</Text>
-        </Text>
-        <View style={styles.sliderContainer}>
-          <Slider
-            progress={price}
-            minimumValue={minPrice}
-            maximumValue={maxPrice}
-            style={styles.slider}
-            onValueChange={handleSliderChange}
-            steps={20}
-            snapToStep={true}
-            markStyle={{ backgroundColor: Colors.transparent }}
-            theme={{
-              minimumTrackTintColor: Colors.primary,
-            }}
-            onSlidingStart={handleStartSliding}
-            onSlidingComplete={handleEndSliding}
-            containerStyle={styles.sliderTrackStyle}
-            sliderHeight={sliderHeight}
-            bubbleMaxWidth={80}
-            bubbleTranslateY={-50}
-            renderBubble={sliderBubble}
-            hapticMode="step"
-          />
-        </View>
-        <Text style={styles.estimateText}>Learn how we estimate your earnings</Text>
-
-        <View style={styles.placeContainer}>
-          <AntDesign name="search1" size={18} color={Colors.primary} />
-          <Text>
-            <Text style={styles.placeCity}>Berlin</Text>
-            <Text style={styles.placeCitySecond}> · Entire place · 2 bedrooms</Text>
+          <Text style={hiddenTextStyle}>
+            <Text style={styles.underlineText}>{value === 1 ? '1 night' : `${value} nights`}</Text>
+            <Text> at an estimated {pricePerNight} zł a night</Text>
           </Text>
-        </View>
+          <View style={styles.sliderContainer}>
+            <Slider
+              progress={price}
+              minimumValue={minPrice}
+              maximumValue={maxPrice}
+              style={styles.slider}
+              onValueChange={handleSliderChange}
+              steps={20}
+              snapToStep={true}
+              markStyle={{ backgroundColor: Colors.transparent }}
+              theme={{
+                minimumTrackTintColor: Colors.primary,
+              }}
+              onSlidingStart={handleStartSliding}
+              onSlidingComplete={handleEndSliding}
+              containerStyle={styles.sliderTrackStyle}
+              sliderHeight={sliderHeight}
+              bubbleMaxWidth={80}
+              bubbleTranslateY={-50}
+              renderBubble={sliderBubble}
+              hapticMode="step"
+            />
+          </View>
+          <Text style={styles.estimateText}>Learn how we estimate your earnings</Text>
 
-        <View style={styles.mapContainer}>
-        <MapView
-          style={{flex:1}}
-          initialRegion={{
-            latitude: 52.52, // Przykładowe koordynaty dla Berlina
-            longitude: 13.405,
-            latitudeDelta: 0.1,
-            longitudeDelta: 0.1,
-          }}
-        />
-        </View>
+          <View style={styles.placeContainer}>
+            <AntDesign name="search1" size={18} color={Colors.primary} />
+            <Text>
+              <Text style={styles.placeCity}>Berlin</Text>
+              <Text style={styles.placeCitySecond}> · Entire place · 2 bedrooms</Text>
+            </Text>
+          </View>
+
+          <View style={styles.mapContainer}>
+          <MapView
+            style={{flex:1}}
+            initialRegion={{
+              latitude: 52.52, // Przykładowe koordynaty dla Berlina
+              longitude: 13.405,
+              latitudeDelta: 0.1,
+              longitudeDelta: 0.1,
+            }}
+          />
+          </View>
+        </ScrollView>
       </SafeAreaView>
       {showLoadingDots && <LoadingDots />}
     </BottomSheet>
