@@ -155,7 +155,7 @@ export const EarnBottomSheet = () => {
             </Text>
           </View>
 
-          <View style={{...styles.mapContainer, height:deviceWidth-40}}>
+          <View style={{...styles.mapContainer, height:deviceWidth/2+ 40}}>
             <MapView
               style={{flex:1, borderRadius: 20}}
               initialRegion={{
