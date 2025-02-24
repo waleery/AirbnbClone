@@ -164,6 +164,7 @@ export const EarnBottomSheet = () => {
                 latitudeDelta: 0.1,
                 longitudeDelta: 0.1,
               }}
+              scrollEnabled={false}
             />
           </View>
         </ScrollView>
