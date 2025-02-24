@@ -1,7 +1,7 @@
 import { AntDesign } from '@expo/vector-icons'
 import BottomSheet from '@gorhom/bottom-sheet'
 import { createRef, useMemo, useEffect, useState, useCallback } from 'react'
-import { View, StyleSheet, Pressable, Text } from 'react-native'
+import { View, StyleSheet, Pressable, Text, Dimensions } from 'react-native'
 import AnimatedNumbers from 'react-native-animated-numbers'
 import { Slider } from 'react-native-awesome-slider'
 import { useSharedValue } from 'react-native-reanimated'
@@ -13,6 +13,8 @@ import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 import MapView from 'react-native-maps'
 import { ScrollView } from 'react-native-gesture-handler'
+
+const deviceWidth = Dimensions.get('window').width
 
 export const earnBottomSheetRef = createRef<BottomSheet>()
 
@@ -153,7 +155,7 @@ export const EarnBottomSheet = () => {
             </Text>
           </View>
 
-          <View style={styles.mapContainer}>
+          <View style={{...styles.mapContainer, height:deviceWidth-40}}>
           <MapView
             style={{flex:1}}
             initialRegion={{
@@ -278,7 +280,6 @@ const styles = StyleSheet.create({
     color:Colors.grey 
   },
   mapContainer: {
-    height:200,
     marginTop:40,
   }
 })
