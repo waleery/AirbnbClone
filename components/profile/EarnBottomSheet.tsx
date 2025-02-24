@@ -156,15 +156,15 @@ export const EarnBottomSheet = () => {
           </View>
 
           <View style={{...styles.mapContainer, height:deviceWidth-40}}>
-          <MapView
-            style={{flex:1}}
-            initialRegion={{
-              latitude: 52.52, // Przykładowe koordynaty dla Berlina
-              longitude: 13.405,
-              latitudeDelta: 0.1,
-              longitudeDelta: 0.1,
-            }}
-          />
+            <MapView
+              style={{flex:1, borderRadius: 20}}
+              initialRegion={{
+                latitude: 52.52, // Przykładowe koordynaty dla Berlina
+                longitude: 13.405,
+                latitudeDelta: 0.1,
+                longitudeDelta: 0.1,
+              }}
+            />
           </View>
         </ScrollView>
       </SafeAreaView>
