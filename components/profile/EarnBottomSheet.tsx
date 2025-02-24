@@ -281,7 +281,7 @@ const styles = StyleSheet.create({
     color:Colors.grey 
   },
   mapContainer: {
-    marginTop:40,
+    marginTop:30,
     marginBottom:40
   }
 })
