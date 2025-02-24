@@ -281,5 +281,6 @@ const styles = StyleSheet.create({
   },
   mapContainer: {
     marginTop:40,
+    marginBottom:40
   }
 })
