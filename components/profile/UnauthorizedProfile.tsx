@@ -42,10 +42,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   headerContainer: {
-    paddingVertical: 36,
+    marginTop: 36,
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
+    marginBottom: 14,
   },
   header: {
     fontSize: 30,
@@ -55,7 +56,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '400',
     color: Colors.grey,
-    paddingTop: 12,
   },
   logInBtn: {
     marginTop: 40,
