@@ -167,6 +167,9 @@ export const EarnBottomSheet = () => {
               scrollEnabled={false}
             />
           </View>
+          <View style={styles.secondHeaderContainer}>
+            <Text style={styles.secondHeader}>It's easy to list your home on Airbnb</Text>
+          </View>
         </ScrollView>
       </SafeAreaView>
       {showLoadingDots && <LoadingDots />}
@@ -282,6 +285,16 @@ const styles = StyleSheet.create({
   },
   mapContainer: {
     marginTop:30,
-    marginBottom:40
+  },
+  secondHeaderContainer:{
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: 50,
+    paddingHorizontal:30,
+  },
+  secondHeader:{
+    fontSize: 30,
+    fontWeight: '600',
+    textAlign: 'center',
   }
 })
