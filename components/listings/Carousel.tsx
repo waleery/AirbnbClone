@@ -41,7 +41,7 @@ const Carousel: React.FC<CarouselProps> = ({ items, onPress = () => {} }) => {
   const onViewableItemsChanged = React.useRef(
     ({ viewableItems }: { viewableItems: ViewToken[] }) => {
       if (viewableItems.length > 0) {
-        setCurrentIndex(viewableItems[0].index ?? 0) // Użycie "??" dla bezpieczeństwa
+        setCurrentIndex(viewableItems[0].index ?? 0)
       }
     }
   ).current
@@ -81,7 +81,7 @@ const Carousel: React.FC<CarouselProps> = ({ items, onPress = () => {} }) => {
   const handleDotPress = useCallback(
     (index: number) => () => {
       setCurrentIndex(index)
-      flatListRef.current?.scrollToIndex({ index, animated: true }) // Przesuń FlatList
+      flatListRef.current?.scrollToIndex({ index, animated: true })
     },
     []
   )

@@ -159,7 +159,7 @@ export const EarnBottomSheet = () => {
             <MapView
               style={{flex:1, borderRadius: 20}}
               initialRegion={{
-                latitude: 52.52, // Przykładowe koordynaty dla Berlina
+                latitude: 52.52, 
                 longitude: 13.405,
                 latitudeDelta: 0.1,
                 longitudeDelta: 0.1,

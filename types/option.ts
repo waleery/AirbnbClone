@@ -4,7 +4,6 @@ import { ImageSourcePropType } from 'react-native'
 type IoniconsIconNames = keyof typeof Ionicons.glyphMap
 type FontAwesomeIconNames = keyof typeof FontAwesome5.glyphMap
 
-// Dodajemy oba zbiory do IconNames
 type IconNames = IoniconsIconNames | FontAwesomeIconNames
 
 interface OptionWithIcon {
