@@ -130,7 +130,7 @@ export const EarnBottomSheet = () => {
               style={styles.slider}
               onValueChange={handleSliderChange}
               steps={20}
-              snapToStep={true}
+              forceSnapToStep={true}
               markStyle={{ backgroundColor: Colors.transparent }}
               theme={{
                 minimumTrackTintColor: Colors.primary,
