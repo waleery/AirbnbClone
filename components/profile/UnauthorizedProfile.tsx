@@ -6,6 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
+import { AirBnbYourHome } from './AirBnbYourHome'
 
 export const UnauthorizedProfile = () => {
   const router = useRouter()
@@ -32,6 +33,8 @@ export const UnauthorizedProfile = () => {
             <Text style={styles.signUp}>Sign up</Text>
           </Link>
         </View>
+        <AirBnbYourHome/>
+        
       </ScrollView>
     </SafeAreaView>
   )
