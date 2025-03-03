@@ -4,9 +4,10 @@ import { View, Text, StyleSheet } from 'react-native'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
+import { AirBnbYourHome } from './AirBnbYourHome'
+
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
-import { AirBnbYourHome } from './AirBnbYourHome'
 
 export const UnauthorizedProfile = () => {
   const router = useRouter()
@@ -33,8 +34,7 @@ export const UnauthorizedProfile = () => {
             <Text style={styles.signUp}>Sign up</Text>
           </Link>
         </View>
-        <AirBnbYourHome/>
-        
+        <AirBnbYourHome />
       </ScrollView>
     </SafeAreaView>
   )

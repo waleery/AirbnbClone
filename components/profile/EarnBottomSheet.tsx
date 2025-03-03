@@ -4,6 +4,8 @@ import { createRef, useMemo, useEffect, useState, useCallback } from 'react'
 import { View, StyleSheet, Pressable, Text, Dimensions } from 'react-native'
 import AnimatedNumbers from 'react-native-animated-numbers'
 import { Slider } from 'react-native-awesome-slider'
+import { ScrollView } from 'react-native-gesture-handler'
+import MapView from 'react-native-maps'
 import { useSharedValue } from 'react-native-reanimated'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
@@ -11,8 +13,6 @@ import { LoadingDots } from '../LoadingDots'
 
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
-import MapView from 'react-native-maps'
-import { ScrollView } from 'react-native-gesture-handler'
 
 const deviceWidth = Dimensions.get('window').width
 
@@ -102,7 +102,7 @@ export const EarnBottomSheet = () => {
     >
       <SafeAreaView edges={['top']} style={[defaultStyles.container, styles.container]}>
         <Pressable style={styles.backContainer} onPress={handleCloseEarnBottomSheet}>
-          <AntDesign name="arrowleft" size={18}  />
+          <AntDesign name="arrowleft" size={18} />
         </Pressable>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.headerContainer}>
@@ -155,11 +155,11 @@ export const EarnBottomSheet = () => {
             </Text>
           </View>
 
-          <View style={{...styles.mapContainer, height:deviceWidth/2+ 40}}>
+          <View style={{ ...styles.mapContainer, height: deviceWidth / 2 + 40 }}>
             <MapView
-              style={{flex:1, borderRadius: 20}}
+              style={{ flex: 1, borderRadius: 20 }}
               initialRegion={{
-                latitude: 52.52, 
+                latitude: 52.52,
                 longitude: 13.405,
                 latitudeDelta: 0.1,
                 longitudeDelta: 0.1,
@@ -266,35 +266,35 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: Colors.grey,
   },
-  placeContainer:{
+  placeContainer: {
     marginTop: 35,
     borderWidth: 1,
     borderColor: Colors.lightGrey,
     borderRadius: 30,
-    paddingVertical:15,
-    paddingHorizontal:25,
+    paddingVertical: 15,
+    paddingHorizontal: 25,
     flexDirection: 'row',
-    gap:10,
-    alignItems: 'center'
+    gap: 10,
+    alignItems: 'center',
   },
-  placeCity:{
-    fontWeight:'600'
+  placeCity: {
+    fontWeight: '600',
   },
-  placeCitySecond:{
-    color:Colors.grey 
+  placeCitySecond: {
+    color: Colors.grey,
   },
   mapContainer: {
-    marginTop:30,
+    marginTop: 30,
   },
-  secondHeaderContainer:{
+  secondHeaderContainer: {
     justifyContent: 'center',
     alignItems: 'center',
     marginVertical: 50,
-    paddingHorizontal:30,
+    paddingHorizontal: 30,
   },
-  secondHeader:{
+  secondHeader: {
     fontSize: 30,
     fontWeight: '600',
     textAlign: 'center',
-  }
+  },
 })
