@@ -168,7 +168,7 @@ export const EarnBottomSheet = () => {
             />
           </View>
           <View style={styles.secondHeaderContainer}>
-            <Text style={styles.secondHeader}>It's easy to list your home on Airbnb</Text>
+            <Text style={styles.secondHeader}>It&apos;s easy to list your home on Airbnb</Text>
           </View>
         </ScrollView>
       </SafeAreaView>
