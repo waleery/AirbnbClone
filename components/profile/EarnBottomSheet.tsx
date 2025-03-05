@@ -157,7 +157,7 @@ export const EarnBottomSheet = () => {
 
           <View style={{ ...styles.mapContainer, height: deviceWidth / 2 + 40 }}>
             <MapView
-              style={{ flex: 1, borderRadius: 20 }}
+              style={styles.map}
               initialRegion={{
                 latitude: 52.52,
                 longitude: 13.405,
@@ -296,5 +296,9 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: '600',
     textAlign: 'center',
+  },
+  map: {
+    flex: 1,
+    borderRadius: 20,
   },
 })
