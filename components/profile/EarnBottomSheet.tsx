@@ -15,6 +15,8 @@ import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 
 const deviceWidth = Dimensions.get('window').width
+const mapWidth = deviceWidth / 2 + 40
+
 
 export const earnBottomSheetRef = createRef<BottomSheet>()
 
@@ -155,7 +157,7 @@ export const EarnBottomSheet = () => {
             </Text>
           </View>
 
-          <View style={{ ...styles.mapContainer, height: deviceWidth / 2 + 40 }}>
+          <View style={{ ...styles.mapContainer, height: mapWidth }}>
             <MapView
               style={styles.map}
               initialRegion={{
