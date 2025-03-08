@@ -9,6 +9,9 @@ import { AirBnbYourHome } from './AirBnbYourHome'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 
+import { unautorizedSettings } from '@/assets/data'
+import { RenderOptions } from './RenderOptions'
+
 export const UnauthorizedProfile = () => {
   const router = useRouter()
 
@@ -35,6 +38,10 @@ export const UnauthorizedProfile = () => {
           </Link>
         </View>
         <AirBnbYourHome />
+
+        <View style={styles.optionsSection}>
+          <RenderOptions options={unautorizedSettings} title="Settings" />
+        </View>
       </ScrollView>
     </SafeAreaView>
   )
@@ -76,5 +83,9 @@ const styles = StyleSheet.create({
   signUp: {
     fontWeight: '500',
     textDecorationLine: 'underline',
+  },
+  optionsSection: {
+    gap: 35,
+    marginBottom: 40,
   },
 })
