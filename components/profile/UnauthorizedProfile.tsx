@@ -40,7 +40,7 @@ export const UnauthorizedProfile = () => {
         <AirBnbYourHome />
 
         <View style={styles.optionsSection}>
-          <RenderOptions options={unautorizedSettings} title="Settings" />
+          <RenderOptions options={unautorizedSettings} />
         </View>
       </ScrollView>
     </SafeAreaView>

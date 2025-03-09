@@ -6,10 +6,10 @@ import { IconRenderer } from './ItemRenderer'
 import Colors from '@/constants/Colors'
 import { TOption } from '@/types'
 
-export const RenderOptions = ({ options, title }: { options: TOption[]; title: string }) => {
+export const RenderOptions = ({ options, title }: { options: TOption[]; title?: string }) => {
   return (
     <View>
-      <Text style={styles.title}>{title}</Text>
+      {title && <Text style={styles.title}>{title}</Text>}
       {options.map((item) => (
         <View key={item.title} style={styles.settingItem}>
           <View style={styles.leftContainer}>
