@@ -10,8 +10,8 @@ export const RenderOptions = ({ options, title }: { options: TOption[]; title?: 
   return (
     <View>
       {title && <Text style={styles.title}>{title}</Text>}
-      {options.map((item) => (
-        <View key={item.title} style={styles.settingItem}>
+      {options.map((item, index) => (
+          <View key={item.title} style={[styles.settingItem, { borderBottomWidth: index === options.length - 1 ? 0 : StyleSheet.hairlineWidth, }]}>
           <View style={styles.leftContainer}>
             <IconRenderer option={item} />
             <Text style={styles.settingText}>{item.title}</Text>
@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingVertical: 14,
     alignItems: 'center',
-    borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: Colors.lightGrey,
   },
   leftContainer: {
