@@ -16,7 +16,7 @@ export const RenderOptions = ({ options, title }: { options: TOption[]; title?: 
             <IconRenderer option={item} />
             <Text style={styles.settingText}>{item.title}</Text>
           </View>
-          <AntDesign name="right" size={20} color="black" />
+          <AntDesign name="right" size={16} color="black" />
         </View>
       ))}
     </View>
