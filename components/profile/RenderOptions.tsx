@@ -6,12 +6,12 @@ import { IconRenderer } from './ItemRenderer'
 import Colors from '@/constants/Colors'
 import { TOption } from '@/types'
 
-export const RenderOptions = ({ options, title }: { options: TOption[]; title?: string }) => {
+export const RenderOptions = ({ options, title, drawLastLine = false }: { options: TOption[]; title?: string, drawLastLine?: boolean }) => {
   return (
     <View>
       {title && <Text style={styles.title}>{title}</Text>}
       {options.map((item, index) => (
-          <View key={item.title} style={[styles.settingItem, { borderBottomWidth: index === options.length - 1 ? 0 : StyleSheet.hairlineWidth, }]}>
+          <View key={item.title} style={[styles.settingItem, { borderBottomWidth: (index === options.length - 1 && !drawLastLine) ? 0 : StyleSheet.hairlineWidth, }]}>
           <View style={styles.leftContainer}>
             <IconRenderer option={item} />
             <Text style={styles.settingText}>{item.title}</Text>

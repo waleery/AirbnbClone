@@ -73,10 +73,10 @@ export const AuthorizedProfile = () => {
         <AirBnbYourHome/>
 
         <View style={styles.optionsSection}>
-          <RenderOptions options={settings} title="Settings" />
-          <RenderOptions options={hosting} title="Hosting" />
-          <RenderOptions options={tools} title="Tools" />
-          <RenderOptions options={support} title="Support" />
+          <RenderOptions options={settings} title="Settings" drawLastLine/>
+          <RenderOptions options={hosting} title="Hosting" drawLastLine/>
+          <RenderOptions options={tools} title="Tools" drawLastLine/>
+          <RenderOptions options={support} title="Support" drawLastLine />
           <RenderOptions options={legal} title="Legal" />
         </View>
         <Text onPress={handleSignOut} style={styles.logoutText}>
