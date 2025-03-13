@@ -82,6 +82,10 @@ export const AuthorizedProfile = () => {
         <Text onPress={handleSignOut} style={styles.logoutText}>
           Log out
         </Text>
+
+        <Text onPress={handleSignOut} style={styles.versionText}>
+          VERSION 25.09.1 (204163)
+        </Text>
       </ScrollView>
     </SafeAreaView>
   )
@@ -141,4 +145,9 @@ const styles = StyleSheet.create({
   optionsSection: {
     gap: 35,
   },
+  versionText:{
+    fontSize:10,
+    marginBottom:20,
+    color:Colors.grey
+  }
 })
