@@ -66,6 +66,7 @@ const Page = () => {
               </View>
             ))}
           </View>
+          <View style={styles.divider} />
         </ScrollView>
       </SafeAreaView>
     </View>
@@ -142,4 +143,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 2,
   },
+  divider:{
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: Colors.lightGrey,
+    marginVertical: 30,
+  }
 })
