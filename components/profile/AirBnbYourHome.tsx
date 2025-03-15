@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     paddingHorizontal: 20,
-    paddingVertical: 10,
+    paddingVertical: 7,
     overflow: 'visible',
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: Colors.lightGrey,
