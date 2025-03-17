@@ -1,6 +1,10 @@
+import { useAuth } from '@clerk/clerk-expo'
+
 import AuthorizedInbox from "@/components/inbox/AuthorizedInbox";
 
 const Page = () => {
-	return <AuthorizedInbox />;
+	const { isSignedIn } = useAuth()
+
+	return <> {isSignedIn ? <AuthorizedInbox /> : null}</>
 };
 export default Page;
