@@ -4,8 +4,11 @@ import { Tabs } from 'expo-router'
 import { InboxHeader, WishlistHeader } from '@/components'
 import { EarnBottomSheet } from '@/components/profile/EarnBottomSheet'
 import Colors from '@/constants/Colors'
+import { useAuth } from '@clerk/clerk-expo'
 
 const Layout = () => {
+  const { isSignedIn } = useAuth()
+
   return (
     <>
       <Tabs
@@ -44,6 +47,7 @@ const Layout = () => {
         <Tabs.Screen
           name="Inbox"
           options={{
+            headerShown: isSignedIn, 
             header: () => <InboxHeader />,
             tabBarLabel: 'Inbox',
             tabBarIcon: ({ color, size }) => (

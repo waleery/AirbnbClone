@@ -6,6 +6,6 @@ import UnauthorizedInbox from '@/components/inbox/UnauthorizedInbox';
 const Page = () => {
 	const { isSignedIn } = useAuth()
 
-	return <> {isSignedIn ? <AuthorizedInbox /> : <UnauthorizedInbox/> }</>
+	return <>{isSignedIn ? <AuthorizedInbox /> : <UnauthorizedInbox/> }</>
 };
 export default Page;
