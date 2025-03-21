@@ -11,7 +11,7 @@ import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 import { WhereBeen } from '@/types'
 
-const Page = () => {
+export const AuthorizedTrips = () => {
   const visited: WhereBeen[] = visitedPlaces.map((place) => ({
     ...place,
     date_from: parseISO(place.date_from),
@@ -72,7 +72,6 @@ const Page = () => {
     </View>
   )
 }
-export default Page
 
 const styles = StyleSheet.create({
   container: {

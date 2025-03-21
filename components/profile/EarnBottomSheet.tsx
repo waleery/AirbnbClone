@@ -17,7 +17,6 @@ import { defaultStyles } from '@/constants/Styles'
 const deviceWidth = Dimensions.get('window').width
 const mapWidth = deviceWidth / 2 + 40
 
-
 export const earnBottomSheetRef = createRef<BottomSheet>()
 
 // METHODS

@@ -6,19 +6,31 @@ import { IconRenderer } from './ItemRenderer'
 import Colors from '@/constants/Colors'
 import { TOption } from '@/types'
 
-export const RenderOptions = ({ options, title, drawLastLine = false }: { options: TOption[]; title?: string, drawLastLine?: boolean }) => {
+export const RenderOptions = ({
+  options,
+  title,
+  drawLastLine = false,
+}: {
+  options: TOption[]
+  title?: string
+  drawLastLine?: boolean
+}) => {
   return (
     <View>
       {title && <Text style={styles.title}>{title}</Text>}
-      {options.map((item, index) => (
-          <View key={item.title} style={[styles.settingItem, { borderBottomWidth: (index === options.length - 1 && !drawLastLine) ? 0 : StyleSheet.hairlineWidth, }]}>
-          <View style={styles.leftContainer}>
-            <IconRenderer option={item} />
-            <Text style={styles.settingText}>{item.title}</Text>
+      {options.map((item, index) => {
+        const borderBottomWidth =
+          index === options.length - 1 && !drawLastLine ? 0 : StyleSheet.hairlineWidth
+        return (
+          <View key={item.title} style={[styles.settingItem, { borderBottomWidth }]}>
+            <View style={styles.leftContainer}>
+              <IconRenderer option={item} />
+              <Text style={styles.settingText}>{item.title}</Text>
+            </View>
+            <AntDesign name="right" size={16} color="black" />
           </View>
-          <AntDesign name="right" size={16} color="black" />
-        </View>
-      ))}
+        )
+      })}
     </View>
   )
 }

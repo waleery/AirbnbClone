@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   listing: {
     padding: 16,
     gap: 10,
-    marginTop:5,
+    marginTop: 5,
     marginBottom: 5,
     zIndex: 1,
   },
@@ -106,10 +106,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'flex-start',
   },
-  typeAndPriceContainer :{
-    gap:3
+  typeAndPriceContainer: {
+    gap: 3,
   },
-  starText:{
-    fontWeight:'500'
-  }
+  starText: {
+    fontWeight: '500',
+  },
 })

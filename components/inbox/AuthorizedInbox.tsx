@@ -20,7 +20,7 @@ const messagesData: Conversation[] = messagesDataRaw.map((message) => ({
   })),
 }))
 
-const AuthorizedInbox = () => {
+export const AuthorizedInbox = () => {
   const [selectedType, setSelectedType] = useState<string>('All')
   const [openSwipeable, setOpenSwipeable] = useState<React.RefObject<Swipeable> | null>(null)
 
@@ -91,7 +91,6 @@ const AuthorizedInbox = () => {
     </View>
   )
 }
-export default AuthorizedInbox
 
 const styles = StyleSheet.create({
   container: {

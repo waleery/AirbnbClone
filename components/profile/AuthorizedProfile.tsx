@@ -10,17 +10,16 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
-  ImageSourcePropType,
   Pressable,
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
+import { AirBnbYourHome } from './AirBnbYourHome'
 import { RenderOptions } from './RenderOptions'
 
 import { hosting, legal, settings, support, tools } from '@/assets/data'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
-import { AirBnbYourHome } from './AirBnbYourHome'
 
 export const AuthorizedProfile = () => {
   const { signOut } = useAuth()
@@ -69,13 +68,13 @@ export const AuthorizedProfile = () => {
             <AntDesign name="right" size={20} />
           </Pressable>
         </View>
-  
-        <AirBnbYourHome/>
+
+        <AirBnbYourHome />
 
         <View style={styles.optionsSection}>
-          <RenderOptions options={settings} title="Settings" drawLastLine/>
-          <RenderOptions options={hosting} title="Hosting" drawLastLine/>
-          <RenderOptions options={tools} title="Tools" drawLastLine/>
+          <RenderOptions options={settings} title="Settings" drawLastLine />
+          <RenderOptions options={hosting} title="Hosting" drawLastLine />
+          <RenderOptions options={tools} title="Tools" drawLastLine />
           <RenderOptions options={support} title="Support" drawLastLine />
           <RenderOptions options={legal} title="Legal" />
         </View>
@@ -145,9 +144,9 @@ const styles = StyleSheet.create({
   optionsSection: {
     gap: 35,
   },
-  versionText:{
-    fontSize:10,
-    marginBottom:20,
-    color:Colors.grey
-  }
+  versionText: {
+    fontSize: 10,
+    marginBottom: 20,
+    color: Colors.grey,
+  },
 })

@@ -1,13 +1,14 @@
+import { useAuth } from '@clerk/clerk-expo'
 import { useSetAtom } from 'jotai'
 import { useEffect } from 'react'
-import { View, StyleSheet } from 'react-native'
 
-import { WishlistTiles } from '@/components'
-import Colors from '@/constants/Colors'
-import { defaultStyles } from '@/constants/Styles'
+import { UnauthorizedTab } from '@/components/UnauthorizedTab'
+import { AuthorizedWhishlist } from '@/components/wishlist/AuthorizedWishlist'
 import { wishlistEditMode } from '@/store'
 
 const Page = () => {
+  const { isSignedIn } = useAuth()
+
   const setEditMode = useSetAtom(wishlistEditMode)
 
   useEffect(() => {
@@ -17,16 +18,17 @@ const Page = () => {
   }, [setEditMode])
 
   return (
-    <View style={[defaultStyles.flex, styles.container]}>
-      <WishlistTiles />
-    </View>
+    <>
+      {isSignedIn ? (
+        <AuthorizedWhishlist />
+      ) : (
+        <UnauthorizedTab
+          title="Wishlist"
+          firstText="Log in to view your wishlists"
+          secondText="You can create, view, or edit wishlists once you've loged in."
+        />
+      )}
+    </>
   )
 }
 export default Page
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: Colors.white,
-    gap: 20,
-  },
-})

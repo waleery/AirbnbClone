@@ -1,10 +1,10 @@
+import { useAuth } from '@clerk/clerk-expo'
 import { FontAwesome5, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 import { Tabs } from 'expo-router'
 
 import { InboxHeader, WishlistHeader } from '@/components'
 import { EarnBottomSheet } from '@/components/profile/EarnBottomSheet'
 import Colors from '@/constants/Colors'
-import { useAuth } from '@clerk/clerk-expo'
 
 const Layout = () => {
   const { isSignedIn } = useAuth()
@@ -47,9 +47,9 @@ const Layout = () => {
         <Tabs.Screen
           name="Inbox"
           options={{
-            headerShown: isSignedIn, 
+            headerShown: isSignedIn,
             header: () => <InboxHeader />,
-            tabBarLabel: 'Inbox',
+            tabBarLabel: 'Messages',
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="message-outline" color={color} size={size} />
             ),
