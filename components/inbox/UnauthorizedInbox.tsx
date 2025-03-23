@@ -11,7 +11,10 @@ const UnauthorizedInbox = () => {
       style={[defaultStyles.pX2, defaultStyles.safeArea, styles.container]}
     >
       <Text style={styles.title}>Trips</Text>
-      <Text style={styles.noTrips}> No trips yet</Text>
+      <Text style={styles.noTrips}>No trips yet</Text>
+      <Text style={styles.noTripsSecond}>
+        When you&apos;re ready to plan your next trip, we&apos;re here to help
+      </Text>
     </SafeAreaView>
   )
 }
@@ -32,6 +35,10 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 20,
     paddingTop: 48,
+  },
+  noTripsSecond: {
+    paddingTop: 8,
+    fontSize: 16,
   },
 })
 
