@@ -1,10 +1,19 @@
+import { useRouter } from 'expo-router'
+import { useCallback } from 'react'
 import { Text, StyleSheet } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 
 const UnauthorizedInbox = () => {
+  const router = useRouter()
+
+  const handlePressLogIn = useCallback(() => {
+    router.push('/(modals)/login')
+  }, [router])
+
   return (
     <SafeAreaView
       edges={['top']}
@@ -15,6 +24,10 @@ const UnauthorizedInbox = () => {
       <Text style={styles.noTripsSecond}>
         When you&apos;re ready to plan your next trip, we&apos;re here to help
       </Text>
+
+      <TouchableOpacity onPress={handlePressLogIn} style={[defaultStyles.btn, styles.button]}>
+        <Text style={[defaultStyles.btnText, defaultStyles.font500]}>Log in</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   )
 }
@@ -40,6 +53,7 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     fontSize: 16,
   },
+  button: { alignSelf: 'flex-start', paddingHorizontal: 30, marginTop: 38 },
 })
 
 export default UnauthorizedInbox
