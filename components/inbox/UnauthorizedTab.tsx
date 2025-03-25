@@ -7,7 +7,15 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 
-const UnauthorizedInbox = () => {
+export const UnauthorizedTab = ({
+  title,
+  firstText,
+  secondText,
+}: {
+  title: string
+  firstText: string
+  secondText: string
+}) => {
   const router = useRouter()
 
   const handlePressLogIn = useCallback(() => {
@@ -19,11 +27,9 @@ const UnauthorizedInbox = () => {
       edges={['top']}
       style={[defaultStyles.pX2, defaultStyles.safeArea, styles.container]}
     >
-      <Text style={styles.title}>Trips</Text>
-      <Text style={styles.noTrips}>No trips yet</Text>
-      <Text style={styles.noTripsSecond}>
-        When you&apos;re ready to plan your next trip, we&apos;re here to help
-      </Text>
+      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.noTrips}>{firstText}</Text>
+      <Text style={styles.noTripsSecond}>{secondText}</Text>
 
       <TouchableOpacity onPress={handlePressLogIn} style={[defaultStyles.btn, styles.button]}>
         <Text style={[defaultStyles.btnText, defaultStyles.font500]}>Log in</Text>
@@ -55,5 +61,3 @@ const styles = StyleSheet.create({
   },
   button: { alignSelf: 'flex-start', paddingHorizontal: 30, marginTop: 38 },
 })
-
-export default UnauthorizedInbox
