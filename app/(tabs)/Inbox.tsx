@@ -12,9 +12,9 @@ const Page = () => {
         <AuthorizedInbox />
       ) : (
         <UnauthorizedTab
-          title="Trips"
-          firstText="No trips yet"
-          secondText="When you're ready to plan your next trip, we're here to help"
+          title="Inbox"
+          firstText="Log in to see messages"
+          secondText="Once you login, you'll find messages from hosts here."
         />
       )}
     </>
