@@ -49,7 +49,7 @@ const Layout = () => {
           options={{
             headerShown: isSignedIn, 
             header: () => <InboxHeader />,
-            tabBarLabel: 'Inbox',
+            tabBarLabel: 'Messages',
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="message-outline" color={color} size={size} />
             ),
