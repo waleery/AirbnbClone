@@ -5,12 +5,11 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { AirBnbYourHome } from './AirBnbYourHome'
-
-import Colors from '@/constants/Colors'
-import { defaultStyles } from '@/constants/Styles'
+import { RenderOptions } from './RenderOptions'
 
 import { unautorizedSettings } from '@/assets/data'
-import { RenderOptions } from './RenderOptions'
+import Colors from '@/constants/Colors'
+import { defaultStyles } from '@/constants/Styles'
 
 export const UnauthorizedProfile = () => {
   const router = useRouter()

@@ -143,9 +143,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 2,
   },
-  divider:{
+  divider: {
     height: StyleSheet.hairlineWidth,
     backgroundColor: Colors.lightGrey,
     marginVertical: 30,
-  }
+  },
 })

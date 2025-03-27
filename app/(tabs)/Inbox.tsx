@@ -1,6 +1,6 @@
 import { useAuth } from '@clerk/clerk-expo'
 
-import AuthorizedInbox from '@/components/inbox/AuthorizedInbox'
+import { AuthorizedInbox } from '@/components'
 import { UnauthorizedTab } from '@/components/inbox/UnauthorizedTab'
 
 const Page = () => {
