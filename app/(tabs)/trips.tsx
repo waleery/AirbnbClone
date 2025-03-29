@@ -13,7 +13,7 @@ const Page = () => {
       ) : (
         <UnauthorizedTab
           title="Trips"
-          firstText="no trips yet"
+          firstText="No trips yet"
           secondText="When you're ready to plan your next trip, we'rehere to help."
         />
       )}
