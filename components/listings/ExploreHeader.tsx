@@ -136,7 +136,6 @@ const styles = StyleSheet.create({
     color: Colors.black,
   },
   categoryBtn: {
-    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     gap: 5,
@@ -145,7 +144,6 @@ const styles = StyleSheet.create({
     borderBottomColor: Colors.transparent,
   },
   categoryBtnActive: {
-    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     gap: 5,
