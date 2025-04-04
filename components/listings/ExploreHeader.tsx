@@ -14,13 +14,13 @@ interface Props {
 }
 export const ExploreHeader = ({ onCategoryChanged }: Props) => {
   const scrollRef = useRef<ScrollView>(null)
-  const itemsRef = useRef<TouchableOpacity[]>([])
+  const itemsRef = useRef<React.RefObject<View>[]>([])
   const [activeIndex, setActiveIndex] = useState(0)
 
   const getRefHandler = useCallback(
-    (index: number) => (element: TouchableOpacity | null) => {
+    (index: number) => (element: View | null) => {
       if (!element) return
-      itemsRef.current[index] = element
+      itemsRef.current[index] = { current: element }
     },
     []
   )
@@ -29,7 +29,7 @@ export const ExploreHeader = ({ onCategoryChanged }: Props) => {
     (index: number) => () => {
       const selectedItem = itemsRef.current[index]
 
-      selectedItem.measure((x) => {
+      selectedItem.current?.measure((x) => {
         scrollRef.current?.scrollTo({ x: x - 16, y: 0, animated: true })
       })
 
