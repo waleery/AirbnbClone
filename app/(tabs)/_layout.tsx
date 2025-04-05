@@ -1,12 +1,15 @@
 import { useAuth } from '@clerk/clerk-expo'
 import { FontAwesome5, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 import { Tabs } from 'expo-router'
+import { useSetAtom } from 'jotai'
 
 import { EarnBottomSheet, InboxHeader, WishlistHeader } from '@/components'
 import Colors from '@/constants/Colors'
+import { wishlistEditMode } from '@/store'
 
 const Layout = () => {
   const { isSignedIn } = useAuth()
+  const setEditMode = useSetAtom(wishlistEditMode)
 
   return (
     <>
@@ -30,6 +33,11 @@ const Layout = () => {
               <Ionicons name="heart-outline" color={color} size={size} />
             ),
             header: () => <WishlistHeader />,
+          }}
+          listeners={{
+            blur: () => {
+              setEditMode(false)
+            },
           }}
         />
         <Tabs.Screen
