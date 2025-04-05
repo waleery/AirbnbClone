@@ -30,7 +30,6 @@ const Layout = () => {
               <Ionicons name="heart-outline" color={color} size={size} />
             ),
             header: () => <WishlistHeader />,
-            unmountOnBlur: true,
           }}
         />
         <Tabs.Screen
