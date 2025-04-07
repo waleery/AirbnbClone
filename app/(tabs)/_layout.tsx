@@ -29,6 +29,7 @@ const Layout = () => {
           name="Wishlists"
           options={{
             tabBarLabel: 'Wishlists',
+            headerShown: isSignedIn,
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="heart-outline" color={color} size={size} />
             ),
