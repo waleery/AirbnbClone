@@ -3,8 +3,8 @@ import { useSetAtom } from 'jotai'
 import { useEffect } from 'react'
 
 import { UnauthorizedTab } from '@/components/UnauthorizedTab'
-import { AuthorizedWhishlist } from '@/components/wishlist/AuthorizedWishlist'
 import { wishlistEditMode } from '@/store'
+import { AuthorizedWhishlist } from '@/components'
 
 const Page = () => {
   const { isSignedIn } = useAuth()
