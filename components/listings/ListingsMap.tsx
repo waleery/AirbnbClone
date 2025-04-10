@@ -68,8 +68,6 @@ export const ListingsMap = memo(({ listings }: Props) => {
         showsUserLocation={true}
         showsMyLocationButton
         initialRegion={INITIAL_REGION}
-        clusterColor="#fff"
-        clusterTextColor="#000"
         renderCluster={renderCluster}
         radius={45}
         mapPadding={{ top: 0, bottom: 60, left: 0, right: 0 }}
@@ -103,7 +101,7 @@ const styles = StyleSheet.create({
   },
   marker: {
     backgroundColor: Colors.white,
-    borderWidth:StyleSheet.hairlineWidth,
+    borderWidth: StyleSheet.hairlineWidth,
     borderColor: Colors.lightGrey,
     alignItems: 'center',
     justifyContent: 'center',
