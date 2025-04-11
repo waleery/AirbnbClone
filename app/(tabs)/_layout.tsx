@@ -65,7 +65,7 @@ const Layout = () => {
         <Tabs.Screen
           name="Profile"
           options={{
-            tabBarLabel: 'Profile',
+            tabBarLabel: isSignedIn ? 'Profile' : 'Log in',
             headerShown: false,
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="person-circle-outline" color={color} size={size} />
