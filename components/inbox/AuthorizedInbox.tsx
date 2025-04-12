@@ -43,13 +43,11 @@ export const AuthorizedInbox = () => {
   )
 
   const filteredMessagesData = useMemo(() => {
-    if (selectedType === 'All') {
-      return messagesData
-    }
-    if (selectedType === 'Customer service') {
-      return messagesData.filter((conversation) => conversation.customer_service)
-    }
-    return messagesData.filter((conversation) => !conversation.customer_service)
+    return selectedType === 'All'
+      ? messagesData
+      : messagesData.filter((c) =>
+          selectedType === 'Customer service' ? c.customer_service : !c.customer_service
+        )
   }, [selectedType])
 
   return (
