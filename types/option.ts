@@ -5,11 +5,12 @@ type IoniconsIconNames = keyof typeof Ionicons.glyphMap
 type FontAwesomeIconNames = keyof typeof FontAwesome5.glyphMap
 
 type IconNames = IoniconsIconNames | FontAwesomeIconNames
+type IconLibrary = 'Ionicons' | 'FontAwesome5'
 
 interface OptionWithIcon {
   title: string
   icon: IconNames
-  lib?: string
+  lib?: IconLibrary
   img?: never // When `icon` is present, `img` cannot exist
 }
 
