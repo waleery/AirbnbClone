@@ -1,4 +1,4 @@
-import { Ionicons, FontAwesome5 } from '@expo/vector-icons'
+import { Ionicons, FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons'
 import { Image } from 'react-native'
 
 import { TOption } from '@/types'
@@ -18,7 +18,7 @@ export const IconRenderer: React.FC<IconRendererProps> = ({
     return <Image source={option.img} style={{ width: size, height: size }} />
   }
   if ('icon' in option) {
-    const IconComponent = option.lib === 'FontAwesome5' ? FontAwesome5 : Ionicons
+    const IconComponent = option.lib === 'FontAwesome5' ? FontAwesome5 : option.lib === 'MaterialCommunityIcons' ? MaterialCommunityIcons : Ionicons
     return <IconComponent name={option.icon} size={size} color={color} />
   }
 

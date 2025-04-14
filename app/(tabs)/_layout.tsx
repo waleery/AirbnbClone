@@ -3,7 +3,7 @@ import { FontAwesome5, Ionicons, MaterialCommunityIcons } from '@expo/vector-ico
 import { Tabs } from 'expo-router'
 import { useSetAtom } from 'jotai'
 
-import { EarnBottomSheet, InboxHeader, WishlistHeader } from '@/components'
+import { EarnBottomSheet, IconRenderer, InboxHeader, WishlistHeader } from '@/components'
 import Colors from '@/constants/Colors'
 import { wishlistEditMode } from '@/store'
 
@@ -22,7 +22,7 @@ const Layout = () => {
           name="index"
           options={{
             tabBarLabel: 'Explore',
-            tabBarIcon: ({ color, size }) => <Ionicons name="search" color={color} size={size} />,
+            tabBarIcon: (props) =>  <IconRenderer option={{ icon: 'search', lib: 'Ionicons' }} {...props} />,
           }}
         />
         <Tabs.Screen
@@ -30,8 +30,8 @@ const Layout = () => {
           options={{
             tabBarLabel: 'Wishlists',
             headerShown: isSignedIn,
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="heart-outline" color={color} size={size} />
+            tabBarIcon: (props) => (
+              <IconRenderer option={{ icon: 'heart-outline', lib: 'Ionicons' }} {...props} />
             ),
             header: () => <WishlistHeader />,
           }}
@@ -45,8 +45,8 @@ const Layout = () => {
           name="Trips"
           options={{
             tabBarLabel: 'Trips',
-            tabBarIcon: ({ color, size }) => (
-              <FontAwesome5 name="airbnb" color={color} size={size} />
+            tabBarIcon: (props) => (
+              <IconRenderer option={{ icon: 'airbnb', lib: 'FontAwesome5' }} {...props} />
             ),
             headerShown: false,
           }}
@@ -57,8 +57,8 @@ const Layout = () => {
             headerShown: isSignedIn,
             header: () => <InboxHeader />,
             tabBarLabel: 'Messages',
-            tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="message-outline" color={color} size={size} />
+            tabBarIcon: (props) => (
+              <IconRenderer option={{ icon: 'message-outline', lib: 'MaterialCommunityIcons' }} {...props} />
             ),
           }}
         />
@@ -67,8 +67,8 @@ const Layout = () => {
           options={{
             tabBarLabel: isSignedIn ? 'Profile' : 'Log in',
             headerShown: false,
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="person-circle-outline" color={color} size={size} />
+            tabBarIcon: (props) => (
+              <IconRenderer option={{ icon: 'person-circle-outline', lib: 'Ionicons' }} {...props} />
             ),
           }}
         />
