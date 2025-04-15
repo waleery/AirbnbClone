@@ -9,6 +9,17 @@ interface IconRendererProps {
   color?: string
 }
 
+const getIconComponent = (lib?: string) => {
+  switch (lib) {
+    case 'FontAwesome5':
+      return FontAwesome5
+    case 'MaterialCommunityIcons':
+      return MaterialCommunityIcons
+    default:
+      return Ionicons
+  }
+}
+
 export const IconRenderer: React.FC<IconRendererProps> = ({
   option,
   size = 28,
@@ -17,8 +28,9 @@ export const IconRenderer: React.FC<IconRendererProps> = ({
   if ('img' in option) {
     return <Image source={option.img} style={{ width: size, height: size }} />
   }
+
   if ('icon' in option) {
-    const IconComponent = option.lib === 'FontAwesome5' ? FontAwesome5 : option.lib === 'MaterialCommunityIcons' ? MaterialCommunityIcons : Ionicons
+    const IconComponent = getIconComponent(option.lib)
     return <IconComponent name={option.icon} size={size} color={color} />
   }
 
