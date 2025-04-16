@@ -20,7 +20,7 @@ export const ListingItem = ({ item }: Props) => {
 
   const handleFavourite = useCallback(() => {
     setIsFavourite(!isFavourite)
-  }, [isFavourite])
+  }, [])
 
   const handlePress = useCallback(() => {
     router.push(`/listing/${item.id}`)
