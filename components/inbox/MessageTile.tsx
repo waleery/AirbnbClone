@@ -37,18 +37,17 @@ export const MessageTile = ({
   const swipeableRef = useRef<Swipeable>(null)
 
   const formatDateLastMessage = useMemo(() => {
-    const currentDate = new Date()
-    const currentYear = getYear(currentDate) % 100
-
-    const year = getYear(conversation.last_message_time) % 100
-    const month = getMonth(conversation.last_message_time) + 1
-    const day = getDate(conversation.last_message_time)
-
-    if (currentYear === year) {
-      return `${day}.${month}`
-    }
-    return `${day}.${month}.${year}`
+    const date = new Date(conversation.last_message_time)
+    const currentYear = getYear(new Date())
+  
+    const year = getYear(date)
+    const month = getMonth(date) + 1
+    const day = getDate(date)
+  
+    return year === currentYear ? `${day}.${month}` : `${day}.${month}.${year % 100}`
   }, [conversation.last_message_time])
+
+  
   const hostImageSize = conversation.hosts?.length === 1 ? 42 : 32
   let hostImagePositions = []
 
