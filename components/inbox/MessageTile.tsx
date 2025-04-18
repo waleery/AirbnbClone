@@ -100,14 +100,21 @@ export const MessageTile = ({
   }
 
   const renderRightActions = useCallback(
-    (progress: AnimatedInterpolation) => (
-      <View style={styles.rightActions}>
-        {renderRightAction('Star', '#00A699', 128, progress, handleStarPress)}
-        {renderRightAction('Archive', '#484848', 64, progress, handleArchivePress)}
-      </View>
-    ),
-    []
-  )
+    (progress: AnimatedInterpolation) => {
+      const actions: { text: IconKey; color: string; x: number; onPress: () => void }[] = [
+        { text: 'Star', color: '#00A699', x: 128, onPress: handleStarPress },
+        { text: 'Archive', color: '#484848', x: 64, onPress: handleArchivePress },
+      ]
+  
+      return (
+        <View style={styles.rightActions}>
+          {actions.map(({ text, color, x, onPress }) =>
+            renderRightAction(text, color, x, progress, onPress)
+          )}
+        </View>
+      )
+    },
+    [])
   const handleSwipeableOpen = useCallback(
     (swipeable: React.RefObject<Swipeable>) => () => {
       if (openSwipeable && openSwipeable !== swipeable) {
