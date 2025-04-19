@@ -124,6 +124,26 @@ export const MessageTile = ({
     },
     [openSwipeable, setOpenSwipeable]
   )
+
+  const renderHostImage = (host: any, index: number) => (
+    <Image
+      key={`host-${index}`}
+      source={{ uri: host?.image }}
+      style={[
+        styles.hostImage,
+        {
+          width: hostImageSize,
+          height: hostImageSize,
+          transform: [
+            { translateY: hostImagePositions[index]?.translateY || 0 },
+            { translateX: hostImagePositions[index]?.translateX || 0 },
+          ],
+        },
+      ]}
+    />
+  )
+
+
   return (
     <Swipeable
       ref={swipeableRef}
@@ -141,28 +161,7 @@ export const MessageTile = ({
         ) : accomodation?.medium_url ? (
           <Image source={{ uri: accomodation?.medium_url }} style={styles.image} />
         ) : null}
-        {conversation.hosts?.map((host, index) => {
-          if (index < 2) {
-            return (
-              <Image
-                key={`host-${index}`}
-                source={{ uri: host?.image }}
-                style={[
-                  styles.hostImage,
-                  {
-                    width: hostImageSize,
-                    height: hostImageSize,
-                    transform: [
-                      { translateY: hostImagePositions[index]?.translateY || 0 },
-                      { translateX: hostImagePositions[index]?.translateX || 0 },
-                    ],
-                  },
-                ]}
-              />
-            )
-          }
-          return null
-        })}
+        {conversation.hosts?.slice(0, 2).map(renderHostImage)}
       </View>
       <View style={styles.textContainer}>
         <View style={styles.firstLine}>
