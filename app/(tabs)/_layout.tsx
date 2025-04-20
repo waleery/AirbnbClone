@@ -1,5 +1,4 @@
 import { useAuth } from '@clerk/clerk-expo'
-import { FontAwesome5, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 import { Tabs } from 'expo-router'
 import { useSetAtom } from 'jotai'
 
@@ -22,7 +21,9 @@ const Layout = () => {
           name="index"
           options={{
             tabBarLabel: 'Explore',
-            tabBarIcon: (props) =>  <IconRenderer option={{ icon: 'search', lib: 'Ionicons' }} {...props} />,
+            tabBarIcon: (props) => (
+              <IconRenderer option={{ icon: 'search', lib: 'Ionicons' }} {...props} />
+            ),
           }}
         />
         <Tabs.Screen
@@ -58,7 +59,10 @@ const Layout = () => {
             header: () => <InboxHeader />,
             tabBarLabel: 'Messages',
             tabBarIcon: (props) => (
-              <IconRenderer option={{ icon: 'message-outline', lib: 'MaterialCommunityIcons' }} {...props} />
+              <IconRenderer
+                option={{ icon: 'message-outline', lib: 'MaterialCommunityIcons' }}
+                {...props}
+              />
             ),
           }}
         />
@@ -68,7 +72,10 @@ const Layout = () => {
             tabBarLabel: isSignedIn ? 'Profile' : 'Log in',
             headerShown: false,
             tabBarIcon: (props) => (
-              <IconRenderer option={{ icon: 'person-circle-outline', lib: 'Ionicons' }} {...props} />
+              <IconRenderer
+                option={{ icon: 'person-circle-outline', lib: 'Ionicons' }}
+                {...props}
+              />
             ),
           }}
         />

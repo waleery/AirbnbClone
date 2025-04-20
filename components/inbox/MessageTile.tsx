@@ -39,15 +39,14 @@ export const MessageTile = ({
   const formatDateLastMessage = useMemo(() => {
     const date = new Date(conversation.last_message_time)
     const currentYear = getYear(new Date())
-  
+
     const year = getYear(date)
     const month = getMonth(date) + 1
     const day = getDate(date)
-  
+
     return year === currentYear ? `${day}.${month}` : `${day}.${month}.${year % 100}`
   }, [conversation.last_message_time])
 
-  
   const hostImageSize = conversation.hosts?.length === 1 ? 42 : 32
   let hostImagePositions = []
 
@@ -99,22 +98,20 @@ export const MessageTile = ({
     )
   }
 
-  const renderRightActions = useCallback(
-    (progress: AnimatedInterpolation) => {
-      const actions: { text: IconKey; color: string; x: number; onPress: () => void }[] = [
-        { text: 'Star', color: '#00A699', x: 128, onPress: handleStarPress },
-        { text: 'Archive', color: '#484848', x: 64, onPress: handleArchivePress },
-      ]
-  
-      return (
-        <View style={styles.rightActions}>
-          {actions.map(({ text, color, x, onPress }) =>
-            renderRightAction(text, color, x, progress, onPress)
-          )}
-        </View>
-      )
-    },
-    [])
+  const renderRightActions = useCallback((progress: AnimatedInterpolation) => {
+    const actions: { text: IconKey; color: string; x: number; onPress: () => void }[] = [
+      { text: 'Star', color: '#00A699', x: 128, onPress: handleStarPress },
+      { text: 'Archive', color: '#484848', x: 64, onPress: handleArchivePress },
+    ]
+
+    return (
+      <View style={styles.rightActions}>
+        {actions.map(({ text, color, x, onPress }) =>
+          renderRightAction(text, color, x, progress, onPress)
+        )}
+      </View>
+    )
+  }, [])
   const handleSwipeableOpen = useCallback(
     (swipeable: React.RefObject<Swipeable>) => () => {
       if (openSwipeable && openSwipeable !== swipeable) {
@@ -125,7 +122,7 @@ export const MessageTile = ({
     [openSwipeable, setOpenSwipeable]
   )
 
-  const renderHostImage = (host: any, index: number) => (
+  const renderHostImage = (host: { image: string | undefined }, index: number) => (
     <Image
       key={`host-${index}`}
       source={{ uri: host?.image }}
@@ -142,7 +139,6 @@ export const MessageTile = ({
       ]}
     />
   )
-
 
   return (
     <Swipeable
