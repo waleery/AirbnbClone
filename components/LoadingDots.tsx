@@ -3,7 +3,11 @@ import { StyleSheet, View, Animated } from 'react-native'
 
 import Colors from '@/constants/Colors'
 
-export const LoadingDots = ({ numberOfDots = 3 }: { numberOfDots?: number }) => {
+type LoadingDotsProps = {
+  numberOfDots?: number
+}
+
+export const LoadingDots = ({ numberOfDots = 3 }: LoadingDotsProps) => {
   const dots = useRef([...Array(numberOfDots)].map(() => new Animated.Value(0))).current
 
   useEffect(() => {
