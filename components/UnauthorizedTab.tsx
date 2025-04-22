@@ -7,15 +7,16 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 
+type UnauthorizedTabProps = {
+  title: string
+  firstText: string
+  secondText: string
+}
 export const UnauthorizedTab = ({
   title,
   firstText,
   secondText,
-}: {
-  title: string
-  firstText: string
-  secondText: string
-}) => {
+} : UnauthorizedTabProps ) => {
   const router = useRouter()
 
   const handlePressLogIn = useCallback(() => {
