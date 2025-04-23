@@ -20,15 +20,17 @@ const iconMap: Record<IconKey, JSX.Element> = {
   Star: <AntDesign name="star" size={16} color="white" />,
 }
 
+type MessageTileProps = {
+  conversation: Conversation
+  setOpenSwipeable: React.Dispatch<React.SetStateAction<React.RefObject<Swipeable> | null>>
+  openSwipeable: React.RefObject<Swipeable> | null
+}
+
 export const MessageTile = ({
   conversation,
   setOpenSwipeable,
   openSwipeable,
-}: {
-  conversation: Conversation
-  setOpenSwipeable: React.Dispatch<React.SetStateAction<React.RefObject<Swipeable> | null>>
-  openSwipeable: React.RefObject<Swipeable> | null
-}) => {
+}: MessageTileProps) => {
   const accomodation = useAtomValue(listingsAtom).find(
     (accomodatiom) => accomodatiom.id === conversation.accomodation_id?.toString()
   )
