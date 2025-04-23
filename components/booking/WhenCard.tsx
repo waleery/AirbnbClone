@@ -1,7 +1,7 @@
 import { differenceInDays } from 'date-fns'
 import dayjs from 'dayjs'
 import { useAtom } from 'jotai'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import { View, Text } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
@@ -44,14 +44,14 @@ export const WhenCard = ({ setOpenCard, openCard }: Props) => {
     [setDaysCount]
   )
 
-  const displayPersonCount = () => {
+  const displayPersonCount = useMemo(() => {
     if (daysCount === 1) {
       return `${daysCount} day`
     } else if (daysCount && daysCount > 1) {
       return `${daysCount} days`
     }
     return 'Any week'
-  }
+  }, [daysCount])
 
   const handleOpenCard = useCallback(() => setOpenCard(1), [setOpenCard])
   return (
@@ -65,7 +65,7 @@ export const WhenCard = ({ setOpenCard, openCard }: Props) => {
             exiting={FadeOut.duration(200)}
           >
             <Text style={defaultStyles.previewText}>When</Text>
-            <Text style={defaultStyles.previewDate}>{displayPersonCount()}</Text>
+            <Text style={defaultStyles.previewDate}>{displayPersonCount}</Text>
           </AnimatedTouchableOpacity>
         )}
         {openCard === 1 && (
