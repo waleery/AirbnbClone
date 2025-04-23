@@ -7,12 +7,12 @@ import Animated, { SlideInDown } from 'react-native-reanimated'
 
 import { defaultStyles } from '@/constants/Styles'
 
-interface Props {
+interface BookingFooterProps {
   onClearAll: () => void
   filter: () => void
 }
 
-export const BookingFooter = ({ onClearAll, filter }: Props) => {
+export const BookingFooter = ({ onClearAll, filter }: BookingFooterProps) => {
   const router = useRouter()
 
   const handlePressFilter = useCallback(() => {
