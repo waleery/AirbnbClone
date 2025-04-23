@@ -6,15 +6,13 @@ import { IconRenderer } from './ItemRenderer'
 import Colors from '@/constants/Colors'
 import { TOption } from '@/types'
 
-export const RenderOptions = ({
-  options,
-  title,
-  drawLastLine = false,
-}: {
+type RenderOptionsProps = {
   options: TOption[]
   title?: string
   drawLastLine?: boolean
-}) => {
+}
+
+export const RenderOptions = ({ options, title, drawLastLine = false }: RenderOptionsProps) => {
   return (
     <View>
       {title && <Text style={styles.title}>{title}</Text>}
