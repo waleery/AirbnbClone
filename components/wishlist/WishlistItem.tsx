@@ -8,7 +8,11 @@ import Colors from '@/constants/Colors'
 import { wishlistEditMode } from '@/store'
 import { Wishlist } from '@/types'
 
-export const WishlistItem = ({ wishlist }: { wishlist: Wishlist }) => {
+type WishlistItemProps = {
+  wishlist: Wishlist
+}
+
+export const WishlistItem = ({ wishlist }: WishlistItemProps) => {
   const editMode = useAtomValue(wishlistEditMode)
 
   return (
