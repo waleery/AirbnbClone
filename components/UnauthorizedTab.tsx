@@ -12,11 +12,7 @@ type UnauthorizedTabProps = {
   firstText: string
   secondText: string
 }
-export const UnauthorizedTab = ({
-  title,
-  firstText,
-  secondText,
-} : UnauthorizedTabProps ) => {
+export const UnauthorizedTab = ({ title, firstText, secondText }: UnauthorizedTabProps) => {
   const router = useRouter()
 
   const handlePressLogIn = useCallback(() => {

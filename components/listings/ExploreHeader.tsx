@@ -9,10 +9,10 @@ import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 import { accommodation_categories } from '@/constants/categories'
 
-interface Props {
+interface ExploreHeaderProps {
   onCategoryChanged: (category: string) => void
 }
-export const ExploreHeader = ({ onCategoryChanged }: Props) => {
+export const ExploreHeader = ({ onCategoryChanged }: ExploreHeaderProps) => {
   const scrollRef = useRef<ScrollView>(null)
   const itemsRef = useRef<React.RefObject<View>[]>([])
   const [activeIndex, setActiveIndex] = useState(0)
