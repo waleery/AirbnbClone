@@ -70,7 +70,7 @@ export const WhenCard = ({ setOpenCard, openCard }: Props) => {
         )}
         {openCard === 1 && (
           <>
-            <Text style={defaultStyles.cardHeader}>When your&apos;s trip?</Text>
+            <Text style={defaultStyles.cardHeader}>When&apos;s your trip?</Text>
 
             <Animated.View style={[defaultStyles.pX2, defaultStyles.pb2]}>
               <DateTimePicker
