@@ -2,7 +2,7 @@ import { useSetAtom } from 'jotai'
 import { useEffect } from 'react'
 import { View, StyleSheet } from 'react-native'
 
-import { WishlistTiles } from '@/components'
+import { WishlistTiles } from '@/components/wishlist/WishlistTiles'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 import { wishlistEditMode } from '@/store'
