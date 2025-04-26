@@ -100,6 +100,7 @@ export const EarnBottomSheet = () => {
       enablePanDownToClose
       animationConfigs={{ duration: 500 }}
       onChange={handleChangeBottomSheetState}
+      enableDynamicSizing={false}
     >
       <SafeAreaView edges={['top']} style={[defaultStyles.container, styles.container]}>
         <Pressable style={styles.backContainer} onPress={handleCloseEarnBottomSheet}>
