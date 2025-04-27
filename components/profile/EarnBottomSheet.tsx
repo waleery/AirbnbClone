@@ -46,11 +46,11 @@ export const EarnBottomSheet = () => {
       const timeout = setTimeout(() => setShowLoadingDots(false), 800)
       const timeout2 = setTimeout(() => {
         setValue(7)
-        price.value = 7
+        price.set(7)
       }, 1500)
       return () => {
         setValue(1)
-        price.value = 1
+        price.set(1)
 
         clearTimeout(timeout)
         clearTimeout(timeout2)
@@ -58,7 +58,8 @@ export const EarnBottomSheet = () => {
     } else {
       setShowLoadingDots(true)
     }
-  }, [isOpen, price])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen])
 
   const handleChangeBottomSheetState = useCallback((index: number) => {
     setIsOpen(index !== -1)
