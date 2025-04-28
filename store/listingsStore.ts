@@ -31,7 +31,6 @@ export const filteredListingsAtom = atom((get) => {
     return filtered.filter(
       (listing) => listing.minimum_nights <= daysStay && listing.maximum_nights >= daysStay
     )
-  } else {
-    return filtered
   }
+  return filtered
 })
