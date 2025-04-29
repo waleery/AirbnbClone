@@ -11,15 +11,15 @@ export const guestsIncludedFilterAtom = atom<number | null>(null)
 export const daysStayFilterAtom = atom<number | null>(null)
 
 export const groupsAtom = atom<GuestsGroup[]>(guestsGroups)
-export const filterAtom = atom<boolean>(false)
+export const isfilteringAtom = atom<boolean>(false)
 
 export const filteredListingsAtom = atom((get) => {
   const listings = get(listingsAtom)
-  const filter = get(filterAtom)
+  const isFiltering = get(isfilteringAtom)
   const guestsIncluded = get(guestsIncludedFilterAtom)
   const daysStay = get(daysStayFilterAtom)
 
-  if (!filter) {
+  if (!isFiltering) {
     return listings
   }
   let filtered = listings
