@@ -1,6 +1,6 @@
 import { format, parseISO } from 'date-fns'
 import { useRouter } from 'expo-router'
-import { useCallback } from 'react'
+import { useCallback, useMemo } from 'react'
 import { View, Text, StyleSheet, Image, ImageSourcePropType } from 'react-native'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -12,11 +12,15 @@ import { defaultStyles } from '@/constants/Styles'
 import { WhereBeen } from '@/types'
 
 export const AuthorizedTrips = () => {
-  const visited: WhereBeen[] = visitedPlaces.map((place) => ({
-    ...place,
-    date_from: parseISO(place.date_from),
-    date_to: parseISO(place.date_to),
-  }))
+  const visited: WhereBeen[] = useMemo(
+    () =>
+      visitedPlaces.map((place) => ({
+        ...place,
+        date_from: parseISO(place.date_from),
+        date_to: parseISO(place.date_to),
+      })),
+    []
+  )
 
   const router = useRouter()
 
