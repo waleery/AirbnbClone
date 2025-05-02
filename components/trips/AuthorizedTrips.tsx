@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
 
     borderWidth: StyleSheet.hairlineWidth,
-    borderBlockColor: Colors.grey,
+    borderColor: Colors.grey,
 
     borderRadius: 10,
     alignItems: 'center',
