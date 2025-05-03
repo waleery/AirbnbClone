@@ -24,7 +24,7 @@ export const AuthorizedTrips = () => {
 
   const router = useRouter()
 
-  const handleOnPresStartSearching = useCallback(() => router.push('/'), [router])
+  const handleOnPressStartSearching = useCallback(() => router.push('/'), [router])
 
   const renderDate = (date_from: Date, date_to: Date) => {
     const yearFrom = format(date_from, 'yyyy')
@@ -50,7 +50,7 @@ export const AuthorizedTrips = () => {
             </Text>
             <TouchableOpacity
               style={[defaultStyles.btn, defaultStyles.pX5]}
-              onPress={handleOnPresStartSearching}
+              onPress={handleOnPressStartSearching}
             >
               <Text style={[defaultStyles.btnText, defaultStyles.font500]}>Start searching</Text>
             </TouchableOpacity>
