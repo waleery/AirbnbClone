@@ -21,7 +21,7 @@ export const WishlistItem = ({ wishlist }: WishlistItemProps) => {
         <View style={styles.tile}>
           {wishlist.recently_viewed ? (
             wishlist.list.slice(0, 4).map((listItem, index) => (
-              <Link key={index} href={`/listing/${listItem.id}`} asChild>
+              <Link key={listItem.id} href={`/listing/${listItem.id}`} asChild>
                 <TouchableOpacity style={getItemStyle(index)}>
                   <Image source={{ uri: listItem.medium_url }} style={styles.image} />
                 </TouchableOpacity>
