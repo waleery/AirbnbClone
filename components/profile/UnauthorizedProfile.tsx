@@ -7,7 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { AirBnbYourHome } from './AirBnbYourHome'
 import { RenderOptions } from './RenderOptions'
 
-import { unautorizedSettings } from '@/assets/data'
+import { unauthorizedSettings } from '@/assets/data'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 
@@ -39,7 +39,7 @@ export const UnauthorizedProfile = () => {
         <AirBnbYourHome />
 
         <View style={styles.optionsSection}>
-          <RenderOptions options={unautorizedSettings} />
+          <RenderOptions options={unauthorizedSettings} />
         </View>
       </ScrollView>
     </SafeAreaView>

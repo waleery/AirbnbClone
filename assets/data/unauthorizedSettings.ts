@@ -1,6 +1,6 @@
 import { TOption } from '@/types'
 
-export const unautorizedSettings: TOption[] = [
+export const unauthorizedSettings: TOption[] = [
   {
     title: 'Settings',
     icon: 'settings-outline',
