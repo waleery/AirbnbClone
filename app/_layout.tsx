@@ -15,7 +15,7 @@ import { ModalHeaderText } from '@/components'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants/Styles'
 
-const CLERK_PUBLISAHBLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY
+const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY
 
 const tokenCache = {
   async getToken(key: string) {
@@ -70,7 +70,7 @@ export default function RootLayout() {
   }
 
   return (
-    <ClerkProvider publishableKey={CLERK_PUBLISAHBLE_KEY!} tokenCache={tokenCache}>
+    <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY!} tokenCache={tokenCache}>
       <GestureHandlerRootView style={defaultStyles.flex}>
         <RootLayoutNav />
       </GestureHandlerRootView>
