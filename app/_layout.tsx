@@ -68,9 +68,13 @@ export default function RootLayout() {
   if (!loaded) {
     return null
   }
+  
+  if (!CLERK_PUBLISHABLE_KEY) {
+    throw new Error('Missing Clerk publishable key')
+  }
 
   return (
-    <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY!} tokenCache={tokenCache}>
+    <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY} tokenCache={tokenCache}>
       <GestureHandlerRootView style={defaultStyles.flex}>
         <RootLayoutNav />
       </GestureHandlerRootView>
