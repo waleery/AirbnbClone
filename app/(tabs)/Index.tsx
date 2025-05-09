@@ -1,5 +1,5 @@
 import { Stack } from 'expo-router'
-import { useAtom } from 'jotai'
+import { useAtomValue } from 'jotai'
 import { useCallback, useMemo, useState } from 'react'
 import { View } from 'react-native'
 
@@ -12,7 +12,7 @@ import { ListingGeo } from '@/types'
 
 const Page = () => {
   const [category, setCategory] = useState(accommodation_categories[0].name)
-  const [listings] = useAtom(filteredListingsAtom)
+  const listings = useAtomValue(filteredListingsAtom)
   const listingsGeo = useMemo(() => listingsDataGeo as ListingGeo, [])
 
   const onDataChanged = useCallback((category: string) => {
