@@ -98,10 +98,12 @@ const Page = () => {
           ref={scrollRef}
           scrollEventThrottle={0.2}
         >
-          <Animated.Image
-            source={{ uri: listing.xl_picture_url! }}
-            style={[styles.image, imageAnimatedStyle]}
-          />
+          {listing.xl_picture_url ? (
+            <Animated.Image
+              source={{ uri: listing.xl_picture_url }}
+              style={[styles.image, imageAnimatedStyle]}
+            />
+          ) : null}
           <View style={styles.infoContainer}>
             <Text style={styles.name}>{listing.name}</Text>
             <Text style={styles.location}>
