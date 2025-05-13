@@ -68,7 +68,7 @@ export const ExploreHeader = ({ onCategoryChanged }: ExploreHeaderProps) => {
         >
           {accommodation_categories.map((category, index) => (
             <TouchableOpacity
-              key={index}
+              key={category.name}
               ref={getRefHandler(index)}
               style={activeIndex === index ? styles.categoryBtnActive : styles.categoryBtn}
               onPress={selectCategory(index)}
