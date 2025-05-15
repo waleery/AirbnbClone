@@ -1,7 +1,7 @@
 import { atom } from 'jotai'
 
 import listingsData from '@/assets/data/json/airbnb-listings.json'
-import { guestsGroups } from '@/constants/guestsGroups'
+import { guestsGroups } from '@/constants'
 import { GuestsGroup, Listing } from '@/types'
 
 export const listingsAtom = atom<Listing[]>(listingsData as Listing[])

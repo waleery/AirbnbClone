@@ -7,8 +7,8 @@ import { FlatList, Swipeable } from 'react-native-gesture-handler'
 import messagesDataRaw from '@/assets/data/json/messages.json'
 import { MessageTile } from '@/components/inbox/MessageTile'
 import Colors from '@/constants/Colors'
-import { defaultStyles } from '@/constants/Styles'
-import { messageTypes } from '@/constants/messageTypes'
+import { defaultStyles } from '@/constants'
+import { messageTypes } from '@/constants'
 import { Conversation } from '@/types'
 
 const messagesData: Conversation[] = messagesDataRaw.map((message) => ({

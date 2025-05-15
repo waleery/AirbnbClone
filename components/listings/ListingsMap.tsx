@@ -5,7 +5,7 @@ import MapView from 'react-native-map-clustering'
 import { Marker, PROVIDER_DEFAULT, PROVIDER_GOOGLE } from 'react-native-maps'
 
 import Colors from '@/constants/Colors'
-import { defaultStyles } from '@/constants/Styles'
+import { defaultStyles } from '@/constants'
 import { Feature, ListingGeo } from '@/types'
 
 interface Props {

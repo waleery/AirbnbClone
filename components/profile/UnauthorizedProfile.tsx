@@ -9,7 +9,7 @@ import { RenderOptions } from './RenderOptions'
 
 import { unauthorizedSettings } from '@/assets/data'
 import Colors from '@/constants/Colors'
-import { defaultStyles } from '@/constants/Styles'
+import { defaultStyles } from '@/constants'
 
 export const UnauthorizedProfile = () => {
   const router = useRouter()

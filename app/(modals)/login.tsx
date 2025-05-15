@@ -5,7 +5,7 @@ import { useCallback, useState } from 'react'
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
 
 import Colors from '@/constants/Colors'
-import { defaultStyles } from '@/constants/Styles'
+import { defaultStyles } from '@/constants'
 import { useWarmUpBrowser } from '@/hooks'
 
 enum Strategy {

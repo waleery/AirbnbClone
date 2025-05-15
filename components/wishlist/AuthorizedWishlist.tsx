@@ -4,7 +4,7 @@ import { View, StyleSheet } from 'react-native'
 
 import { WishlistTiles } from '@/components/wishlist/WishlistTiles'
 import Colors from '@/constants/Colors'
-import { defaultStyles } from '@/constants/Styles'
+import { defaultStyles } from '@/constants'
 import { wishlistEditMode } from '@/store'
 
 export const AuthorizedWhishlist = () => {

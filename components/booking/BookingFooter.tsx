@@ -5,7 +5,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import Animated, { SlideInDown } from 'react-native-reanimated'
 
-import { defaultStyles } from '@/constants/Styles'
+import { defaultStyles } from '@/constants'
 
 interface BookingFooterProps {
   onClearAll: () => void

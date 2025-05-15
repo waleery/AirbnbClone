@@ -9,7 +9,7 @@ import { Swipeable } from 'react-native-gesture-handler'
 import { AnimatedInterpolation } from 'react-native-gesture-handler/lib/typescript/components/Swipeable'
 
 import Colors from '@/constants/Colors'
-import { defaultStyles } from '@/constants/Styles'
+import { defaultStyles } from '@/constants'
 import { listingsAtom } from '@/store'
 import { Conversation } from '@/types'
 

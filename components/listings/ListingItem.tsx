@@ -8,7 +8,7 @@ import Svg, { Path } from 'react-native-svg'
 import Carousel from './Carousel'
 
 import Colors from '@/constants/Colors'
-import { defaultStyles } from '@/constants/Styles'
+import { defaultStyles } from '@/constants'
 import { Listing } from '@/types'
 
 interface Props {

@@ -13,7 +13,7 @@ import SpaceMonoFont from '../assets/fonts/SpaceMono-Regular.ttf'
 
 import { ModalHeaderText } from '@/components'
 import Colors from '@/constants/Colors'
-import { defaultStyles } from '@/constants/Styles'
+import { defaultStyles } from '@/constants'
 
 const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY
 

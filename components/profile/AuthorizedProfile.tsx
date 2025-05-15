@@ -19,7 +19,7 @@ import { RenderOptions } from './RenderOptions'
 
 import { hosting, legal, settings, support, tools } from '@/assets/data'
 import Colors from '@/constants/Colors'
-import { defaultStyles } from '@/constants/Styles'
+import { defaultStyles } from '@/constants'
 
 export const AuthorizedProfile = () => {
   const { signOut } = useAuth()

@@ -12,7 +12,7 @@ import Animated, {
 
 import listingsData from '@/assets/data/json/airbnb-listings.json'
 import Colors from '@/constants/Colors'
-import { defaultStyles } from '@/constants/Styles'
+import { defaultStyles } from '@/constants'
 import { Listing } from '@/types'
 
 const IMG_HEIGHT = 300

@@ -3,7 +3,7 @@ import React, { useCallback } from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-import { defaultStyles } from '@/constants/Styles'
+import { defaultStyles } from '@/constants'
 import { wishlistEditMode } from '@/store'
 
 export const WishlistHeader = () => {
