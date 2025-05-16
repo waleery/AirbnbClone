@@ -4,12 +4,12 @@ import { useCallback, useEffect, useState } from 'react'
 import { StyleSheet } from 'react-native'
 
 import { BookingFooter, WhenCard, WhereCard, WhoCard } from '@/components'
-import { daysStayFilterAtom, filterAtom, groupsAtom, guestsIncludedFilterAtom } from '@/store'
+import { daysStayFilterAtom, isFilteringAtom, groupsAtom, guestsIncludedFilterAtom } from '@/store'
 
 const Page = () => {
   const setGuestsIncluded = useSetAtom(guestsIncludedFilterAtom)
   const setDaysStayFilterAtom = useSetAtom(daysStayFilterAtom)
-  const [filterFlag, setFilterFlag] = useAtom(filterAtom)
+  const [filterFlag, setFilterFlag] = useAtom(isFilteringAtom)
   const [groups, setGroups] = useAtom(groupsAtom)
   const [openCard, setOpenCard] = useState(0)
   const [selectedPlace, setSelectedPalce] = useState(0)
