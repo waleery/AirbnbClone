@@ -128,8 +128,8 @@ const Page = () => {
               <Image source={{ uri: listing.host_picture_url }} style={styles.host} />
 
               <View>
-                <Text style={styles.hostText}>Hosted by {listing.host_name}</Text>
-                <Text>Host since: {listing.host_since}</Text>
+                <Text style={styles.hostText}>Hosted by {listing.host_name || 'N/A'}</Text>
+                <Text>Host since: {listing.host_since || 'unknown'}</Text>
               </View>
             </View>
             <View style={styles.divider} />
