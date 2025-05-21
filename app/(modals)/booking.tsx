@@ -12,7 +12,7 @@ const Page = () => {
   const [filterFlag, setFilterFlag] = useAtom(isFilteringAtom)
   const [groups, setGroups] = useAtom(groupsAtom)
   const [openCard, setOpenCard] = useState(0)
-  const [selectedPlace, setSelectedPalce] = useState(0)
+  const [selectedPlace, setSelectedPlace] = useState(0)
 
   useEffect(() => {
     if (filterFlag) {
@@ -21,7 +21,7 @@ const Page = () => {
   }, [filterFlag, setFilterFlag])
 
   const onClearAll = useCallback(() => {
-    setSelectedPalce(0)
+    setSelectedPlace(0)
     setOpenCard(0)
     setGroups((prev) => prev.map((item) => ({ ...item, count: 0 })))
     setGuestsIncluded(0)
@@ -39,7 +39,7 @@ const Page = () => {
 
       <WhereCard
         selectedPlace={selectedPlace}
-        setSelectedPlace={setSelectedPalce}
+        setSelectedPlace={setSelectedPlace}
         openCard={openCard}
         setOpenCard={setOpenCard}
       />
