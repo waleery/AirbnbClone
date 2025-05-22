@@ -63,7 +63,6 @@ const Carousel: React.FC<CarouselProps> = ({ items, onPress = () => {} }) => {
       } else {
         return (
           <Pressable onPress={handleOnPress}>
-            {/* Sprawdź, czy `item` jest lokalnym obrazem */}
             <Image
               source={typeof item === 'string' ? { uri: item } : item}
               style={styles.image}
