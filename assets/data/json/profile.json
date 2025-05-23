@@ -5,7 +5,7 @@
   "yearsOnAirbnb": 5,
   "city": "Siemiatycze",
   "country": "Poland",
-  "confirmedIndormation": {
+  "confirmedInformation": {
     "identity": true,
     "emailAddress": true,
     "phoneNumber": true

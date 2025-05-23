@@ -19,9 +19,9 @@ import profile from '@/assets/data/json/profile.json'
 import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants'
 import { Review } from '@/types'
-import { confirmedIndormation, Profile } from '@/types/profile'
+import { confirmedInformation, Profile } from '@/types/profile'
 
-const confirmedInformationLabels: Record<keyof confirmedIndormation, string> = {
+const confirmedInformationLabels: Record<keyof confirmedInformation, string> = {
   identity: 'Identity',
   emailAddress: 'Email address',
   phoneNumber: 'Phone number',
@@ -165,12 +165,12 @@ export default function ProfilePage() {
         <Text
           style={styles.confirmedInformationsText}
         >{`${user?.firstName}'s confirmed information`}</Text>
-        {Object.entries(profileData.confirmedIndormation).map(([key, value]) =>
+        {Object.entries(profileData.confirmedInformation).map(([key, value]) =>
           value ? (
             <View key={key} style={styles.connfirmedInformationRow}>
               <FontAwesome6 name="check" size={24} color="black" />
               <Text style={styles.connfirmedInformationRowText}>
-                {confirmedInformationLabels[key as keyof confirmedIndormation]}
+                {confirmedInformationLabels[key as keyof confirmedInformation]}
               </Text>
             </View>
           ) : null
@@ -178,7 +178,7 @@ export default function ProfilePage() {
         <Text style={styles.learnText}>Learn about identity verification</Text>
       </>
     ),
-    [profileData.confirmedIndormation, user?.firstName]
+    [profileData.confirmedInformation, user?.firstName]
   )
 
   return (

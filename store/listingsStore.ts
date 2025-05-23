@@ -22,15 +22,15 @@ export const filteredListingsAtom = atom((get) => {
   if (!isFiltering) {
     return listings
   }
-  let filtered = listings
+  let filteredList = listings
 
   if (guestsIncluded && guestsIncluded > 0) {
-    filtered = filtered.filter((listing) => listing.guests_included >= guestsIncluded)
+    filteredList = filteredList.filter((listing) => listing.guests_included >= guestsIncluded)
   }
   if (daysStay) {
-    return filtered.filter(
+    filteredList = filteredList.filter(
       (listing) => listing.minimum_nights <= daysStay && listing.maximum_nights >= daysStay
     )
   }
-  return filtered
+  return filteredList
 })

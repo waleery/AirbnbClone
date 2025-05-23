@@ -6,11 +6,11 @@ export interface Profile {
   yearsOnAirbnb: number
   city: string
   country: string
-  confirmedIndormation: confirmedIndormation
+  confirmedInformation: confirmedInformation
   reviews?: Review[]
 }
 
-export interface confirmedIndormation {
+export interface confirmedInformation {
   identity: boolean
   emailAddress: boolean
   phoneNumber: boolean
