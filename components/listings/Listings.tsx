@@ -14,7 +14,7 @@ interface Props {
 }
 
 export const Listings = ({ category, listings: items, refresh }: Props) => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState<Boolean>(false)
   const listRef = useRef<BottomSheetFlatListMethods>(null)
 
   useEffect(() => {
