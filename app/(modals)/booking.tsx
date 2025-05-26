@@ -11,8 +11,8 @@ const Page = () => {
   const setDaysStayFilterAtom = useSetAtom(daysStayFilterAtom)
   const [filterFlag, setFilterFlag] = useAtom(isFilteringAtom)
   const [groups, setGroups] = useAtom(groupsAtom)
-  const [openCard, setOpenCard] = useState(0)
-  const [selectedPlace, setSelectedPlace] = useState(0)
+  const [openCard, setOpenCard] = useState<number>(0)
+  const [selectedPlace, setSelectedPlace] = useState<number>(0)
 
   useEffect(() => {
     if (filterFlag) {
