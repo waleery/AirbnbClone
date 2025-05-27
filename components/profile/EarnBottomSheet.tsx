@@ -29,15 +29,15 @@ export const handleCloseEarnBottomSheet = () => {
 }
 
 export const EarnBottomSheet = () => {
-  const [value, setValue] = useState(1)
-  const [isOpen, setIsOpen] = useState(false)
-  const [showLoadingDots, setShowLoadingDots] = useState(false)
-  const [isVisibleText, setIsVisibleText] = useState(true)
-  const [pricePerNight] = useState(351)
+  const [value, setValue] = useState<number>(1)
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const [showLoadingDots, setShowLoadingDots] = useState<boolean>(false)
+  const [isVisibleText, setIsVisibleText] = useState<boolean>(true)
+  const [pricePerNight] = useState<number>(351)
   const price = useSharedValue(1)
   const minPrice = useSharedValue(1)
   const maxPrice = useSharedValue(30)
-  const [sliderHeight, setSliderHeight] = useState(5)
+  const [sliderHeight, setSliderHeight] = useState<number>(5)
   const snapPoints = useMemo(() => ['100%', '100%'], [])
 
   //to simulate loading data
