@@ -15,7 +15,7 @@ interface ExploreHeaderProps {
 export const ExploreHeader = ({ onCategoryChanged }: ExploreHeaderProps) => {
   const scrollRef = useRef<ScrollView>(null)
   const itemsRef = useRef<React.RefObject<View>[]>([])
-  const [activeIndex, setActiveIndex] = useState(0)
+  const [activeIndex, setActiveIndex] = useState<number>(0)
 
   const getRefHandler = useCallback(
     (index: number) => (element: View | null) => {
