@@ -17,7 +17,7 @@ const Page = () => {
   useWarmUpBrowser()
   const router = useRouter()
 
-  const [isTyped, setIsTyped] = useState(false)
+  const [isTyped, setIsTyped] = useState<boolean>(false)
 
   const { startOAuthFlow: googleAuth } = useOAuth({ strategy: 'oauth_google' })
   const { startOAuthFlow: appleAuth } = useOAuth({ strategy: 'oauth_apple' })
