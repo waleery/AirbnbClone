@@ -27,8 +27,8 @@ type CarouselProps = {
 const additionalImages = [roomExample, roomExample2, roomExample3]
 
 const Carousel: React.FC<CarouselProps> = ({ items, onPress = () => {} }) => {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [imageError, setImageError] = useState(false)
+  const [currentIndex, setCurrentIndex] = useState<number>(0)
+  const [imageError, setImageError] = useState<boolean>(false)
 
   const flatListRef = useRef<FlatList<string>>(null)
 
