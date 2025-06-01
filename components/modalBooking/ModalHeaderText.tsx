@@ -6,7 +6,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import Colors from '@/constants/Colors'
 
 export const ModalHeaderText = () => {
-  const [active, setActive] = useState(0)
+  const [active, setActive] = useState<number>(0)
 
   const handleSetActive = useCallback((index: number) => () => setActive(index), [])
   return (
