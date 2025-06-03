@@ -8,7 +8,7 @@ type LoadingDotsProps = {
 }
 
 export const LoadingDots = ({ numberOfDots = 3 }: LoadingDotsProps) => {
-  const dots = useRef([...Array(numberOfDots)].map(() => new Animated.Value(0))).current
+  const dots = useRef<Animated.Value[]>([...Array(numberOfDots)].map(() => new Animated.Value(0))).current
 
   useEffect(() => {
     const sequence = (dot: Animated.Value) =>
