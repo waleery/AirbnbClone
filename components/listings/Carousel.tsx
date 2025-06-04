@@ -36,8 +36,8 @@ const Carousel: React.FC<CarouselProps> = ({ items, onPress = () => {} }) => {
 
   const handleImageError = useCallback(() => setImageError(true), [])
 
-  const onViewableItemsChanged = React.useRef(
-    ({ viewableItems }: { viewableItems: ViewToken[] }) => {
+  const onViewableItemsChanged = React.useRef<({ viewableItems }: { viewableItems: Array<ViewToken> }) => void>(
+    ({ viewableItems }) => {
       if (viewableItems.length > 0) {
         setCurrentIndex(viewableItems[0].index ?? 0)
       }
