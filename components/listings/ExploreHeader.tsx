@@ -5,8 +5,8 @@ import { useCallback, useRef, useState } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-import Colors from '@/constants/Colors'
 import { defaultStyles, accommodation_categories } from '@/constants'
+import Colors from '@/constants/Colors'
 
 interface ExploreHeaderProps {
   onCategoryChanged: (category: string) => void

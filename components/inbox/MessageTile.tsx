@@ -8,8 +8,8 @@ import { Swipeable } from 'react-native-gesture-handler'
 // but TypeScript may not recognize it due to issues with type definitions in the library.
 import { AnimatedInterpolation } from 'react-native-gesture-handler/lib/typescript/components/Swipeable'
 
-import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants'
+import Colors from '@/constants/Colors'
 import { listingsAtom } from '@/store'
 import { Conversation } from '@/types'
 

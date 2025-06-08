@@ -6,8 +6,8 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 
 import { Listings } from './Listings'
 
-import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants'
+import Colors from '@/constants/Colors'
 import { Listing } from '@/types'
 
 interface Props {

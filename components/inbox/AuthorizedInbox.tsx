@@ -6,8 +6,8 @@ import { FlatList, Swipeable } from 'react-native-gesture-handler'
 
 import messagesDataRaw from '@/assets/data/json/messages.json'
 import { MessageTile } from '@/components/inbox/MessageTile'
-import Colors from '@/constants/Colors'
 import { defaultStyles, messageTypes } from '@/constants'
+import Colors from '@/constants/Colors'
 import { Conversation } from '@/types'
 
 const messagesData: Conversation[] = messagesDataRaw.map((message) => ({
@@ -46,7 +46,7 @@ export const AuthorizedInbox = () => {
     return messagesData.filter((c) =>
       selectedType === 'Customer service' ? c.customer_service : !c.customer_service
     )
-  }, [selectedType, messagesData])
+  }, [selectedType])
 
   return (
     <View style={defaultStyles.flex}>

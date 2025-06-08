@@ -4,8 +4,8 @@ import { StyleSheet, View } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants'
+import Colors from '@/constants/Colors'
 
 export const InboxHeader = () => {
   return (

@@ -18,8 +18,8 @@ import { AirBnbYourHome } from './AirBnbYourHome'
 import { RenderOptions } from './RenderOptions'
 
 import { hosting, legal, settings, support, tools } from '@/assets/data'
-import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants'
+import Colors from '@/constants/Colors'
 
 export const AuthorizedProfile = () => {
   const { signOut } = useAuth()

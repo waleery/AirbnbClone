@@ -11,8 +11,8 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { LoadingDots } from '../LoadingDots'
 
-import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants'
+import Colors from '@/constants/Colors'
 
 const deviceWidth = Dimensions.get('window').width
 const mapWidth = deviceWidth / 2 + 40

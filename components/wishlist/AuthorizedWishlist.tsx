@@ -3,8 +3,8 @@ import { useEffect } from 'react'
 import { View, StyleSheet } from 'react-native'
 
 import { WishlistTiles } from '@/components/wishlist/WishlistTiles'
-import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants'
+import Colors from '@/constants/Colors'
 import { wishlistEditMode } from '@/store'
 
 export const AuthorizedWhishlist = () => {

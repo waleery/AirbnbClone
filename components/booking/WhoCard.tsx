@@ -5,8 +5,8 @@ import { View, Text, StyleSheet } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 
-import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants'
+import Colors from '@/constants/Colors'
 import { groupsAtom } from '@/store'
 
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)

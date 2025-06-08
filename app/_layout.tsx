@@ -12,8 +12,8 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import SpaceMonoFont from '../assets/fonts/SpaceMono-Regular.ttf'
 
 import { ModalHeaderText } from '@/components'
-import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants'
+import Colors from '@/constants/Colors'
 
 const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY
 
@@ -66,7 +66,7 @@ export default function RootLayout() {
   if (!loaded) {
     return null
   }
-  
+
   if (!CLERK_PUBLISHABLE_KEY) {
     throw new Error('Missing Clerk publishable key')
   }

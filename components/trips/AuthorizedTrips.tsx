@@ -7,8 +7,8 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 
 import visitedPlaces from '@/assets/data/json/visitedPlaces.json'
 import hello from '@/assets/images/hello.png'
-import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants'
+import Colors from '@/constants/Colors'
 import { WhereBeen } from '@/types'
 
 export const AuthorizedTrips = () => {

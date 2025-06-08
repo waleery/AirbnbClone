@@ -4,8 +4,8 @@ import { useRouter } from 'expo-router'
 import { useCallback, useState } from 'react'
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
 
-import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants'
+import Colors from '@/constants/Colors'
 import { useWarmUpBrowser } from '@/hooks'
 
 enum Strategy {

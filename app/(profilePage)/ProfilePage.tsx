@@ -16,8 +16,8 @@ import { FlatList } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import profile from '@/assets/data/json/profile.json'
-import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants'
+import Colors from '@/constants/Colors'
 import { Review } from '@/types'
 import { confirmedInformation, Profile } from '@/types/profile'
 

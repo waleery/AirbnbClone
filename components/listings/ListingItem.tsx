@@ -7,8 +7,8 @@ import Svg, { Path } from 'react-native-svg'
 
 import Carousel from './Carousel'
 
-import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants'
+import Colors from '@/constants/Colors'
 import { Listing } from '@/types'
 
 interface Props {
@@ -32,8 +32,8 @@ export const ListingItem = ({ item }: Props) => {
       entering={FadeIn.duration(300)}
       exiting={FadeOut.duration(300)}
     >
-        <Carousel items={item.xl_picture_url ? [item.xl_picture_url] : []} onPress={handlePress} />
-        <TouchableOpacity style={styles.favouriteBtn} onPress={handleFavourite}>
+      <Carousel items={item.xl_picture_url ? [item.xl_picture_url] : []} onPress={handlePress} />
+      <TouchableOpacity style={styles.favouriteBtn} onPress={handleFavourite}>
         <Svg fill={Colors.primary} height="100%" width="100%">
           <Path
             fill={isFavourite ? Colors.primary : Colors.grey}

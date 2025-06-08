@@ -36,13 +36,13 @@ const Carousel: React.FC<CarouselProps> = ({ items, onPress = () => {} }) => {
 
   const handleImageError = useCallback(() => setImageError(true), [])
 
-  const onViewableItemsChanged = React.useRef<({ viewableItems }: { viewableItems: ViewToken[] }) => void>(
-    ({ viewableItems }) => {
-      if (viewableItems.length > 0) {
-        setCurrentIndex(viewableItems[0].index ?? 0)
-      }
+  const onViewableItemsChanged = React.useRef<
+    ({ viewableItems }: { viewableItems: ViewToken[] }) => void
+  >(({ viewableItems }) => {
+    if (viewableItems.length > 0) {
+      setCurrentIndex(viewableItems[0].index ?? 0)
     }
-  ).current
+  }).current
 
   const viewabilityConfig = { viewAreaCoveragePercentThreshold: 50 }
 

@@ -11,8 +11,8 @@ import Animated, {
 } from 'react-native-reanimated'
 
 import listingsData from '@/assets/data/json/airbnb-listings.json'
-import Colors from '@/constants/Colors'
 import { defaultStyles } from '@/constants'
+import Colors from '@/constants/Colors'
 import { Listing } from '@/types'
 
 const IMG_HEIGHT = 300

@@ -5,7 +5,7 @@ import { View } from 'react-native'
 
 import listingsDataGeo from '@/assets/data/json/airbnb-listings.geo.json'
 import { ExploreHeader, ListingsBottomSheet, ListingsMap } from '@/components'
-import { defaultStyles,accommodation_categories } from '@/constants'
+import { defaultStyles, accommodation_categories } from '@/constants'
 import { filteredListingsAtom } from '@/store'
 import { ListingGeo } from '@/types'
 
