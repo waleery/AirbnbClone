@@ -13,7 +13,7 @@ export const daysStayFilterAtom = atom<number | null>(null)
 export const groupsAtom = atom<GuestsGroup[]>(guestsGroups)
 export const isFilteringAtom = atom<boolean>(false)
 
-export const filteredListingsAtom = atom((get) => {
+export const filteredListingsAtom = atom<Listing[]>((get) => {
   const listings = get(listingsAtom)
   const isFiltering = get(isFilteringAtom)
   const guestsIncluded = get(guestsIncludedFilterAtom)
