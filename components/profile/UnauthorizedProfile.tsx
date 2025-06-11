@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     color: Colors.grey,
   },
   logInBtn: {
-    marginTop: 40,
+    marginTop: 28,
   },
   signUpContainer: {
     paddingTop: 20,
