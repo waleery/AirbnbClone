@@ -50,7 +50,7 @@ export const WhenCard = ({ setOpenCard, openCard }: Props) => {
     } else if (daysCount && daysCount > 1) {
       return `${daysCount} days`
     }
-    return 'Any week'
+    return 'Add dates'
   }, [daysCount])
 
   const handleOpenCard = useCallback(() => setOpenCard(1), [setOpenCard])
