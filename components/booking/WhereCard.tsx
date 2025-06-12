@@ -45,7 +45,7 @@ export const WhereCard = ({ setOpenCard, openCard, setSelectedPlace, selectedPla
       )}
       {openCard === 0 && (
         <>
-          <Text style={defaultStyles.cardHeader}>Where to?</Text>
+          <Text style={defaultStyles.cardHeader}>Where?</Text>
           <Animated.View style={defaultStyles.pX2}>
             <View style={styles.searchSection}>
               <Ionicons name="search" size={20} color={'black'} style={styles.searchIcon} />
