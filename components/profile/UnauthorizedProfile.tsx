@@ -28,14 +28,9 @@ export const UnauthorizedProfile = () => {
           style={{ ...styles.logInBtn, ...defaultStyles.btn }}
           onPress={handleOpenLogin}
         >
-          <Text style={[defaultStyles.btnText, defaultStyles.font500]}>Log in</Text>
+          <Text style={[defaultStyles.btnText, defaultStyles.font500]}>Log in or sign up</Text>
         </TouchableOpacity>
-        <View style={styles.signUpContainer}>
-          <Text style={styles.questionText}>Don&apos;t have account?</Text>
-          <Link href="/(modals)/login" asChild>
-            <Text style={styles.signUp}>Sign up</Text>
-          </Link>
-        </View>
+        
         <AirBnbYourHome />
 
         <View style={styles.optionsSection}>
@@ -68,13 +63,10 @@ const styles = StyleSheet.create({
   },
   logInBtn: {
     marginTop: 28,
+        marginBottom: 40,
+
   },
-  signUpContainer: {
-    paddingTop: 20,
-    flexDirection: 'row',
-    gap: 5,
-    marginBottom: 40,
-  },
+
   questionText: {
     fontWeight: '400',
     color: Colors.grey,
