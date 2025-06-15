@@ -25,7 +25,7 @@ export const UnauthorizedProfile = () => {
 
         <Text style={styles.headerSecond}>Log in to start planning your next trip.</Text>
         <TouchableOpacity
-          style={{ ...styles.logInBtn, ...defaultStyles.btn }}
+          style={{...defaultStyles.btn, ...styles.logInBtn }}
           onPress={handleOpenLogin}
         >
           <Text style={[defaultStyles.btnText, defaultStyles.font500]}>Log in or sign up</Text>
@@ -63,8 +63,8 @@ const styles = StyleSheet.create({
   },
   logInBtn: {
     marginTop: 28,
-        marginBottom: 40,
-
+    marginBottom: 40,
+    backgroundColor:Colors.black
   },
 
   questionText: {
