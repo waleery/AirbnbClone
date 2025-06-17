@@ -24,7 +24,7 @@ export const defaultStyles = StyleSheet.create({
   btn: {
     backgroundColor: Colors.primary,
     height: 50,
-    borderRadius: 8,
+    borderRadius: 12,
     justifyContent: 'center',
     alignItems: 'center',
   },
