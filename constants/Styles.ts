@@ -31,6 +31,7 @@ export const defaultStyles = StyleSheet.create({
   btnText: {
     color: Colors.white,
     fontSize: 16,
+    fontWeight: '600',
   },
   btnOutline: {
     backgroundColor: Colors.white,
