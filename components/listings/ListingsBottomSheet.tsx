@@ -50,7 +50,7 @@ export const ListingsBottomSheet = ({ listings, category }: Props) => {
 const styles = StyleSheet.create({
   absoluteBtn: {
     position: 'absolute',
-    bottom: 30,
+    bottom: 25,
     width: '100%',
     alignItems: 'center',
   },
