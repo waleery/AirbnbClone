@@ -29,8 +29,6 @@ export const Listings = ({ category, listings: items, refresh }: Props) => {
     setTimeout(() => {
       setLoading(false)
     }, 200)
-
-    console.log('RELOAD LISTINGS, listings length:', items.length)
   }, [category, items.length])
 
   const renderRow: ListRenderItem<Listing> = useCallback(
