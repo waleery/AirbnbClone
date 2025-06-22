@@ -41,10 +41,10 @@ const Page = () => {
           url: listing.listing_url,
         })
       } catch (error) {
-        console.log(error)
+        console.error(error)
       }
     } else {
-      console.log('Listing details are missing.')
+      console.error('Listing details are missing.')
     }
   }, [listing?.listing_url, listing?.name])
 
