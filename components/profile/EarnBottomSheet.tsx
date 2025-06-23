@@ -38,7 +38,7 @@ export const EarnBottomSheet = () => {
   const minPrice = useSharedValue(1)
   const maxPrice = useSharedValue(30)
   const [sliderHeight, setSliderHeight] = useState<number>(5)
-  const snapPoints = useMemo(() => ['100%', '100%'], [])
+  const snapPoints = useMemo(() => ['100%'], [])
 
   //to simulate loading data
   useEffect(() => {
