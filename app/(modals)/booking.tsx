@@ -36,18 +36,17 @@ const Page = () => {
   return (
     <BlurView intensity={70} style={styles.container} tint="light">
       {/* Where */}
-
       <WhereCard
         selectedPlace={selectedPlace}
         setSelectedPlace={setSelectedPlace}
         openCard={openCard}
         setOpenCard={setOpenCard}
       />
+      
       {/* When */}
-
       <WhenCard openCard={openCard} setOpenCard={setOpenCard} />
+      
       {/* Who */}
-
       <WhoCard openCard={openCard} setOpenCard={setOpenCard} />
 
       {/* Footer */}
