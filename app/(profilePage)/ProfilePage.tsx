@@ -26,9 +26,9 @@ const confirmedInformationLabels: Record<keyof confirmedInformation, string> = {
   emailAddress: 'Email address',
   phoneNumber: 'Phone number',
 }
-const timeSince = (dateString: Date) => {
+const timeSince = (dateInput: Date) => {
   const now = new Date()
-  const date = new Date(dateString)
+  const date = new Date(dateInput)
 
   const diffInMs = now.getTime() - date.getTime()
   const diffInDays = diffInMs / (1000 * 60 * 60 * 24)
