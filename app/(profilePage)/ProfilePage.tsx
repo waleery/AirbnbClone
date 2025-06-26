@@ -167,9 +167,9 @@ export default function ProfilePage() {
         >{`${user?.firstName}'s confirmed information`}</Text>
         {Object.entries(profileData.confirmedInformation).map(([key, value]) =>
           value ? (
-            <View key={key} style={styles.connfirmedInformationRow}>
+            <View key={key} style={styles.confirmedInformationRow}>
               <FontAwesome6 name="check" size={24} color="black" />
-              <Text style={styles.connfirmedInformationRowText}>
+              <Text style={styles.confirmedInformationRowText}>
                 {confirmedInformationLabels[key as keyof confirmedInformation]}
               </Text>
             </View>
@@ -296,13 +296,13 @@ const styles = StyleSheet.create({
     height: '30%',
     borderRadius: 100,
   },
-  connfirmedInformationRow: {
+  confirmedInformationRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 15,
     marginBottom: 12,
   },
-  connfirmedInformationRowText: {
+  confirmedInformationRowText: {
     fontSize: 17,
   },
   reviewTile: {
