@@ -22,7 +22,7 @@ export const WhenCard = ({ setOpenCard, openCard }: Props) => {
 
   const [startDate, setStartDate] = useState<DateType>(null)
   const [endDate, setEndDate] = useState<DateType>(null)
-  const today = new Date().toISOString().substring(0, 10)
+  const today = new Date()
 
   const handleDateChange = useCallback(
     (dates: { startDate?: DateType; endDate?: DateType }) => {
