@@ -23,23 +23,23 @@ export const WhenCard = ({ setOpenCard, openCard }: Props) => {
   const [startDate, setStartDate] = useState<DateType>(null)
   const [endDate, setEndDate] = useState<DateType>(null)
   const today = new Date()
+  
+  const computeDaysCount = (start: Date | null, end: Date | null) => {
+    if (start && end) {
+      const diff = differenceInDays(end, start)
+      return diff > 0 ? diff : 1
+    }
+    return start ? 1 : 0
+  }
 
   const handleDateChange = useCallback(
-    (dates: { startDate?: DateType; endDate?: DateType }) => {
-      const start = dates.startDate ? dayjs(dates.startDate).toDate() : null
-      const end = dates.endDate ? dayjs(dates.endDate).toDate() : null
+    ({ startDate, endDate }: { startDate?: DateType; endDate?: DateType }) => {
+      const start = startDate ? dayjs(startDate).toDate() : null
+      const end = endDate ? dayjs(endDate).toDate() : null
 
       setStartDate(start)
       setEndDate(end)
-
-      if (start && end) {
-        const difference = differenceInDays(end, start)
-        setDaysCount(difference > 0 ? difference : 1)
-      } else if (start) {
-        setDaysCount(1)
-      } else {
-        setDaysCount(0)
-      }
+      setDaysCount(computeDaysCount(start, end))
     },
     [setDaysCount]
   )
