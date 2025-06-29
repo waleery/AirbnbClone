@@ -19,7 +19,7 @@ export const ListingItem = ({ item }: Props) => {
   const router = useRouter()
 
   const handleFavourite = useCallback(() => {
-    setIsFavourite(!isFavourite)
+    setIsFavourite((prev) => !prev)
   }, [isFavourite])
 
   const handlePress = useCallback(() => {
