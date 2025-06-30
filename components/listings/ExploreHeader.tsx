@@ -62,8 +62,8 @@ export const ExploreHeader = ({ onCategoryChanged }: ExploreHeaderProps) => {
           ref={scrollRef}
           horizontal
           showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.acommodationsScrollView}
-          style={styles.acommodationsScrollViewContainer}
+          contentContainerStyle={styles.accommodationsScrollView}
+          style={styles.accommodationsScrollViewContainer}
         >
           {accommodation_categories.map((category, index) => (
             <TouchableOpacity
@@ -150,12 +150,12 @@ const styles = StyleSheet.create({
     borderBottomColor: Colors.black,
     borderBottomWidth: 2,
   },
-  acommodationsScrollView: {
+  accommodationsScrollView: {
     alignItems: 'center',
     gap: 30,
     paddingHorizontal: 16,
   },
-  acommodationsScrollViewContainer: {
+  accommodationsScrollViewContainer: {
     elevation: 4,
     shadowColor: Colors.lightGrey,
     shadowOpacity: 0.2,
