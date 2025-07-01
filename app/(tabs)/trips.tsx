@@ -1,7 +1,6 @@
 import { useAuth } from '@clerk/clerk-expo'
 
-import { AuthorizedTrips } from '@/components'
-import { UnauthorizedTab } from '@/components/UnauthorizedTab'
+import { AuthorizedTrips, UnauthorizedTab } from '@/components'
 
 const Page = () => {
   const { isSignedIn } = useAuth()

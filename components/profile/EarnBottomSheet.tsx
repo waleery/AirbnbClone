@@ -9,10 +9,10 @@ import MapView from 'react-native-maps'
 import { useSharedValue } from 'react-native-reanimated'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-import { LoadingDots } from '../LoadingDots'
 
 import { defaultStyles } from '@/constants'
 import Colors from '@/constants/Colors'
+import { LoadingDots } from '../LoadingDots'
 
 const deviceWidth = Dimensions.get('window').width
 const mapWidth = deviceWidth / 2 + 40

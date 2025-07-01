@@ -2,8 +2,8 @@ import { useAuth } from '@clerk/clerk-expo'
 import { useSetAtom } from 'jotai'
 import { useEffect } from 'react'
 
-import { AuthorizedWhishlist } from '@/components'
-import { UnauthorizedTab } from '@/components/UnauthorizedTab'
+import { AuthorizedWhishlist, UnauthorizedTab } from '@/components'
+
 import { wishlistEditMode } from '@/store'
 
 const Page = () => {
