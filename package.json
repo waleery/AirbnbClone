@@ -15,7 +15,7 @@
   "dependencies": {
     "@clerk/clerk-expo": "^2.14.2",
     "@expo/vector-icons": "^14.0.0",
-    "@gorhom/bottom-sheet": "5.1.2",
+    "@gorhom/bottom-sheet": "5.1.6",
     "@react-native-community/slider": "4.5.5",
     "@react-navigation/native": "^6.0.2",
     "date-fns": "^3.6.0",
