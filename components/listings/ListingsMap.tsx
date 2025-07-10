@@ -1,7 +1,7 @@
 import { useRouter } from 'expo-router'
 import { memo, useCallback } from 'react'
 import { View, Text, StyleSheet, Platform } from 'react-native'
-import MapView from 'react-native-map-clustering'
+import MapView from '@allisonadam81/react-native-super-clusters'
 import { Marker, PROVIDER_DEFAULT, PROVIDER_GOOGLE } from 'react-native-maps'
 
 import { defaultStyles } from '@/constants'
