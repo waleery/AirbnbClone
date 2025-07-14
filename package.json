@@ -45,7 +45,7 @@
     "react-native-screens": "~4.11.1",
     "react-native-svg": "15.11.2",
     "react-native-swipeable": "^0.6.0",
-    "react-native-ui-datepicker": "^2.0.3",
+    "react-native-ui-datepicker": "3.1.2",
     "react-native-web": "^0.20.0"
   },
   "devDependencies": {
