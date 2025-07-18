@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons'
 import BottomSheet from '@gorhom/bottom-sheet'
 import { useCallback, useMemo, useRef, useState } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { Pressable } from 'react-native-gesture-handler'
 
 import { Listings } from './Listings'
 
@@ -37,10 +37,10 @@ export const ListingsBottomSheet = ({ listings, category }: Props) => {
       <View style={defaultStyles.flex}>
         <Listings listings={listings} category={category} refresh={refresh} />
         <View style={styles.absoluteBtn}>
-          <TouchableOpacity onPress={showMap} style={styles.btn}>
+          <Pressable onPress={showMap} style={styles.btn}>
             <Text style={[defaultStyles.white, defaultStyles.boldText]}>Map</Text>
             <Ionicons name="map" size={17} color={'#fff'} />
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </View>
     </BottomSheet>
