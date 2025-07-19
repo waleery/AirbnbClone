@@ -23,7 +23,7 @@ export const WhenCard = ({ setOpenCard, openCard }: Props) => {
   const [startDate, setStartDate] = useState<DateType>(null)
   const [endDate, setEndDate] = useState<DateType>(null)
   const today = new Date()
-  
+
   const computeDaysCount = (start: Date | null, end: Date | null) => {
     if (start && end) {
       const diff = differenceInDays(end, start)

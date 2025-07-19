@@ -3,7 +3,6 @@ import { useSetAtom } from 'jotai'
 import { useEffect } from 'react'
 
 import { AuthorizedWhishlist, UnauthorizedTab } from '@/components'
-
 import { wishlistEditMode } from '@/store'
 
 const Page = () => {
