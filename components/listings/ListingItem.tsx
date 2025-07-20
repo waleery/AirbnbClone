@@ -5,7 +5,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 import Svg, { Path } from 'react-native-svg'
 
-import Carousel from './Carousel'
+import { Carousel } from './Carousel'
 
 import { defaultStyles } from '@/constants'
 import Colors from '@/constants/Colors'
@@ -20,7 +20,7 @@ export const ListingItem = ({ item }: Props) => {
 
   const handleFavourite = useCallback(() => {
     setIsFavourite((prev) => !prev)
-  }, [isFavourite])
+  }, [])
 
   const handlePress = useCallback(() => {
     router.push(`/listing/${item.id}`)

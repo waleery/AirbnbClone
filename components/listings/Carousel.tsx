@@ -26,7 +26,7 @@ type CarouselProps = {
 
 const additionalImages = [roomExample, roomExample2, roomExample3]
 
-const Carousel: React.FC<CarouselProps> = ({ items, onPress = () => {} }) => {
+export const Carousel: React.FC<CarouselProps> = ({ items, onPress = () => {} }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const [imageError, setImageError] = useState<boolean>(false)
 
@@ -111,8 +111,6 @@ const Carousel: React.FC<CarouselProps> = ({ items, onPress = () => {} }) => {
     </View>
   )
 }
-
-export default Carousel
 
 const styles = StyleSheet.create({
   backgroundContainer: {
