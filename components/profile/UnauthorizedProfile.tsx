@@ -24,10 +24,7 @@ export const UnauthorizedProfile = () => {
         </View>
 
         <Text style={styles.headerSecond}>Log in to start planning your next trip.</Text>
-        <Pressable
-          style={{...defaultStyles.btn, ...styles.logInBtn }}
-          onPress={handleOpenLogin}
-        >
+        <Pressable style={{ ...defaultStyles.btn, ...styles.logInBtn }} onPress={handleOpenLogin}>
           <Text style={[defaultStyles.btnText, defaultStyles.font500]}>Log in or sign up</Text>
         </Pressable>
         
