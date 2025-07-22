@@ -1,7 +1,7 @@
-import { Link, useRouter } from 'expo-router'
+import { useRouter } from 'expo-router'
 import { useCallback } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
+import { Pressable, ScrollView } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { AirBnbYourHome } from './AirBnbYourHome'
@@ -24,12 +24,12 @@ export const UnauthorizedProfile = () => {
         </View>
 
         <Text style={styles.headerSecond}>Log in to start planning your next trip.</Text>
-        <TouchableOpacity
+        <Pressable
           style={{...defaultStyles.btn, ...styles.logInBtn }}
           onPress={handleOpenLogin}
         >
           <Text style={[defaultStyles.btnText, defaultStyles.font500]}>Log in or sign up</Text>
-        </TouchableOpacity>
+        </Pressable>
         
         <AirBnbYourHome />
 
@@ -64,16 +64,7 @@ const styles = StyleSheet.create({
   logInBtn: {
     marginTop: 28,
     marginBottom: 40,
-    backgroundColor:Colors.black
-  },
-
-  questionText: {
-    fontWeight: '400',
-    color: Colors.grey,
-  },
-  signUp: {
-    fontWeight: '500',
-    textDecorationLine: 'underline',
+    backgroundColor: Colors.black,
   },
   optionsSection: {
     gap: 35,
