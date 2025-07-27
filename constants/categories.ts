@@ -1,30 +1,14 @@
 export const accommodation_categories = [
   {
-    name: 'Tiny homes',
+    name: 'Homes',
     icon: 'home',
   },
   {
-    name: 'Cabins',
+    name: 'Experiences',
     icon: 'house-siding',
   },
   {
-    name: 'Trending',
+    name: 'Services',
     icon: 'local-fire-department',
-  },
-  {
-    name: 'Play',
-    icon: 'videogame-asset',
-  },
-  {
-    name: 'City',
-    icon: 'apartment',
-  },
-  {
-    name: 'Beachfront',
-    icon: 'beach-access',
-  },
-  {
-    name: 'Countryside',
-    icon: 'nature-people',
   },
 ]
