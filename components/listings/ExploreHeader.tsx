@@ -65,6 +65,10 @@ export const ExploreHeader = ({ onCategoryChanged }: ExploreHeaderProps) => {
               <Text style={activeIndex === index ? styles.categoryTextActive : styles.categoryText}>
                 {category.name}
               </Text>
+
+              <View
+                style={activeIndex === index ? styles.categoryBarActive : styles.categoryBar}
+              ></View>
             </TouchableOpacity>
           ))}
         </View>
@@ -110,17 +114,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: 5,
-    paddingBottom: 6,
-    borderBottomWidth: 2,
-    borderBottomColor: Colors.transparent,
   },
   categoryBtnActive: {
     alignItems: 'center',
     justifyContent: 'center',
     gap: 5,
-    paddingBottom: 6,
-    borderBottomColor: Colors.black,
-    borderBottomWidth: 2,
+  },
+  categoryBar: {
+    height: 2,
+    width: '100%',
+  },
+  categoryBarActive: {
+    height: 2,
+    width: '100%',
+    backgroundColor: Colors.black,
+    borderTopLeftRadius: 3,
+    borderTopRightRadius: 3,
   },
   typesContainer: {
     flexDirection: 'row',
