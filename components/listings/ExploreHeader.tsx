@@ -53,10 +53,6 @@ export const ExploreHeader = ({ onCategoryChanged }: ExploreHeaderProps) => {
               </View>
             </TouchableOpacity>
           </Link>
-
-          <TouchableOpacity style={styles.filterBtn}>
-            <Ionicons name="options-outline" size={24} />
-          </TouchableOpacity>
         </View>
         <ScrollView
           ref={scrollRef}
