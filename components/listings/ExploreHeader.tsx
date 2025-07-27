@@ -49,13 +49,7 @@ export const ExploreHeader = ({ onCategoryChanged }: ExploreHeaderProps) => {
             <Text style={styles.headerText}>Start your search</Text>
           </TouchableOpacity>
         </Link>
-        <ScrollView
-          ref={scrollRef}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.accommodationsScrollView}
-          style={styles.accommodationsScrollViewContainer}
-        >
+        <View style={styles.typesContainer}>
           {accommodation_categories.map((category, index) => (
             <TouchableOpacity
               key={category.name}
@@ -73,7 +67,7 @@ export const ExploreHeader = ({ onCategoryChanged }: ExploreHeaderProps) => {
               </Text>
             </TouchableOpacity>
           ))}
-        </ScrollView>
+        </View>
       </View>
     </SafeAreaView>
   )
@@ -83,7 +77,6 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.white,
   },
-
   searchBtn: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -129,19 +122,19 @@ const styles = StyleSheet.create({
     borderBottomColor: Colors.black,
     borderBottomWidth: 2,
   },
-  accommodationsScrollView: {
+  typesContainer: {
+    flexDirection: 'row',
     alignItems: 'center',
-    gap: 30,
+    justifyContent: 'center',
     paddingHorizontal: 16,
-  },
-  accommodationsScrollViewContainer: {
+    gap: 40,
     elevation: 4,
     shadowColor: Colors.lightGrey,
-    shadowOpacity: 0.2,
-    shadowRadius: 1,
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 4,
     },
     overflow: 'visible',
     backgroundColor: Colors.white,
