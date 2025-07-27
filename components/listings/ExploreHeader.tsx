@@ -43,17 +43,12 @@ export const ExploreHeader = ({ onCategoryChanged }: ExploreHeaderProps) => {
   return (
     <SafeAreaView style={defaultStyles.safeArea} edges={['top']}>
       <View style={styles.container}>
-        <View style={styles.rowAction}>
-          <Link href={'/(modals)/booking'} asChild>
-            <TouchableOpacity style={styles.searchBtn}>
-              <Ionicons name="search" size={24} />
-              <View>
-                <Text style={defaultStyles.boldText}>Where to?</Text>
-                <Text style={defaultStyles.thinText}>Anywhere · Any week</Text>
-              </View>
-            </TouchableOpacity>
-          </Link>
-        </View>
+        <Link href={'/(modals)/booking'} asChild>
+          <TouchableOpacity style={styles.searchBtn}>
+            <Ionicons name="search" size={12} />
+            <Text style={styles.headerText}>Start your search</Text>
+          </TouchableOpacity>
+        </Link>
         <ScrollView
           ref={scrollRef}
           horizontal
@@ -87,40 +82,28 @@ export const ExploreHeader = ({ onCategoryChanged }: ExploreHeaderProps) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.white,
-    overflow: 'visible',
   },
-  rowAction: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 24,
-    paddingBottom: 16,
-    gap: 10,
-  },
-  filterBtn: {
-    padding: 10,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: Colors.lightGrey,
-    borderRadius: 24,
-    elevation: 2,
-    shadowColor: Colors.black,
-    shadowOpacity: 0.07,
-    shadowRadius: 8,
-  },
+
   searchBtn: {
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 10,
-    borderColor: Colors.lightGrey,
-    borderWidth: StyleSheet.hairlineWidth,
-    padding: 12,
+    justifyContent: 'center',
+    gap: 5,
+    padding: 17,
     borderRadius: 30,
     backgroundColor: Colors.white,
+    marginHorizontal: 16,
+    marginBottom: 16,
+    zIndex: 1,
+
     elevation: 2,
     shadowColor: Colors.black,
-    shadowOpacity: 0.07,
-    shadowRadius: 8,
+    shadowOpacity: 0.2,
+    shadowRadius: 20,
+    shadowOffset: {
+      width: 2,
+      height: 2,
+    },
   },
   categoryText: {
     fontSize: 14,
@@ -162,5 +145,9 @@ const styles = StyleSheet.create({
     },
     overflow: 'visible',
     backgroundColor: Colors.white,
+  },
+  headerText: {
+    fontSize: 13,
+    fontWeight: '500',
   },
 })
