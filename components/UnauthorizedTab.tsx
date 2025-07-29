@@ -1,7 +1,7 @@
 import { useRouter } from 'expo-router'
 import { useCallback } from 'react'
 import { Text, StyleSheet } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { Pressable } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { defaultStyles } from '@/constants'
@@ -28,9 +28,9 @@ export const UnauthorizedTab = ({ title, firstText, secondText }: UnauthorizedTa
       <Text style={styles.noTrips}>{firstText}</Text>
       <Text style={styles.noTripsSecond}>{secondText}</Text>
 
-      <TouchableOpacity onPress={handlePressLogIn} style={[defaultStyles.btn, styles.button]}>
+      <Pressable onPress={handlePressLogIn} style={[defaultStyles.btn, styles.button]}>
         <Text style={[defaultStyles.btnText, defaultStyles.font500]}>Log in</Text>
-      </TouchableOpacity>
+      </Pressable>
     </SafeAreaView>
   )
 }
