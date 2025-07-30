@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
 import React, { useCallback } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { Pressable, TouchableOpacity } from 'react-native-gesture-handler'
 import Animated, { SlideInDown } from 'react-native-reanimated'
 
 import { defaultStyles } from '@/constants'
@@ -23,9 +23,9 @@ export const BookingFooter = ({ onClearAll, filter }: BookingFooterProps) => {
   return (
     <Animated.View style={defaultStyles.footer} entering={SlideInDown.delay(200)}>
       <View style={styles.footer}>
-        <TouchableOpacity onPress={onClearAll} style={defaultStyles.center}>
+        <Pressable onPress={onClearAll} style={defaultStyles.center}>
           <Text style={styles.clearText}>Clear all</Text>
-        </TouchableOpacity>
+        </Pressable>
 
         <TouchableOpacity onPress={handlePressFilter} style={[defaultStyles.btn, styles.button]}>
           <Ionicons name="search-outline" size={24} color={'#fff'} style={defaultStyles.btnIcon} />
