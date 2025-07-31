@@ -3,14 +3,14 @@ import dayjs from 'dayjs'
 import { useAtom } from 'jotai'
 import React, { useCallback, useMemo, useState } from 'react'
 import { View, Text } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 import DateTimePicker, { DateType } from 'react-native-ui-datepicker'
 
 import { defaultStyles } from '@/constants'
 import { daysStayFilterAtom } from '@/store'
+import { Pressable } from 'react-native-gesture-handler'
 
-const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 
 interface Props {
   setOpenCard: (i: number) => void
@@ -58,7 +58,7 @@ export const WhenCard = ({ setOpenCard, openCard }: Props) => {
     <View>
       <View style={defaultStyles.card}>
         {openCard !== 1 && (
-          <AnimatedTouchableOpacity
+          <AnimatedPressable
             onPress={handleOpenCard}
             style={defaultStyles.cardPreview}
             entering={FadeIn.duration(200)}
@@ -66,7 +66,7 @@ export const WhenCard = ({ setOpenCard, openCard }: Props) => {
           >
             <Text style={defaultStyles.previewText}>When</Text>
             <Text style={defaultStyles.previewDate}>{displayPersonCount}</Text>
-          </AnimatedTouchableOpacity>
+          </AnimatedPressable>
         )}
         {openCard === 1 && (
           <>
