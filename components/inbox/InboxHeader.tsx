@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { Pressable } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { defaultStyles } from '@/constants'
@@ -11,12 +11,12 @@ export const InboxHeader = () => {
   return (
     <SafeAreaView edges={['top']} style={[defaultStyles.pX2, defaultStyles.safeArea]}>
       <View style={styles.btnBox}>
-        <TouchableOpacity style={styles.topBtn}>
+        <Pressable style={styles.topBtn}>
           <Ionicons name="options-outline" size={24} />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.topBtn}>
+        </Pressable>
+        <Pressable style={styles.topBtn}>
           <Ionicons name="search" size={24} />
-        </TouchableOpacity>
+        </Pressable>
       </View>
     </SafeAreaView>
   )
