@@ -2,14 +2,14 @@ import { Ionicons } from '@expo/vector-icons'
 import { useAtom } from 'jotai'
 import React, { useCallback } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { Pressable } from 'react-native-gesture-handler'
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 
 import { defaultStyles } from '@/constants'
 import Colors from '@/constants/Colors'
 import { groupsAtom } from '@/store'
 
-const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 interface Props {
   setOpenCard: (i: number) => void
   openCard: number
@@ -54,7 +54,7 @@ export const WhoCard = ({ setOpenCard, openCard }: Props) => {
   return (
     <View style={defaultStyles.card}>
       {openCard !== 2 && (
-        <AnimatedTouchableOpacity
+        <AnimatedPressable
           onPress={handleOpenCard}
           style={defaultStyles.cardPreview}
           entering={FadeIn.duration(200)}
@@ -62,7 +62,7 @@ export const WhoCard = ({ setOpenCard, openCard }: Props) => {
         >
           <Text style={defaultStyles.previewText}>Who</Text>
           <Text style={defaultStyles.previewDate}>{displayPersonCount()}</Text>
-        </AnimatedTouchableOpacity>
+        </AnimatedPressable>
       )}
       {openCard === 2 && (
         <>
@@ -77,7 +77,7 @@ export const WhoCard = ({ setOpenCard, openCard }: Props) => {
                 </View>
 
                 <View style={styles.managePersonCount}>
-                  <TouchableOpacity
+                  <Pressable
                     disabled={!(groups[index].count > 0)}
                     onPress={removePerson(index)}
                   >
@@ -86,11 +86,11 @@ export const WhoCard = ({ setOpenCard, openCard }: Props) => {
                       size={26}
                       color={groups[index].count > 0 ? Colors.grey : '#cdcdcd'}
                     />
-                  </TouchableOpacity>
+                  </Pressable>
                   <Text style={styles.personCount}>{item.count}</Text>
-                  <TouchableOpacity onPress={addPerson(index)}>
+                  <Pressable onPress={addPerson(index)}>
                     <Ionicons name="add-circle-outline" size={26} color={Colors.grey} />
-                  </TouchableOpacity>
+                  </Pressable>
                 </View>
               </View>
             ))}

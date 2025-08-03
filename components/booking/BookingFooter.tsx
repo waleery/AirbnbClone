@@ -27,10 +27,10 @@ export const BookingFooter = ({ onClearAll, filter }: BookingFooterProps) => {
           <Text style={styles.clearText}>Clear all</Text>
         </Pressable>
 
-        <TouchableOpacity onPress={handlePressFilter} style={[defaultStyles.btn, styles.button]}>
+        <Pressable onPress={handlePressFilter} style={[defaultStyles.btn, styles.button]}>
           <Ionicons name="search-outline" size={24} color={'#fff'} style={defaultStyles.btnIcon} />
           <Text style={[defaultStyles.btnText, defaultStyles.font500]}>Search</Text>
-        </TouchableOpacity>
+        </Pressable>
       </View>
     </Animated.View>
   )
