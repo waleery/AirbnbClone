@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
-import React, { useCallback } from 'react'
+import { useCallback } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { Pressable } from 'react-native-gesture-handler'
 import Animated, { SlideInDown } from 'react-native-reanimated'
