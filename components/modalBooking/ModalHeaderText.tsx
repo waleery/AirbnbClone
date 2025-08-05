@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import { useCallback, useState } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { Pressable } from 'react-native-gesture-handler'
 
 import Colors from '@/constants/Colors'
 
@@ -11,7 +11,7 @@ export const ModalHeaderText = () => {
   const handleSetActive = useCallback((index: number) => () => setActive(index), [])
   return (
     <View style={styles.headerContainer}>
-      <TouchableOpacity onPress={handleSetActive(0)}>
+      <Pressable onPress={handleSetActive(0)}>
         <Text
           style={[
             styles.headerText,
@@ -23,8 +23,8 @@ export const ModalHeaderText = () => {
         >
           Stays
         </Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={handleSetActive(1)}>
+      </Pressable>
+      <Pressable onPress={handleSetActive(1)}>
         <Text
           style={[
             styles.headerText,
@@ -36,7 +36,7 @@ export const ModalHeaderText = () => {
         >
           Experiences
         </Text>
-      </TouchableOpacity>
+      </Pressable>
     </View>
   )
 }
