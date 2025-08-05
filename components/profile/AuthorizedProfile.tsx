@@ -42,7 +42,7 @@ export const AuthorizedProfile = () => {
 
   return (
     <SafeAreaView edges={['top']} style={[defaultStyles.container, styles.container]}>
-      <ScrollView showsVerticalScrollIndicator={false} style={{ overflow: 'visible' }}>
+      <ScrollView showsVerticalScrollIndicator={false} style={defaultStyles.overflowVisible}>
         <View style={styles.headerContainer}>
           <Text style={styles.header}>Profile</Text>
           <Ionicons name="notifications-outline" size={32} />

@@ -134,4 +134,7 @@ export const defaultStyles = StyleSheet.create({
   textCenter: {
     textAlign: 'center',
   },
+  overflowVisible: {
+    overflow: 'visible',
+  },
 })
