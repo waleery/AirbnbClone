@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, Image, ImageSourcePropType, StyleSheet } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { Pressable } from 'react-native-gesture-handler'
 
 import { handlePresentEarnBottomSheet } from './EarnBottomSheet'
 
@@ -9,7 +9,7 @@ import Colors from '@/constants/Colors'
 
 export const AirBnbYourHome = () => {
   return (
-    <TouchableOpacity onPress={handlePresentEarnBottomSheet}>
+    <Pressable onPress={handlePresentEarnBottomSheet}>
       <View style={styles.modal}>
         <View style={styles.modalTextContainer}>
           <Text style={styles.modalHeader}>Airbnb your home</Text>
@@ -19,7 +19,7 @@ export const AirBnbYourHome = () => {
           <Image source={home as ImageSourcePropType} style={styles.homeIcon} />
         </View>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   )
 }
 
