@@ -47,6 +47,7 @@ export const defaultStyles = StyleSheet.create({
   btnOutlineText: {
     color: Colors.black,
     fontSize: 16,
+    fontWeight: '500',
   },
   btnIcon: {
     position: 'absolute',
