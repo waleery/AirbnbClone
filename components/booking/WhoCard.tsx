@@ -70,7 +70,7 @@ export const WhoCard = ({ setOpenCard, openCard }: Props) => {
 
           <Animated.View style={defaultStyles.pX2}>
             {groups.map((item, index) => (
-              <View key={index} style={[styles.guestItem, index + 1 < 4 && styles.itemBorder]}>
+              <View key={item.name} style={[styles.guestItem, index + 1 < 4 && styles.itemBorder]}>
                 <View>
                   <Text style={styles.groupName}>{item.name}</Text>
                   <Text style={styles.groupText}>{item.text}</Text>
