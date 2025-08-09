@@ -62,7 +62,7 @@ export const WhereCard = ({ setOpenCard, openCard, setSelectedPlace, selectedPla
             contentContainerStyle={styles.scrollViewStyle}
           >
             {places.map((item, i) => (
-              <TouchableOpacity onPress={handleSelectPlace(i)} key={i}>
+              <TouchableOpacity onPress={handleSelectPlace(i)} key={item.title}>
                 <Image
                   source={item.img}
                   style={selectedPlace === i ? styles.placeSelected : styles.place}
