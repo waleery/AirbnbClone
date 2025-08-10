@@ -98,9 +98,9 @@ export const Carousel: React.FC<CarouselProps> = ({ items, onPress = () => {} })
         />
         {allImages.length > 1 && (
           <View style={styles.dotsContainer}>
-            {allImages.map((_, index) => (
+            {allImages.map((image, index) => (
               <TouchableOpacity
-                key={index}
+                key={image}
                 style={[styles.dot, currentIndex === index && styles.activeDot]}
                 onPress={handleDotPress(index)}
               />
