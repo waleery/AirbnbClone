@@ -167,7 +167,7 @@ export default function ProfilePage() {
         >{`${user?.firstName}'s confirmed information`}</Text>
         {Object.entries(profileData.confirmedInformation).map(([key, value]) =>
           value ? (
-            <View key={key} style={styles.confirmedInformationRow}>
+            <View key={`confirmed-info-${key}-${value}`} style={styles.confirmedInformationRow}>
               <FontAwesome6 name="check" size={24} color="black" />
               <Text style={styles.confirmedInformationRowText}>
                 {confirmedInformationLabels[key as keyof confirmedInformation]}
