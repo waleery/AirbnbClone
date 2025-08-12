@@ -37,6 +37,7 @@ export const LoadingDots = ({ numberOfDots = 3 }: LoadingDotsProps) => {
   return (
     <View style={styles.loadingContainer}>
       {dots.map((dot, i) => (
+        // eslint-disable-next-line react/no-array-index-key
         <Animated.View key={i} style={[styles.dot, { transform: [{ translateY: dot }] }]} />
       ))}
     </View>
