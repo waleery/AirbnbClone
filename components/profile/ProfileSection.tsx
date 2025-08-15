@@ -1,12 +1,26 @@
 import { useUser } from '@clerk/clerk-expo'
 import { Ionicons } from '@expo/vector-icons'
+import { parseISO } from 'date-fns'
+import { useMemo } from 'react'
 import { View, Text, StyleSheet, Image } from 'react-native'
 
+import profile from '@/assets/data/json/profile.json'
 import Colors from '@/constants/Colors'
 import { Profile } from '@/types'
 
-export const ProfileSection = ({ profileData }: { profileData: Profile }) => {
+export const ProfileSection = () => {
   const { user } = useUser()
+
+  const profileData: Profile = useMemo(
+    () => ({
+      ...profile,
+      reviews: profile.reviews.map((review) => ({
+        ...review,
+        date: parseISO(review.date),
+      })),
+    }),
+    []
+  )
 
   return (
     <View style={styles.modal}>

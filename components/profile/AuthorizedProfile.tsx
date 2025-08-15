@@ -1,5 +1,5 @@
 import { useAuth, useUser } from '@clerk/clerk-expo'
-import { Ionicons, AntDesign } from '@expo/vector-icons'
+import { Ionicons } from '@expo/vector-icons'
 import * as ImagePicker from 'expo-image-picker'
 import { useRouter } from 'expo-router'
 import { useCallback } from 'react'
@@ -15,6 +15,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { AirBnbYourHome } from './AirBnbYourHome'
+import { ProfileSection } from './ProfileSection'
 import { RenderOptions } from './RenderOptions'
 
 import { hosting, legal, settings, support, tools } from '@/assets/data'
@@ -49,23 +50,14 @@ export const AuthorizedProfile = () => {
 
   return (
     <SafeAreaView edges={['top']} style={[defaultStyles.container, styles.container]}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false} style={{overflow: 'visible'}}>
         <View style={styles.headerContainer}>
           <Text style={styles.header}>Profile</Text>
           <Ionicons name="notifications-outline" size={32} />
         </View>
         <View style={styles.profileRow}>
-          <View style={styles.profileInfoSection}>
-            <TouchableOpacity onPress={onCaptureImage}>
-              <Image source={{ uri: user?.imageUrl }} style={styles.avatar} />
-            </TouchableOpacity>
-            <View style={styles.profileTextSection}>
-              <Text style={styles.name}>{user?.firstName}</Text>
-              <Text style={styles.secondText}>Show profile</Text>
-            </View>
-          </View>
           <Pressable onPress={navigateToProfilePage}>
-            <AntDesign name="right" size={20} />
+            <ProfileSection />
           </Pressable>
         </View>
 
@@ -105,36 +97,10 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   profileRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: Colors.white,
     paddingBottom: 20,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: Colors.lightGrey,
     marginBottom: 24,
-  },
-  avatar: {
-    width: 60,
-    height: 60,
-    borderRadius: 50,
-    backgroundColor: Colors.grey,
-  },
-  profileTextSection: {
-    gap: 2,
-  },
-  profileInfoSection: {
-    flexDirection: 'row',
-    gap: 18,
-    alignItems: 'center',
-  },
-  name: {
-    fontSize: 20,
-    fontWeight: '400',
-  },
-  secondText: {
-    fontSize: 15,
-    fontWeight: '300',
   },
   logoutText: {
     marginVertical: 45,

@@ -16,11 +16,11 @@ import { FlatList } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import profile from '@/assets/data/json/profile.json'
+import { ProfileSection } from '@/components/profile/ProfileSection'
 import { defaultStyles } from '@/constants'
 import Colors from '@/constants/Colors'
 import { Review } from '@/types'
 import { confirmedInformation, Profile } from '@/types/profile'
-import { ProfileSection } from '@/components/profile/ProfileSection'
 
 const confirmedInformationLabels: Record<keyof confirmedInformation, string> = {
   identity: 'Identity',
@@ -149,7 +149,7 @@ export default function ProfilePage() {
   return (
     <SafeAreaView edges={['top']} style={[styles.container]}>
       <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollViewStyle}>
-        <ProfileSection profileData={profileData} />
+        <ProfileSection />
         {placeSection}
         <View style={styles.separatorLine} />
         {reviewSection}
