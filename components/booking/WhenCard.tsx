@@ -2,13 +2,12 @@ import { differenceInDays } from 'date-fns'
 import dayjs from 'dayjs'
 import { useAtom } from 'jotai'
 import React, { useCallback, useMemo, useState } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Pressable } from 'react-native'
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 import DateTimePicker, { DateType } from 'react-native-ui-datepicker'
 
 import { defaultStyles } from '@/constants'
 import { daysStayFilterAtom } from '@/store'
-import { Pressable } from 'react-native-gesture-handler'
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 
@@ -24,13 +23,13 @@ export const WhenCard = ({ setOpenCard, openCard }: Props) => {
   const [endDate, setEndDate] = useState<DateType>(null)
   const today = new Date()
 
-  const computeDaysCount = (start: Date | null, end: Date | null) => {
+  const computeDaysCount = useCallback((start: Date | null, end: Date | null) => {
     if (start && end) {
       const diff = differenceInDays(end, start)
       return diff > 0 ? diff : 1
     }
     return start ? 1 : 0
-  }
+  }, [])
 
   const handleDateChange = useCallback(
     ({ startDate, endDate }: { startDate?: DateType; endDate?: DateType }) => {
@@ -41,7 +40,7 @@ export const WhenCard = ({ setOpenCard, openCard }: Props) => {
       setEndDate(end)
       setDaysCount(computeDaysCount(start, end))
     },
-    [setDaysCount]
+    [setDaysCount, computeDaysCount]
   )
 
   const displayPersonCount = useMemo(() => {

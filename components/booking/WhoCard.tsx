@@ -1,8 +1,7 @@
 import { Ionicons } from '@expo/vector-icons'
 import { useAtom } from 'jotai'
 import React, { useCallback } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import { Pressable } from 'react-native-gesture-handler'
+import { View, Text, StyleSheet, Pressable } from 'react-native'
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 
 import { defaultStyles } from '@/constants'
