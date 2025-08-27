@@ -4,7 +4,12 @@ import { useCallback, useMemo, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 import listingsDataGeo from "@/assets/data/json/airbnb-listings.geo.json";
-import { bottomSheetRef, ExploreHeader, ListingsBottomSheet, ListingsMap } from "@/components";
+import {
+	bottomSheetRef,
+	ExploreHeader,
+	ListingsBottomSheet,
+	ListingsMap,
+} from "@/components";
 import { defaultStyles, accommodation_categories } from "@/constants";
 import { filteredListingsAtom } from "@/store";
 import { ListingGeo } from "@/types";
@@ -19,13 +24,16 @@ const Page = () => {
 	const listings = useAtomValue(filteredListingsAtom);
 	const listingsGeo = useMemo(() => listingsDataGeo as ListingGeo, []);
 
+	const [mapVisible, setMapVisible] = useState<boolean>(false);
+
 	const onDataChanged = useCallback((category: string) => {
 		setCategory(category);
 	}, []);
 
 	const showMap = useCallback(() => {
-		bottomSheetRef.current?.collapse();
+		bottomSheetRef.current?.expand();
 		// setRefresh(refresh + 1);
+		setMapVisible(true);
 	}, []);
 
 	return (
@@ -38,12 +46,16 @@ const Page = () => {
 
 			<ListingsMap listings={listingsGeo} />
 			<ListingsBottomSheet listings={listings} category={category} />
-			<View style={styles.absoluteBtn}>
-				<Pressable onPress={showMap} style={styles.btn}>
-					<Text style={[defaultStyles.white, defaultStyles.boldText]}>Map</Text>
-					<Ionicons name="map" size={17} color={"#fff"} />
-				</Pressable>
-			</View>
+			{!mapVisible && (
+				<View style={styles.absoluteBtn}>
+					<Pressable onPress={showMap} style={styles.btn}>
+						<Text style={[defaultStyles.white, defaultStyles.boldText]}>
+							Map
+						</Text>
+						<Ionicons name="map" size={17} color={"#fff"} />
+					</Pressable>
+				</View>
+			)}
 		</View>
 	);
 };
