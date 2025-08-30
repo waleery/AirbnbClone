@@ -17,7 +17,7 @@ const Page = () => {
   const listings = useAtomValue(filteredListingsAtom)
   const listingsGeo = useMemo(() => listingsDataGeo as ListingGeo, [])
 
-  const [mapVisible, setMapVisible] = useState<boolean>(false)
+  const [mapVisible, setMapVisible] = useState<boolean>(true)
 
   const onDataChanged = useCallback((category: string) => {
     setCategory(category)

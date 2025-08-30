@@ -24,6 +24,7 @@ export const ListingsBottomSheet = ({ listings, category, onSheetChange }: Props
 
   const handleSheetChanges = useCallback(
     (index: number) => {
+      setRefresh((prev) => prev + 1)
       onSheetChange?.(index === 0)
     },
     [onSheetChange]
