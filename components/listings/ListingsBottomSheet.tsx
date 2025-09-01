@@ -1,8 +1,6 @@
-import { Ionicons } from '@expo/vector-icons'
 import BottomSheet from '@gorhom/bottom-sheet'
-import { createRef, useCallback, useMemo, useRef, useState } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import { Pressable } from 'react-native-gesture-handler'
+import { createRef, useCallback, useMemo, useState } from 'react'
+import { View, StyleSheet } from 'react-native'
 
 import { Listings } from './Listings'
 
@@ -48,12 +46,6 @@ export const ListingsBottomSheet = ({ listings, category, onSheetChange }: Props
 }
 
 const styles = StyleSheet.create({
-  absoluteBtn: {
-    position: 'absolute',
-    bottom: 25,
-    width: '100%',
-    alignItems: 'center',
-  },
   sheetContainer: {
     backgroundColor: Colors.white,
     borderTopLeftRadius: 20,
