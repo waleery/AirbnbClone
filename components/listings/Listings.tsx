@@ -45,7 +45,7 @@ export const Listings = ({ category, listings: items, refresh }: Props) => {
         ListHeaderComponent={
           !loading ? <Text style={styles.info}>{items.length} homes</Text> : null
         }
-        contentContainerStyle={{ flexGrow: 1 }}
+        contentContainerStyle={styles.container}
       />
     </View>
   )
@@ -58,4 +58,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
     fontWeight: '500',
   },
+  container:{
+    flexGrow:1
+  }
 })
