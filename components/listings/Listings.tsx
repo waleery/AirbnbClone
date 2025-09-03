@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
     fontWeight: '500',
   },
-  container:{
-    flexGrow:1
-  }
+  container: {
+    flexGrow: 1,
+  },
 })

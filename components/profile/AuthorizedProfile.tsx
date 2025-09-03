@@ -3,15 +3,7 @@ import { Ionicons } from '@expo/vector-icons'
 import * as ImagePicker from 'expo-image-picker'
 import { useRouter } from 'expo-router'
 import { useCallback } from 'react'
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-  ScrollView,
-  Pressable,
-} from 'react-native'
+import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { AirBnbYourHome } from './AirBnbYourHome'
@@ -24,21 +16,21 @@ import Colors from '@/constants/Colors'
 
 export const AuthorizedProfile = () => {
   const { signOut } = useAuth()
-  const { user } = useUser()
+  // const { user } = useUser()
   const router = useRouter()
 
-  const onCaptureImage = useCallback(async () => {
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      quality: 0.9,
-      base64: true,
-    })
-    if (!result.canceled && user) {
-      const base64 = `data:image/png;base64,${result.assets[0].base64}`
-      await user.setProfileImage({ file: base64 })
-    }
-  }, [user])
+  // const onCaptureImage = useCallback(async () => {
+  //   const result = await ImagePicker.launchImageLibraryAsync({
+  //     mediaTypes: ImagePicker.MediaTypeOptions.Images,
+  //     allowsEditing: true,
+  //     quality: 0.9,
+  //     base64: true,
+  //   })
+  //   if (!result.canceled && user) {
+  //     const base64 = `data:image/png;base64,${result.assets[0].base64}`
+  //     await user.setProfileImage({ file: base64 })
+  //   }
+  // }, [user])
 
   const handleSignOut = useCallback(async () => {
     await signOut()
@@ -50,7 +42,7 @@ export const AuthorizedProfile = () => {
 
   return (
     <SafeAreaView edges={['top']} style={[defaultStyles.container, styles.container]}>
-      <ScrollView showsVerticalScrollIndicator={false} style={{overflow: 'visible'}}>
+      <ScrollView showsVerticalScrollIndicator={false} style={{ overflow: 'visible' }}>
         <View style={styles.headerContainer}>
           <Text style={styles.header}>Profile</Text>
           <Ionicons name="notifications-outline" size={32} />

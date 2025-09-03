@@ -76,10 +76,7 @@ export const WhoCard = ({ setOpenCard, openCard }: Props) => {
                 </View>
 
                 <View style={styles.managePersonCount}>
-                  <Pressable
-                    disabled={!(groups[index].count > 0)}
-                    onPress={removePerson(index)}
-                  >
+                  <Pressable disabled={!(groups[index].count > 0)} onPress={removePerson(index)}>
                     <Ionicons
                       name="remove-circle-outline"
                       size={26}

@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   },
   separatorText: {
     color: Colors.grey,
-    fontWeight:'700'
+    fontWeight: '700',
   },
   emailInput: {
     marginBottom: 30,

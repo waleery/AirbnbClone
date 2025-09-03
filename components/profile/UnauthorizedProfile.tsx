@@ -27,7 +27,7 @@ export const UnauthorizedProfile = () => {
         <Pressable style={{ ...defaultStyles.btn, ...styles.logInBtn }} onPress={handleOpenLogin}>
           <Text style={[defaultStyles.btnText, defaultStyles.font500]}>Log in or sign up</Text>
         </Pressable>
-        
+
         <AirBnbYourHome />
 
         <View style={styles.optionsSection}>
