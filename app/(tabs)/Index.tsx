@@ -12,8 +12,10 @@ import Colors from '@/constants/Colors'
 import { filteredListingsAtom } from '@/store'
 import { ListingGeo } from '@/types'
 
+type CategoryName = (typeof accommodation_categories)[number]['name']
+
 const Page = () => {
-  const [category, setCategory] = useState<string>(accommodation_categories[0].name)
+  const [category, setCategory] = useState<CategoryName>(accommodation_categories[0].name)
   const listings = useAtomValue(filteredListingsAtom)
   const listingsGeo = useMemo(() => listingsDataGeo as ListingGeo, [])
 
