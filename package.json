@@ -15,7 +15,7 @@
   "dependencies": {
     "@allisonadam81/react-native-super-clusters": "^0.0.1",
     "@clerk/clerk-expo": "2.15.4",
-    "@expo/vector-icons": "^14.1.0",
+    "@expo/vector-icons": "^15.2.0",
     "@gorhom/bottom-sheet": "5.1.6",
     "@react-native-community/slider": "4.5.7",
     "@react-navigation/native": "^7.1.16",
