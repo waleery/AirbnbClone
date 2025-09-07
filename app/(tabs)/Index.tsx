@@ -7,6 +7,7 @@ import { Pressable } from 'react-native-gesture-handler'
 
 import listingsDataGeo from '@/assets/data/json/airbnb-listings.geo.json'
 import { bottomSheetRef, ExploreHeader, ListingsBottomSheet, ListingsMap } from '@/components'
+import { StartPage } from '@/components/listings/StartPage'
 import { defaultStyles, accommodation_categories } from '@/constants'
 import Colors from '@/constants/Colors'
 import { filteredListingsAtom } from '@/store'
@@ -20,6 +21,8 @@ const Page = () => {
   const listingsGeo = useMemo(() => listingsDataGeo as ListingGeo, [])
 
   const [mapVisible, setMapVisible] = useState<boolean>(true)
+
+  const [selectedCity, setSelectedCity] = useState<string | null>()
 
   const onDataChanged = useCallback((category: string) => {
     setCategory(category)
@@ -37,9 +40,18 @@ const Page = () => {
           header: () => <ExploreHeader onCategoryChanged={onDataChanged} />,
         }}
       />
-
-      <ListingsMap listings={listingsGeo} />
-      <ListingsBottomSheet listings={listings} category={category} onSheetChange={setMapVisible} />
+      {selectedCity ? (
+        <StartPage />
+      ) : (
+        <>
+          <ListingsMap listings={listingsGeo} />
+          <ListingsBottomSheet
+            listings={listings}
+            category={category}
+            onSheetChange={setMapVisible}
+          />
+        </>
+      )}
       {!mapVisible && (
         <View style={styles.absoluteBtn}>
           <Pressable onPress={showMap} style={styles.btn}>
