@@ -10,7 +10,7 @@ const tileWidth = Dimensions.get('window').width * 0.35
 
 export const StartPage = () => {
   return (
-    <View style={defaultStyles.flex}>
+    <View style={[defaultStyles.flex, styles.container]}>
       <Text style={[styles.header, defaultStyles.boldText]}>Popular homes in Warsaw</Text>
       <View style={styles.tile}>
         <Image source={{ uri: mockData.img }} style={styles.image} />
@@ -20,6 +20,7 @@ export const StartPage = () => {
 }
 
 const styles = StyleSheet.create({
+  container: { paddingHorizontal: 16 },
   header: {
     marginTop: 30,
     fontSize: 20,
