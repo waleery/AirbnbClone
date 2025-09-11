@@ -7,6 +7,8 @@ const mockData = {
   img: 'https://a0.muscache.com/im/pictures/bced1392-9538-41df-92d9-f058a7188b0f.jpg?aki_policy=medium',
   type: 'Room',
   district: 'Mokotów',
+  price: 120,
+  duration: 3,
 }
 const tileWidth = Dimensions.get('window').width * 0.35
 
@@ -21,6 +23,7 @@ export const StartPage = () => {
         <Text>
           {mockData.type} in {mockData.district}
         </Text>
+        <Text>{mockData.price}zł for {mockData.duration} nights</Text>
       </View>
     </View>
   )
