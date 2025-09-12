@@ -1,3 +1,4 @@
+import { Ionicons } from '@expo/vector-icons'
 import React from 'react'
 import { View, Text, StyleSheet, Image, Dimensions } from 'react-native'
 
@@ -9,6 +10,7 @@ const mockData = {
   district: 'Mokotów',
   price: 120,
   duration: 3,
+  rating: 4.96,
 }
 const tileWidth = Dimensions.get('window').width * 0.35
 
@@ -23,7 +25,13 @@ export const StartPage = () => {
         <Text>
           {mockData.type} in {mockData.district}
         </Text>
-        <Text>{mockData.price}zł for {mockData.duration} nights</Text>
+        <View style={styles.shortInfo}>
+          <Text>
+            {mockData.price}zł for {mockData.duration} nights
+          </Text>
+          <Ionicons name="star" size={10} />
+          <Text>{mockData.rating}</Text>
+        </View>
       </View>
     </View>
   )
@@ -39,7 +47,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     width: tileWidth,
     height: tileWidth,
-    overflow: 'hidden', // 👈 dodaj to
+    overflow: 'hidden',
   },
   image: {
     width: '100%',
@@ -47,4 +55,5 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   tileContainer: {},
+  shortInfo: { flexDirection: 'row', alignItems: 'center', gap: 4 },
 })
