@@ -3,6 +3,7 @@ import React from 'react'
 import { View, Text, StyleSheet, Image, Dimensions } from 'react-native'
 
 import { defaultStyles } from '@/constants'
+import Colors from '@/constants/Colors'
 
 const mockData = {
   img: 'https://a0.muscache.com/im/pictures/bced1392-9538-41df-92d9-f058a7188b0f.jpg?aki_policy=medium',
@@ -26,11 +27,11 @@ export const StartPage = () => {
           {mockData.type} in {mockData.district}
         </Text>
         <View style={styles.shortInfo}>
-          <Text>
+          <Text style={styles.subtitle}>
             {mockData.price}zł for {mockData.duration} nights
           </Text>
-          <Ionicons name="star" size={10} />
-          <Text>{mockData.rating}</Text>
+          <Ionicons name="star" size={10} color={Colors.grey} />
+          <Text style={styles.subtitle}>{mockData.rating}</Text>
         </View>
       </View>
     </View>
@@ -53,6 +54,9 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     resizeMode: 'cover',
+  },
+  subtitle: {
+    color: Colors.grey,
   },
   tileContainer: {},
   shortInfo: { flexDirection: 'row', alignItems: 'center', gap: 4 },
