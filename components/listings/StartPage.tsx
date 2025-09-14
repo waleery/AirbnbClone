@@ -23,7 +23,7 @@ export const StartPage = () => {
         <View style={styles.tile}>
           <Image source={{ uri: mockData.img }} style={styles.image} />
         </View>
-        <Text>
+        <Text style={[defaultStyles.font500]}>
           {mockData.type} in {mockData.district}
         </Text>
         <View style={styles.shortInfo}>
@@ -54,6 +54,9 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     resizeMode: 'cover',
+  },
+  title:{
+
   },
   subtitle: {
     color: Colors.grey,
