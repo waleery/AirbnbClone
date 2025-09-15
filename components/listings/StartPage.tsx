@@ -60,7 +60,11 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     color: Colors.grey,
+    fontSize: 12,
   },
-  tileContainer: {},
+  tileContainer: {
+    flexWrap: 'wrap',
+    width: tileWidth,
+  },
   shortInfo: { flexDirection: 'row', alignItems: 'center', gap: 4 },
 })
