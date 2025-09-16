@@ -33,8 +33,10 @@ export const StartPage = () => {
           <Text style={styles.subtitle}>
             {mockData.price}zł for {mockData.duration} nights
           </Text>
-          <Ionicons name="star" size={10} color={Colors.grey} />
-          <Text style={styles.subtitle}>{mockData.rating}</Text>
+          <View style={styles.rating}>
+            <Ionicons name="star" size={10} color={Colors.grey} />
+            <Text style={styles.subtitle}>{mockData.rating}</Text>
+          </View>
         </View>
       </View>
     </View>
@@ -67,6 +69,7 @@ const styles = StyleSheet.create({
   subtitle: {
     color: Colors.grey,
     fontSize: 12,
+    fontWeight: '400',
   },
   tileContainer: {
     flexWrap: 'wrap',
@@ -74,4 +77,5 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   shortInfo: { flexDirection: 'row', alignItems: 'center', gap: 4 },
+  rating: { flexDirection: 'row', alignItems: 'center', gap: 2 },
 })
