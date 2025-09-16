@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
   tileContainer: {
     flexWrap: 'wrap',
     width: tileWidth,
+    gap:4
   },
   shortInfo: { flexDirection: 'row', alignItems: 'center', gap: 4 },
 })
