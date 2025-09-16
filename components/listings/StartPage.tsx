@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     marginTop: 30,
+    marginBottom: 16,
     gap: 2,
     flexDirection: 'row',
     alignItems: 'flex-end',
