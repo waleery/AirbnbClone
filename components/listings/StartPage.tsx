@@ -1,4 +1,4 @@
-import { Ionicons } from '@expo/vector-icons'
+import { Entypo, Ionicons } from '@expo/vector-icons'
 import React from 'react'
 import { View, Text, StyleSheet, Image, Dimensions } from 'react-native'
 
@@ -18,7 +18,10 @@ const tileWidth = Dimensions.get('window').width * 0.35
 export const StartPage = () => {
   return (
     <View style={[defaultStyles.flex, styles.container]}>
-      <Text style={[styles.header, defaultStyles.boldText]}>Popular homes in Warsaw</Text>
+      <View style={styles.headerContainer}>
+        <Text style={[styles.headerText, defaultStyles.boldText]}>Popular homes in Warsaw</Text>
+        <Entypo name="chevron-right" size={22} color="black" />
+      </View>
       <View style={styles.tileContainer}>
         <View style={styles.tile}>
           <Image source={{ uri: mockData.img }} style={styles.image} />
@@ -40,9 +43,14 @@ export const StartPage = () => {
 
 const styles = StyleSheet.create({
   container: { paddingHorizontal: 16 },
-  header: {
-    marginTop: 30,
+  headerText: {
     fontSize: 20,
+  },
+  headerContainer: {
+    marginTop: 30,
+    gap: 2,
+    flexDirection: 'row',
+    alignItems: 'flex-end',
   },
   tile: {
     borderRadius: 20,
@@ -55,9 +63,7 @@ const styles = StyleSheet.create({
     height: '100%',
     resizeMode: 'cover',
   },
-  title:{
-
-  },
+  title: {},
   subtitle: {
     color: Colors.grey,
     fontSize: 12,
