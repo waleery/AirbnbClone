@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
     height: '100%',
     resizeMode: 'cover',
   },
-  title: {},
   subtitle: {
     color: Colors.grey,
     fontSize: 12,
@@ -72,7 +71,7 @@ const styles = StyleSheet.create({
   tileContainer: {
     flexWrap: 'wrap',
     width: tileWidth,
-    gap:4
+    gap: 4,
   },
   shortInfo: { flexDirection: 'row', alignItems: 'center', gap: 4 },
 })
