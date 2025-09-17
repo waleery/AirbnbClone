@@ -64,7 +64,13 @@ export const Carousel: React.FC<CarouselProps> = ({ items, onPress = () => {} })
         return (
           <Pressable onPress={handleOnPress}>
             <Image
-              source={typeof item === 'string' ? { uri: item } : item}
+              // Temporary fix: Expo can't load images from our host due to HTTPS/CORS issues.
+              // Using images.weserv.nl as a proxy for testing only — remove for production.
+              source={
+                typeof item === 'string'
+                  ? { uri: `https://images.weserv.nl/?url=${encodeURIComponent(item)}` }
+                  : item
+              }
               style={styles.image}
               onError={handleImageError}
             />
