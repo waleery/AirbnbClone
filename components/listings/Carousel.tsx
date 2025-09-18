@@ -10,6 +10,7 @@ import {
   Image,
   Text,
   Pressable,
+  ImageErrorEventData,
 } from 'react-native'
 
 import roomExample from '@/assets/images/room_example.jpg'
@@ -34,7 +35,10 @@ export const Carousel: React.FC<CarouselProps> = ({ items, onPress = () => {} })
 
   const allImages = useMemo(() => [...items, ...additionalImages], [items])
 
-  const handleImageError = useCallback(() => setImageError(true), [])
+  const handleImageError = useCallback((error: ImageErrorEventData) => {
+    console.log('Image failed to load:', error)
+    setImageError(true)
+  }, [])
 
   const onViewableItemsChanged = React.useRef<
     ({ viewableItems }: { viewableItems: ViewToken[] }) => void
