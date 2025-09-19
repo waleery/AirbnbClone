@@ -11,6 +11,7 @@ import {
   Text,
   Pressable,
   ImageErrorEventData,
+  NativeSyntheticEvent,
 } from 'react-native'
 
 import roomExample from '@/assets/images/room_example.jpg'
@@ -35,8 +36,8 @@ export const Carousel: React.FC<CarouselProps> = ({ items, onPress = () => {} })
 
   const allImages = useMemo(() => [...items, ...additionalImages], [items])
 
-  const handleImageError = useCallback((error: ImageErrorEventData) => {
-    console.log('Image failed to load:', error)
+  const handleImageError = useCallback((event: NativeSyntheticEvent<ImageErrorEventData>) => {
+    console.log('Image failed to load:', event.nativeEvent.error)
     setImageError(true)
   }, [])
 
@@ -76,7 +77,8 @@ export const Carousel: React.FC<CarouselProps> = ({ items, onPress = () => {} })
                   : item
               }
               style={styles.image}
-              onError={handleImageError}
+              // eslint-disable-next-line react/jsx-no-bind
+              onError={(error) => handleImageError(error)}
             />
           </Pressable>
         )
