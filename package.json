@@ -46,7 +46,8 @@
     "react-native-svg": "15.12.1",
     "react-native-swipeable": "^0.6.0",
     "react-native-ui-datepicker": "3.1.2",
-    "react-native-web": "^0.21.0"
+    "react-native-web": "^0.21.0",
+    "expo-image": "~2.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
