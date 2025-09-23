@@ -7,10 +7,11 @@ import {
   Dimensions,
   StyleSheet,
   TouchableOpacity,
-  ViewToken,
   Text,
   Pressable,
   ImageErrorEventData,
+  ActivityIndicator,
+  ViewToken,
 } from 'react-native'
 
 import roomExample from '@/assets/images/room_example.jpg'
@@ -30,6 +31,7 @@ const additionalImages = [roomExample, roomExample2, roomExample3]
 export const Carousel: React.FC<CarouselProps> = ({ items, onPress = () => {} }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const [errorImages, setErrorImages] = useState<Record<number, boolean>>({})
+  const [loadingImages, setLoadingImages] = useState<Record<number, boolean>>({})
 
   const flatListRef = useRef<FlatList<string>>(null)
 
@@ -38,6 +40,15 @@ export const Carousel: React.FC<CarouselProps> = ({ items, onPress = () => {} })
   const handleImageError = useCallback((index: number, event: ImageErrorEventData) => {
     console.log(`Image ${index} failed to load:`, event)
     setErrorImages((prev) => ({ ...prev, [index]: true }))
+    setLoadingImages((prev) => ({ ...prev, [index]: false }))
+  }, [])
+
+  const handleImageLoadStart = useCallback((index: number) => {
+    setLoadingImages((prev) => ({ ...prev, [index]: true }))
+  }, [])
+
+  const handleImageLoadEnd = useCallback((index: number) => {
+    setLoadingImages((prev) => ({ ...prev, [index]: false }))
   }, [])
 
   const onViewableItemsChanged = useRef<
@@ -59,6 +70,7 @@ export const Carousel: React.FC<CarouselProps> = ({ items, onPress = () => {} })
   const renderItem = useCallback(
     ({ item, index }: { item: string | number; index: number }) => {
       const hasError = errorImages[index]
+      const isLoading = loadingImages[index]
 
       if (hasError) {
         return (
@@ -71,22 +83,38 @@ export const Carousel: React.FC<CarouselProps> = ({ items, onPress = () => {} })
 
       return (
         <Pressable onPress={handleOnPress}>
-          <Image
-            // Temporary fix: Expo can't load images from our host due to HTTPS/CORS issues.
-            // Using images.weserv.nl as a proxy for testing only — remove for production.
-            source={
-              typeof item === 'string'
-                ? { uri: `https://images.weserv.nl/?url=${encodeURIComponent(item)}` }
-                : item
-            }
-            style={styles.image}
-            // eslint-disable-next-line react/jsx-no-bind
-            onError={(error) => handleImageError(index, error)}
-          />
+          <View style={styles.imageWrapper}>
+            {isLoading && (
+              <View style={styles.loaderContainer}>
+                <ActivityIndicator size="large" color={Colors.primary} />
+              </View>
+            )}
+            <Image
+              source={
+                typeof item === 'string'
+                  ? { uri: `https://images.weserv.nl/?url=${encodeURIComponent(item)}` }
+                  : item
+              }
+              style={styles.image}
+              // eslint-disable-next-line react/jsx-no-bind
+              onLoadStart={() => handleImageLoadStart(index)}
+              // eslint-disable-next-line react/jsx-no-bind
+              onLoadEnd={() => handleImageLoadEnd(index)}
+              // eslint-disable-next-line react/jsx-no-bind
+              onError={(error) => handleImageError(index, error)}
+            />
+          </View>
         </Pressable>
       )
     },
-    [errorImages, handleImageError, handleOnPress]
+    [
+      errorImages,
+      loadingImages,
+      handleImageError,
+      handleImageLoadStart,
+      handleImageLoadEnd,
+      handleOnPress,
+    ]
   )
 
   const handleDotPress = useCallback(
@@ -139,9 +167,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  imageWrapper: {
+    width: width - 32,
+    height: 350,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   image: {
     width: width - 32,
     height: 350,
+    borderRadius: 10,
+  },
+  loaderContainer: {
+    zIndex: 2,
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.lightGrey,
   },
   dotsContainer: {
     position: 'absolute',
