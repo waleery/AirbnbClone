@@ -45,6 +45,8 @@ export const Listings = ({ category, listings: items, refresh }: Props) => {
         ListHeaderComponent={
           !loading ? <Text style={styles.info}>{items.length} homes</Text> : null
         }
+        initialNumToRender={50}
+        maxToRenderPerBatch={10}
         contentContainerStyle={styles.container}
       />
     </View>
