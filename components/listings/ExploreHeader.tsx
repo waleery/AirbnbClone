@@ -54,7 +54,7 @@ export const ExploreHeader = ({ onCategoryChanged }: ExploreHeaderProps) => {
             <TouchableOpacity
               key={category.name}
               ref={getRefHandler(index)}
-              style={activeIndex === index ? styles.categoryBtnActive : styles.categoryBtn}
+              style={styles.categoryBtn}
               onPress={selectCategory(index)}
             >
               <MaterialIcons
@@ -110,11 +110,6 @@ const styles = StyleSheet.create({
     color: Colors.black,
   },
   categoryBtn: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 5,
-  },
-  categoryBtnActive: {
     alignItems: 'center',
     justifyContent: 'center',
     gap: 5,
