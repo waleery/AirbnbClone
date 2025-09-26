@@ -1,5 +1,4 @@
 import { differenceInDays } from 'date-fns'
-import dayjs from 'dayjs'
 import { useAtom } from 'jotai'
 import React, { useCallback, useMemo, useState } from 'react'
 import { View, Text, Pressable } from 'react-native'
@@ -33,8 +32,8 @@ export const WhenCard = ({ setOpenCard, openCard }: Props) => {
 
   const handleDateChange = useCallback(
     ({ startDate, endDate }: { startDate?: DateType; endDate?: DateType }) => {
-      const start = startDate ? dayjs(startDate).toDate() : null
-      const end = endDate ? dayjs(endDate).toDate() : null
+      const start = startDate ? new Date(startDate as string | number | Date) : null
+      const end = endDate ? new Date(endDate as string | number | Date) : null
 
       setStartDate(start)
       setEndDate(end)
