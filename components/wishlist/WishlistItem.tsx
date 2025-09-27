@@ -1,8 +1,9 @@
 import { Ionicons } from '@expo/vector-icons'
 import { TouchableOpacity } from '@gorhom/bottom-sheet'
+import { Image } from 'expo-image'
 import { Link } from 'expo-router'
 import { useAtomValue } from 'jotai'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 
 import Colors from '@/constants/Colors'
 import { wishlistEditMode } from '@/store'
