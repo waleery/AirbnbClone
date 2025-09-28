@@ -56,7 +56,7 @@ const Page = () => {
         <View style={styles.absoluteBtn}>
           <Pressable onPress={showMap} style={styles.btn}>
             <Text style={[defaultStyles.white, defaultStyles.boldText]}>Map</Text>
-            <Ionicons name="map" size={17} color={'#fff'} />
+            <Ionicons name="map" size={17} color={Colors.white} />
           </Pressable>
         </View>
       )}
