@@ -67,7 +67,7 @@ const Page = () => {
       ),
       headerLeft: () => (
         <TouchableOpacity style={styles.roundBtn} onPress={handleGoBack}>
-          <Ionicons name="chevron-back" size={20} color={'#000'} />
+          <Ionicons name="chevron-back" size={20} color={'#000'} style={styles.backIcon} />
         </TouchableOpacity>
       ),
     })
@@ -226,6 +226,9 @@ const styles = StyleSheet.create({
     color: Colors.primary,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: Colors.lightGrey,
+  },
+  backIcon: {
+    transform: [{ translateX: -1 }],
   },
   header: {
     backgroundColor: Colors.white,
