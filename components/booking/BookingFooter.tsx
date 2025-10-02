@@ -6,6 +6,7 @@ import { Pressable } from 'react-native-gesture-handler'
 import Animated, { SlideInDown } from 'react-native-reanimated'
 
 import { defaultStyles } from '@/constants'
+import Colors from '@/constants/Colors'
 
 interface BookingFooterProps {
   onClearAll: () => void
@@ -28,7 +29,12 @@ export const BookingFooter = ({ onClearAll, filter }: BookingFooterProps) => {
         </Pressable>
 
         <Pressable onPress={handlePressFilter} style={[defaultStyles.btn, styles.button]}>
-          <Ionicons name="search-outline" size={24} color={'#fff'} style={defaultStyles.btnIcon} />
+          <Ionicons
+            name="search-outline"
+            size={24}
+            color={Colors.white}
+            style={defaultStyles.btnIcon}
+          />
           <Text style={[defaultStyles.btnText, defaultStyles.font500]}>Search</Text>
         </Pressable>
       </View>
