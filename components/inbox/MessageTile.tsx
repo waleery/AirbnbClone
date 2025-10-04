@@ -15,7 +15,7 @@ import { Conversation } from '@/types'
 
 type IconKey = 'Archive' | 'Star'
 
-const iconMap: Record<IconKey, JSX.Element> = {
+const iconMap: Record<IconKey, React.JSX.Element> = {
   Archive: <Entypo name="archive" size={16} color="white" />,
   Star: <AntDesign name="star" size={16} color="white" />,
 }
