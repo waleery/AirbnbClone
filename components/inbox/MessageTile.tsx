@@ -22,8 +22,8 @@ const iconMap: Record<IconKey, React.JSX.Element> = {
 
 type MessageTileProps = {
   conversation: Conversation
-  setOpenSwipeable: React.Dispatch<React.SetStateAction<React.RefObject<Swipeable> | null>>
-  openSwipeable: React.RefObject<Swipeable> | null
+  setOpenSwipeable: React.Dispatch<React.SetStateAction<React.RefObject<Swipeable | null> | null>>
+  openSwipeable: React.RefObject<Swipeable | null> | null
 }
 
 export const MessageTile = ({
@@ -115,7 +115,7 @@ export const MessageTile = ({
     )
   }, [])
   const handleSwipeableOpen = useCallback(
-    (swipeable: React.RefObject<Swipeable>) => () => {
+    (swipeable: React.RefObject<Swipeable | null>) => () => {
       if (openSwipeable && openSwipeable !== swipeable) {
         openSwipeable.current?.close()
       }

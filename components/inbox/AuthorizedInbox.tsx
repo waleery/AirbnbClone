@@ -21,7 +21,7 @@ const messagesData: Conversation[] = messagesDataRaw.map((message) => ({
 
 export const AuthorizedInbox = () => {
   const [selectedType, setSelectedType] = useState<string>('All')
-  const [openSwipeable, setOpenSwipeable] = useState<React.RefObject<Swipeable> | null>(null)
+  const [openSwipeable, setOpenSwipeable] = useState<React.RefObject<Swipeable | null> | null>(null)
 
   const renderRow: ListRenderItem<Conversation> = useCallback(
     ({ item }) => (
