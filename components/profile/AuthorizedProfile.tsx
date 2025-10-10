@@ -1,6 +1,5 @@
-import { useAuth, useUser } from '@clerk/clerk-expo'
+import { useAuth } from '@clerk/clerk-expo'
 import { Ionicons } from '@expo/vector-icons'
-import * as ImagePicker from 'expo-image-picker'
 import { useRouter } from 'expo-router'
 import { useCallback } from 'react'
 import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native'
