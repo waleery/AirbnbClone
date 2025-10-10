@@ -20,6 +20,7 @@
     "@react-navigation/native": "^7.1.16",
     "date-fns": "^4.1.0",
     "expo": "^53.0.20",
+    "expo-auth-session": "~6.2.1",
     "expo-blur": "15.0.7",
     "expo-constants": "~17.1.8",
     "expo-font": "~14.0.9",
