@@ -1,7 +1,7 @@
 import { format, parseISO } from 'date-fns'
 import { useRouter } from 'expo-router'
 import { useCallback, useMemo } from 'react'
-import { View, Text, StyleSheet, Image, ImageSourcePropType } from 'react-native'
+import { View, Text, StyleSheet, Image } from 'react-native'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
@@ -43,7 +43,7 @@ export const AuthorizedTrips = () => {
         <ScrollView showsVerticalScrollIndicator={false}>
           <Text style={styles.title}>Trips</Text>
           <View style={styles.noTrips}>
-            <Image source={hello as ImageSourcePropType} style={styles.helloIcon} />
+            <Image source={hello} style={styles.helloIcon} />
             <Text style={styles.noTripsText1}>No trips booked...yet!</Text>
             <Text style={styles.noTripsText2}>
               Time to dust off your bags and start planning your next adventure.

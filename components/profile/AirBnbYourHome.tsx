@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Image, ImageSourcePropType, StyleSheet } from 'react-native'
+import { View, Text, Image, StyleSheet } from 'react-native'
 import { Pressable } from 'react-native-gesture-handler'
 
 import { handlePresentEarnBottomSheet } from './EarnBottomSheet'
@@ -16,7 +16,7 @@ export const AirBnbYourHome = () => {
           <Text style={styles.modalSecondText}>It&apos;s simple to get up and start earning</Text>
         </View>
         <View style={styles.modalImageContainer}>
-          <Image source={home as ImageSourcePropType} style={styles.homeIcon} />
+          <Image source={home} style={styles.homeIcon} />
         </View>
       </View>
     </Pressable>

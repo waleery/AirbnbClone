@@ -33,7 +33,7 @@ export const Carousel: React.FC<CarouselProps> = ({ items, onPress = () => {} })
   const [errorImages, setErrorImages] = useState<Record<number, boolean>>({})
   const [loadingImages, setLoadingImages] = useState<Record<number, boolean>>({})
 
-  const flatListRef = useRef<FlatList<string>>(null)
+  const flatListRef = useRef<FlatList<string | number>>(null)
 
   const allImages = useMemo(() => [...items, ...additionalImages], [items])
 
@@ -65,7 +65,7 @@ export const Carousel: React.FC<CarouselProps> = ({ items, onPress = () => {} })
     onPress()
   }, [onPress])
 
-  const keyExtractor = useCallback((_: string, index: number) => index.toString(), [])
+  const keyExtractor = useCallback((_: string | number, index: number) => index.toString(), [])
 
   const renderItem = useCallback(
     ({ item, index }: { item: string | number; index: number }) => {

@@ -1,15 +1,7 @@
 import { Ionicons } from '@expo/vector-icons'
 import { useLocalSearchParams, useNavigation } from 'expo-router'
 import { useCallback, useLayoutEffect, useState } from 'react'
-import {
-  View,
-  Text,
-  StyleSheet,
-  Dimensions,
-  TouchableOpacity,
-  Share,
-  ImageSourcePropType,
-} from 'react-native'
+import { View, Text, StyleSheet, Dimensions, TouchableOpacity, Share } from 'react-native'
 import Animated, {
   SlideInDown,
   interpolate,
@@ -118,7 +110,7 @@ const Page = () => {
             source={
               listing.xl_picture_url && !hasImageError
                 ? { uri: listing.xl_picture_url }
-                : (roomExample as ImageSourcePropType)
+                : roomExample
             }
             onError={handleImageError}
             style={[styles.image, imageAnimatedStyle]}
