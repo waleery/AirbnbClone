@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons'
 import { useLocalSearchParams, useNavigation } from 'expo-router'
 import { useCallback, useLayoutEffect } from 'react'
-import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity, Share } from 'react-native'
+import { View, Text, StyleSheet, Dimensions, TouchableOpacity, Share } from 'react-native'
 import Animated, {
   SlideInDown,
   interpolate,
@@ -11,6 +11,7 @@ import Animated, {
 } from 'react-native-reanimated'
 
 import listingsData from '@/assets/data/json/airbnb-listings.json'
+import { HostAvatar } from '@/components'
 import { defaultStyles } from '@/constants'
 import Colors from '@/constants/Colors'
 import { Listing } from '@/types'
@@ -125,7 +126,7 @@ const Page = () => {
             ) : null}
             <View style={styles.divider} />
             <View style={styles.hostView}>
-              <Image source={{ uri: listing.host_picture_url }} style={styles.host} />
+              <HostAvatar uri={listing.host_picture_url} name={listing.host_name} />
 
               <View>
                 <Text style={styles.hostText}>Hosted by {listing.host_name || 'N/A'}</Text>
@@ -181,12 +182,6 @@ const styles = StyleSheet.create({
     marginVertical: 16,
   },
   hostView: { marginVertical: 5, flexDirection: 'row', alignItems: 'center', gap: 12 },
-  host: {
-    width: 50,
-    height: 50,
-    borderRadius: 50,
-    backgroundColor: Colors.grey,
-  },
   hostText: {
     fontWeight: '500',
     fontSize: 16,
