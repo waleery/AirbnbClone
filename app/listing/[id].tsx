@@ -1,7 +1,15 @@
 import { Ionicons } from '@expo/vector-icons'
 import { useLocalSearchParams, useNavigation } from 'expo-router'
-import { useCallback, useLayoutEffect } from 'react'
-import { View, Text, StyleSheet, Dimensions, TouchableOpacity, Share } from 'react-native'
+import { useCallback, useLayoutEffect, useState } from 'react'
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  TouchableOpacity,
+  Share,
+  ImageSourcePropType,
+} from 'react-native'
 import Animated, {
   SlideInDown,
   interpolate,
@@ -11,6 +19,7 @@ import Animated, {
 } from 'react-native-reanimated'
 
 import listingsData from '@/assets/data/json/airbnb-listings.json'
+import roomExample from '@/assets/images/room_example.jpg'
 import { HostAvatar } from '@/components'
 import { defaultStyles } from '@/constants'
 import Colors from '@/constants/Colors'
@@ -27,6 +36,12 @@ const Page = () => {
   const scrollOffset = useScrollViewOffset(scrollRef)
 
   const navigation = useNavigation()
+
+  const [hasImageError, setHasImageError] = useState<boolean>(false)
+
+  const handleImageError = useCallback(() => {
+    setHasImageError(true)
+  }, [])
 
   const headerAnimatedStyle = useAnimatedStyle(() => {
     return {
@@ -99,12 +114,15 @@ const Page = () => {
           ref={scrollRef}
           scrollEventThrottle={0.2}
         >
-          {listing.xl_picture_url ? (
-            <Animated.Image
-              source={{ uri: listing.xl_picture_url }}
-              style={[styles.image, imageAnimatedStyle]}
-            />
-          ) : null}
+          <Animated.Image
+            source={
+              listing.xl_picture_url && !hasImageError
+                ? { uri: listing.xl_picture_url }
+                : (roomExample as ImageSourcePropType)
+            }
+            onError={handleImageError}
+            style={[styles.image, imageAnimatedStyle]}
+          />
           <View style={styles.infoContainer}>
             <Text style={styles.name}>{listing.name}</Text>
             <Text style={styles.location}>
