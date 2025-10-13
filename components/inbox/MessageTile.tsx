@@ -1,13 +1,14 @@
 import { AntDesign, Entypo, FontAwesome5, Ionicons } from '@expo/vector-icons'
 import { getDate, getMonth, getYear } from 'date-fns'
 import { useAtomValue } from 'jotai'
-import React, { useCallback, useMemo, useRef } from 'react'
+import React, { useCallback, useMemo, useRef, useState } from 'react'
 import { Animated, Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import { Swipeable } from 'react-native-gesture-handler'
 // @ts-expect-error - Importing `AnimatedInterpolation` from 'react-native-gesture-handler' is correct,
 // but TypeScript may not recognize it due to issues with type definitions in the library.
 import { AnimatedInterpolation } from 'react-native-gesture-handler/lib/typescript/components/Swipeable'
 
+import roomExample from '@/assets/images/room_example.jpg'
 import { defaultStyles } from '@/constants'
 import Colors from '@/constants/Colors'
 import { listingsAtom } from '@/store'
@@ -37,6 +38,12 @@ export const MessageTile = ({
 
   const lastMessage = conversation.messages.slice(-1)[0]
   const swipeableRef = useRef<Swipeable>(null)
+
+  const [hasImageError, setHasImageError] = useState<boolean>(false)
+
+  const handleImageError = useCallback(() => {
+    setHasImageError(true)
+  }, [])
 
   const formatDateLastMessage = useMemo(() => {
     const date = new Date(conversation.last_message_time)
@@ -156,8 +163,16 @@ export const MessageTile = ({
           <View style={styles.customerServiceImage}>
             <FontAwesome5 name="airbnb" size={30} color={'white'} />
           </View>
-        ) : accomodation?.medium_url ? (
-          <Image source={{ uri: accomodation?.medium_url }} style={styles.image} />
+        ) : accomodation ? (
+          <Image
+            source={
+              accomodation.medium_url && !hasImageError
+                ? { uri: accomodation.medium_url }
+                : roomExample
+            }
+            onError={handleImageError}
+            style={styles.image}
+          />
         ) : null}
         {conversation.hosts?.slice(0, 2).map(renderHostImage)}
       </View>
