@@ -1,10 +1,10 @@
 import { Ionicons } from '@expo/vector-icons'
 import { TouchableOpacity } from '@gorhom/bottom-sheet'
-import { Image } from 'expo-image'
 import { Link } from 'expo-router'
 import { useAtomValue } from 'jotai'
 import { StyleSheet, Text, View } from 'react-native'
 
+import { ListingImage } from '@/components/listings/ListingImage'
 import Colors from '@/constants/Colors'
 import { wishlistEditMode } from '@/store'
 import { Wishlist } from '@/types'
@@ -24,7 +24,7 @@ export const WishlistItem = ({ wishlist }: WishlistItemProps) => {
             wishlist.list.slice(0, 4).map((listItem, index) => (
               <Link key={listItem.id} href={`/listing/${listItem.id}`} asChild>
                 <TouchableOpacity style={getItemStyle(index)}>
-                  <Image source={{ uri: listItem.medium_url }} style={styles.image} />
+                  <ListingImage uri={listItem.medium_url} style={styles.image} />
                 </TouchableOpacity>
               </Link>
             ))
@@ -32,7 +32,7 @@ export const WishlistItem = ({ wishlist }: WishlistItemProps) => {
             <View style={styles.tileContainer}>
               <Link href={`/listing/${wishlist.list[0].id}`} asChild>
                 <TouchableOpacity style={styles.touchableFull}>
-                  <Image source={{ uri: wishlist.list[0].medium_url }} style={styles.image} />
+                  <ListingImage uri={wishlist.list[0].medium_url} style={styles.image} />
                 </TouchableOpacity>
               </Link>
               {editMode && (
