@@ -7,6 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 
 import visitedPlaces from '@/assets/data/json/visitedPlaces.json'
 import hello from '@/assets/images/hello.png'
+import { ListingImage } from '@/components/listings/ListingImage'
 import { defaultStyles } from '@/constants'
 import Colors from '@/constants/Colors'
 import { WhereBeen } from '@/types'
@@ -61,7 +62,7 @@ export const AuthorizedTrips = () => {
           <View style={styles.placesContainer}>
             {visited.map((place) => (
               <View key={place.id} style={styles.place}>
-                <Image source={{ uri: place.medium_url }} style={styles.image} />
+                <ListingImage uri={place.medium_url} style={styles.image} />
                 <View style={styles.placeText}>
                   <Text style={styles.city}>{place.city}</Text>
                   <Text style={styles.host}>Hosted by {place.host}</Text>
@@ -128,7 +129,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: 80,
     height: 80,
-    resizeMode: 'cover',
   },
   place: {
     flexDirection: 'row',
