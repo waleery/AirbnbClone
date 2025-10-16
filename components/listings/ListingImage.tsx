@@ -5,7 +5,7 @@ import { StyleProp } from 'react-native'
 import roomExample from '@/assets/images/room_example.jpg'
 
 type ListingImageProps = {
-  uri?: string
+  uri?: string | null
   style?: StyleProp<ImageStyle>
 }
 
