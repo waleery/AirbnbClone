@@ -16,7 +16,7 @@ export interface Message {
   id: number
 }
 
-interface Hosts {
+export interface Hosts {
   name: string
   image: string
 }

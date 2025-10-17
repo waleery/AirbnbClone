@@ -2,17 +2,18 @@ import { AntDesign, Entypo, FontAwesome5, Ionicons } from '@expo/vector-icons'
 import { getDate, getMonth, getYear } from 'date-fns'
 import { useAtomValue } from 'jotai'
 import React, { useCallback, useMemo, useRef } from 'react'
-import { Animated, Image, Pressable, StyleSheet, Text, View } from 'react-native'
+import { Animated, Pressable, StyleSheet, Text, View } from 'react-native'
 import { Swipeable } from 'react-native-gesture-handler'
 // @ts-expect-error - Importing `AnimatedInterpolation` from 'react-native-gesture-handler' is correct,
 // but TypeScript may not recognize it due to issues with type definitions in the library.
 import { AnimatedInterpolation } from 'react-native-gesture-handler/lib/typescript/components/Swipeable'
 
+import { HostAvatar } from '@/components/listings/HostAvatar'
 import { ListingImage } from '@/components/listings/ListingImage'
 import { defaultStyles } from '@/constants'
 import Colors from '@/constants/Colors'
 import { listingsAtom } from '@/store'
-import { Conversation } from '@/types'
+import { Conversation, Hosts } from '@/types'
 
 type IconKey = 'Archive' | 'Star'
 
@@ -125,15 +126,15 @@ export const MessageTile = ({
     [openSwipeable, setOpenSwipeable]
   )
 
-  const renderHostImage = (host: { image: string | undefined }, index: number) => (
-    <Image
+  const renderHostImage = (host: Hosts, index: number) => (
+    <HostAvatar
       key={`host-${index}`}
-      source={{ uri: host?.image }}
+      uri={host.image}
+      name={host.name}
+      size={hostImageSize}
       style={[
         styles.hostImage,
         {
-          width: hostImageSize,
-          height: hostImageSize,
           transform: [
             { translateY: hostImagePositions[index]?.translateY || 0 },
             { translateX: hostImagePositions[index]?.translateX || 0 },
@@ -220,9 +221,6 @@ const styles = StyleSheet.create({
   },
   hostImage: {
     position: 'absolute',
-    width: 40,
-    height: 40,
-    borderRadius: 50,
     borderWidth: 2,
     borderColor: Colors.white,
     bottom: 0,
